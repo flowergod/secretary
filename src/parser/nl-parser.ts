@@ -97,6 +97,8 @@ export class NLParser {
         intents.push(this.buildCompleteIntent(ctx));
         break;
       case 'query':
+        intents.push(this.buildQueryIntent(ctx));
+        break;
       case 'search':
         intents.push(this.buildSearchIntent(ctx, action));
         break;
@@ -116,11 +118,51 @@ export class NLParser {
   }
 
   private detectAction(ctx: ParseContext): ParsedIntent['action'] | null {
+    const text = ctx.lowerText;
+
+    // 优先检测明确的完成动作
+    if (/完成(任务)?|搞定|做完了/.test(text)) {
+      return 'complete';
+    }
+
+    // 检测搜索动作
+    if (/^查找|^搜索|^找一下/.test(text)) {
+      return 'search';
+    }
+
+    // 检测删除动作
+    if (/^删除|^移除|^删/.test(text)) {
+      return 'delete';
+    }
+
+    // 检测更新动作
+    if (/^修改|^更新|^改到/.test(text)) {
+      return 'update';
+    }
+
+    // 检测循环/定期任务的创建
+    // "每X提醒我做..." / "每X做..." / "...后X天提醒"
+    if (/每[\d一两二三四五六七八九十]?(天|周|月|年|个小时?|分钟)/.test(text) || /每[\d一两二三四五六七八九十]?(天|周|月|年|个小时?|分钟)?提醒/.test(text)) {
+      return 'create';
+    }
+
+    // 检测查询动作 - "今天有什么安排" / "查看日程" / "有什么任务"
+    if (/今天有什么|有什么安排|查看日程|今天干嘛|待办事项/.test(text)) {
+      return 'query';
+    }
+
+    // 检测创建动作
+    if (/帮我|创建|添加|新增|新建|安排|预约/.test(text)) {
+      return 'create';
+    }
+
+    // 兜底检测任何动作关键词
     for (const [keyword, action] of Object.entries(ACTION_MAP)) {
-      if (ctx.lowerText.includes(keyword)) {
+      if (text.includes(keyword)) {
         return action;
       }
     }
+
     return null;
   }
 
@@ -220,11 +262,22 @@ export class NLParser {
   }
 
   private extractRecurrence(ctx: ParseContext): { type: RecurrenceType; rule: Record<string, unknown> } | undefined {
-    // 固定间隔循环
-    const intervalMatch = ctx.lowerText.match(/每(\d+)?(天|周|月|年|个小时?|分钟?)/);
+    // 固定间隔循环 - 支持中文数字
+    const chineseNumeralMap: Record<string, string> = {
+      '一': '1', '二': '2', '三': '3', '四': '4', '五': '5',
+      '六': '6', '七': '7', '八': '8', '九': '9', '十': '10',
+    };
+
+    const intervalMatch = ctx.lowerText.match(/每([\d一两二三四五六七八九十]+)?(天|周|月|年|个小时?|分钟?)/);
     if (intervalMatch) {
-      const interval = intervalMatch[1] || '1';
+      let interval = intervalMatch[1] || '1';
       const unit = intervalMatch[2];
+
+      // 转换中文数字
+      if (chineseNumeralMap[interval]) {
+        interval = chineseNumeralMap[interval];
+      }
+
       let intervalStr = interval;
       if (unit.includes('天') && !unit.includes('个')) {
         intervalStr += ' days';
@@ -304,7 +357,7 @@ export class NLParser {
         start_time: this.extractTime(ctx),
         is_recurring: !!recurrence,
         recurrence_type: recurrence?.type,
-        recurrence_rule: recurrence?.rule as Record<string, unknown>,
+        recurrence_rule: recurrence?.rule as unknown as import('../shared/types').RecurrenceRule | undefined,
         status: 'pending' as TaskStatus,
         needs_expansion: expansion.needs,
         expansion_type: expansion.type,

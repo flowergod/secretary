@@ -63,22 +63,64 @@ export class ConfigManager {
   }
 
   private parseYaml(content: string): Partial<AppConfig> {
+    // Simple YAML parser for nested structures
     const result: Record<string, unknown> = {};
     const lines = content.split('\n');
+    let currentSection: Record<string, unknown> | null = null;
+    let currentSubsection: Record<string, unknown> | null = null;
 
     for (const line of lines) {
       const trimmed = line.trim();
       if (!trimmed || trimmed.startsWith('#')) continue;
 
+      // Check for section header (no colon or ends with colon without value)
+      if (trimmed.endsWith(':') && !trimmed.includes(': ')) {
+        const sectionName = trimmed.slice(0, -1).trim();
+        if (sectionName === 'feishu' || sectionName === 'icloud' || sectionName === 'ai' || sectionName === 'reminders') {
+          currentSection = {};
+          result[sectionName] = currentSection;
+          currentSubsection = null;
+        } else if (currentSection && ['primary', 'fallback', 'morning', 'evening', 'weekendSummary', 'preEvent', 'idleTime'].includes(sectionName)) {
+          currentSubsection = {};
+          currentSection[sectionName] = currentSubsection;
+        }
+        continue;
+      }
+
       const colonIndex = trimmed.indexOf(':');
       if (colonIndex > 0) {
         const key = trimmed.substring(0, colonIndex).trim();
-        let value = trimmed.substring(colonIndex + 1).trim();
-        if ((value.startsWith('"') && value.endsWith('"')) ||
-            (value.startsWith("'") && value.endsWith("'"))) {
-          value = value.slice(1, -1);
+        let value: unknown = trimmed.substring(colonIndex + 1).trim();
+
+        // Parse value types
+        if (typeof value === 'string') {
+          if (value === 'true' || value === 'false') {
+            value = value === 'true';
+          } else if (/^\d+$/.test(value)) {
+            value = parseInt(value, 10);
+          } else if ((value.startsWith('"') && value.endsWith('"')) ||
+              (value.startsWith("'") && value.endsWith("'"))) {
+            value = value.slice(1, -1);
+          }
         }
-        result[key] = value;
+
+        if (value === '') {
+          value = undefined;
+        }
+
+        // Handle ${ENV_VAR} placeholder
+        if (typeof value === 'string' && value.startsWith('${') && value.endsWith('}')) {
+          const envVar = value.slice(2, -1);
+          value = process.env[envVar] || '';
+        }
+
+        if (currentSubsection) {
+          currentSubsection[key] = value;
+        } else if (currentSection) {
+          currentSection[key] = value;
+        } else {
+          result[key] = value;
+        }
       }
     }
 

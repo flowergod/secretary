@@ -29,7 +29,7 @@ export class FeishuConnector {
   async create(entity: TaskEntity): Promise<TaskEntity> {
     return withRetry(async () => {
       const fields = this.entityToFields(entity);
-      const response = await this.executeFeishuAPI('POST', '/bitable/v1/apps/{table_token}/records', {
+      const response = await this.executeFeishuAPI<FeishuResponse<{ record: { record_id: string } }>>('POST', '/bitable/v1/apps/{table_token}/records', {
         records: [{ fields }],
       });
 
@@ -89,6 +89,7 @@ export class FeishuConnector {
     priority?: string;
     start_date?: string;
     due_date?: string;
+    project_id?: string;
   }): Promise<TaskEntity[]> {
     const conditions: string[] = [];
 
@@ -100,6 +101,9 @@ export class FeishuConnector {
     }
     if (filter?.priority) {
       conditions.push(`[优先级] = "${filter.priority}"`);
+    }
+    if (filter?.project_id) {
+      conditions.push(`[项目ID] = "${filter.project_id}"`);
     }
 
     const filterStr = conditions.length > 0 ? conditions.join(' AND ') : '';
@@ -178,7 +182,8 @@ export class FeishuConnector {
       throw new Error(`Feishu API error: ${response.status} ${response.statusText}`);
     }
 
-    return response.json();
+    const json = await response.json();
+    return json as T;
   }
 
   private async getAccessToken(): Promise<string> {
