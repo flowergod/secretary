@@ -1,0 +1,28 @@
+{
+  "name": "project-secretary",
+  "version": "1.0.0",
+  "description": "项目管理 AI 助理 - 双平台支持",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest",
+    "lint": "eslint src/**/*.ts"
+  },
+  "keywords": [
+    "openclaw",
+    "claude-code",
+    "project-management",
+    "ai-assistant"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/uuid": "^9.0.0",
+    "typescript": "^5.0.0"
+  }
+}

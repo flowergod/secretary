@@ -1,0 +1,38 @@
+# Project Secretary 配置示例
+# 复制此文件为 config.yaml 并填入实际值
+
+feishu:
+  webhook_url: "https://open.feishu.cn/open-apis/bot/v2/hook/your-webhook-url"
+  table_token: "your-feishu-table-token"
+
+icloud:
+  apple_id: "your-apple-id@email.com"
+  app_password: "xxxx-xxxx-xxxx-xxxx"
+
+ai:
+  primary:
+    provider: "volcano"
+    api_key: "your-volcano-api-key"
+    model: "coding-plan"
+  fallback:
+    provider: "minimax"
+    api_key: "your-minimax-api-key"
+    base_url: "https://api.minimax.io/anthropic"
+
+reminders:
+  morning:
+    enabled: true
+    time: "8:30"
+  evening:
+    enabled: true
+    time: "21:00"
+  weekend_summary:
+    enabled: true
+    time: "18:00"
+    day_of_week: 5
+  pre_event:
+    enabled: true
+    minutes_before: 15
+  idle_time:
+    enabled: true
+    min_free_minutes: 60
