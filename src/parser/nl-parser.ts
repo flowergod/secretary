@@ -294,9 +294,9 @@ export class NLParser {
       }
 
       return {
-        type: 'fixed_interval',
+        type: 'weekly', // Maps to the Feishu recurrence types
         rule: {
-          type: 'fixed_interval',
+          type: 'weekly',
           interval: intervalStr,
           start_from: new Date().toISOString().split('T')[0],
         },

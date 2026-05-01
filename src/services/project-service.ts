@@ -62,7 +62,9 @@ export class ProjectService {
    * 获取项目下的所有任务
    */
   async getProjectTasks(projectId: string): Promise<TaskEntity[]> {
-    return feishuConnector.query({ type: 'task', project_id: projectId });
+    const allTasks = await feishuConnector.query({ type: 'task' });
+    // Filter by project_name since the actual field is text, not an ID
+    return allTasks.filter(t => t.project_name === projectId);
   }
 
   /**

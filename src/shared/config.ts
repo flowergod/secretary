@@ -130,8 +130,11 @@ export class ConfigManager {
   private getDefaultConfig(): AppConfig {
     return {
       feishu: {
+        appId: process.env.FEISHU_APP_ID || '',
+        appSecret: process.env.FEISHU_APP_SECRET || '',
         webhookUrl: process.env.FEISHU_WEBHOOK_URL || '',
         tableToken: process.env.FEISHU_TABLE_TOKEN || '',
+        tableId: process.env.FEISHU_TABLE_ID || '',
       },
       icloud: {
         appleId: process.env.ICLOUD_APPLE_ID || '',

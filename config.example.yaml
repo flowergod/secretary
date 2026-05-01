@@ -1,23 +1,28 @@
-# Project Secretary 配置示例
-# 复制此文件为 config.yaml 并填入实际值
+# 项目管理 AI 助理 配置文件示例
+# 复制此文件为 config.yaml 并填写实际值
 
 feishu:
-  webhook_url: "https://open.feishu.cn/open-apis/bot/v2/hook/your-webhook-url"
-  table_token: "your-feishu-table-token"
+  appId: "cli_xxxxxxxxxxxxxxxx"
+  appSecret: "your_app_secret_here"
+  tableToken: "your_table_token_here"
+  tableId: "your_table_id_here"
+  webhookUrl: "https://open.feishu.cn/open-apis/bot/v2/hook/xxxxx"
 
 icloud:
-  apple_id: "your-apple-id@email.com"
-  app_password: "xxxx-xxxx-xxxx-xxxx"
+  appleId: "your@email.com"
+  appPassword: "xxxx-xxxx-xxxx-xxxx"
 
 ai:
   primary:
     provider: "volcano"
-    api_key: "your-volcano-api-key"
+    apiKey: "${VOLCANO_API_KEY}"
     model: "coding-plan"
+    baseUrl: "https://ark.cn-beijing.volces.com/api/v3"
   fallback:
     provider: "minimax"
-    api_key: "your-minimax-api-key"
-    base_url: "https://api.minimax.io/anthropic"
+    apiKey: "${MINIMAX_API_KEY}"
+    baseUrl: "https://api.minimax.io/anthropic"
+    model: "MiniMax-Text-01"
 
 reminders:
   morning:
@@ -26,13 +31,13 @@ reminders:
   evening:
     enabled: true
     time: "21:00"
-  weekend_summary:
+  weekendSummary:
     enabled: true
     time: "18:00"
-    day_of_week: 5
-  pre_event:
+    dayOfWeek: 5
+  preEvent:
     enabled: true
-    minutes_before: 15
-  idle_time:
+    minutesBefore: 15
+  idleTime:
     enabled: true
-    min_free_minutes: 60
+    minFreeMinutes: 60

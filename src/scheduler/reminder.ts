@@ -77,24 +77,24 @@ export class ReminderScheduler {
     }
 
     const today = new Date().toISOString().split('T')[0];
-    const events = await feishuConnector.query({
-      type: 'event',
-      start_date: today,
-    });
+    const events = await feishuConnector.query({ type: 'event' });
 
-    if (events.length === 0) {
+    // Filter events for today
+    const todayEvents = events.filter(e => e.due_date && e.due_date.startsWith(today));
+
+    if (todayEvents.length === 0) {
       await feishuConnector.sendMessage('早安！今天没有安排的事项。');
       return;
     }
 
-    const eventList = events
+    const eventList = todayEvents
       .map(e => {
-        const time = e.start_time || '全天';
+        const time = e.start_time ? new Date(e.start_time).toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit' }) : '全天';
         return `- ${time} ${e.title}`;
       })
       .join('\n');
 
-    const message = `早安！今天你有${events.length}件事：\n${eventList}`;
+    const message = `早安！今天你有${todayEvents.length}件事：\n${eventList}`;
     await feishuConnector.sendMessage(message);
   }
 
@@ -111,10 +111,10 @@ export class ReminderScheduler {
     tomorrow.setDate(tomorrow.getDate() + 1);
     const tomorrowStr = tomorrow.toISOString().split('T')[0];
 
-    const events = await feishuConnector.query({
-      type: 'event',
-      start_date: tomorrowStr,
-    });
+    const events = await feishuConnector.query({ type: 'event' });
+
+    // Filter events for tomorrow
+    const tomorrowEvents = events.filter(e => e.due_date && e.due_date.startsWith(tomorrowStr));
 
     if (events.length === 0) {
       await feishuConnector.sendMessage('晚安！明天没有安排的事项，好好休息~');
@@ -153,10 +153,10 @@ export class ReminderScheduler {
     const nextWeekEnd = new Date(nextWeekStart);
     nextWeekEnd.setDate(nextWeekEnd.getDate() + 6);
 
-    const nextWeekEvents = await feishuConnector.query({
-      type: 'event',
-      start_date: nextWeekStart.toISOString().split('T')[0],
-    });
+    const allEvents = await feishuConnector.query({ type: 'event' });
+    const nextWeekStartStr = nextWeekStart.toISOString().split('T')[0];
+    const nextWeekEndStr = nextWeekEnd.toISOString().split('T')[0];
+    const nextWeekEvents = allEvents.filter(e => e.due_date && e.due_date >= nextWeekStartStr && e.due_date <= nextWeekEndStr);
 
     const summary = [
       `本周完成${completedTasks.length}项任务`,

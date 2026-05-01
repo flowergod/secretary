@@ -20,7 +20,7 @@ describe('NLParser', () => {
       expect(result).toHaveLength(1);
       expect(result[0].action).toBe('create');
       expect(result[0].entity.is_recurring).toBe(true);
-      expect(result[0].entity.recurrence_type).toBe('fixed_interval');
+      expect(result[0].entity.recurrence_type).toBe('weekly');
     });
 
     it('should parse complete task intent', () => {

@@ -42,7 +42,8 @@ export class ScheduleService {
    */
   async getTodayEvents(): Promise<TaskEntity[]> {
     const today = new Date().toISOString().split('T')[0];
-    return feishuConnector.query({ type: 'event', start_date: today });
+    const allEvents = await feishuConnector.query({ type: 'event' });
+    return allEvents.filter(e => e.due_date && e.due_date.startsWith(today));
   }
 
   /**
