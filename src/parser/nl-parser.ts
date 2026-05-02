@@ -69,20 +69,40 @@ const TYPE_MAP: Record<string, EntityType> = {
 export class NLParser {
   /**
    * 解析用户输入，提取意图和实体
+   * 支持多事件拆分：输入包含多个事件时，返回多个 ParsedIntent
    */
   parse(input: string): ParsedIntent[] {
     const intents: ParsedIntent[] = [];
-    const ctx = this.createContext(input);
 
     // 检测动作
-    const action = this.detectAction(ctx);
+    const action = this.detectAction(this.createContext(input));
     if (!action) {
       // 默认为查询
-      intents.push(this.buildQueryIntent(ctx));
+      intents.push(this.buildQueryIntent(this.createContext(input)));
       return intents;
     }
 
-    // 根据动作类型分别处理
+    // 对于 create 动作，检测是否包含多事件
+    if (action === 'create') {
+      const subInputs = this.splitMultipleEvents(input);
+      if (subInputs.length > 1) {
+        // 多事件：分别解析每个子句
+        for (const subInput of subInputs) {
+          const subCtx = this.createContext(subInput);
+          const subAction = this.detectAction(subCtx);
+          if (subAction === 'create') {
+            intents.push(this.buildCreateIntent(subCtx));
+          } else {
+            // 子句无法识别为创建，仍创建一个 intent
+            intents.push(this.buildCreateIntent(subCtx));
+          }
+        }
+        return intents;
+      }
+    }
+
+    // 单事件处理
+    const ctx = this.createContext(input);
     switch (action) {
       case 'create':
         intents.push(this.buildCreateIntent(ctx));
@@ -107,6 +127,30 @@ export class NLParser {
     }
 
     return intents;
+  }
+
+  /**
+   * 拆分多事件输入
+   * 分隔符：逗号（,，）、句号（.。）、分号（;；）
+   * 但要避免拆分时间范围中的 ~ 符号
+   */
+  private splitMultipleEvents(input: string): string[] {
+    // 临时替换时间范围中的 ~ 符号，避免被当作分隔符
+    const timeRangePlaceholder = '___TIME_RANGE___';
+    const cleanedInput = input.replace(/(\d+[点时:：]\d+)[~～](\d+[点时:：]\d+)/g, (_, t1, t2) => {
+      return t1 + '~' + t2;
+    });
+
+    // 使用分隔符拆分
+    const separators = /[,，、。.；;]/;
+    const parts = cleanedInput.split(separators).filter(p => p.trim().length > 0);
+
+    // 如果只拆出一个部分，返回原输入
+    if (parts.length <= 1) {
+      return [input];
+    }
+
+    return parts.map(p => p.trim());
   }
 
   private createContext(text: string): ParseContext {
@@ -220,7 +264,7 @@ export class NLParser {
   }
 
   private extractTitle(ctx: ParseContext): string {
-    // 简单策略：移除动作词后剩余部分作为标题
+    // 简单策略：移除动作词和时间表达式后剩余部分作为标题
     let title = ctx.text;
 
     // 移除常见前缀
@@ -231,10 +275,28 @@ export class NLParser {
       }
     }
 
-    // 移除时间表达式
-    title = title.replace(/\d{4}[-/年]\d{1,2}[-/月]\d{1,2}/g, '');
-    title = title.replace(/下[周个]?[一二三四五六日天]+/g, '');
+    // 移除时间表达式 - 按优先级顺序
+    // 1. 移除完整日期时间 "2024-05-04 10:00" 或 "2024年5月4日10点"
+    title = title.replace(/\d{4}[-/年]\d{1,2}[-/月]\d{1,2}[\s\d点时:：]*\d*[分]?/g, '');
+    // 2. 移除时间范围 "9：30~11：30" (优先于单独时间，避免残留 ~)
+    title = title.replace(/\d{1,2}[点时:：]\d{0,2}[~～]\d{1,2}[点时:：]\d{0,2}/g, '');
+    // 3. 移除时间 "8：30"/"10点"/"下午3点" 等
+    title = title.replace(/\d{1,2}[点时:：]\d{0,2}/g, '');
+    // 4. 移除循环模式 "每周X" - 优先移除，避免被下条规则误删
+    // 匹配 "每周一"、"每周四"、"每周期" 等
+    title = title.replace(/每周期/g, '');
+    title = title.replace(/每周[一二三四五六日天]/g, '');
+    title = title.replace(/每[一二三四五六日天]/g, '');
+    // 5. 移除日期 "下周一" / "周一" / "本周五" 等 - 但不要移除前面有"每"的情况
+    // 使用负向前查找确保"每周"后面的"周一"不被移除
+    title = title.replace(/(?<!每)下?[本这]?[周个]?[一二三四五六日天]+/g, '');
+    // 6. 移除相对日期 "今天"/"明天"/"后天"/"昨天"
     title = title.replace(/今天|明天|后天|昨天/g, '');
+    // 7. 移除残余的时间标记（上午/下午/晚上/早上）
+    title = title.replace(/[上下午晚早]?[午晚晨]?[上\s]*/g, '');
+    // 8. 清理多余空格和标点
+    title = title.replace(/^[,，、。.\s~～]+/, '').replace(/[,，、。.\s~～]+$/, '');
+    title = title.replace(/\s+/g, ' ');
 
     return title.trim() || ctx.text;
   }
@@ -321,7 +383,8 @@ export class NLParser {
       hourOffset = 0;
     }
 
-    const timeMatch = ctx.text.match(/(\d{1,2})[点时:](\d{0,2})/);
+    // 支持半角冒号(:) 和全角冒号(：)
+    const timeMatch = ctx.text.match(/(\d{1,2})[点时:：](\d{0,2})/);
     if (timeMatch) {
       let hour = parseInt(timeMatch[1], 10);
       const minute = parseInt(timeMatch[2]?.padStart(2, '0') || '00', 10);
@@ -339,12 +402,49 @@ export class NLParser {
     return undefined;
   }
 
+  /**
+   * 从时间范围字符串中提取结束时间
+   * 支持格式: "9:30~11:30", "9：30~11：30", "9点~10点"
+   */
+  private extractEndTime(ctx: ParseContext): string | undefined {
+    // 匹配 "HH:mm~HH:mm" 或 "H:m~H:m" 格式，支持半角全角冒号和波浪号
+    const rangeMatch = ctx.text.match(/[~～](\d{1,2})[点时:：](\d{0,2})/);
+    if (rangeMatch) {
+      const hour = parseInt(rangeMatch[1], 10);
+      const minute = parseInt(rangeMatch[2]?.padStart(2, '0') || '00', 10);
+      return `${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}`;
+    }
+    return undefined;
+  }
+
   private extractRecurrence(ctx: ParseContext): { type: RecurrenceType; rule: Record<string, unknown> } | undefined {
     // 固定间隔循环 - 支持中文数字
     const chineseNumeralMap: Record<string, string> = {
       '一': '1', '二': '2', '三': '3', '四': '4', '五': '5',
       '六': '6', '七': '7', '八': '8', '九': '9', '十': '10',
     };
+
+    // 优先检测每周X的循环模式 (每周四、每周五等)
+    const weekdayMap: Record<string, RecurrenceType> = {
+      '一': 'weekly_monday', '二': 'weekly_tuesday', '三': 'weekly_wednesday',
+      '四': 'weekly_thursday', '五': 'weekly_friday', '六': 'weekly_saturday', '日': 'weekly_sunday',
+      '天': 'weekly_sunday',
+    };
+
+    const weeklyWeekdayMatch = ctx.lowerText.match(/每周([一二三四五六日天])/);
+    if (weeklyWeekdayMatch) {
+      const weekday = weeklyWeekdayMatch[1];
+      const recurrenceType = weekdayMap[weekday];
+      if (recurrenceType) {
+        return {
+          type: recurrenceType,
+          rule: {
+            type: recurrenceType,
+            start_from: new Date().toISOString().split('T')[0],
+          },
+        };
+      }
+    }
 
     const intervalMatch = ctx.lowerText.match(/每([\d一两二三四五六七八九十]+)?(天|周|月|年|个小时?|分钟?)/);
     if (intervalMatch) {
@@ -433,6 +533,7 @@ export class NLParser {
         due_date: this.extractDate(ctx),
         start_date: this.extractDate(ctx),
         start_time: this.extractTime(ctx),
+        end_time: this.extractEndTime(ctx),
         is_recurring: !!recurrence,
         recurrence_type: recurrence?.type,
         recurrence_rule: recurrence?.rule as unknown as import('../shared/types').RecurrenceRule | undefined,

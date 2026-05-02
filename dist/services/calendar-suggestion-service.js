@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.calendarSuggestionService = exports.CalendarSuggestionService = void 0;
-const WORK_KEYWORDS = ['工作', '开会', '会议', '项目', '客户', '商务', '谈判', '面试', '报告', '述职', '汇报'];
+const WORK_KEYWORDS = ['工作', '周报', '开会', '会议', '例会', '组会', '项目', '客户', '商务', '谈判', '面试', '报告', '述职', '汇报'];
 const FAMILY_KEYWORDS = ['家庭', '孩子', '笑笑', '妙妙', '家人', '亲戚', '聚餐', '父母', '爸妈', '看医生', '体检', '复查', '学校', '班级', '篮球', '足球', '游泳', '课外'];
 const PERSONAL_KEYWORDS = ['个人', '自己', '学习', '读书', '运动', '健身', '跑步', '瑜伽', '朋友', '聚会', '约'];
 class CalendarSuggestionService {
