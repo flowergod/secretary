@@ -120,9 +120,17 @@ export class NLParser {
   private detectAction(ctx: ParseContext): ParsedIntent['action'] | null {
     const text = ctx.lowerText;
 
-    // 优先检测明确的完成动作
-    if (/完成(任务)?|搞定|做完了/.test(text)) {
-      return 'complete';
+    // 检测需要 expansion 的创建模式 - "完成后自动规划"、"做完自动..."
+    // 这些不是完成动作，而是创建带后续规划的触发条件
+    if (/^完成后/i.test(text) || /^做完/i.test(text) || /^完成后/i.test(text)) {
+      // 这是创建任务，带 expansion 触发条件
+      // 继续往下走，通过 detectNeedsExpansion 来识别
+    } else {
+      // 优先检测明确的完成动作
+      // "完成任务" / "完成报告" / "搞定" / "做完了"
+      if (/^完成任务|^完成.{1,10}$|^搞定|^做完了|^标记完成|^标记为完成/.test(text)) {
+        return 'complete';
+      }
     }
 
     // 检测搜索动作
@@ -146,6 +154,13 @@ export class NLParser {
       return 'create';
     }
 
+    // 检测带时间的任务创建 - "明天上午10点开会" / "周五下午3点去看牙医" / "后天10点约了xrc"
+    // 必须有时序词(明天/后天/周五等) + 时间点(10点/下午3点等) + 动词/活动描述
+    // 这个检测应该优先于疑问句检测，因为有时序词+时间的是创建任务
+    if (/^(明天|后天|[周一二三四五六日])/.test(text) && /[\d点零上一二三四五六七八九十]/.test(text)) {
+      return 'create';
+    }
+
     // 检测查询动作 - 只匹配明确的疑问句式（句子开头）
     // "今天有什么安排" / "查看日程" / "今天干嘛" / "有什么任务"
     // 不能匹配普通任务描述如"明天上午10点开会，有什么注意事项"
@@ -153,29 +168,25 @@ export class NLParser {
       return 'query';
     }
 
-    // 检测带时间的任务创建 - "明天上午10点开会" / "周五下午3点去看牙医" / "后天10点约了xrc"
-    // 必须有时序词(明天/后天/周五等) + 时间点(10点/下午3点等) + 动词/活动描述
-    // 但不能是疑问句(有什么/有没有/什么安排)
-    if (!text.includes('有什么') && !text.includes('有没有') && !text.includes('什么安排') && !text.includes('是不是')) {
-      // 带时间的创建模式
-      if (/^(明天|后天|[周一的二三 四五六日]?[午晚白天]?[\d点零上一二三四五六七八九十]+[分]?)|(本周|下周)/.test(text) && /[\d点零上一二三四五六七八九十]/.test(text)) {
-        return 'create';
-      }
-    }
-
     // 检测创建动作
     if (/帮我|创建|添加|新增|新建|安排|预约/.test(text)) {
       return 'create';
     }
 
-    // 兜底检测任何动作关键词
+    // "完成后..." 和 "做完..." 除非后面直接是结束词，否则是创建触发条件
+    // "完成任务" 是完成，"完成后自动规划" 是创建
+    if ((text.startsWith('完成后') && !/^完成任务$/.test(text)) || (text.startsWith('做完') && !/^做完$/.test(text))) {
+      return 'create';
+    }
+
+    // 兜底检测动作关键词 (排除 '看'，因为太宽泛会误判)
     for (const [keyword, action] of Object.entries(ACTION_MAP)) {
-      if (text.includes(keyword)) {
+      if (keyword !== '看' && text.includes(keyword)) {
         return action;
       }
     }
 
-    // 无法识别时：如果文本不包含疑问词（有什么/是不是/吗），假定为创建任务
+    // 最终兜底：如果文本不包含疑问词，假定为创建任务
     if (!text.includes('有什么') && !text.includes('有没有') && !text.includes('是不是') && !text.includes('吗') && !text.includes('?')) {
       return 'create';
     }
@@ -229,9 +240,19 @@ export class NLParser {
   }
 
   private extractDate(ctx: ParseContext): string | undefined {
+    // 优先检测完整日期格式 YYYY-MM-DD 或 YYYY/MM/DD
     const dateMatch = ctx.text.match(/(\d{4}[-/年]\d{1,2}[-/月]\d{1,2})/);
     if (dateMatch) {
       return dateMatch[1].replace(/[/年]/g, '-');
+    }
+
+    // 检测简写日期格式 M月D日 或 MM月DD日 (无年份)
+    const shortDateMatch = ctx.text.match(/(\d{1,2})月(\d{1,2})日?/);
+    if (shortDateMatch) {
+      const month = shortDateMatch[1].padStart(2, '0');
+      const day = shortDateMatch[2].padStart(2, '0');
+      const year = new Date().getFullYear();
+      return `${year}-${month}-${day}`;
     }
 
     const lowerText = ctx.lowerText;
@@ -360,10 +381,10 @@ export class NLParser {
       };
     }
 
-    // 基于完成时间
-    if (ctx.lowerText.includes('完成后') || ctx.lowerText.includes('之后') || ctx.lowerText.includes('看完')) {
-      const daysMatch = ctx.lowerText.match(/(\d+)天/);
-      const days = daysMatch ? parseInt(daysMatch[1]) : 90; // 默认90天
+    // 基于完成时间 - "完成后3天" / "完成后N天"
+    if (ctx.lowerText.includes('完成后')) {
+      const daysMatch = ctx.lowerText.match(/完成后(\d+)天|之后?(\d+)天/);
+      const days = daysMatch ? parseInt(daysMatch[1] || daysMatch[2]) : 90; // 默认90天
       return {
         type: 'after_complete',
         rule: {
