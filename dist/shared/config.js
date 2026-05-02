@@ -102,7 +102,7 @@ class ConfigManager {
             // Check for section header (no colon or ends with colon without value)
             if (trimmed.endsWith(':') && !trimmed.includes(': ')) {
                 const sectionName = trimmed.slice(0, -1).trim();
-                if (sectionName === 'feishu' || sectionName === 'icloud' || sectionName === 'ai' || sectionName === 'reminders') {
+                if (sectionName === 'feishu' || sectionName === 'icloud' || sectionName === 'ai' || sectionName === 'reminders' || sectionName === 'nlParse') {
                     currentSection = {};
                     result[sectionName] = currentSection;
                     currentSubsection = null;
@@ -177,6 +177,12 @@ class ConfigManager {
                 },
             },
             reminders: DEFAULT_CONFIG.reminders,
+            nlParse: {
+                enabled: true,
+                fallbackThreshold: 0.3,
+                learnFromSuccess: true,
+                maxRetries: 2,
+            },
         };
     }
     mergeConfig(defaults, overrides) {
@@ -193,6 +199,12 @@ class ConfigManager {
                 weekendSummary: { ...defaults.reminders.weekendSummary, ...overrides.reminders?.weekendSummary },
                 preEvent: { ...defaults.reminders.preEvent, ...overrides.reminders?.preEvent },
                 idleTime: { ...defaults.reminders.idleTime, ...overrides.reminders?.idleTime },
+            },
+            nlParse: {
+                enabled: overrides.nlParse?.enabled ?? defaults.nlParse?.enabled ?? true,
+                fallbackThreshold: overrides.nlParse?.fallbackThreshold ?? defaults.nlParse?.fallbackThreshold ?? 0.3,
+                learnFromSuccess: overrides.nlParse?.learnFromSuccess ?? defaults.nlParse?.learnFromSuccess ?? true,
+                maxRetries: overrides.nlParse?.maxRetries ?? defaults.nlParse?.maxRetries ?? 2,
             },
         };
     }

@@ -1,6 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.nlParser = exports.NLParser = void 0;
+const llm_parse_service_1 = require("../services/llm-parse-service");
+const config_1 = require("../shared/config");
 // 时间表达式映射
 const TIME_PATTERNS = {
     time: /(\d{1,2})[点时:](\d{0,2})/,
@@ -57,9 +59,69 @@ const TYPE_MAP = {
     '计划': 'project',
 };
 class NLParser {
+    constructor() {
+        const config = config_1.configManager.get();
+        this.useLLMFallback = config.nlParse?.enabled ?? true;
+        this.llmFallbackThreshold = config.nlParse?.fallbackThreshold ?? 0.5;
+    }
     /**
      * 解析用户输入，提取意图和实体
      * 支持多事件拆分：输入包含多个事件时，返回多个 ParsedIntent
+     * 支持 LLM fallback：当规则解析失败或置信度低时，调用大模型解析
+     */
+    async parseAsync(input, context) {
+        // 先尝试规则解析
+        const ruleIntents = this.parse(input);
+        // 检查规则解析是否有效
+        const isValid = this.isRuleParseValid(ruleIntents);
+        if (isValid && this.useLLMFallback) {
+            // 规则解析有效，但检查是否需要 LLM 辅助
+            // 情况1：多事件拆分过多（可能是错误拆分），使用 LLM
+            if (ruleIntents.length > 2) {
+                console.log('[NLParser] Rule parse split too many parts, using LLM...');
+                const llmResult = await llm_parse_service_1.llmParseService.parse(input, context);
+                if (llmResult.success && llmResult.intent) {
+                    return {
+                        intents: [llmResult.intent],
+                        llmUsed: true,
+                        confidence: llmResult.confidence,
+                    };
+                }
+            }
+            // 情况2：用户没有提供明确的时间/优先级等信息，调用 LLM 补全
+            const needsLLM = this.needsLLMCompletion(ruleIntents[0]);
+            if (needsLLM) {
+                console.log('[NLParser] Rule parse incomplete, using LLM fallback...');
+                const llmResult = await llm_parse_service_1.llmParseService.parse(input, context);
+                if (llmResult.success && llmResult.intent) {
+                    return {
+                        intents: [llmResult.intent],
+                        llmUsed: true,
+                        confidence: llmResult.confidence,
+                    };
+                }
+            }
+        }
+        if (!isValid && this.useLLMFallback) {
+            // 规则解析失败，尝试 LLM
+            console.log('[NLParser] Rule parse failed, using LLM...');
+            const llmResult = await llm_parse_service_1.llmParseService.parse(input, context);
+            if (llmResult.success && llmResult.intent) {
+                return {
+                    intents: [llmResult.intent],
+                    llmUsed: true,
+                    confidence: llmResult.confidence,
+                };
+            }
+        }
+        return {
+            intents: ruleIntents,
+            llmUsed: false,
+            confidence: isValid ? 0.9 : 0.3,
+        };
+    }
+    /**
+     * 同步解析（不调用 LLM）
      */
     parse(input) {
         const intents = [];
@@ -114,6 +176,42 @@ class NLParser {
                 intents.push(this.buildQueryIntent(ctx));
         }
         return intents;
+    }
+    /**
+     * 检查规则解析是否有效
+     */
+    isRuleParseValid(intents) {
+        if (intents.length === 0)
+            return false;
+        // query 和 search 通常规则解析是准确的
+        const action = intents[0].action;
+        if (action === 'query' || action === 'search') {
+            return true;
+        }
+        // create/update/delete/complete 需要更多信息
+        const entity = intents[0].entity;
+        if (!entity.title || entity.title.length < 2) {
+            return false;
+        }
+        return true;
+    }
+    /**
+     * 检查是否需要 LLM 补全
+     */
+    needsLLMCompletion(intent) {
+        if (!intent || intent.action !== 'create')
+            return false;
+        const entity = intent.entity;
+        // 如果没有优先级（不是默认的"中"），需要 LLM 补全
+        if (!entity.priority)
+            return true;
+        // 如果有明确时间但没有日历分类，需要 LLM 补全
+        if (entity.start_time && !entity.calendar_category)
+            return true;
+        // 如果是循环任务但没有循环类型，需要 LLM 补全
+        if (entity.is_recurring && !entity.recurrence_type)
+            return true;
+        return false;
     }
     /**
      * 拆分多事件输入

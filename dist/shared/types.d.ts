@@ -91,6 +91,12 @@ export interface AiConfig {
         model?: string;
     };
 }
+export interface NLParseConfig {
+    enabled: boolean;
+    fallbackThreshold: number;
+    learnFromSuccess: boolean;
+    maxRetries: number;
+}
 export interface FeishuConfig {
     appId: string;
     appSecret: string;
@@ -108,5 +114,6 @@ export interface AppConfig {
     icloud: ICloudConfig;
     ai: AiConfig;
     reminders: ReminderConfig;
+    nlParse?: NLParseConfig;
 }
 //# sourceMappingURL=types.d.ts.map

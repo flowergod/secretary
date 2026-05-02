@@ -1,10 +1,32 @@
 import { ParsedIntent } from '../shared/types';
 export declare class NLParser {
+    private useLLMFallback;
+    private llmFallbackThreshold;
+    constructor();
     /**
      * 解析用户输入，提取意图和实体
      * 支持多事件拆分：输入包含多个事件时，返回多个 ParsedIntent
+     * 支持 LLM fallback：当规则解析失败或置信度低时，调用大模型解析
+     */
+    parseAsync(input: string, context?: {
+        recentTasks?: string[];
+    }): Promise<{
+        intents: ParsedIntent[];
+        llmUsed: boolean;
+        confidence: number;
+    }>;
+    /**
+     * 同步解析（不调用 LLM）
      */
     parse(input: string): ParsedIntent[];
+    /**
+     * 检查规则解析是否有效
+     */
+    private isRuleParseValid;
+    /**
+     * 检查是否需要 LLM 补全
+     */
+    private needsLLMCompletion;
     /**
      * 拆分多事件输入
      * 分隔符：逗号（,，）、句号（.。）、分号（;；）

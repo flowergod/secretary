@@ -88,6 +88,13 @@ export interface AiConfig {
   };
 }
 
+export interface NLParseConfig {
+  enabled: boolean;           // 是否启用 LLM 解析
+  fallbackThreshold: number;  // 置信度低于此值时触发 LLM
+  learnFromSuccess: boolean;  // 是否从成功解析中学习规则
+  maxRetries: number;        // LLM 解析最大重试次数
+}
+
 export interface FeishuConfig {
   appId: string;
   appSecret: string;
@@ -107,4 +114,5 @@ export interface AppConfig {
   icloud: ICloudConfig;
   ai: AiConfig;
   reminders: ReminderConfig;
+  nlParse?: NLParseConfig;
 }

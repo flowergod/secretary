@@ -15,3 +15,5 @@ skills-lock.json
 # OS files
 .DS_Store
 Thumbs.db
+data/
+test-manual.js

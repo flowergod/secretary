@@ -1,5 +1,7 @@
 // 自然语言理解引擎
 import { ParsedIntent, EntityType, Priority, RecurrenceType, TaskStatus } from '../shared/types';
+import { llmParseService } from '../services/llm-parse-service';
+import { configManager } from '../shared/config';
 
 interface ParseContext {
   text: string;
@@ -67,9 +69,85 @@ const TYPE_MAP: Record<string, EntityType> = {
 };
 
 export class NLParser {
+  private useLLMFallback: boolean;
+  private llmFallbackThreshold: number;
+
+  constructor() {
+    const config = configManager.get();
+    this.useLLMFallback = config.nlParse?.enabled ?? true;
+    this.llmFallbackThreshold = config.nlParse?.fallbackThreshold ?? 0.5;
+  }
+
   /**
    * 解析用户输入，提取意图和实体
    * 支持多事件拆分：输入包含多个事件时，返回多个 ParsedIntent
+   * 支持 LLM fallback：当规则解析失败或置信度低时，调用大模型解析
+   */
+  async parseAsync(input: string, context?: { recentTasks?: string[] }): Promise<{
+    intents: ParsedIntent[];
+    llmUsed: boolean;
+    confidence: number;
+  }> {
+    // 先尝试规则解析
+    const ruleIntents = this.parse(input);
+
+    // 检查规则解析是否有效
+    const isValid = this.isRuleParseValid(ruleIntents);
+
+    if (isValid && this.useLLMFallback) {
+      // 规则解析有效，但检查是否需要 LLM 辅助
+
+      // 情况1：多事件拆分过多（可能是错误拆分），使用 LLM
+      if (ruleIntents.length > 2) {
+        console.log('[NLParser] Rule parse split too many parts, using LLM...');
+        const llmResult = await llmParseService.parse(input, context);
+        if (llmResult.success && llmResult.intent) {
+          return {
+            intents: [llmResult.intent],
+            llmUsed: true,
+            confidence: llmResult.confidence,
+          };
+        }
+      }
+
+      // 情况2：用户没有提供明确的时间/优先级等信息，调用 LLM 补全
+      const needsLLM = this.needsLLMCompletion(ruleIntents[0]);
+
+      if (needsLLM) {
+        console.log('[NLParser] Rule parse incomplete, using LLM fallback...');
+        const llmResult = await llmParseService.parse(input, context);
+        if (llmResult.success && llmResult.intent) {
+          return {
+            intents: [llmResult.intent],
+            llmUsed: true,
+            confidence: llmResult.confidence,
+          };
+        }
+      }
+    }
+
+    if (!isValid && this.useLLMFallback) {
+      // 规则解析失败，尝试 LLM
+      console.log('[NLParser] Rule parse failed, using LLM...');
+      const llmResult = await llmParseService.parse(input, context);
+      if (llmResult.success && llmResult.intent) {
+        return {
+          intents: [llmResult.intent],
+          llmUsed: true,
+          confidence: llmResult.confidence,
+        };
+      }
+    }
+
+    return {
+      intents: ruleIntents,
+      llmUsed: false,
+      confidence: isValid ? 0.9 : 0.3,
+    };
+  }
+
+  /**
+   * 同步解析（不调用 LLM）
    */
   parse(input: string): ParsedIntent[] {
     const intents: ParsedIntent[] = [];
@@ -127,6 +205,47 @@ export class NLParser {
     }
 
     return intents;
+  }
+
+  /**
+   * 检查规则解析是否有效
+   */
+  private isRuleParseValid(intents: ParsedIntent[]): boolean {
+    if (intents.length === 0) return false;
+
+    // query 和 search 通常规则解析是准确的
+    const action = intents[0].action;
+    if (action === 'query' || action === 'search') {
+      return true;
+    }
+
+    // create/update/delete/complete 需要更多信息
+    const entity = intents[0].entity;
+    if (!entity.title || entity.title.length < 2) {
+      return false;
+    }
+
+    return true;
+  }
+
+  /**
+   * 检查是否需要 LLM 补全
+   */
+  private needsLLMCompletion(intent: ParsedIntent): boolean {
+    if (!intent || intent.action !== 'create') return false;
+
+    const entity = intent.entity;
+
+    // 如果没有优先级（不是默认的"中"），需要 LLM 补全
+    if (!entity.priority) return true;
+
+    // 如果有明确时间但没有日历分类，需要 LLM 补全
+    if (entity.start_time && !entity.calendar_category) return true;
+
+    // 如果是循环任务但没有循环类型，需要 LLM 补全
+    if (entity.is_recurring && !entity.recurrence_type) return true;
+
+    return false;
   }
 
   /**

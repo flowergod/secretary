@@ -41,3 +41,10 @@ reminders:
   idleTime:
     enabled: true
     minFreeMinutes: 60
+
+# 自然语言解析配置
+nlParse:
+  enabled: true                    # 是否启用 LLM 解析
+  fallbackThreshold: 0.5           # 置信度低于此值时触发 LLM
+  learnFromSuccess: true           # 是否从成功解析中学习规则
+  maxRetries: 2                   # LLM 解析最大重试次数
