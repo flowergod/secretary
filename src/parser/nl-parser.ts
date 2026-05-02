@@ -17,16 +17,16 @@ const TIME_PATTERNS: Record<string, RegExp> = {
 
 // 优先级映射
 const PRIORITY_MAP: Record<string, Priority> = {
-  '高': 'high',
-  '高优先级': 'high',
-  '重要': 'high',
-  '紧急': 'high',
-  '中': 'medium',
-  '中优先级': 'medium',
-  '普通': 'medium',
-  '低': 'low',
-  '低优先级': 'low',
-  '不急': 'low',
+  '高': '高',
+  '高优先级': '高',
+  '重要': '高',
+  '紧急': '高',
+  '中': '中',
+  '中优先级': '中',
+  '普通': '中',
+  '低': '低',
+  '低优先级': '低',
+  '不急': '低',
 };
 
 // 动作词映射
@@ -146,9 +146,21 @@ export class NLParser {
       return 'create';
     }
 
-    // 检测查询动作 - "今天有什么安排" / "查看日程" / "有什么任务"
-    if (/今天有什么|有什么安排|查看日程|今天干嘛|待办事项/.test(text)) {
+    // 检测查询动作 - 只匹配明确的疑问句式（句子开头）
+    // "今天有什么安排" / "查看日程" / "今天干嘛" / "有什么任务"
+    // 不能匹配普通任务描述如"明天上午10点开会，有什么注意事项"
+    if (text.startsWith('今天有什么') || text.startsWith('查看日程') || text.startsWith('今天干嘛') || text === '待办事项' || text.startsWith('有什么任务')) {
       return 'query';
+    }
+
+    // 检测带时间的任务创建 - "明天上午10点开会" / "周五下午3点去看牙医" / "后天10点约了xrc"
+    // 必须有时序词(明天/后天/周五等) + 时间点(10点/下午3点等) + 动词/活动描述
+    // 但不能是疑问句(有什么/有没有/什么安排)
+    if (!text.includes('有什么') && !text.includes('有没有') && !text.includes('什么安排') && !text.includes('是不是')) {
+      // 带时间的创建模式
+      if (/^(明天|后天|[周一的二三 四五六日]?[午晚白天]?[\d点零上一二三四五六七八九十]+[分]?)|(本周|下周)/.test(text) && /[\d点零上一二三四五六七八九十]/.test(text)) {
+        return 'create';
+      }
     }
 
     // 检测创建动作
@@ -161,6 +173,11 @@ export class NLParser {
       if (text.includes(keyword)) {
         return action;
       }
+    }
+
+    // 无法识别时：如果文本不包含疑问词（有什么/是不是/吗），假定为创建任务
+    if (!text.includes('有什么') && !text.includes('有没有') && !text.includes('是不是') && !text.includes('吗') && !text.includes('?')) {
+      return 'create';
     }
 
     return null;
@@ -188,7 +205,7 @@ export class NLParser {
         return priority;
       }
     }
-    return 'medium';
+    return '中';
   }
 
   private extractTitle(ctx: ParseContext): string {
@@ -217,45 +234,85 @@ export class NLParser {
       return dateMatch[1].replace(/[/年]/g, '-');
     }
 
-    // 相对日期
-    if (ctx.lowerText.includes('今天')) {
-      return new Date().toISOString().split('T')[0];
+    const lowerText = ctx.lowerText;
+    const now = new Date();
+
+    // 相对日期 - 按优先级检查
+    if (lowerText.includes('今天')) {
+      return now.toISOString().split('T')[0];
     }
-    if (ctx.lowerText.includes('明天')) {
-      const d = new Date();
+    if (lowerText.includes('明天')) {
+      const d = new Date(now);
       d.setDate(d.getDate() + 1);
       return d.toISOString().split('T')[0];
     }
-    if (ctx.lowerText.includes('后天')) {
-      const d = new Date();
+    if (lowerText.includes('后天')) {
+      const d = new Date(now);
       d.setDate(d.getDate() + 2);
       return d.toISOString().split('T')[0];
     }
-    if (ctx.lowerText.includes('下周三')) {
-      const d = new Date();
-      const daysUntilWed = (3 - d.getDay() + 7) % 7 || 7;
-      d.setDate(d.getDate() + daysUntilWed);
-      return d.toISOString().split('T')[0];
+
+    // 周几的表达 - 计算下一个匹配日期
+    const weekdayMap: Record<string, number> = {
+      '周日': 0, '周一': 1, '周二': 2, '周三': 3, '周四': 4, '周五': 5, '周六': 6,
+      '星期日': 0, '星期一': 1, '星期二': 2, '星期三': 3, '星期四': 4, '星期五': 5, '星期六': 6,
+    };
+
+    for (const [weekday, dayNum] of Object.entries(weekdayMap)) {
+      if (lowerText.includes(weekday)) {
+        const d = new Date(now);
+        const currentDay = d.getDay();
+        let daysUntil = dayNum - currentDay;
+        if (daysUntil <= 0) daysUntil += 7;  // 找下一个匹配的日期
+        d.setDate(d.getDate() + daysUntil);
+        return d.toISOString().split('T')[0];
+      }
     }
+
+    // 下周X
+    if (lowerText.includes('下周一')) return this.getNextWeekday(1);
+    if (lowerText.includes('下周二')) return this.getNextWeekday(2);
+    if (lowerText.includes('下周三')) return this.getNextWeekday(3);
+    if (lowerText.includes('下周四')) return this.getNextWeekday(4);
+    if (lowerText.includes('下周五')) return this.getNextWeekday(5);
+    if (lowerText.includes('下周六')) return this.getNextWeekday(6);
+    if (lowerText.includes('下周日')) return this.getNextWeekday(0);
 
     return undefined;
   }
 
+  private getNextWeekday(dayNum: number): string {
+    const d = new Date();
+    const currentDay = d.getDay();
+    let daysUntil = dayNum - currentDay;
+    if (daysUntil <= 0) daysUntil += 7;
+    d.setDate(d.getDate() + daysUntil);
+    return d.toISOString().split('T')[0];
+  }
+
   private extractTime(ctx: ParseContext): string | undefined {
-    const timeMatch = ctx.text.match(/(\d{1,2})[点时:](\d{0,2})/);
-    if (timeMatch) {
-      const hour = timeMatch[1].padStart(2, '0');
-      const minute = timeMatch[2]?.padStart(2, '0') || '00';
-      return `${hour}:${minute}`;
+    // 先检查下午/上午，因为会影响时间解析
+    let hourOffset = 0;
+    const lowerText = ctx.lowerText;
+    if (lowerText.includes('下午') || lowerText.includes('晚上')) {
+      hourOffset = 12;
+    } else if (lowerText.includes('上午') || lowerText.includes('早上')) {
+      hourOffset = 0;
     }
 
-    // 下午/上午
-    if (ctx.lowerText.includes('下午') || ctx.lowerText.includes('晚上')) {
-      const pmMatch = ctx.text.match(/下午(\d{1,2})/);
-      if (pmMatch) {
-        const hour = parseInt(pmMatch[1]) + 12;
-        return `${hour}:00`;
+    const timeMatch = ctx.text.match(/(\d{1,2})[点时:](\d{0,2})/);
+    if (timeMatch) {
+      let hour = parseInt(timeMatch[1], 10);
+      const minute = parseInt(timeMatch[2]?.padStart(2, '0') || '00', 10);
+
+      // 下午/晚上且时间不是24小时制
+      if (hourOffset === 12 && hour < 12) {
+        hour += 12;
+      } else if (hourOffset === 0 && hour === 12) {
+        hour = 0;  // 中午12点保持12
       }
+
+      return `${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}`;
     }
 
     return undefined;

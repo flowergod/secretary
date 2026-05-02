@@ -4,7 +4,7 @@ export type EntityType = 'task' | 'event' | 'project';
 
 export type TaskStatus = 'pending' | 'in_progress' | 'completed' | 'cancelled' | '待规划' | '待执行' | '进行中' | '已完成' | '暂停';
 
-export type Priority = 'high' | 'medium' | 'low' | '高' | '中' | '低';
+export type Priority = '高' | '中' | '低';
 
 export type RecurrenceType = 'none' | 'weekly_monday' | 'weekly_friday' | 'monthly' | 'after_complete' | 'custom' | 'weekly' | 'irregular' | '不循环' | '每周一' | '每周五' | '每月' | '完成后N天' | '自定义' | '每周' | '不定期';
 
@@ -99,6 +99,7 @@ export interface FeishuConfig {
 export interface ICloudConfig {
   appleId: string;
   appPassword: string;
+  calendarMapping?: Record<string, string>;  // 日历分类 -> iCloud 日历 ID 映射
 }
 
 export interface AppConfig {

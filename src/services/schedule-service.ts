@@ -16,11 +16,13 @@ export class ScheduleService {
       title: intent.entity.title || '未命名日程',
       description: intent.entity.description,
       status: 'pending',
-      priority: intent.entity.priority || 'medium',
+      priority: intent.entity.priority || '中',
       due_date: intent.entity.due_date,
       start_date: intent.entity.start_date,
       start_time: intent.entity.start_time,
+      end_time: intent.entity.end_time,
       is_recurring: false,
+      calendar_category: intent.entity.calendar_category,
       created_at: now,
       updated_at: now,
     };
@@ -28,13 +30,23 @@ export class ScheduleService {
     const created = await feishuConnector.create(event);
 
     // 同步到 iCloud 日历
+    let iCloudUid: string | undefined;
     try {
-      await icloudConnector.createEvent(created);
+      iCloudUid = await icloudConnector.createEvent(created);
+      console.log('[ScheduleService] iCloud sync success, UID:', iCloudUid);
+
+      // 将 iCloud 事件 ID 回写到飞书记录
+      if (iCloudUid) {
+        await feishuConnector.update(created.id, {
+          icloud_event_id: iCloudUid,
+        });
+        console.log('[ScheduleService] iCloud UID written to Feishu record');
+      }
     } catch (error) {
       console.error('[ScheduleService] Failed to sync to iCloud:', error);
     }
 
-    return created;
+    return { ...created, icloud_event_id: iCloudUid };
   }
 
   /**
@@ -105,11 +117,12 @@ export class ScheduleService {
    * 删除日程
    */
   async deleteEvent(eventId: string): Promise<void> {
+    const event = await feishuConnector.get(eventId);
     await feishuConnector.delete(eventId);
 
     // 从 iCloud 删除
     try {
-      await icloudConnector.deleteEvent(eventId);
+      await icloudConnector.deleteEvent(eventId, event?.calendar_category);
     } catch (error) {
       console.error('[ScheduleService] Failed to delete from iCloud:', error);
     }

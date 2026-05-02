@@ -3,6 +3,8 @@ import { nlParser } from '../parser/nl-parser';
 import { taskService } from '../services/task-service';
 import { scheduleService } from '../services/schedule-service';
 import { projectService } from '../services/project-service';
+import { calendarSuggestionService } from '../services/calendar-suggestion-service';
+import { validationService } from '../services/validation-service';
 import { feishuConnector } from '../connectors/feishu';
 import { responseFormatter } from './response-formatter';
 
@@ -78,22 +80,80 @@ export class ConversationEngine {
   private async handleCreate(intent: any): Promise<ConversationResponse> {
     const { entityType, needsExpansion, expansionType } = intent;
 
+    // 填充默认值并验证必填字段
+    intent = validationService.fillDefaults(intent);
+    const validation = validationService.validate(intent);
+
     if (entityType === 'event') {
       const event = await scheduleService.createEvent(intent);
+      let message = responseFormatter.formatTaskCreated(event);
+
+      // 如果分组未确定，询问用户
+      if (!intent.entity.group) {
+        message += `\n\n❓ 请确认：这个日程属于哪个分组（工作/日程表/其他）？`;
+      }
+
       return {
-        content: responseFormatter.formatTaskCreated(event),
+        content: message,
         success: true,
       };
     } else if (entityType === 'project') {
       const project = await projectService.createProject(intent);
+      let message = responseFormatter.formatTaskCreated(project);
+
+      // 如果分组未确定，询问用户
+      if (!intent.entity.group) {
+        message += `\n\n❓ 请确认：这个项目属于哪个分组（工作/其他）？`;
+      }
+
       return {
-        content: responseFormatter.formatTaskCreated(project),
+        content: message,
         success: true,
       };
     } else {
+      // 检查任务是否有明确时间，考虑是否应该加入日历
+      const calendarSuggestion = calendarSuggestionService.suggestCalendar(intent);
+
+      if (calendarSuggestion.category && calendarSuggestion.needsConfirmation) {
+        // 需要用户确认日历分类
+        const confirmMessage = `「${intent.entity.title}」计划在${intent.entity.start_date} ${intent.entity.start_time}，我建议加入「${calendarSuggestion.category}」日历。是否正确？`;
+
+        // 暂时创建为普通任务，并提示用户
+        const { task, expansionSuggestion } = await taskService.createTask(intent);
+        const taskContent = responseFormatter.formatTaskCreated(task, expansionSuggestion);
+
+        return {
+          content: `${taskContent}\n\n⏰ 日历提醒：${calendarSuggestion.reason}\n\n${confirmMessage}`,
+          success: true,
+        };
+      } else if (calendarSuggestion.category && !calendarSuggestion.needsConfirmation) {
+        // 高置信度，自动加入日历
+        const eventIntent = {
+          ...intent,
+          entity: {
+            ...intent.entity,
+            calendar_category: calendarSuggestion.category,
+          },
+        };
+        const event = await scheduleService.createEvent(eventIntent);
+
+        return {
+          content: responseFormatter.formatTaskCreated(event) + `\n\n📅 已根据「${calendarSuggestion.reason}」自动加入${calendarSuggestion.category}日历。`,
+          success: true,
+        };
+      }
+
+      // 无日历建议，创建普通任务
       const { task, expansionSuggestion } = await taskService.createTask(intent);
+      let message = responseFormatter.formatTaskCreated(task, expansionSuggestion);
+
+      // 如果分组未确定，询问用户
+      if (!intent.entity.group) {
+        message += `\n\n❓ 请确认：任务「${intent.entity.title}」属于哪个分组（工作/日程表/其他）？`;
+      }
+
       return {
-        content: responseFormatter.formatTaskCreated(task, expansionSuggestion),
+        content: message,
         success: true,
       };
     }

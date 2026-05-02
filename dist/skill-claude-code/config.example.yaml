@@ -1,14 +1,16 @@
-# 项目管理 AI 助理 配置文件
+# 项目管理 AI 助理 配置文件示例
+# 复制此文件为 config.yaml 并填写实际值
 
 feishu:
-  appId: "cli_a9283e664abadbc2"
-  appSecret: "tRiVemnYcoy4YPxip7SHYpnvFPBWe4ry"
-  tableToken: "YmMcb4PUlaTIAmshS6EcFqPenff"
-  tableId: "tbllwg2t4sEJ64i1"
+  appId: "cli_xxxxxxxxxxxxxxxx"
+  appSecret: "your_app_secret_here"
+  tableToken: "your_table_token_here"
+  tableId: "your_table_id_here"
+  webhookUrl: "https://open.feishu.cn/open-apis/bot/v2/hook/xxxxx"
 
 icloud:
-  appleId: ""
-  appPassword: ""
+  appleId: "your@email.com"
+  appPassword: "xxxx-xxxx-xxxx-xxxx"
 
 ai:
   primary:

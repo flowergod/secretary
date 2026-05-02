@@ -17,11 +17,54 @@ export class ICloudConnector {
   private appleId: string;
   private appPassword: string;
   private baseUrl = 'https://caldav.icloud.com';
+  private calendarMapping: Record<string, string> = {};
+  private userId?: string;
 
   constructor() {
     const config = configManager.get();
     this.appleId = config.icloud.appleId;
     this.appPassword = config.icloud.appPassword;
+    this.calendarMapping = config.icloud.calendarMapping || {};
+  }
+
+  /**
+   * 获取 iCloud 用户 ID (数字)
+   */
+  private async getUserId(): Promise<string> {
+    if (this.userId) return this.userId;
+
+    const response = await this.executeCalDAV('PROPFIND', '/principals/', `<?xml version="1.0"?>
+<D:propfind xmlns:D="DAV:">
+  <D:prop>
+    <D:current-user-principal />
+  </D:prop>
+</D:propfind>`);
+
+    // Match the href inside current-user-principal
+    const match = response.match(/<D:current-user-principal[^>]*>[\s\S]*?<D:href[^>]*>([^<]+)<\/D:href>/);
+    if (match && match[1]) {
+      // Extract user ID from path like /8183897202/principal/
+      const parts = match[1].split('/');
+      this.userId = parts[1] || this.appleId;
+    } else {
+      // Fallback: try to find any /number/ pattern
+      const numMatch = response.match(/\/(\d{10,})\//);
+      this.userId = numMatch ? numMatch[1] : this.appleId;
+    }
+    return this.userId;
+  }
+
+  /**
+   * 根据日历分类获取 iCloud 日历 ID
+   */
+  private getCalendarIdByCategory(category: string | undefined): string {
+    if (category && this.calendarMapping[category]) {
+      console.log('[ICloudConnector] Using calendar mapping:', category, '->', this.calendarMapping[category]);
+      return this.calendarMapping[category];
+    }
+    // 默认返回 personal 日历
+    console.log('[ICloudConnector] No mapping found for category:', category, 'Available:', this.calendarMapping);
+    return this.calendarMapping['个人'] || 'F7D25790-4368-447C-96FF-4F7FE022AE1C';
   }
 
   /**
@@ -78,8 +121,10 @@ export class ICloudConnector {
     ].filter(line => line).join('\r\n');
 
     return withRetry(async () => {
-      const calendarId = await this.getDefaultCalendarId();
-      await this.executeCalDAV('PUT', `/calendars/__uids__/${this.appleId}/calendars/${calendarId}/${uid}.ics`, iCalContent);
+      const userId = await this.getUserId();
+      const calendarId = this.getCalendarIdByCategory(entity.calendar_category);
+      const path = `/${userId}/calendars/${calendarId}/${uid}.ics`;
+      await this.executeCalDAV('PUT', path, iCalContent);
       return uid;
     });
   }
@@ -100,18 +145,22 @@ export class ICloudConnector {
     ].filter(Boolean).join('\r\n');
 
     return withRetry(async () => {
-      const calendarId = await this.getDefaultCalendarId();
-      await this.executeCalDAV('PUT', `/calendars/__uids__/${this.appleId}/calendars/${calendarId}/${uid}.ics`, updates);
+      const userId = await this.getUserId();
+      const calendarId = this.getCalendarIdByCategory(entity.calendar_category);
+      const path = `/${userId}/calendars/${calendarId}/${uid}.ics`;
+      await this.executeCalDAV('PUT', path, updates);
     });
   }
 
   /**
    * 删除日历事件
    */
-  async deleteEvent(uid: string): Promise<void> {
+  async deleteEvent(uid: string, calendarCategory?: string): Promise<void> {
     return withRetry(async () => {
-      const calendarId = await this.getDefaultCalendarId();
-      await this.executeCalDAV('DELETE', `/calendars/__uids__/${this.appleId}/calendars/${calendarId}/${uid}.ics`);
+      const userId = await this.getUserId();
+      const calendarId = calendarCategory ? this.getCalendarIdByCategory(calendarCategory) : (this.calendarMapping['个人'] || 'personal');
+      const path = `/${userId}/calendars/${calendarId}/${uid}.ics`;
+      await this.executeCalDAV('DELETE', path);
     });
   }
 
@@ -123,32 +172,27 @@ export class ICloudConnector {
     return events;
   }
 
-  private async executeCalDAV(method: string, path: string, body?: string): Promise<string> {
-    const url = `${this.baseUrl}${path}`;
-
+  private async executeCalDAV(method: string, path: string, body?: string, contentType?: string): Promise<string> {
     const headers: Record<string, string> = {
-      'Content-Type': 'text/xml; charset=utf-8',
-      'Depth': '1',
+      'Authorization': 'Basic ' + Buffer.from(`${this.appleId}:${this.appPassword}`).toString('base64'),
     };
 
-    const auth = Buffer.from(`${this.appleId}:${this.appPassword}`).toString('base64');
-    headers['Authorization'] = `Basic ${auth}`;
+    if (body) {
+      headers['Content-Type'] = contentType || 'text/calendar; charset=utf-8';
+      headers['Content-Length'] = Buffer.byteLength(body).toString();
+    }
 
-    const response = await fetch(url, {
+    const response = await fetch(`https://caldav.icloud.com${path}`, {
       method,
       headers,
       body,
     });
 
-    if (!response.ok) {
+    if (!response.ok && response.status !== 201 && response.status !== 204) {
       throw new Error(`iCloud CalDAV error: ${response.status} ${response.statusText}`);
     }
 
     return response.text();
-  }
-
-  private async getDefaultCalendarId(): Promise<string> {
-    return 'home';
   }
 
   private formatICalDate(date: string, time?: string): string {

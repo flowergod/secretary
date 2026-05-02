@@ -55,7 +55,7 @@ export class ExpansionEngine {
       tasks: [{
         title: `复查：${task.title}`,
         status: 'pending',
-        priority: 'medium',
+        priority: '中',
         is_recurring: true,
         recurrence_type: 'after_complete',
         recurrence_rule: {

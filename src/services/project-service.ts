@@ -21,7 +21,7 @@ export class ProjectService {
       title: intent.entity.title || '未命名项目',
       description: intent.entity.description,
       status: 'pending',
-      priority: intent.entity.priority || 'medium',
+      priority: intent.entity.priority || '中',
       due_date: intent.entity.due_date,
       start_date: intent.entity.start_date,
       is_recurring: false,

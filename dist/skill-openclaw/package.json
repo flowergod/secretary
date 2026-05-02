@@ -1,0 +1,13 @@
+{
+  "name": "project-secretary",
+  "version": "1.0.0",
+  "description": "项目管理 AI 助理 - OpenClaw Skill",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "uuid": "^9.0.0",
+    "yaml": "^2.3.4"
+  }
+}

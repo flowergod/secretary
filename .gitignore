@@ -1,0 +1,17 @@
+# Sensitive configuration
+config.yaml
+
+# Dependencies
+node_modules/
+
+# Lock files
+package-lock.json
+
+# Agent/skill artifacts (Claude Code / OpenClaw)
+.agents/
+.claude/
+skills-lock.json
+
+# OS files
+.DS_Store
+Thumbs.db

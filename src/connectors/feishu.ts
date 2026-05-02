@@ -262,7 +262,7 @@ export class FeishuConnector {
     path: string,
     body?: unknown
   ): Promise<T> {
-    const url = `https://open.feishu.cn${path}`;
+    const url = `https://open.feishu.cn/open-apis${path}`;
 
     const response = await fetch(url, {
       method,
@@ -292,8 +292,8 @@ export class FeishuConnector {
     if (entity.status !== undefined) fields['状态'] = STATUS_REVERSE_MAP[entity.status] || entity.status;
     if (entity.priority !== undefined) fields['优先级'] = entity.priority;
     if (entity.due_date !== undefined) fields['计划日期'] = this.parseDateToTimestamp(entity.due_date);
-    if (entity.start_time !== undefined) fields['开始时间'] = this.parseDateToTimestamp(entity.start_time);
-    if (entity.end_time !== undefined) fields['结束时间'] = this.parseDateToTimestamp(entity.end_time);
+    if (entity.start_time !== undefined) fields['开始时间'] = this.parseTimeToTimestamp(entity.start_time, entity.start_date);
+    if (entity.end_time !== undefined) fields['结束时间'] = this.parseTimeToTimestamp(entity.end_time, entity.start_date);
     if (entity.recurrence_type !== undefined) fields['循环类型'] = entity.recurrence_type;
     if (entity.recurrence_rule !== undefined) fields['循环规则'] = typeof entity.recurrence_rule === 'string' ? entity.recurrence_rule : JSON.stringify(entity.recurrence_rule);
     if (entity.completion_count !== undefined) fields['完成次数'] = entity.completion_count;
@@ -304,6 +304,7 @@ export class FeishuConnector {
     if (entity.icloud_event_id !== undefined) fields['iCloud事件ID'] = entity.icloud_event_id;
     if (entity.project_name !== undefined) fields['项目'] = entity.project_name;
     if (entity.subproject !== undefined) fields['子项目'] = entity.subproject;
+    if (entity.calendar_category !== undefined) fields['日历分类'] = entity.calendar_category;
 
     // 根据 type 设置分组
     if (entity.type !== undefined) {
@@ -403,6 +404,38 @@ export class FeishuConnector {
     if (typeof dateStr === 'number') return dateStr;
     const date = new Date(dateStr);
     return isNaN(date.getTime()) ? 0 : date.getTime();
+  }
+
+  /**
+   * 解析时间字符串 (HH:mm) 结合日期为时间戳
+   */
+  private parseTimeToTimestamp(timeStr: string | number, dateStr?: string): number {
+    if (typeof timeStr === 'number') return timeStr;
+    if (!timeStr) return 0;
+
+    // 如果是时间字符串 HH:mm 格式
+    const timeMatch = timeStr.match(/^(\d{1,2}):(\d{2})$/);
+    if (timeMatch) {
+      const hour = parseInt(timeMatch[1], 10);
+      const minute = parseInt(timeMatch[2], 10);
+
+      // 如果有日期，结合日期
+      if (dateStr) {
+        const date = new Date(dateStr);
+        if (!isNaN(date.getTime())) {
+          date.setHours(hour, minute, 0, 0);
+          return date.getTime();
+        }
+      }
+
+      // 没有日期，返回当天的时间戳（从 epoch 算起）
+      const today = new Date();
+      today.setHours(hour, minute, 0, 0);
+      return today.getTime();
+    }
+
+    // 否则当作普通日期解析
+    return this.parseDateToTimestamp(timeStr);
   }
 
   /**

@@ -80,7 +80,7 @@ export class ConfigManager {
           currentSection = {};
           result[sectionName] = currentSection;
           currentSubsection = null;
-        } else if (currentSection && ['primary', 'fallback', 'morning', 'evening', 'weekendSummary', 'preEvent', 'idleTime'].includes(sectionName)) {
+        } else if (currentSection && ['primary', 'fallback', 'morning', 'evening', 'weekendSummary', 'preEvent', 'idleTime', 'calendarMapping'].includes(sectionName)) {
           currentSubsection = {};
           currentSection[sectionName] = currentSubsection;
         }

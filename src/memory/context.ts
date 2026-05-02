@@ -16,13 +16,13 @@ interface UserPreferences {
   reminderEnabled: boolean;
   morningReminderTime?: string;
   eveningReminderTime?: string;
-  defaultPriority: 'high' | 'medium' | 'low';
+  defaultPriority: '高' | '中' | '低';
   smartExpansionEnabled: boolean;
 }
 
 const DEFAULT_PREFERENCES: UserPreferences = {
   reminderEnabled: true,
-  defaultPriority: 'medium',
+  defaultPriority: '中',
   smartExpansionEnabled: true,
 };
 
