@@ -13,8 +13,15 @@ function normalizeCategory(category: unknown): string {
   if (typeof category !== 'string') {
     return DEFAULT_CATEGORY;
   }
-  if (VALID_CATEGORIES.includes(category)) {
-    return category;
+  // 检查是否匹配有效值（支持中英文）
+  const mapping: Record<string, string> = {
+    '工作': '工作', 'work': '工作',
+    '个人': '个人', 'personal': '个人',
+    '家庭共享': '家庭共享', '家庭': '家庭共享', 'family': '家庭共享',
+  };
+  const normalized = mapping[category];
+  if (normalized) {
+    return normalized;
   }
   logger.warn(`[CapabilityDispatcher] Invalid category "${category}", using default "${DEFAULT_CATEGORY}"`);
   return DEFAULT_CATEGORY;
