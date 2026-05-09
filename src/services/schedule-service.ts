@@ -1,142 +1,386 @@
-// 日程服务
-import { v4 as uuidv4 } from 'uuid';
-import { TaskEntity, ParsedIntent } from '../shared/types';
+// Schedule Service - 任务与 iCloud 日历同步服务
+import { Task } from '../shared/types';
+import { icloudConnector, ICloudEvent } from '../connectors/icloud';
 import { feishuConnector } from '../connectors/feishu';
-import { icloudConnector } from '../connectors/icloud';
+import { logger } from '../shared';
+
+export interface SyncResult {
+  success: boolean;
+  icloud_event_id?: string;
+  error?: string;
+}
+
+export interface CalendarQuery {
+  date?: string;
+  startDate?: string;
+  endDate?: string;
+  category?: string;
+  page?: number;
+  pageSize?: number;
+}
+
+export interface CalendarEvent {
+  id: string;
+  icloud_event_id: string;
+  title: string;
+  description?: string;
+  start_date: string;
+  start_time?: string;
+  end_date?: string;
+  end_time?: string;
+  category?: string;
+  is_recurring: boolean;
+  recurrence_type: string;
+  recurrence_rule?: string;
+  icloud_sync_status: 'synced' | 'pending' | 'error';
+}
 
 export class ScheduleService {
   /**
-   * 创建日程/事件
+   * 同步任务到 iCloud（日程创建/更新）
+   * 当任务包含 start_date 时，视为日程，需同步至 iCloud
    */
-  async createEvent(intent: ParsedIntent): Promise<TaskEntity> {
-    const now = new Date().toISOString();
-    const event: TaskEntity = {
-      id: uuidv4(),
-      type: 'event',
-      title: intent.entity.title || '未命名日程',
-      description: intent.entity.description,
-      status: 'pending',
-      priority: intent.entity.priority || '中',
-      due_date: intent.entity.due_date,
-      start_date: intent.entity.start_date,
-      start_time: intent.entity.start_time,
-      end_time: intent.entity.end_time,
-      is_recurring: false,
-      calendar_category: intent.entity.calendar_category,
-      created_at: now,
-      updated_at: now,
-    };
-
-    const created = await feishuConnector.create(event);
-
-    // 同步到 iCloud 日历
-    let iCloudUid: string | undefined;
-    try {
-      iCloudUid = await icloudConnector.createEvent(created);
-      console.log('[ScheduleService] iCloud sync success, UID:', iCloudUid);
-
-      // 将 iCloud 事件 ID 回写到飞书记录
-      if (iCloudUid) {
-        await feishuConnector.update(created.id, {
-          icloud_event_id: iCloudUid,
-        });
-        console.log('[ScheduleService] iCloud UID written to Feishu record');
-      }
-    } catch (error) {
-      console.error('[ScheduleService] Failed to sync to iCloud:', error);
+  async syncToICalendar(task: Task): Promise<SyncResult> {
+    // 无 start_date 不需要同步
+    if (!task.start_date) {
+      logger.debug(`[ScheduleService] Task ${task.id} has no start_date, skipping iCloud sync`);
+      return { success: true };
     }
 
-    return { ...created, icloud_event_id: iCloudUid };
-  }
+    // 循环任务的子任务（parent_id 存在）不创建 iCloud 事件
+    // 父任务的 RRULE 会自动生成后续实例
+    if (task.is_recurring && task.parent_id) {
+      logger.debug(`[ScheduleService] Task ${task.id} is a recurring child task (parent_id=${task.parent_id}), skipping iCloud sync`);
+      return { success: true };
+    }
 
-  /**
-   * 获取今天的日程
-   */
-  async getTodayEvents(): Promise<TaskEntity[]> {
-    const today = new Date().toISOString().split('T')[0];
-    const allEvents = await feishuConnector.query({ type: 'event' });
-    return allEvents.filter(e => e.due_date && e.due_date.startsWith(today));
-  }
+    try {
+      // 获取日历 ID
+      const calendarId = this.getCalendarId(task.category);
+      if (!calendarId) {
+        return { success: false, error: `Unknown category: ${task.category}` };
+      }
 
-  /**
-   * 获取即将到来的日程（未来 N 分钟）
-   */
-  async getUpcomingEvents(minutes: number = 15): Promise<TaskEntity[]> {
-    const now = new Date();
-    const future = new Date(now.getTime() + minutes * 60 * 1000);
-    const allEvents = await feishuConnector.query({ type: 'event' });
+      // 构建 iCloud 事件
+      // 如果有 recurring 但没有 recurrence_rule，根据 recurrence_type 生成默认 RRULE
+      let recurrenceRule = task.recurrence_rule;
+      let finalStartDate = task.start_date;
 
-    return allEvents.filter(event => {
-      if (!event.start_date) return false;
-      const eventDateStr = event.start_date;
-      const eventTimeStr = event.start_time || '00:00';
+      if (task.is_recurring && !recurrenceRule && task.recurrence_type && task.recurrence_type !== 'none') {
+        // 根据 start_date 生成默认 RRULE
+        recurrenceRule = this.generateDefaultRrule(task.recurrence_type, task.start_date, task.start_time);
+        logger.debug(`[ScheduleService] Auto-generated RRULE: ${recurrenceRule} for recurrence_type: ${task.recurrence_type}`);
+      }
 
-      // 简单比较：只比较日期部分
-      const today = now.toISOString().split('T')[0];
-      if (eventDateStr !== today) return false;
+      // 如果用户提供了 recurrence_rule，检查 start_date 与 BYDAY 是否一致
+      if (recurrenceRule && task.start_date) {
+        const bydayMatch = recurrenceRule.match(/BYDAY=([^;]+)/);
+        if (bydayMatch) {
+          const dayMap: Record<string, number> = { 'SU': 0, 'MO': 1, 'TU': 2, 'WE': 3, 'TH': 4, 'FR': 5, 'SA': 6 };
+          const targetDays = bydayMatch[1].split(',').map(d => dayMap[d]).filter(d => d !== undefined);
+          if (targetDays.length > 0) {
+            const currentDay = new Date(task.start_date).getDay();
+            if (!targetDays.includes(currentDay)) {
+              // start_date 与 BYDAY 不一致，找到下一个匹配的日期
+              let nextDate = new Date(task.start_date);
+              for (let i = 0; i < 14; i++) {
+                nextDate.setDate(nextDate.getDate() + 1);
+                if (targetDays.includes(nextDate.getDay())) {
+                  finalStartDate = nextDate.toISOString().split('T')[0];
+                  logger.info(`[ScheduleService] Corrected start_date from ${task.start_date} to ${finalStartDate} to match RRULE BYDAY`);
+                  break;
+                }
+              }
+            }
+          }
+        }
+      }
 
-      // 比较时间
-      const eventHour = parseInt(eventTimeStr.split(':')[0], 10);
-      const eventMinute = parseInt(eventTimeStr.split(':')[1], 10);
-      const nowHour = now.getHours();
-      const nowMinute = now.getMinutes();
+      const event: ICloudEvent = {
+        uid: task.icloud_event_id,
+        title: task.title,
+        description: task.description,
+        startDate: finalStartDate,
+        startTime: task.start_time,
+        endDate: task.end_time ? finalStartDate : undefined, // 跨日处理
+        endTime: task.end_time,
+        calendarId,
+        recurrenceRule,
+      };
 
-      const eventMinutes = eventHour * 60 + eventMinute;
-      const nowMinutes = nowHour * 60 + nowMinute;
-      const futureMinutes = (nowMinutes + minutes) % (24 * 60);
+      let icloudEventId: string;
 
-      if (futureMinutes >= nowMinutes) {
-        return eventMinutes >= nowMinutes && eventMinutes <= futureMinutes;
+      if (task.icloud_event_id) {
+        // 已有 icloud_event_id，执行更新
+        logger.info(`[ScheduleService] Updating iCloud event: ${task.icloud_event_id}`);
+        await icloudConnector.updateEvent(task.icloud_event_id, event);
+        icloudEventId = task.icloud_event_id;
       } else {
-        // 跨午夜
-        return eventMinutes >= nowMinutes || eventMinutes <= futureMinutes;
+        // 无 icloud_event_id，执行创建
+        logger.info(`[ScheduleService] Creating iCloud event for task: ${task.id}`);
+        icloudEventId = await icloudConnector.createEvent(event);
       }
-    });
-  }
 
-  /**
-   * 更新日程
-   */
-  async updateEvent(eventId: string, updates: Partial<TaskEntity>): Promise<TaskEntity> {
-    const updated = await feishuConnector.update(eventId, {
-      ...updates,
-      updated_at: new Date().toISOString(),
-    });
-
-    // 同步到 iCloud
-    try {
-      await icloudConnector.updateEvent(eventId, updated);
+      return { success: true, icloud_event_id: icloudEventId };
     } catch (error) {
-      console.error('[ScheduleService] Failed to sync update to iCloud:', error);
-    }
-
-    return updated;
-  }
-
-  /**
-   * 删除日程
-   */
-  async deleteEvent(eventId: string): Promise<void> {
-    const event = await feishuConnector.get(eventId);
-    await feishuConnector.delete(eventId);
-
-    // 从 iCloud 删除
-    try {
-      await icloudConnector.deleteEvent(eventId, event?.calendar_category);
-    } catch (error) {
-      console.error('[ScheduleService] Failed to delete from iCloud:', error);
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+      logger.error(`[ScheduleService] Sync to iCloud failed: ${errorMessage}`);
+      return { success: false, error: errorMessage };
     }
   }
 
   /**
-   * 查询指定日期范围的日程
+   * 从 iCloud 同步到飞书
    */
-  async queryEventsByDateRange(startDate: string, endDate: string): Promise<TaskEntity[]> {
-    const allEvents = await feishuConnector.query({ type: 'event' });
-    return allEvents.filter(event => {
-      if (!event.start_date) return false;
-      return event.start_date >= startDate && event.start_date <= endDate;
-    });
+  async syncFromICalendar(
+    calendarId?: string,
+    startDate?: string,
+    endDate?: string
+  ): Promise<{ synced: number; created: number; updated: number; errors: string[] }> {
+    const result = { synced: 0, created: 0, updated: 0, errors: [] as string[] };
+
+    // 确定要同步的日历
+    const targetCalendarIds = calendarId
+      ? [calendarId]
+      : Object.values(icloudConnector.calendarMapping || {}).filter(Boolean);
+
+    for (const calId of targetCalendarIds) {
+      try {
+        const events = await icloudConnector.queryEvents(calId, startDate, endDate);
+        logger.info(`[ScheduleService] Found ${events.length} events in calendar ${calId}`);
+
+        for (const event of events) {
+          if (!event.uid) continue;
+
+          // 检查飞书是否已有此事件
+          const existingTask = await this.findTaskByICloudEventId(event.uid);
+
+          if (existingTask) {
+            // 更新
+            const needsUpdate = this.needsUpdate(existingTask, event);
+            if (needsUpdate) {
+              await feishuConnector.update(existingTask.id, {
+                title: event.title,
+                description: event.description,
+                start_date: event.startDate,
+                start_time: event.startTime,
+                end_time: event.endTime,
+                recurrence_rule: event.recurrenceRule,
+              });
+              result.updated++;
+              logger.info(`[ScheduleService] Updated task ${existingTask.id} from iCloud event ${event.uid}`);
+            }
+          } else {
+            // 创建
+            const newTask: Partial<Task> = {
+              id: event.uid,
+              title: event.title,
+              description: event.description,
+              start_date: event.startDate,
+              start_time: event.startTime,
+              end_time: event.endTime,
+              status: 'pending',
+              priority: 'medium',
+              is_recurring: !!event.recurrenceRule,
+              recurrence_type: this.parseRecurrenceType(event.recurrenceRule),
+              recurrence_rule: event.recurrenceRule,
+              icloud_event_id: event.uid,
+              source: 'icloud',
+              created_at: new Date().toISOString(),
+              updated_at: new Date().toISOString(),
+            };
+
+            await feishuConnector.create(newTask as Task);
+            result.created++;
+            logger.info(`[ScheduleService] Created task from iCloud event ${event.uid}`);
+          }
+
+          result.synced++;
+        }
+      } catch (error) {
+        const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+        result.errors.push(`Calendar ${calId}: ${errorMessage}`);
+        logger.error(`[ScheduleService] Sync from calendar ${calId} failed: ${errorMessage}`);
+      }
+    }
+
+    return result;
+  }
+
+  /**
+   * 删除 iCloud 日历事件
+   */
+  async deleteFromICalendar(task: Task): Promise<{ success: boolean; error?: string }> {
+    if (!task.icloud_event_id) {
+      // 无 icloud_event_id 不需要删除 iCloud 事件
+      return { success: true };
+    }
+
+    try {
+      // 获取日历 ID
+      const calendarId = this.getCalendarId(task.category);
+      if (!calendarId) {
+        return { success: false, error: `Unknown category: ${task.category}` };
+      }
+
+      await icloudConnector.deleteEvent(task.icloud_event_id, calendarId);
+      logger.info(`[ScheduleService] Deleted iCloud event: ${task.icloud_event_id}`);
+      return { success: true };
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+      logger.error(`[ScheduleService] Delete iCloud event failed: ${errorMessage}`);
+      return { success: false, error: errorMessage };
+    }
+  }
+
+  /**
+   * 查询日程列表
+   */
+  async querySchedules(query: CalendarQuery): Promise<{ items: Task[]; total: number }> {
+    const filter: {
+      start_date_from?: string;
+      start_date_to?: string;
+      category?: string;
+      page?: number;
+      page_size?: number;
+    } = {};
+
+    // 转换特殊日期值
+    let dateValue = query.date;
+    if (dateValue === 'today') {
+      dateValue = new Date().toISOString().split('T')[0];
+    } else if (dateValue === 'tomorrow') {
+      const tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      dateValue = tomorrow.toISOString().split('T')[0];
+    } else if (dateValue === 'this_week') {
+      const now = new Date();
+      const dayOfWeek = now.getDay();
+      const startOfWeek = new Date(now);
+      startOfWeek.setDate(now.getDate() - dayOfWeek);
+      const endOfWeek = new Date(startOfWeek);
+      endOfWeek.setDate(startOfWeek.getDate() + 6);
+      filter.start_date_from = startOfWeek.toISOString().split('T')[0];
+      filter.start_date_to = endOfWeek.toISOString().split('T')[0];
+    } else if (dateValue === 'next_week') {
+      const now = new Date();
+      const dayOfWeek = now.getDay();
+      const startOfNextWeek = new Date(now);
+      startOfNextWeek.setDate(now.getDate() + (7 - dayOfWeek));
+      const endOfNextWeek = new Date(startOfNextWeek);
+      endOfNextWeek.setDate(startOfNextWeek.getDate() + 6);
+      filter.start_date_from = startOfNextWeek.toISOString().split('T')[0];
+      filter.start_date_to = endOfNextWeek.toISOString().split('T')[0];
+    }
+
+    if (dateValue) {
+      filter.start_date_from = dateValue;
+      filter.start_date_to = dateValue;
+    } else {
+      if (query.startDate) filter.start_date_from = query.startDate;
+      if (query.endDate) filter.start_date_to = query.endDate;
+    }
+
+    if (query.category) {
+      filter.category = query.category;
+    }
+
+    filter.page = query.page || 1;
+    filter.page_size = query.pageSize || 20;
+
+    // 查询飞书中所有含 start_date 的任务
+    const result = await feishuConnector.list(filter);
+
+    return {
+      items: result.items.filter(t => t.start_date), // 确保只返回有 start_date 的
+      total: result.total,
+    };
+  }
+
+  /**
+   * 获取单个日程
+   */
+  async getSchedule(id: string): Promise<Task | null> {
+    const task = await feishuConnector.get(id);
+    if (!task || !task.start_date) {
+      return null;
+    }
+    return task;
+  }
+
+  /**
+   * 获取日历 ID（通过分类名称）
+   */
+  private getCalendarId(category?: string): string | undefined {
+    if (!category) {
+      // 默认使用个人日历
+      return icloudConnector.getCalendarIdByCategory('工作');
+    }
+    return icloudConnector.getCalendarIdByCategory(category);
+  }
+
+  /**
+   * 根据 iCloud 事件 ID 查找任务
+   */
+  private async findTaskByICloudEventId(icloudEventId: string): Promise<Task | null> {
+    const result = await feishuConnector.list({ page_size: 100 });
+    return result.items.find(t => t.icloud_event_id === icloudEventId) || null;
+  }
+
+  /**
+   * 根据 recurrence_type 生成默认的 RRULE
+   */
+  private generateDefaultRrule(recurrenceType: string, startDate: string, startTime?: string): string | undefined {
+    if (!startDate) return undefined;
+
+    const dayMap: Record<number, string> = {
+      0: 'SU', 1: 'MO', 2: 'TU', 3: 'WE', 4: 'TH', 5: 'FR', 6: 'SA'
+    };
+    const dayName = dayMap[new Date(startDate).getDay()];
+
+    switch (recurrenceType) {
+      case 'daily':
+        return 'RRULE:FREQ=DAILY';
+      case 'weekly':
+        return `RRULE:FREQ=WEEKLY;BYDAY=${dayName}`;
+      case 'weekly_n':
+        // weekly_n requires explicit BYDAY in recurrence_rule, leave as-is
+        return undefined;
+      case 'monthly':
+        return `RRULE:FREQ=MONTHLY;BYMONTHDAY=${new Date(startDate).getDate()}`;
+      case 'yearly':
+        return `RRULE:FREQ=YEARLY;BYMONTH=${new Date(startDate).getMonth() + 1};BYMONTHDAY=${new Date(startDate).getDate()}`;
+      default:
+        return undefined;
+    }
+  }
+
+  /**
+   * 检查是否需要更新
+   */
+  private needsUpdate(task: Task, event: ICloudEvent): boolean {
+    if (task.title !== event.title) return true;
+    if (task.description !== event.description) return true;
+    if (task.start_date !== event.startDate) return true;
+    if (task.start_time !== event.startTime) return true;
+    if (task.end_time !== event.endTime) return true;
+    if (task.recurrence_rule !== event.recurrenceRule) return true;
+    return false;
+  }
+
+  /**
+   * 解析循环类型
+   */
+  private parseRecurrenceType(rrule?: string): 'none' | 'daily' | 'weekly' | 'monthly' | 'yearly' {
+    if (!rrule) return 'none';
+
+    const upperRrule = rrule.toUpperCase();
+    if (upperRrule.includes('FREQ=DAILY')) return 'daily';
+    if (upperRrule.includes('FREQ=WEEKLY')) return 'weekly';
+    if (upperRrule.includes('FREQ=MONTHLY')) return 'monthly';
+    if (upperRrule.includes('FREQ=YEARLY')) return 'yearly';
+
+    return 'none';
   }
 }
 
