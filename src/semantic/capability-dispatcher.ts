@@ -23,6 +23,29 @@ function normalizeCategory(category: unknown): string {
   if (normalized) {
     return normalized;
   }
+  // 不匹配任何已知值时，尝试从字符串中提取有效的分类
+  const trimmed = category.trim();
+  for (const key of Object.keys(mapping)) {
+    if (trimmed === key || trimmed.startsWith(key) || trimmed.includes(key)) {
+      logger.info(`[CapabilityDispatcher] Category "${category}" matched via "${key}" -> "${mapping[key]}"`);
+      return mapping[key];
+    }
+  }
+  // 如果包含"家庭"相关词，默认为家庭共享
+  if (trimmed.includes('家庭') || trimmed.includes('family')) {
+    logger.info(`[CapabilityDispatcher] Category "${category}" contains 家庭, using 家庭共享`);
+    return '家庭共享';
+  }
+  // 如果包含"个人"相关词，默认为个人
+  if (trimmed.includes('个人') || trimmed.includes('personal')) {
+    logger.info(`[CapabilityDispatcher] Category "${category}" contains 个人, using 个人`);
+    return '个人';
+  }
+  // 如果包含"工作"相关词，默认为工作
+  if (trimmed.includes('工作') || trimmed.includes('work')) {
+    logger.info(`[CapabilityDispatcher] Category "${category}" contains 工作, using 工作`);
+    return '工作';
+  }
   logger.warn(`[CapabilityDispatcher] Invalid category "${category}", using default "${DEFAULT_CATEGORY}"`);
   return DEFAULT_CATEGORY;
 }
@@ -627,7 +650,7 @@ export class CapabilityDispatcher {
     const startDate = params.start_date as string || params.date as string;
     const startTime = params.start_time as string || params.time as string;
     const endTime = params.end_time as string;
-    const category = params.category as string;
+    const category = normalizeCategory(params.category);
     const location = params.location as string;
     const attendees = params.attendees as string[];
 
@@ -651,7 +674,7 @@ export class CapabilityDispatcher {
       start_date: startDate,
       start_time: startTime || '09:00',
       end_time: endTime,
-      category: category || '工作',
+      category: category,
     });
 
     if (result.success) {
