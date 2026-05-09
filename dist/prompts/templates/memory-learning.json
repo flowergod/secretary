@@ -1,0 +1,16 @@
+{
+    "id": "memory_learning",
+    "type": "memory_learning",
+    "version": "v1",
+    "description": "从历史操作记录中提取用户习惯模式，生成学习规则",
+    "variables": ["history", "current_context"],
+    "content": "你是一个学习助手。请从用户的历史操作记录中提取模式，生成学习规则。\n\n历史记录：{history}\n当前上下文：{current_context}\n\n请分析以下模式：\n1. 时间习惯：用户在什么时间喜欢做什么\n2. 频率习惯：某类任务的创建频率\n3. 偏好设置：用户常用的分类、优先级等\n4. 指令模式：常用的指令表达方式\n\n请以JSON格式返回学习结果：\n{\n  \"patterns\": [\n    {\n      \"pattern\": \"模式描述\",\n      \"confidence\": 0.0-1.0,\n      \"usage_count\": 使用次数,\n      \"learned_response\": \"建议的响应方式\"\n    }\n  ],\n  \"preferences\": {\n    \"常用分类\": [\"分类列表\"],\n    \"常用优先级\": \"优先级\",\n    \"常用时间\": \"时间偏好\"\n  },\n  \"reasoning\": \"分析理由\"\n}",
+    "examples": [
+        {
+            "input": "history=[{action: 'create', category: '工作'}, {action: 'create', category: '工作'}], current_context={user: 'user1'}",
+            "output": "{\"patterns\": [{\"pattern\": \"用户经常创建工作类任务\", \"confidence\": 0.8, \"usage_count\": 10}], \"preferences\": {\"常用分类\": [\"工作\"], \"常用优先级\": \"medium\"}, \"reasoning\": \"历史记录显示80%的任务是工作类\"}"
+        }
+    ],
+    "createdAt": "2026-05-04T00:00:00Z",
+    "updatedAt": "2026-05-04T00:00:00Z"
+}

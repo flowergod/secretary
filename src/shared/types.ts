@@ -1,118 +1,187 @@
-// 共用类型定义
+// 共享类型定义
 
-export type EntityType = 'task' | 'event' | 'project';
+// 任务状态
+export type TaskStatus = 'pending' | 'in_progress' | 'completed' | 'cancelled';
 
-export type TaskStatus = 'pending' | 'in_progress' | 'completed' | 'cancelled' | '待规划' | '待执行' | '进行中' | '已完成' | '暂停';
+// 任务优先级
+export type TaskPriority = 'high' | 'medium' | 'low';
 
-export type Priority = '高' | '中' | '低';
+// 循环类型
+export type RecurrenceType =
+  | 'none'
+  | 'daily'
+  | 'weekly'
+  | 'weekly_n'
+  | 'monthly'
+  | 'monthly_n'
+  | 'yearly'
+  | 'yearly_n';
 
-export type RecurrenceType = 'none' | 'weekly_monday' | 'weekly_tuesday' | 'weekly_wednesday' | 'weekly_thursday' | 'weekly_friday' | 'weekly_saturday' | 'weekly_sunday' | 'monthly' | 'after_complete' | 'custom' | 'weekly' | 'irregular' | '不循环' | '每周一' | '每周二' | '每周三' | '每周四' | '每周五' | '每周六' | '每周日' | '每月' | '完成后N天' | '自定义' | '每周' | '不定期';
-
-export type GroupType = '日程表' | '其他' | '工作' | '生活' | '个人';
-
-export interface RecurrenceRule {
-  type: RecurrenceType;
-  interval?: string;        // e.g., "2 weeks", "1 month"
-  start_from?: string;     // ISO date
-  end_date?: string | null;
-  days_after?: number;     // for after_complete type
-  reminder?: boolean;
-}
-
-export interface TaskEntity {
+// 任务实体
+export interface Task {
   id: string;
-  type: EntityType;
+  record_id?: string; // 飞书系统生成的record_id，用于API操作
   title: string;
-  description?: string;       // 备注
+  description?: string;
   status: TaskStatus;
-  priority: Priority;
-  due_date?: string;         // 计划日期 (timestamp ms)
-  start_date?: string;       // 计划日期
-  start_time?: string;        // 开始时间 (timestamp ms)
-  end_time?: string;         // 结束时间 (timestamp ms)
+  priority: TaskPriority;
+  category?: string;
+  due_date?: string;
+  start_date?: string;
+  start_time?: string;
+  end_time?: string;
   is_recurring: boolean;
-  recurrence_type?: RecurrenceType;
-  recurrence_rule?: RecurrenceRule;
+  recurrence_type: RecurrenceType;
+  recurrence_rule?: string;
+  icloud_event_id?: string;
   parent_id?: string;
-  project_id?: string;
-  project_name?: string;      // 项目
-  subproject?: string;        // 子项目
-  completion_date?: string;    // 完成时间
-  completion_count?: number;   // 完成次数
-  needs_expansion?: boolean;
-  expansion_type?: string;
-  group?: GroupType;          // 分组
-  calendar_category?: string; // 日历分类
-  tags?: string[];            // 标签
-  url?: string;               // 链接
-  source_text?: string;       // 来源文本
-  feishu_event_id?: string;   // 飞书日历事件ID
-  icloud_event_id?: string;   // iCloud事件ID
+  source?: string;
   created_at: string;
   updated_at: string;
 }
 
-export type ActionType = 'create' | 'update' | 'delete' | 'complete' | 'query' | 'search';
-
-export interface ParsedIntent {
-  action: ActionType;
-  entityType: EntityType;
-  entity: Partial<TaskEntity>;
-  targetId?: string;
-  needsExpansion?: boolean;
-  expansionType?: string;
-  queryType?: string;
-  searchQuery?: string;
+// 创建任务请求
+export interface CreateTaskRequest {
+  title: string;
+  description?: string;
+  priority?: TaskPriority;
+  category?: string;
+  due_date?: string;
+  start_date?: string;
+  start_time?: string;
+  end_time?: string;
+  is_recurring?: boolean;
+  recurrence_type?: RecurrenceType;
+  recurrence_rule?: string;
+  icloud_event_id?: string;
+  parent_id?: string;
+  source?: string;
 }
 
-export interface ReminderConfig {
-  morning: { enabled: boolean; time: string };
-  evening: { enabled: boolean; time: string };
-  weekendSummary: { enabled: boolean; time: string; dayOfWeek: number };
-  preEvent: { enabled: boolean; minutesBefore: number };
-  idleTime: { enabled: boolean; minFreeMinutes: number };
+// 更新任务请求
+export interface UpdateTaskRequest {
+  title?: string;
+  description?: string;
+  status?: TaskStatus;
+  priority?: TaskPriority;
+  category?: string;
+  due_date?: string;
+  start_date?: string;
+  start_time?: string;
+  end_time?: string;
+  is_recurring?: boolean;
+  recurrence_type?: RecurrenceType;
+  recurrence_rule?: string;
+  parent_id?: string;
+  source?: string;
 }
 
-export interface AiConfig {
-  primary: {
-    provider: 'volcano' | 'minimax';
-    apiKey: string;
-    baseUrl?: string;
-    model?: string;
+// 状态变更请求
+export interface TransitionTaskRequest {
+  to_status: TaskStatus;
+  reason?: string;
+}
+
+// 批量删除请求
+export interface BatchDeleteTasksRequest {
+  ids: string[];
+}
+
+// 任务列表查询参数
+export interface ListTasksQuery {
+  status?: TaskStatus;
+  priority?: TaskPriority;
+  category?: string;
+  due_date?: string;
+  due_date_from?: string;
+  due_date_to?: string;
+  start_date?: string;
+  start_date_from?: string;
+  start_date_to?: string;
+  is_recurring?: boolean;
+  parent_id?: string;
+  page?: number;
+  page_size?: number;
+  sort_by?: string;
+  sort_order?: 'asc' | 'desc';
+}
+
+// 任务列表响应
+export interface ListTasksResponse {
+  items: Task[];
+  total: number;
+  page: number;
+  page_size: number;
+  total_pages: number;
+}
+
+// 状态变更响应
+export interface TransitionTaskResponse {
+  task: Task;
+  from_status: TaskStatus;
+  to_status: TaskStatus;
+  transitioned_at: string;
+}
+
+// 批量删除响应
+export interface BatchDeleteTasksResponse {
+  deleted: number;
+  failed: number;
+  errors?: string[];
+}
+
+// API 响应格式
+export interface ApiResponse<T> {
+  success: true;
+  data: T;
+}
+
+export interface ApiError {
+  success: false;
+  error: {
+    code: number;
+    message: string;
+    details?: string;
   };
-  fallback: {
-    provider: 'volcano' | 'minimax';
-    apiKey: string;
-    baseUrl?: string;
-    model?: string;
-  };
 }
 
-export interface NLParseConfig {
-  enabled: boolean;           // 是否启用 LLM 解析
-  fallbackThreshold: number;  // 置信度低于此值时触发 LLM
-  learnFromSuccess: boolean;  // 是否从成功解析中学习规则
-  maxRetries: number;        // LLM 解析最大重试次数
-}
-
+// 飞书配置
 export interface FeishuConfig {
   appId: string;
   appSecret: string;
-  webhookUrl?: string;
   tableToken: string;
   tableId: string;
 }
 
+// iCloud 配置
 export interface ICloudConfig {
   appleId: string;
   appPassword: string;
-  calendarMapping?: Record<string, string>;  // 日历分类 -> iCloud 日历 ID 映射
+  calendarMapping?: Record<string, string>;
 }
 
+// AI/LLM 配置
+export interface AIProviderConfig {
+  provider: string;
+  apiKey: string;
+  model: string;
+  baseUrl: string;
+  timeout?: number;
+  maxRetries?: number;
+}
+
+export interface AIConfig {
+  primary?: AIProviderConfig;
+  fallback?: AIProviderConfig;
+}
+
+// 应用配置
 export interface AppConfig {
   feishu: FeishuConfig;
   icloud: ICloudConfig;
-  ai: AiConfig;
-  reminders: ReminderConfig;
-  nlParse?: NLParseConfig;
+  ai?: AIConfig;
+  server?: {
+    port?: number;
+    host?: string;
+  };
 }

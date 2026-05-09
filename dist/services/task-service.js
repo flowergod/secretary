@@ -1,203 +1,705 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.taskService = exports.TaskService = void 0;
+exports.taskService = exports.TaskService = exports.ErrorCodes = void 0;
 // 任务服务
 const uuid_1 = require("uuid");
-const feishu_1 = require("../connectors/feishu");
-const expansion_1 = require("../engine/expansion");
+const connectors_1 = require("../connectors");
+const schedule_service_1 = require("./schedule-service");
+const logger_1 = require("../shared/logger");
+// 错误码
+exports.ErrorCodes = {
+    TASK_NOT_FOUND: 2001,
+    TASK_CREATE_FAILED: 2002,
+    TASK_UPDATE_FAILED: 2003,
+    TASK_DELETE_FAILED: 2004,
+    TASK_INVALID_TRANSITION: 2005,
+    TASK_COMPLETED_NOT_TRANSITIONABLE: 2006,
+    FEISHU_API_ERROR: 1001,
+    RECURRING_TASK_CREATE_FAILED: 2007,
+    RECURRING_SERIES_DELETE_FAILED: 2008,
+};
+// 允许的状态转换
+const ALLOWED_TRANSITIONS = {
+    'pending': ['in_progress', 'cancelled'],
+    'in_progress': ['pending', 'cancelled'],
+    'completed': [], // 不能从 completed 转换
+    'cancelled': ['pending'], // 可以重新激活
+};
 class TaskService {
     /**
      * 创建任务
      */
-    async createTask(intent) {
-        const now = new Date().toISOString();
-        const task = {
-            id: (0, uuid_1.v4)(),
-            type: intent.entityType || 'task',
-            title: intent.entity.title || '未命名任务',
-            description: intent.entity.description,
-            status: 'pending',
-            priority: intent.entity.priority || '中',
-            due_date: intent.entity.due_date,
-            start_date: intent.entity.start_date,
-            start_time: intent.entity.start_time,
-            is_recurring: intent.entity.is_recurring || false,
-            recurrence_type: intent.entity.recurrence_type,
-            recurrence_rule: intent.entity.recurrence_rule,
-            parent_id: intent.entity.parent_id,
-            project_id: intent.entity.project_id,
-            needs_expansion: intent.needsExpansion || false,
-            expansion_type: intent.expansionType,
-            created_at: now,
-            updated_at: now,
-        };
-        const created = await feishu_1.feishuConnector.create(task);
-        // 检查是否需要智能拓展
-        let expansionSuggestion;
-        if (intent.needsExpansion) {
-            const expansion = await expansion_1.expansionEngine.shouldExpand(created);
-            if (expansion.shouldExpand && expansion.tasks.length > 0) {
-                expansionSuggestion = expansion.reasoning
-                    ? `是否需要我帮你${expansion.reasoning}？`
-                    : '是否需要我帮你规划后续步骤？';
-            }
-        }
-        return { task: created, expansionSuggestion };
-    }
-    /**
-     * 计算循环任务的下次发生日期
-     */
-    calculateNextOccurrence(recurrenceType, recurrenceRule, currentDate) {
-        const next = new Date(currentDate);
-        // 解析循环规则中的星期几
-        const dayMap = { SU: 0, MO: 1, TU: 2, WE: 3, TH: 4, FR: 5, SA: 6 };
-        // 根据 recurrenceType 或 recurrenceRule 确定周期
-        if (recurrenceType === '每周一' || (recurrenceRule && recurrenceRule.includes('MO'))) {
-            next.setDate(next.getDate() + ((1 - next.getDay() + 7) % 7 || 7));
-        }
-        else if (recurrenceType === '每周五' || (recurrenceRule && recurrenceRule.includes('FR'))) {
-            next.setDate(next.getDate() + ((5 - next.getDay() + 7) % 7 || 7));
-        }
-        else if (recurrenceType === '每周' || recurrenceType === 'weekly') {
-            // 从 recurrenceRule 解析星期几，或默认加7天
-            if (recurrenceRule) {
-                const match = recurrenceRule.match(/BYDAY=([A-Z]{2})/);
-                if (match && dayMap[match[1]] !== undefined) {
-                    const targetDay = dayMap[match[1]];
-                    next.setDate(next.getDate() + ((targetDay - next.getDay() + 7) % 7 || 7));
-                }
-                else {
-                    next.setDate(next.getDate() + 7);
-                }
-            }
-            else {
-                next.setDate(next.getDate() + 7);
-            }
-        }
-        else if (recurrenceType === '每月' || recurrenceType === 'monthly') {
-            // 下个月同一日
-            next.setMonth(next.getMonth() + 1);
-        }
-        else if (recurrenceType === 'after_complete' || recurrenceType === 'after_complete') {
-            // 基于完成时间的循环，由调用方处理
-            return null;
-        }
-        else if (recurrenceType === '不循环' || recurrenceType === 'none' || recurrenceType === '不循环') {
-            return null;
-        }
-        else {
-            // 默认加7天
-            next.setDate(next.getDate() + 7);
-        }
-        // 确保日期是未来
-        if (next.getTime() <= currentDate.getTime()) {
-            next.setDate(next.getDate() + 7);
-        }
-        return next;
-    }
-    /**
-     * 创建循环任务的下次发生
-     */
-    async createNextOccurrence(task) {
-        const recurrenceType = task.recurrence_type;
-        const recurrenceRule = task.recurrence_rule;
-        // 不处理 after_complete 类型（由完成时处理）
-        if (recurrenceType === 'after_complete' || recurrenceType === 'after_complete') {
-            return;
-        }
-        // 不处理非循环任务
-        if (!task.is_recurring || !recurrenceType ||
-            recurrenceType === '不循环' || recurrenceType === 'none') {
-            return;
-        }
-        const nextDate = this.calculateNextOccurrence(recurrenceType, recurrenceRule, new Date());
-        if (!nextDate)
-            return;
-        const nextTaskIntent = {
-            action: 'create',
-            entityType: 'task',
-            entity: {
-                title: task.title,
+    async create(req) {
+        try {
+            const now = new Date().toISOString();
+            const task = {
+                id: (0, uuid_1.v4)(),
+                title: req.title,
+                description: req.description,
                 status: 'pending',
-                priority: task.priority,
-                start_date: nextDate.toISOString().split('T')[0],
-                is_recurring: task.is_recurring,
-                recurrence_type: recurrenceType,
-                recurrence_rule: task.recurrence_rule,
-                parent_id: task.parent_id,
-                project_name: task.project_name,
-                description: task.description,
-            },
-        };
-        await this.createTask(nextTaskIntent);
-    }
-    /**
-     * 完成任务
-     */
-    async completeTask(taskId) {
-        const task = await feishu_1.feishuConnector.get(taskId);
-        if (!task) {
-            throw new Error(`Task not found: ${taskId}`);
+                priority: req.priority || 'medium',
+                category: req.category,
+                due_date: req.due_date,
+                start_date: req.start_date,
+                start_time: req.start_time,
+                end_time: req.end_time,
+                is_recurring: req.is_recurring || false,
+                recurrence_type: req.recurrence_type || 'none',
+                recurrence_rule: req.recurrence_rule,
+                icloud_event_id: req.icloud_event_id,
+                parent_id: req.parent_id,
+                source: req.source,
+                created_at: now,
+                updated_at: now,
+            };
+            const created = await connectors_1.feishuConnector.create(task);
+            logger_1.logger.info(`[TaskService] Created task: ${created.id}`);
+            // 如果任务有 start_date，同步到 iCloud
+            if (created.start_date) {
+                const syncResult = await schedule_service_1.scheduleService.syncToICalendar(created);
+                if (syncResult.success && syncResult.icloud_event_id) {
+                    // 更新 icloud_event_id
+                    await connectors_1.feishuConnector.update(created.id, {
+                        icloud_event_id: syncResult.icloud_event_id,
+                    });
+                    created.icloud_event_id = syncResult.icloud_event_id;
+                    logger_1.logger.info(`[TaskService] Synced task ${created.id} to iCloud: ${syncResult.icloud_event_id}`);
+                }
+                else if (!syncResult.success) {
+                    logger_1.logger.warn(`[TaskService] Failed to sync task ${created.id} to iCloud: ${syncResult.error}`);
+                }
+            }
+            return { success: true, data: created };
         }
-        const updated = await feishu_1.feishuConnector.update(taskId, {
-            status: 'completed',
-            completion_date: new Date().toISOString(),
-            completion_count: (task.completion_count || 0) + 1,
-        });
-        // 处理基于完成时间的循环任务
-        if (task.recurrence_type === 'after_complete' && task.recurrence_rule) {
-            const daysAfter = task.recurrence_rule.days_after || 90;
-            const nextDate = new Date();
-            nextDate.setDate(nextDate.getDate() + daysAfter);
-            const nextTaskIntent = {
-                action: 'create',
-                entityType: 'task',
-                entity: {
-                    title: task.title,
-                    status: 'pending',
-                    priority: task.priority,
-                    start_date: nextDate.toISOString().split('T')[0],
-                    is_recurring: task.is_recurring,
-                    recurrence_type: task.recurrence_type,
-                    recurrence_rule: task.recurrence_rule,
-                    parent_id: task.parent_id,
+        catch (e) {
+            logger_1.logger.error(`[TaskService] Failed to create task:`, e);
+            return {
+                success: false,
+                error: {
+                    code: exports.ErrorCodes.TASK_CREATE_FAILED,
+                    message: '任务创建失败',
+                    details: e instanceof Error ? e.message : String(e),
                 },
             };
-            await this.createTask(nextTaskIntent);
         }
-        else if (task.is_recurring && task.recurrence_type) {
-            // 处理时间循环任务（每周、每月等）
-            await this.createNextOccurrence(task);
-        }
-        return updated;
     }
     /**
-     * 更新任务
+     * 获取单个任务
      */
-    async updateTask(taskId, updates) {
-        return feishu_1.feishuConnector.update(taskId, {
-            ...updates,
-            updated_at: new Date().toISOString(),
-        });
-    }
-    /**
-     * 删除任务
-     */
-    async deleteTask(taskId) {
-        return feishu_1.feishuConnector.delete(taskId);
+    async get(id) {
+        try {
+            const task = await connectors_1.feishuConnector.get(id);
+            if (!task) {
+                return {
+                    success: false,
+                    error: {
+                        code: exports.ErrorCodes.TASK_NOT_FOUND,
+                        message: '任务不存在',
+                        details: `Task with id ${id} not found`,
+                    },
+                };
+            }
+            return { success: true, data: task };
+        }
+        catch (e) {
+            logger_1.logger.error(`[TaskService] Failed to get task ${id}:`, e);
+            return {
+                success: false,
+                error: {
+                    code: exports.ErrorCodes.FEISHU_API_ERROR,
+                    message: '获取任务失败',
+                    details: e instanceof Error ? e.message : String(e),
+                },
+            };
+        }
     }
     /**
      * 查询任务列表
      */
-    async queryTasks(filter) {
-        return feishu_1.feishuConnector.query({ ...filter, type: 'task' });
+    async list(query) {
+        try {
+            const page = Math.max(1, query.page || 1);
+            const pageSize = Math.min(100, Math.max(1, query.page_size || 20));
+            const result = await connectors_1.feishuConnector.list({
+                status: query.status,
+                priority: query.priority,
+                category: query.category,
+                due_date_from: query.due_date_from,
+                due_date_to: query.due_date_to,
+                start_date_from: query.start_date_from,
+                start_date_to: query.start_date_to,
+                is_recurring: query.is_recurring,
+                parent_id: query.parent_id,
+                page,
+                page_size: pageSize,
+            });
+            const totalPages = Math.ceil(result.total / pageSize);
+            // 排序
+            let items = result.items;
+            if (query.sort_by) {
+                const sortKey = query.sort_by;
+                const sortOrder = query.sort_order === 'asc' ? 1 : -1;
+                items = items.sort((a, b) => {
+                    const aVal = a[sortKey] || '';
+                    const bVal = b[sortKey] || '';
+                    return aVal < bVal ? -sortOrder : aVal > bVal ? sortOrder : 0;
+                });
+            }
+            return {
+                success: true,
+                data: {
+                    items,
+                    total: result.total,
+                    page,
+                    page_size: pageSize,
+                    total_pages: totalPages,
+                },
+            };
+        }
+        catch (e) {
+            logger_1.logger.error(`[TaskService] Failed to list tasks:`, e);
+            return {
+                success: false,
+                error: {
+                    code: exports.ErrorCodes.FEISHU_API_ERROR,
+                    message: '查询任务列表失败',
+                    details: e instanceof Error ? e.message : String(e),
+                },
+            };
+        }
     }
     /**
-     * 根据标题查找任务
+     * 更新任务
      */
-    async findTaskByTitle(title) {
-        const results = await feishu_1.feishuConnector.search(title);
-        return results.find(r => r.title === title && r.type === 'task') || null;
+    async update(id, req) {
+        try {
+            // 检查任务是否存在
+            const existing = await connectors_1.feishuConnector.get(id);
+            if (!existing) {
+                return {
+                    success: false,
+                    error: {
+                        code: exports.ErrorCodes.TASK_NOT_FOUND,
+                        message: '任务不存在',
+                        details: `Task with id ${id} not found`,
+                    },
+                };
+            }
+            const updates = {
+                ...req,
+                updated_at: new Date().toISOString(),
+            };
+            const updated = await connectors_1.feishuConnector.update(id, updates);
+            logger_1.logger.info(`[TaskService] Updated task: ${id}`);
+            // 如果任务有 start_date，同步到 iCloud
+            // 但如果 category 发生了变化，应该由 CapabilityDispatcher.moveICloudEvent 处理，不在这里同步
+            const categoryChanged = req.category && existing.category !== req.category;
+            if (updated.start_date && !categoryChanged) {
+                const syncResult = await schedule_service_1.scheduleService.syncToICalendar(updated);
+                if (syncResult.success && syncResult.icloud_event_id && !updated.icloud_event_id) {
+                    // 新增了 icloud_event_id，需要更新回去
+                    await connectors_1.feishuConnector.update(id, {
+                        icloud_event_id: syncResult.icloud_event_id,
+                    });
+                    updated.icloud_event_id = syncResult.icloud_event_id;
+                }
+                else if (!syncResult.success) {
+                    logger_1.logger.warn(`[TaskService] Failed to sync updated task ${id} to iCloud: ${syncResult.error}`);
+                }
+            }
+            else if (categoryChanged) {
+                logger_1.logger.info(`[TaskService] Category changed, iCloud sync will be handled by CapabilityDispatcher`);
+            }
+            return { success: true, data: updated };
+        }
+        catch (e) {
+            logger_1.logger.error(`[TaskService] Failed to update task ${id}:`, e);
+            return {
+                success: false,
+                error: {
+                    code: exports.ErrorCodes.TASK_UPDATE_FAILED,
+                    message: '任务更新失败',
+                    details: e instanceof Error ? e.message : String(e),
+                },
+            };
+        }
+    }
+    /**
+     * 删除任务
+     */
+    async delete(id) {
+        try {
+            const existing = await connectors_1.feishuConnector.get(id);
+            if (!existing) {
+                return {
+                    success: false,
+                    error: {
+                        code: exports.ErrorCodes.TASK_NOT_FOUND,
+                        message: '任务不存在',
+                        details: `Task with id ${id} not found`,
+                    },
+                };
+            }
+            // 如果是循环任务（有 is_recurring 或有 parent_id），调用删除全系列
+            if (existing.is_recurring || existing.parent_id) {
+                logger_1.logger.info(`[TaskService] Task ${id} is recurring, delegating to deleteRecurringSeries`);
+                return this.deleteRecurringSeries(id);
+            }
+            // 优先使用record_id，否则用id
+            const deleteId = existing.record_id || id;
+            await connectors_1.feishuConnector.delete(deleteId);
+            logger_1.logger.info(`[TaskService] Deleted task: ${id}`);
+            // 如果任务有 icloud_event_id，删除 iCloud 事件
+            if (existing.icloud_event_id) {
+                const deleteResult = await schedule_service_1.scheduleService.deleteFromICalendar(existing);
+                if (deleteResult.success) {
+                    logger_1.logger.info(`[TaskService] Deleted iCloud event: ${existing.icloud_event_id}`);
+                }
+                else {
+                    logger_1.logger.warn(`[TaskService] Failed to delete iCloud event ${existing.icloud_event_id}: ${deleteResult.error}`);
+                }
+            }
+            return { success: true, data: { deleted: 1 } };
+        }
+        catch (e) {
+            logger_1.logger.error(`[TaskService] Failed to delete task ${id}:`, e);
+            return {
+                success: false,
+                error: {
+                    code: exports.ErrorCodes.TASK_DELETE_FAILED,
+                    message: '任务删除失败',
+                    details: e instanceof Error ? e.message : String(e),
+                },
+            };
+        }
+    }
+    /**
+     * 删除循环任务全系列
+     * 根据给定任务的 parent_id 找到所有关联的父子任务并删除
+     * @param id 任意一个任务的ID（会自动查找全系列）
+     */
+    async deleteRecurringSeries(id) {
+        try {
+            const existing = await connectors_1.feishuConnector.get(id);
+            if (!existing) {
+                return {
+                    success: false,
+                    error: {
+                        code: exports.ErrorCodes.TASK_NOT_FOUND,
+                        message: '任务不存在',
+                        details: `Task with id ${id} not found`,
+                    },
+                };
+            }
+            // 确定系列根ID：如果有 parent_id，则是子任务，用 parent_id；否则用自己的 id
+            const seriesRootId = existing.parent_id || existing.id;
+            logger_1.logger.info(`[TaskService] Deleting recurring series rooted at: ${seriesRootId}`);
+            // 查询所有属于该系列的任务（包括父任务和所有子任务）
+            const listResult = await connectors_1.feishuConnector.list({ page_size: 100 });
+            const seriesTasks = listResult.items.filter(t => t.id === seriesRootId || t.parent_id === seriesRootId || t.id === existing.parent_id);
+            logger_1.logger.info(`[TaskService] Found ${seriesTasks.length} tasks in series`);
+            // 收集所有需要删除的任务ID
+            const idsToDelete = [];
+            const icloudEventIdsToDelete = [];
+            for (const task of seriesTasks) {
+                const deleteId = task.record_id || task.id;
+                if (!idsToDelete.includes(deleteId)) {
+                    idsToDelete.push(deleteId);
+                }
+                if (task.icloud_event_id && !icloudEventIdsToDelete.includes(task.icloud_event_id)) {
+                    icloudEventIdsToDelete.push(task.icloud_event_id);
+                }
+            }
+            // 删除 iCloud 事件（如果有的话）
+            for (const icloudEventId of icloudEventIdsToDelete) {
+                const taskWithEvent = seriesTasks.find(t => t.icloud_event_id === icloudEventId);
+                if (taskWithEvent) {
+                    const deleteResult = await schedule_service_1.scheduleService.deleteFromICalendar(taskWithEvent);
+                    if (deleteResult.success) {
+                        logger_1.logger.info(`[TaskService] Deleted iCloud event: ${icloudEventId}`);
+                    }
+                    else {
+                        logger_1.logger.warn(`[TaskService] Failed to delete iCloud event ${icloudEventId}: ${deleteResult.error}`);
+                    }
+                }
+            }
+            // 批量删除飞书任务
+            let deletedCount = 0;
+            for (const deleteId of idsToDelete) {
+                try {
+                    await connectors_1.feishuConnector.delete(deleteId);
+                    deletedCount++;
+                }
+                catch (e) {
+                    logger_1.logger.warn(`[TaskService] Failed to delete task ${deleteId}:`, e);
+                }
+            }
+            logger_1.logger.info(`[TaskService] Deleted recurring series: ${deletedCount} tasks, ${icloudEventIdsToDelete.length} iCloud events`);
+            return {
+                success: true,
+                data: {
+                    deleted: deletedCount,
+                    seriesDeleted: seriesTasks.length,
+                },
+            };
+        }
+        catch (e) {
+            logger_1.logger.error(`[TaskService] Failed to delete recurring series ${id}:`, e);
+            return {
+                success: false,
+                error: {
+                    code: exports.ErrorCodes.RECURRING_SERIES_DELETE_FAILED,
+                    message: '删除循环系列失败',
+                    details: e instanceof Error ? e.message : String(e),
+                },
+            };
+        }
+    }
+    /**
+     * 批量删除任务
+     */
+    async batchDelete(ids) {
+        try {
+            const result = await connectors_1.feishuConnector.batchDelete(ids);
+            logger_1.logger.info(`[TaskService] Batch deleted: ${result.deleted} succeeded, ${result.failed} failed`);
+            return { success: true, data: result };
+        }
+        catch (e) {
+            logger_1.logger.error(`[TaskService] Failed to batch delete:`, e);
+            return {
+                success: false,
+                error: {
+                    code: exports.ErrorCodes.TASK_DELETE_FAILED,
+                    message: '批量删除失败',
+                    details: e instanceof Error ? e.message : String(e),
+                },
+            };
+        }
+    }
+    /**
+     * 计算下一次循环任务的日期
+     */
+    calculateNextOccurrence(task) {
+        const addDays = (dateStr, days) => {
+            const date = new Date(dateStr);
+            date.setDate(date.getDate() + days);
+            return date.toISOString().split('T')[0];
+        };
+        const addMonths = (dateStr, months) => {
+            const date = new Date(dateStr);
+            date.setMonth(date.getMonth() + months);
+            return date.toISOString().split('T')[0];
+        };
+        const addYears = (dateStr, years) => {
+            const date = new Date(dateStr);
+            date.setFullYear(date.getFullYear() + years);
+            return date.toISOString().split('T')[0];
+        };
+        const updates = {};
+        switch (task.recurrence_type) {
+            case 'daily':
+                if (task.due_date)
+                    updates.due_date = addDays(task.due_date, 1);
+                if (task.start_date)
+                    updates.start_date = addDays(task.start_date, 1);
+                break;
+            case 'weekly':
+                if (task.due_date)
+                    updates.due_date = addDays(task.due_date, 7);
+                if (task.start_date)
+                    updates.start_date = addDays(task.start_date, 7);
+                break;
+            case 'weekly_n':
+                // For weekly_n, we need to parse recurrence_rule to find the next occurrence
+                const referenceDate = task.due_date || task.start_date;
+                if (task.recurrence_rule && referenceDate) {
+                    // RRULE:FREQ=WEEKLY;BYDAY=MO,WE,FR
+                    const bydayMatch = task.recurrence_rule.match(/BYDAY=([^;]+)/);
+                    if (bydayMatch) {
+                        const days = bydayMatch[1].split(',');
+                        const currentDate = new Date(referenceDate);
+                        // Find next occurrence day
+                        let nextDate = new Date(currentDate);
+                        nextDate.setDate(nextDate.getDate() + 1);
+                        let attempts = 0;
+                        while (attempts < 14) { // Max 2 weeks to find next
+                            const dayName = ['SU', 'MO', 'TU', 'WE', 'TH', 'FR', 'SA'][nextDate.getDay()];
+                            if (days.includes(dayName)) {
+                                const daysDiff = (nextDate.getTime() - currentDate.getTime()) / (1000 * 60 * 60 * 24);
+                                if (task.due_date)
+                                    updates.due_date = addDays(task.due_date, daysDiff);
+                                if (task.start_date)
+                                    updates.start_date = addDays(task.start_date, daysDiff);
+                                break;
+                            }
+                            nextDate.setDate(nextDate.getDate() + 1);
+                            attempts++;
+                        }
+                    }
+                }
+                else {
+                    // Fallback to weekly
+                    if (task.due_date)
+                        updates.due_date = addDays(task.due_date, 7);
+                    if (task.start_date)
+                        updates.start_date = addDays(task.start_date, 7);
+                }
+                break;
+            case 'monthly':
+                if (task.due_date)
+                    updates.due_date = addMonths(task.due_date, 1);
+                if (task.start_date)
+                    updates.start_date = addMonths(task.start_date, 1);
+                break;
+            case 'monthly_n':
+                if (task.recurrence_rule && task.due_date) {
+                    // 解析RRULE获取精确的月循环规则
+                    // 格式: RRULE:FREQ=MONTHLY;BYDAY=1TU (第一个周二) 或 RRULE:FREQ=MONTHLY;BYMONTHDAY=15 (每月15号)
+                    const bydayMatch = task.recurrence_rule.match(/BYDAY=([^;]+)/);
+                    const bysetposMatch = task.recurrence_rule.match(/BYSETPOS=([^;]+)/);
+                    const bymonthdayMatch = task.recurrence_rule.match(/BYMONTHDAY=([^;]+)/);
+                    if (bydayMatch && bysetposMatch) {
+                        // 格式: BYDAY=1TU 表示每月第一个周二
+                        const dayOrder = parseInt(bydayMatch[1].charAt(0)); // 1, 2, 3, 4 或 -1
+                        const dayName = bydayMatch[1].substring(1); // TU, WE, etc.
+                        const dayMap = { 'SU': 0, 'MO': 1, 'TU': 2, 'WE': 3, 'TH': 4, 'FR': 5, 'SA': 6 };
+                        const targetDay = dayMap[dayName];
+                        const currentDate = new Date(task.due_date);
+                        let nextDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 1);
+                        let found = false;
+                        for (let pos = 1; pos <= 4 || !found; pos++) {
+                            const lastDayOfMonth = new Date(nextDate.getFullYear(), nextDate.getMonth() + 1, 0).getDate();
+                            let targetDate;
+                            if (dayOrder === -1) {
+                                // 最后一个
+                                targetDate = lastDayOfMonth;
+                            }
+                            else {
+                                targetDate = Math.min(pos, lastDayOfMonth);
+                            }
+                            const checkDate = new Date(nextDate.getFullYear(), nextDate.getMonth(), targetDate);
+                            if (checkDate.getDay() === targetDay) {
+                                if (dayOrder === -1 || pos === dayOrder) {
+                                    updates.due_date = checkDate.toISOString().split('T')[0];
+                                    found = true;
+                                }
+                            }
+                            if (pos >= 4 && !found)
+                                found = true;
+                        }
+                    }
+                    else if (bymonthdayMatch) {
+                        // 格式: BYMONTHDAY=15 表示每月15号
+                        const targetDayOfMonth = parseInt(bymonthdayMatch[1]);
+                        const currentDate = new Date(task.due_date);
+                        let nextDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 1);
+                        const lastDayOfMonth = new Date(nextDate.getFullYear(), nextDate.getMonth() + 1, 0).getDate();
+                        const targetDate = Math.min(targetDayOfMonth, lastDayOfMonth);
+                        updates.due_date = new Date(nextDate.getFullYear(), nextDate.getMonth(), targetDate).toISOString().split('T')[0];
+                    }
+                    else {
+                        // 没有精确规则，默认每月同一天
+                        if (task.due_date)
+                            updates.due_date = addMonths(task.due_date, 1);
+                        if (task.start_date)
+                            updates.start_date = addMonths(task.start_date, 1);
+                    }
+                }
+                else {
+                    // 默认每月同一天
+                    if (task.due_date)
+                        updates.due_date = addMonths(task.due_date, 1);
+                    if (task.start_date)
+                        updates.start_date = addMonths(task.start_date, 1);
+                }
+                break;
+            case 'yearly':
+                if (task.due_date)
+                    updates.due_date = addYears(task.due_date, 1);
+                if (task.start_date)
+                    updates.start_date = addYears(task.start_date, 1);
+                break;
+            case 'yearly_n':
+                if (task.recurrence_rule && task.due_date) {
+                    // 解析RRULE获取精确的年循环规则
+                    // 格式: RRULE:FREQ=YEARLY;BYMONTH=3;BYMONTHDAY=15 (每年3月15日)
+                    const bymonthMatch = task.recurrence_rule.match(/BYMONTH=([^;]+)/);
+                    const bymonthdayMatch = task.recurrence_rule.match(/BYMONTHDAY=([^;]+)/);
+                    if (bymonthMatch && bymonthdayMatch) {
+                        const targetMonth = parseInt(bymonthMatch[1]);
+                        const targetDay = parseInt(bymonthdayMatch[1]);
+                        const currentDate = new Date(task.due_date);
+                        let nextDate = new Date(currentDate.getFullYear() + 1, targetMonth - 1, 1);
+                        const lastDayOfMonth = new Date(nextDate.getFullYear(), nextDate.getMonth() + 1, 0).getDate();
+                        updates.due_date = new Date(nextDate.getFullYear(), nextDate.getMonth(), Math.min(targetDay, lastDayOfMonth)).toISOString().split('T')[0];
+                    }
+                    else {
+                        // 没有精确规则，默认每年同日期
+                        if (task.due_date)
+                            updates.due_date = addYears(task.due_date, 1);
+                        if (task.start_date)
+                            updates.start_date = addYears(task.start_date, 1);
+                    }
+                }
+                else {
+                    // 默认每年同日期
+                    if (task.due_date)
+                        updates.due_date = addYears(task.due_date, 1);
+                    if (task.start_date)
+                        updates.start_date = addYears(task.start_date, 1);
+                }
+                break;
+            case 'none':
+            default:
+                // No recurrence, do nothing
+                break;
+        }
+        return updates;
+    }
+    /**
+     * 完成任务（如果是循环任务，创建下一个循环实例）
+     */
+    async complete(id) {
+        try {
+            const task = await connectors_1.feishuConnector.get(id);
+            if (!task) {
+                return {
+                    success: false,
+                    error: {
+                        code: exports.ErrorCodes.TASK_NOT_FOUND,
+                        message: '任务不存在',
+                        details: `Task with id ${id} not found`,
+                    },
+                };
+            }
+            // 更新当前任务为已完成
+            const updated = await connectors_1.feishuConnector.update(id, {
+                status: 'completed',
+                updated_at: new Date().toISOString(),
+            });
+            logger_1.logger.info(`[TaskService] Task ${id} completed`);
+            // 如果是循环任务，创建下一个循环实例
+            if (task.is_recurring && task.recurrence_type !== 'none') {
+                const nextOccurrence = this.calculateNextOccurrence(task);
+                // 即使没有due_date和start_date，也应该创建下一个循环实例（如果没有日期信息，则只继承原任务属性）
+                const now = new Date().toISOString();
+                const newTask = {
+                    id: (0, uuid_1.v4)(),
+                    title: task.title,
+                    description: task.description,
+                    status: 'pending',
+                    priority: task.priority,
+                    category: task.category,
+                    due_date: nextOccurrence.due_date || task.due_date,
+                    start_date: nextOccurrence.start_date || task.start_date,
+                    start_time: task.start_time,
+                    end_time: task.end_time,
+                    is_recurring: task.is_recurring,
+                    recurrence_type: task.recurrence_type,
+                    recurrence_rule: task.recurrence_rule,
+                    // 不复制icloud_event_id，让新任务创建新的iCloud事件
+                    parent_id: task.parent_id || task.id, // 指向原始父任务
+                    source: task.source,
+                    created_at: now,
+                    updated_at: now,
+                };
+                const created = await connectors_1.feishuConnector.create(newTask);
+                logger_1.logger.info(`[TaskService] Created next recurring task: ${created.id} for parent: ${task.id}`);
+                // 如果新任务有 start_date，同步到 iCloud
+                if (created.start_date) {
+                    const syncResult = await schedule_service_1.scheduleService.syncToICalendar(created);
+                    if (syncResult.success && syncResult.icloud_event_id) {
+                        await connectors_1.feishuConnector.update(created.id, {
+                            icloud_event_id: syncResult.icloud_event_id,
+                        });
+                        logger_1.logger.info(`[TaskService] Synced recurring task ${created.id} to iCloud: ${syncResult.icloud_event_id}`);
+                    }
+                    else if (!syncResult.success) {
+                        logger_1.logger.warn(`[TaskService] Failed to sync recurring task ${created.id} to iCloud: ${syncResult.error}`);
+                    }
+                }
+            }
+            return { success: true, data: updated };
+        }
+        catch (e) {
+            logger_1.logger.error(`[TaskService] Failed to complete task ${id}:`, e);
+            return {
+                success: false,
+                error: {
+                    code: exports.ErrorCodes.TASK_UPDATE_FAILED,
+                    message: '任务完成失败',
+                    details: e instanceof Error ? e.message : String(e),
+                },
+            };
+        }
+    }
+    /**
+     * 状态变更（除完成外的状态变更）
+     */
+    async transition(id, toStatus) {
+        try {
+            const task = await connectors_1.feishuConnector.get(id);
+            if (!task) {
+                return {
+                    success: false,
+                    error: {
+                        code: exports.ErrorCodes.TASK_NOT_FOUND,
+                        message: '任务不存在',
+                        details: `Task with id ${id} not found`,
+                    },
+                };
+            }
+            const fromStatus = task.status;
+            // 检查是否是已完成状态
+            if (fromStatus === 'completed') {
+                return {
+                    success: false,
+                    error: {
+                        code: exports.ErrorCodes.TASK_COMPLETED_NOT_TRANSITIONABLE,
+                        message: '已完成任务不能通过此接口变更状态',
+                        details: 'Use the complete endpoint to update completed tasks',
+                    },
+                };
+            }
+            // 检查是否允许此转换
+            const allowedTargets = ALLOWED_TRANSITIONS[fromStatus];
+            if (!allowedTargets || !allowedTargets.includes(toStatus)) {
+                return {
+                    success: false,
+                    error: {
+                        code: exports.ErrorCodes.TASK_INVALID_TRANSITION,
+                        message: `非法的状态转换：从 ${fromStatus} 到 ${toStatus} 不被允许`,
+                        details: `Allowed transitions from ${fromStatus}: ${allowedTargets?.join(', ') || 'none'}`,
+                    },
+                };
+            }
+            // 执行转换
+            const updated = await connectors_1.feishuConnector.update(id, {
+                status: toStatus,
+                updated_at: new Date().toISOString(),
+            });
+            logger_1.logger.info(`[TaskService] Task ${id} transitioned: ${fromStatus} -> ${toStatus}`);
+            return {
+                success: true,
+                data: {
+                    task: updated,
+                    from_status: fromStatus,
+                    to_status: toStatus,
+                    transitioned_at: updated.updated_at,
+                },
+            };
+        }
+        catch (e) {
+            logger_1.logger.error(`[TaskService] Failed to transition task ${id}:`, e);
+            return {
+                success: false,
+                error: {
+                    code: exports.ErrorCodes.TASK_UPDATE_FAILED,
+                    message: '状态变更失败',
+                    details: e instanceof Error ? e.message : String(e),
+                },
+            };
+        }
     }
 }
 exports.TaskService = TaskService;

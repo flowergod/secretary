@@ -1,0 +1,42 @@
+{
+    "version": "1.0.0",
+    "updated_at": "2026-05-04T00:00:00Z",
+    "templates": {
+        "intent_classification": {
+            "id": "intent_classification",
+            "file": "intent-classification.json",
+            "description": "用户意图分类模板",
+            "version": "v1"
+        },
+        "entity_extraction": {
+            "id": "entity_extraction",
+            "file": "entity-extraction.json",
+            "description": "实体提取模板",
+            "version": "v1"
+        },
+        "parameter_parsing": {
+            "id": "parameter_parsing",
+            "file": "parameter-parsing.json",
+            "description": "参数解析模板",
+            "version": "v1"
+        },
+        "confirmation_request": {
+            "id": "confirmation_request",
+            "file": "confirmation-request.json",
+            "description": "确认请求模板",
+            "version": "v1"
+        },
+        "task_expansion": {
+            "id": "task_expansion",
+            "file": "task-expansion.json",
+            "description": "任务延展模板",
+            "version": "v1"
+        },
+        "memory_learning": {
+            "id": "memory_learning",
+            "file": "memory-learning.json",
+            "description": "记忆学习模板",
+            "version": "v1"
+        }
+    }
+}

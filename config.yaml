@@ -1,0 +1,56 @@
+# 项目管理 AI 助理 配置文件
+
+feishu:
+  appId: "cli_a9283e664abadbc2"
+  appSecret: "tRiVemnYcoy4YPxip7SHYpnvFPBWe4ry"
+  tableToken: "YmMcb4PUlaTIAmshS6EcFqPenff"
+  tableId: "tbllwg2t4sEJ64i1"
+
+icloud:
+  appleId: "mrd13817925342@icloud.com"
+  appPassword: "wyun-vdch-laxi-hnzh"
+  # 日历分类 -> iCloud 日历 ID 映射
+  calendarMapping:
+    工作: "D03AAE8F-D142-42CF-8FF2-BA7AB2E83092"
+    个人: "F7D25790-4368-447C-96FF-4F7FE022AE1C"
+    家庭共享: "family-new"
+    work: "D03AAE8F-D142-42CF-8FF2-BA7AB2E83092"
+    personal: "F7D25790-4368-447C-96FF-4F7FE022AE1C"
+    family: "family-new"
+
+ai:
+  primary:
+    provider: "minimax"
+    apiKey: "sk-cp-gTk0H5nIUjYtgRLEsk9LHp58bFjL-xP0IbZu7UxPw-So3Est0Vk-qI1FBrXsM3HOu1QDgbDRpUI1REbwIJSXSytOVD1QYd4ItBDkttgvFHwnr5EgwemyJlk"
+    model: "MiniMax-M2.7"
+    baseUrl: "https://api.minimaxi.com"
+  fallback:
+    provider: "minimax"
+    apiKey: "979760ec-e8c1-46ce-8c97-cfe5ac31f93a"
+    model: "MiniMax-M2.7"
+    baseUrl: "http://47.116.25.79:8080"
+
+reminders:
+  morning:
+    enabled: true
+    time: "8:30"
+  evening:
+    enabled: true
+    time: "21:00"
+  weekendSummary:
+    enabled: true
+    time: "18:00"
+    dayOfWeek: 5
+  preEvent:
+    enabled: true
+    minutesBefore: 15
+  idleTime:
+    enabled: true
+    minFreeMinutes: 60
+
+# LLM 自然语言解析配置
+nlParse:
+  enabled: true           # 启用 LLM 解析作为规则解析的补充
+  fallbackThreshold: 0.3  # 置信度低于 0.3 时触发 LLM 解析
+  learnFromSuccess: true # 从成功的 LLM 解析中学习规则
+  maxRetries: 2          # LLM 解析最大重试次数

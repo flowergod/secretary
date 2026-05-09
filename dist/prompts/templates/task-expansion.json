@@ -1,0 +1,16 @@
+{
+    "id": "task_expansion",
+    "type": "task_expansion",
+    "version": "v1",
+    "description": "判断任务是否需要延展（如添加子任务、相关日程），并生成建议",
+    "variables": ["task", "context"],
+    "content": "你是一个任务规划助手。请分析任务，判断是否需要延展。\n\n任务信息：{task}\n上下文：{context}\n\n可能的延展操作：\n- add_subtask: 添加子任务\n- add_related_event: 添加相关日程\n- add_notification: 添加提醒\n- update_related_tasks: 更新相关任务状态\n\n请以JSON格式返回延展决策：\n{\n  \"should_expand\": true|false,\n  \"actions\": [\n    {\n      \"type\": \"add_subtask|add_related_event|add_notification|update_related_tasks\",\n      \"description\": \"操作描述\",\n      \"priority\": 1-10,\n      \"details\": { 具体参数 }\n    }\n  ],\n  \"reasoning\": \"判断理由\"\n}",
+    "examples": [
+        {
+            "input": "task={title: '完成项目报告'}, context={due_date: '2026-05-10'}",
+            "output": "{\"should_expand\": true, \"actions\": [{\"type\": \"add_subtask\", \"description\": \"拆分为收集材料、撰写初稿、修改完善三个子任务\", \"priority\": 1, \"details\": {\"subtasks\": [\"收集项目材料\", \"撰写报告初稿\", \"修改完善\"]}}], \"reasoning\": \"项目报告是大任务，需要拆分\"}"
+        }
+    ],
+    "createdAt": "2026-05-04T00:00:00Z",
+    "updatedAt": "2026-05-04T00:00:00Z"
+}

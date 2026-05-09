@@ -1,0 +1,33 @@
+[Config] Loaded config from: C:\Users\AILJ\Documents\Astalavista\secretary\config.yaml
+[2026-05-09T13:44:44.827Z] [INFO] [Server] Config loaded
+[2026-05-09T13:44:44.828Z] [INFO] [SemanticService] Loaded 2 LLM config(s)
+[2026-05-09T13:44:44.828Z] [INFO] [FeishuBotService] Starting...
+[2026-05-09T13:44:44.829Z] [INFO] [FeishuBot] Starting WebSocket connection...
+[2026-05-09T13:44:44.837Z] [INFO] [FeishuBot] ["client ready"]
+[2026-05-09T13:44:44.838Z] [INFO] [FeishuBot] ["event-dispatch is ready"]
+[2026-05-09T13:44:44.839Z] [INFO] [Server] Feishu bot service initialized
+[2026-05-09T13:44:44.839Z] [INFO] [WebSocket] Server started
+[2026-05-09T13:44:44.840Z] [INFO] [Server] Config loaded
+[2026-05-09T13:44:44.840Z] [INFO] [FeishuBotService] Starting...
+[2026-05-09T13:44:44.840Z] [INFO] [FeishuBot] Starting WebSocket connection...
+[2026-05-09T13:44:44.841Z] [INFO] [FeishuBot] ["client ready"]
+[2026-05-09T13:44:44.842Z] [INFO] [FeishuBot] ["event-dispatch is ready"]
+[2026-05-09T13:44:44.842Z] [INFO] [Server] Feishu bot service initialized
+[2026-05-09T13:44:44.842Z] [INFO] [WebSocket] Server started
+[Server] Caught uncaught EADDRINUSE: listen EADDRINUSE: address already in use 0.0.0.0:3000
+[Server] Caught uncaught EADDRINUSE: listen EADDRINUSE: address already in use 0.0.0.0:3000
+[2026-05-09T13:44:45.151Z] [INFO] [FeishuBot] ["[ws]","receive events or callbacks through persistent connection only available in self-build & Feishu app, Configured in:\n        Developer Console(开发者后台)\n          ->\n        Events and Callbacks(事件与回调)\n          ->\n        Mode of event/callback subscription(订阅方式)\n          ->\n        Receive events/callbacks through persistent connection(使用 长连接 接收事件/回调)"]
+[2026-05-09T13:44:45.154Z] [INFO] [FeishuBot] ["[ws]","receive events or callbacks through persistent connection only available in self-build & Feishu app, Configured in:\n        Developer Console(开发者后台)\n          ->\n        Events and Callbacks(事件与回调)\n          ->\n        Mode of event/callback subscription(订阅方式)\n          ->\n        Receive events/callbacks through persistent connection(使用 长连接 接收事件/回调)"]
+[2026-05-09T13:44:45.362Z] [INFO] [FeishuBot] ["[ws]","ws client ready"]
+[2026-05-09T13:44:45.363Z] [INFO] [FeishuBot] WebSocket connection established
+[2026-05-09T13:44:45.364Z] [INFO] [FeishuBotService] Started successfully
+[2026-05-09T13:44:45.387Z] [INFO] [FeishuBot] ["[ws]","ws client ready"]
+[2026-05-09T13:44:45.388Z] [INFO] [FeishuBot] WebSocket connection established
+[2026-05-09T13:44:45.388Z] [INFO] [FeishuBotService] Started successfully
+�件/回调)"]
+[2026-05-09T13:44:45.362Z] [INFO] [FeishuBot] ["[ws]","ws client ready"]
+[2026-05-09T13:44:45.363Z] [INFO] [FeishuBot] WebSocket connection established
+[2026-05-09T13:44:45.364Z] [INFO] [FeishuBotService] Started successfully
+[2026-05-09T13:44:45.387Z] [INFO] [FeishuBot] ["[ws]","ws client ready"]
+[2026-05-09T13:44:45.388Z] [INFO] [FeishuBot] WebSocket connection established
+[2026-05-09T13:44:45.388Z] [INFO] [FeishuBotService] Started successfully

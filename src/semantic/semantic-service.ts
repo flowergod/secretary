@@ -166,23 +166,36 @@ export class SemanticService {
       if (intentResult.intent.needsConfirmation) {
         const confirmationSpan = this.traceLogger.startSpan(traceId, 'llm.confirmation');
 
-        // 对于 DELETE_TASK 意图，查询指定日期的日程
+        // 对于 DELETE_TASK 意图，查询匹配的任务
         if (intentResult.intent.intent === 'delete_task') {
           const params = intentResult.intent.parameters;
-          let date = params.date as string || params.start_date as string;
+          const title = params.title as string;
 
-          // 如果没有日期参数，查询最近7天的事件
+          // 优先按标题搜索任务
+          let matchedTasks: Task[] = [];
+          if (title) {
+            matchedTasks = await this.findMatchingTasks(params);
+          }
+
+          // 如果没有找到匹配的任务，再按日期搜索
           let events: Task[] = [];
           let queryDesc = '';
 
-          if (date) {
-            // 查询指定日期的事件
-            events = await this.findEventsForDate(date);
-            queryDesc = date;
+          if (matchedTasks.length > 0) {
+            // 按标题匹配成功，直接使用
+            events = matchedTasks;
+            queryDesc = `包含"${title}"的任务`;
           } else {
-            // 没有日期参数，查询最近7天的事件让用户选择
-            events = await this.findEventsForDateRange(7);
-            queryDesc = '最近7天';
+            // 按标题没找到，尝试按日期搜索
+            let date = params.date as string || params.start_date as string;
+            if (date) {
+              events = await this.findEventsForDate(date);
+              queryDesc = date;
+            } else {
+              // 查询最近7天的事件让用户选择
+              events = await this.findEventsForDateRange(7);
+              queryDesc = '最近7天';
+            }
           }
 
           if (events.length > 0) {

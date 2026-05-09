@@ -1,0 +1,6785 @@
+[
+  {
+    "id": "log_96ef0729ff05",
+    "timestamp": "2026-05-05T12:26:59.726Z",
+    "input": {
+      "text": "测试输入"
+    },
+    "intentRecognition": {
+      "intentId": "test",
+      "intent": "create_task",
+      "confidence": 0.9,
+      "lowConfidence": false,
+      "reasoning": "test",
+      "parameters": {}
+    },
+    "confirmation": null,
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": null
+  },
+  {
+    "id": "log_8a95a3b67ac4",
+    "timestamp": "2026-05-05T12:33:50.630Z",
+    "input": {
+      "text": "���Ҵ�����������10������ܵĻ���"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "other",
+      "entityType": "task",
+      "confidence": 0,
+      "lowConfidence": true,
+      "reasoning": "输入内容为乱码，无法解析为有效文字，无法判断用户意图",
+      "parameters": {}
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 4027
+    }
+  },
+  {
+    "id": "log_fe41d40c1e17",
+    "timestamp": "2026-05-05T12:35:34.493Z",
+    "input": {
+      "text": "帮我创建明天早上10点和徐总的会议"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "task",
+      "confidence": 0.95,
+      "lowConfidence": false,
+      "reasoning": "检测到具体时间，属于日程创建任务",
+      "parameters": {
+        "title": "与徐总的会议",
+        "start_date": "2026-05-06",
+        "start_time": "10:00",
+        "participants": [
+          "徐总"
+        ],
+        "category": "工作"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": false
+    },
+    "execution": {
+      "executed": true,
+      "capabilityId": "task.create",
+      "taskId": {
+        "id": "recviKtV09B71W",
+        "title": "与徐总的会议",
+        "status": "pending",
+        "priority": "medium",
+        "category": "工作",
+        "start_date": "2026-05-06",
+        "start_time": "10:00",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "icloud_event_id": "1777984538584-b7bar6b19@caldav.icloud.com",
+        "source": "semantic",
+        "created_at": "2026-05-05T12:35:34.495Z",
+        "updated_at": "2026-05-05T12:35:34.495Z",
+        "record_id": "recviKtV09B71W"
+      },
+      "action": "completed",
+      "durationMs": 7528
+    },
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 10769
+    }
+  },
+  {
+    "id": "log_89a0f3a23b58",
+    "timestamp": "2026-05-05T12:38:12.750Z",
+    "input": {
+      "text": "将与徐总的会议调整到下午2点"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "update_task",
+      "entityType": "event",
+      "confidence": 0.7,
+      "lowConfidence": false,
+      "reasoning": "用户明确使用'调整'动词，表明要修改现有会议时间，但未提供具体日期（是今天还是其他时间），需要确认具体日期后才能执行更新操作",
+      "parameters": {
+        "title": "与徐总的会议",
+        "start_time": "14:00",
+        "note": "调整到下午2点"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 13102
+    }
+  },
+  {
+    "id": "log_c84fa69a4afa",
+    "timestamp": "2026-05-05T12:51:02.272Z",
+    "input": {
+      "text": "将与徐总的会议调整到下午2点"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "update_task",
+      "entityType": "event",
+      "confidence": 0.65,
+      "lowConfidence": true,
+      "reasoning": "检测到'调整'操作意图，属于修改已有会议。已识别关键信息：会议对象（徐总）、新时间（14:00下午）。但缺少关键参数：会议日期（哪天？）及原会议时间。建议确认具体日期后执行修改。",
+      "parameters": {
+        "title": "与徐总的会议",
+        "start_time": "14:00"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 11984
+    }
+  },
+  {
+    "id": "log_3dfa8fe04e70",
+    "timestamp": "2026-05-05T12:52:05.186Z",
+    "input": {
+      "text": "一小时"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "task",
+      "confidence": 0.4,
+      "lowConfidence": true,
+      "reasoning": "输入'一小时'非常模糊，只能提取到时间长度信息（60分钟），缺乏任务主题、动作意图等关键信息。可能意图包括：1）创建持续一小时的任务；2）查询持续一小时的事项；3）扩展某个任务一小时。由于信息严重不足，置信度较低，需要向用户确认具体意图和任务详情。",
+      "parameters": {
+        "duration": 60,
+        "duration_unit": "minutes"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 15630
+    }
+  },
+  {
+    "id": "log_0d4580e8733a",
+    "timestamp": "2026-05-05T12:53:28.711Z",
+    "input": {
+      "text": "将与徐总的会议调整到下午2点"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "update_task",
+      "entityType": "event",
+      "confidence": 0.75,
+      "lowConfidence": false,
+      "reasoning": "用户明确使用了'调整'关键词，表示要修改现有事件。涉及的事件是与徐总的会议，新时间是下午2点。但缺少具体日期信息（是今天还是明天的会议），需要用户确认具体日期后才能执行修改操作。",
+      "parameters": {
+        "event_title": "与徐总的会议",
+        "new_time": "14:00",
+        "time_type": "afternoon"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 21984
+    }
+  },
+  {
+    "id": "log_f8e9bfc3453f",
+    "timestamp": "2026-05-05T12:56:15.559Z",
+    "input": {
+      "text": "将明天上午10点与徐总的会议调整到下午2点"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "update_task",
+      "entityType": "event",
+      "confidence": 0.92,
+      "lowConfidence": false,
+      "reasoning": "用户明确使用'调整'关键词，表示修改现有日程而非创建新任务。包含原时间(明天上午10点)和新时间(下午2点)，以及会议对象(徐总)。由于涉及日程变更且需确认原日程是否存在，建议确认后执行修改。",
+      "parameters": {
+        "title": "与徐总的会议",
+        "original_date": "2026-05-06",
+        "original_time": "10:00",
+        "new_date": "2026-05-06",
+        "new_time": "14:00",
+        "adjustment_type": "time_change"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 24144
+    }
+  },
+  {
+    "id": "log_fde4e3dd43c2",
+    "timestamp": "2026-05-05T13:06:59.583Z",
+    "input": {
+      "text": "将明天上午10点与徐总的会议调整到下午2点"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "update_task",
+      "entityType": "event",
+      "confidence": 0.9,
+      "lowConfidence": false,
+      "reasoning": "用户明确提到'调整'会议时间，从明天上午10点改到下午2点，属于日程修改操作。需要确认该会议是否存在于系统中，以及调整是否成功。",
+      "parameters": {
+        "title": "与徐总的会议",
+        "original_time": "明天上午10点",
+        "new_time": "下午2点",
+        "new_start_time": "14:00",
+        "description": "时间调整"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 9565
+    }
+  },
+  {
+    "id": "log_aa074a8c0850",
+    "timestamp": "2026-05-05T13:11:22.168Z",
+    "input": {
+      "text": "将明天上午10点与徐总的会议调整到下午2点"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "update_task",
+      "entityType": "event",
+      "confidence": 0.88,
+      "lowConfidence": false,
+      "reasoning": "用户明确提到'调整'时间，涉及具体时间点（明天上午10点→下午2点）和会议对象（徐总），属于日程修改任务",
+      "parameters": {
+        "title": "与徐总的会议",
+        "original_date": "2026-05-06",
+        "original_time": "10:00",
+        "new_time": "14:00",
+        "action": "adjust_time"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": false
+    },
+    "execution": {
+      "executed": false,
+      "error": "任务更新失败",
+      "durationMs": 3319
+    },
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 8891
+    }
+  },
+  {
+    "id": "log_0879bf565a8f",
+    "timestamp": "2026-05-05T13:11:37.158Z",
+    "input": {
+      "text": "opt_1"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "other",
+      "entityType": "task",
+      "confidence": 0.2,
+      "lowConfidence": true,
+      "reasoning": "输入'opt_1'不包含具体的任务描述或意图，仅为模糊选项标识，无法确定用户想要执行的操作类型，需要用户提供更明确的输入",
+      "parameters": {}
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 11345
+    }
+  },
+  {
+    "id": "log_808e0b88f476",
+    "timestamp": "2026-05-05T13:13:13.517Z",
+    "input": {
+      "text": "将明天上午10点与徐总的会议调整到下午2点"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "update_task",
+      "entityType": "event",
+      "confidence": 0.85,
+      "lowConfidence": false,
+      "reasoning": "用户明确使用'调整'关键词，表示要修改现有日程。从语义中提取到原始时间（明天上午10点）、新时间（下午2点）和会议对象（徐总）。需要确认是否有多场与徐总的会议，或系统中是否已存在该日程记录。",
+      "parameters": {
+        "old_start_time": "10:00",
+        "new_start_time": "14:00",
+        "start_date": "2026-05-06",
+        "participant": "徐总",
+        "description": "与徐总的会议"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 18062
+    }
+  },
+  {
+    "id": "log_f8f3aa93885a",
+    "timestamp": "2026-05-05T13:15:22.903Z",
+    "input": {
+      "text": "将明天上午10点的会议调整到下午2点"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "update_task",
+      "entityType": "task",
+      "confidence": 0.92,
+      "lowConfidence": false,
+      "reasoning": "用户明确表达了调整时间的意图，包含具体日期和时间信息。关键词'调整'触发update_task。需要确认具体是哪个会议以便精确修改。",
+      "parameters": {
+        "title": "会议",
+        "original_date": "2026-05-06",
+        "original_time": "10:00",
+        "start_date": "2026-05-06",
+        "start_time": "14:00",
+        "description": "时间从上午10点调整到下午2点"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 14770
+    }
+  },
+  {
+    "id": "log_485e605735db",
+    "timestamp": "2026-05-05T13:19:34.471Z",
+    "input": {
+      "text": "将明天上午10点的会议调整到下午2点"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "update_task",
+      "entityType": "task",
+      "confidence": 0.85,
+      "lowConfidence": false,
+      "reasoning": "用户明确表示要调整（修改）会议时间，从明天上午10点调整到下午2点，属于修改任务操作。但由于未指定具体会议名称或ID，系统需要先查询确认具体任务后再进行修改，建议确认具体任务对象。",
+      "parameters": {
+        "title": "会议",
+        "original_start_time": "明天上午10点",
+        "new_start_time": "14:00",
+        "new_start_date": "2026-05-06"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 18275
+    }
+  },
+  {
+    "id": "log_899e4bb7659a",
+    "timestamp": "2026-05-05T13:20:59.902Z",
+    "input": {
+      "text": "与徐总的会议取消了"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "delete_task",
+      "entityType": "event",
+      "confidence": 0.65,
+      "lowConfidence": true,
+      "reasoning": "用户提到'会议取消了'，意图是删除/取消一个与徐总的会议日程，但未提供具体时间或会议ID，参数不完整，需要确认具体是哪一天的会议才能执行删除操作",
+      "parameters": {
+        "title": "与徐总的会议"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 29760
+    }
+  },
+  {
+    "id": "log_e4235cd705b2",
+    "timestamp": "2026-05-05T13:22:29.453Z",
+    "input": {
+      "text": "与徐总的会议取消了"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "delete_task",
+      "entityType": "event",
+      "confidence": 0.65,
+      "lowConfidence": true,
+      "reasoning": "用户表示会议取消，最可能意图是删除相关日程记录。但由于信息不足（无具体时间、无法确定是哪个具体日程），需要确认具体要取消的是哪个会议",
+      "parameters": {
+        "title": "与徐总的会议"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 24878
+    }
+  },
+  {
+    "id": "log_1beb5c66a153",
+    "timestamp": "2026-05-05T13:26:31.212Z",
+    "input": {
+      "text": "与徐总的会议取消了"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "query_events",
+      "entityType": "event",
+      "confidence": 0.85,
+      "lowConfidence": false,
+      "reasoning": "用户明确表示要取消与徐总的会议，意图清晰。但由于缺少具体时间信息，无法直接执行删除操作。系统需要先查询相关会议来确认具体要取消的日程，查询到后再进行取消操作。",
+      "parameters": {
+        "title": "与徐总的会议"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 22936
+    }
+  },
+  {
+    "id": "log_e7a02e78adbf",
+    "timestamp": "2026-05-05T13:29:26.428Z",
+    "input": {
+      "text": "对，就是这个会议，取消掉"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "delete_task",
+      "entityType": "event",
+      "confidence": 0.55,
+      "lowConfidence": true,
+      "reasoning": "用户明确表达取消意图，但仅用'这个会议'指代，缺少具体会议标识（如会议名称、时间或相关任务ID）。系统无法确定具体要取消哪一个，需要用户提供更明确的会议信息。",
+      "parameters": {
+        "title": "会议"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 10846
+    }
+  },
+  {
+    "id": "log_8c1f84183577",
+    "timestamp": "2026-05-05T13:31:01.318Z",
+    "input": {
+      "text": "与徐总的会议取消了"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "delete_task",
+      "entityType": "event",
+      "confidence": 0.55,
+      "lowConfidence": true,
+      "reasoning": "用户提到会议'取消'，意图为删除日程事件，但未提供具体时间信息，无法精确定位目标会议，需要确认具体是哪个时间的会议",
+      "parameters": {
+        "title": "与徐总的会议",
+        "description": "会议取消"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 20370
+    }
+  },
+  {
+    "id": "log_d2ff1c35c390",
+    "timestamp": "2026-05-05T13:33:51.502Z",
+    "input": {
+      "text": "与徐总的会议取消了"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "delete_task",
+      "entityType": "event",
+      "confidence": 0.75,
+      "lowConfidence": false,
+      "reasoning": "用户明确表达'取消了'会议，这属于删除日程事件的意图。但系统中可能有多个相关会议，需要确认具体删除哪一个。",
+      "parameters": {
+        "title": "与徐总的会议",
+        "participant": "徐总"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 22729
+    }
+  },
+  {
+    "id": "log_6d9c66074fef",
+    "timestamp": "2026-05-05T13:49:56.879Z",
+    "input": {
+      "text": "后面5天，每天9-10点都有要开例会"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "event",
+      "confidence": 0.92,
+      "lowConfidence": false,
+      "reasoning": "用户明确表达需要创建重复日程：未来5天每天9-10点开例会。包含具体时间范围、重复规则（每天重复5次）和任务类型（工作例会）。信息完整，可直接创建。",
+      "parameters": {
+        "title": "例会",
+        "start_date": "2026-05-07",
+        "end_date": "2026-05-11",
+        "start_time": "09:00",
+        "end_time": "10:00",
+        "recurring": {
+          "pattern": "daily",
+          "count": 5
+        },
+        "category": "工作"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": false
+    },
+    "execution": {
+      "executed": true,
+      "capabilityId": "task.create",
+      "taskId": {
+        "id": "recviKMDywtEJm",
+        "title": "例会",
+        "status": "pending",
+        "priority": "medium",
+        "category": "工作",
+        "start_date": "2026-05-07",
+        "start_time": "09:00",
+        "end_time": "10:00",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "icloud_event_id": "1777988999473-xsyfle52c@caldav.icloud.com",
+        "source": "semantic",
+        "created_at": "2026-05-05T13:49:56.883Z",
+        "updated_at": "2026-05-05T13:49:56.883Z",
+        "record_id": "recviKMDywtEJm"
+      },
+      "action": "completed",
+      "durationMs": 5256
+    },
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 23327
+    }
+  },
+  {
+    "id": "log_c5dfa92bbdf5",
+    "timestamp": "2026-05-05T13:54:55.853Z",
+    "input": {
+      "text": "删除所有任务"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "delete_task",
+      "entityType": "task",
+      "confidence": 0.85,
+      "lowConfidence": false,
+      "reasoning": "用户明确表示要删除任务，意图清晰。范围为'所有任务'，属于高风险操作，需要用户确认以避免误删",
+      "parameters": {
+        "scope": "all"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 5818
+    }
+  },
+  {
+    "id": "log_78b03cd7970a",
+    "timestamp": "2026-05-05T14:04:19.810Z",
+    "input": {
+      "text": "删除所有任务"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "delete_task",
+      "entityType": "task",
+      "confidence": 0.92,
+      "lowConfidence": false,
+      "reasoning": "检测到明确的删除意图和任务关键词，'所有'表示批量操作。由于删除所有任务是高风险操作且不可逆，需要用户确认以避免误操作。",
+      "parameters": {}
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 5420
+    }
+  },
+  {
+    "id": "log_f08a192882ec",
+    "timestamp": "2026-05-05T14:35:03.109Z",
+    "input": {
+      "text": "���Ұ�����������10�㿪��"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "other",
+      "entityType": "task",
+      "confidence": 0.15,
+      "lowConfidence": true,
+      "reasoning": "输入内容出现编码乱码，无法识别有效信息，无法判断用户真实意图，需要用户重新输入或澄清",
+      "parameters": {}
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 10144
+    }
+  },
+  {
+    "id": "log_62ea9678d521",
+    "timestamp": "2026-05-05T16:17:34.201Z",
+    "input": {
+      "text": "明天上午10点我要和客户开项目评审会"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "task",
+      "confidence": 0.95,
+      "lowConfidence": false,
+      "reasoning": "用户明确表达了计划安排，检测到具体时间(明天上午10点)、事件主题(项目评审会)和参与者(客户)，信息完整，属于日程创建任务",
+      "parameters": {
+        "title": "项目评审会",
+        "start_date": "2026-05-06",
+        "start_time": "10:00",
+        "description": "与客户开项目评审会",
+        "category": "工作"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": false
+    },
+    "execution": {
+      "executed": true,
+      "capabilityId": "task.create",
+      "taskId": {
+        "id": "recviLnNZ36YSg",
+        "title": "项目评审会",
+        "description": "与客户开项目评审会",
+        "status": "pending",
+        "priority": "medium",
+        "category": "工作",
+        "start_date": "2026-05-06",
+        "start_time": "10:00",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "icloud_event_id": "1777997857847-4w3eju6qh@caldav.icloud.com",
+        "source": "semantic",
+        "created_at": "2026-05-05T16:17:34.203Z",
+        "updated_at": "2026-05-05T16:17:34.203Z",
+        "record_id": "recviLnNZ36YSg"
+      },
+      "action": "completed",
+      "durationMs": 6741
+    },
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 6388
+    }
+  },
+  {
+    "id": "log_7677feeae312",
+    "timestamp": "2026-05-05T16:17:34.846Z",
+    "input": {
+      "text": "今天有什么安排？"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "query_events",
+      "entityType": "event",
+      "confidence": 0.85,
+      "lowConfidence": false,
+      "reasoning": "用户想了解今天的日程安排，'安排'通常指日历事件或日程，包含具体查询时间（今天）",
+      "parameters": {
+        "date": "today"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": false
+    },
+    "execution": {
+      "executed": true,
+      "capabilityId": "event.query",
+      "taskId": {
+        "items": [],
+        "total": 0
+      },
+      "action": "completed",
+      "durationMs": 835
+    },
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 10071
+    }
+  },
+  {
+    "id": "log_4d3a881bbeb5",
+    "timestamp": "2026-05-05T16:17:39.249Z",
+    "input": {
+      "text": "把和客户的会议改到下午3点"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "update_task",
+      "entityType": "event",
+      "confidence": 0.65,
+      "lowConfidence": true,
+      "reasoning": "用户想要修改现有会议的时间，但缺少具体日期和更精确的会议识别信息，需要确认",
+      "parameters": {
+        "event_name": "和客户的会议",
+        "start_time": "15:00"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 8428
+    }
+  },
+  {
+    "id": "log_5b4bf8395c06",
+    "timestamp": "2026-05-05T16:17:45.019Z",
+    "input": {
+      "text": "我今天下午3点有什么会议？"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "query_events",
+      "entityType": "event",
+      "confidence": 0.92,
+      "lowConfidence": false,
+      "reasoning": "用户明确查询今天下午3点的会议日程，属于日历/日程查询操作，参数信息充足",
+      "parameters": {
+        "start_time": "15:00",
+        "date": "today",
+        "keywords": [
+          "会议"
+        ]
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": false
+    },
+    "execution": {
+      "executed": true,
+      "capabilityId": "event.query",
+      "taskId": {
+        "items": [],
+        "total": 0
+      },
+      "action": "completed",
+      "durationMs": 794
+    },
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 11186
+    }
+  },
+  {
+    "id": "log_e820375e491a",
+    "timestamp": "2026-05-05T16:17:55.995Z",
+    "input": {
+      "text": "提醒我明天要去医院体检"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "task",
+      "confidence": 0.95,
+      "lowConfidence": false,
+      "reasoning": "用户明确表示需要提醒，涉及具体时间（明天）和具体事项（医院体检），属于创建提醒任务",
+      "parameters": {
+        "title": "去医院体检",
+        "start_date": "2026-05-07",
+        "category": "健康",
+        "reminder": true
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": false
+    },
+    "execution": {
+      "executed": true,
+      "capabilityId": "task.create",
+      "taskId": {
+        "id": "recviLnTlUo5F4",
+        "title": "去医院体检",
+        "status": "pending",
+        "priority": "medium",
+        "category": "健康",
+        "start_date": "2026-05-07",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "source": "semantic",
+        "created_at": "2026-05-05T16:17:55.996Z",
+        "updated_at": "2026-05-05T16:17:55.996Z",
+        "record_id": "recviLnTlUo5F4"
+      },
+      "action": "completed",
+      "durationMs": 2660
+    },
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 16143
+    }
+  },
+  {
+    "id": "log_8ec38aa039da",
+    "timestamp": "2026-05-05T16:17:56.263Z",
+    "input": {
+      "text": "我有哪些待办任务？"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "query_tasks",
+      "entityType": "task",
+      "confidence": 0.95,
+      "lowConfidence": false,
+      "reasoning": "用户明确询问待办任务，属于任务查询意图",
+      "parameters": {}
+    },
+    "confirmation": {
+      "needsConfirmation": false
+    },
+    "execution": {
+      "executed": true,
+      "capabilityId": "task.query",
+      "taskId": {
+        "items": [
+          {
+            "id": "4c92d1d2-50af-4d85-8e06-fd9d7b32b53b",
+            "record_id": "recviKY6DLv8fF",
+            "icloud_event_id": "1777991732935-z08vab29f@caldav.icloud.com",
+            "title": "meeting",
+            "priority": "medium",
+            "category": "工作",
+            "created_at": "2026-05-05T14:35:29.923Z",
+            "start_date": "2026-05-06",
+            "start_time": "10:00",
+            "recurrence_type": "none",
+            "updated_at": "2026-05-05T14:35:29.923Z",
+            "source": "semantic",
+            "status": "pending",
+            "is_recurring": false
+          },
+          {
+            "id": "e295bc75-b750-48d9-a4ba-70858de3075a",
+            "record_id": "recviLnNZ36YSg",
+            "icloud_event_id": "1777997857847-4w3eju6qh@caldav.icloud.com",
+            "title": "项目评审会",
+            "priority": "medium",
+            "category": "工作",
+            "created_at": "2026-05-05T16:17:34.203Z",
+            "start_date": "2026-05-06",
+            "start_time": "10:00",
+            "recurrence_type": "none",
+            "description": "与客户开项目评审会",
+            "updated_at": "2026-05-05T16:17:34.203Z",
+            "source": "semantic",
+            "status": "pending",
+            "is_recurring": false
+          }
+        ],
+        "total": 2,
+        "page": 1,
+        "page_size": 50,
+        "total_pages": 1
+      },
+      "action": "completed",
+      "durationMs": 719
+    },
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 5351
+    }
+  },
+  {
+    "id": "log_2c763bdc1356",
+    "timestamp": "2026-05-05T16:18:01.589Z",
+    "input": {
+      "text": "每周一早上9点开团队例会"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "task",
+      "confidence": 0.9,
+      "lowConfidence": false,
+      "reasoning": "检测到明确的周期性日程安排，包含具体时间(每周一早上9点)和任务内容(团队例会)，属于创建重复性日程任务",
+      "parameters": {
+        "title": "团队例会",
+        "start_time": "09:00",
+        "recurrence": "weekly",
+        "day_of_week": "monday",
+        "category": "工作"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": false
+    },
+    "execution": {
+      "executed": true,
+      "capabilityId": "task.create",
+      "taskId": {
+        "id": "recviLnUNumEow",
+        "title": "团队例会",
+        "status": "pending",
+        "priority": "medium",
+        "category": "工作",
+        "start_time": "09:00",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "source": "semantic",
+        "created_at": "2026-05-05T16:18:01.591Z",
+        "updated_at": "2026-05-05T16:18:01.591Z",
+        "record_id": "recviLnUNumEow"
+      },
+      "action": "completed",
+      "durationMs": 2433
+    },
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 18721
+    }
+  },
+  {
+    "id": "log_a39dccb11e76",
+    "timestamp": "2026-05-05T16:18:11.032Z",
+    "input": {
+      "text": "项目计划已经写完了"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "complete_task",
+      "entityType": "task",
+      "confidence": 0.65,
+      "lowConfidence": true,
+      "reasoning": "用户说'写完了'暗示某项任务已完成，但未明确指定要标记的任务，且无明确的动作指令词（完成、标记），信息不够充分需要确认",
+      "parameters": {
+        "title": "写项目计划"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 15096
+    }
+  },
+  {
+    "id": "log_b10c186598cb",
+    "timestamp": "2026-05-05T16:18:12.363Z",
+    "input": {
+      "text": "取消明天的项目评审会"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "delete_task",
+      "entityType": "event",
+      "confidence": 0.85,
+      "lowConfidence": false,
+      "reasoning": "用户明确表达'取消'动作，对象是明天的'项目评审会'会议。这是要删除一个日历事件，应使用delete_task能力。需要确认具体时间后执行删除操作。",
+      "parameters": {
+        "title": "项目评审会",
+        "start_date": "2026-05-07",
+        "description": "取消明天的项目评审会"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 26484
+    }
+  },
+  {
+    "id": "log_a8b3f0a5fa99",
+    "timestamp": "2026-05-05T16:18:12.950Z",
+    "input": {
+      "text": "帮我看看这周还剩哪些工作"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "query_tasks",
+      "entityType": "task",
+      "confidence": 0.95,
+      "lowConfidence": false,
+      "reasoning": "用户明确表示要查询本周剩余的工作任务，'这周'指定了时间范围，'还剩'表明查询未完成状态，'工作'指明类别为工作任务，意图清晰",
+      "parameters": {
+        "date_range": "this_week",
+        "status": "pending",
+        "category": "工作"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": false
+    },
+    "execution": {
+      "executed": true,
+      "capabilityId": "task.query",
+      "taskId": {
+        "items": [
+          {
+            "id": "4c92d1d2-50af-4d85-8e06-fd9d7b32b53b",
+            "record_id": "recviKY6DLv8fF",
+            "icloud_event_id": "1777991732935-z08vab29f@caldav.icloud.com",
+            "title": "meeting",
+            "priority": "medium",
+            "category": "工作",
+            "created_at": "2026-05-05T14:35:29.923Z",
+            "start_date": "2026-05-06",
+            "start_time": "10:00",
+            "recurrence_type": "none",
+            "updated_at": "2026-05-05T14:35:29.923Z",
+            "source": "semantic",
+            "status": "pending",
+            "is_recurring": false
+          },
+          {
+            "id": "e295bc75-b750-48d9-a4ba-70858de3075a",
+            "record_id": "recviLnNZ36YSg",
+            "icloud_event_id": "1777997857847-4w3eju6qh@caldav.icloud.com",
+            "title": "项目评审会",
+            "priority": "medium",
+            "category": "工作",
+            "created_at": "2026-05-05T16:17:34.203Z",
+            "start_date": "2026-05-06",
+            "start_time": "10:00",
+            "recurrence_type": "none",
+            "description": "与客户开项目评审会",
+            "updated_at": "2026-05-05T16:17:34.203Z",
+            "source": "semantic",
+            "status": "pending",
+            "is_recurring": false
+          },
+          {
+            "id": "9512ee02-0974-4214-984b-f83eb3981fa8",
+            "record_id": "recviLnUNumEow",
+            "title": "团队例会",
+            "priority": "medium",
+            "category": "工作",
+            "created_at": "2026-05-05T16:18:01.591Z",
+            "start_time": "09:00",
+            "recurrence_type": "none",
+            "updated_at": "2026-05-05T16:18:01.591Z",
+            "source": "semantic",
+            "status": "pending",
+            "is_recurring": false
+          }
+        ],
+        "total": 3,
+        "page": 1,
+        "page_size": 50,
+        "total_pages": 1
+      },
+      "action": "completed",
+      "durationMs": 646
+    },
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 6989
+    }
+  },
+  {
+    "id": "log_91f169db52b9",
+    "timestamp": "2026-05-05T16:18:17.436Z",
+    "input": {
+      "text": "最近太忙了，好多事情都没处理"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "query_tasks",
+      "entityType": "task",
+      "confidence": 0.5,
+      "lowConfidence": true,
+      "reasoning": "用户提到'最近太忙，好多事情没处理'，暗示可能有未完成的任务想要查看或处理。但表达较为模糊，属于感叹式陈述而非明确指令，置信度较低。需要确认用户是想查询待办任务还是想要创建新的待办事项。",
+      "parameters": {
+        "status": "pending",
+        "date_range": "recent"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 16489
+    }
+  },
+  {
+    "id": "log_35969ef6e828",
+    "timestamp": "2026-05-05T16:18:19.964Z",
+    "input": {
+      "text": "紧急：下午2点有个客户电话会议"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "task",
+      "confidence": 0.85,
+      "lowConfidence": false,
+      "reasoning": "检测到紧急标记和具体时间（下午2点），属于创建日程任务。系统将自动同步到日历并设置提醒。缺少具体日期，默认理解为今天",
+      "parameters": {
+        "title": "客户电话会议",
+        "start_time": "14:00",
+        "priority": "high",
+        "category": "工作"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": false
+    },
+    "execution": {
+      "executed": true,
+      "capabilityId": "task.create",
+      "taskId": {
+        "id": "recviLnZA2iWjF",
+        "title": "客户电话会议",
+        "status": "pending",
+        "priority": "high",
+        "category": "工作",
+        "start_time": "14:00",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "source": "semantic",
+        "created_at": "2026-05-05T16:18:19.966Z",
+        "updated_at": "2026-05-05T16:18:19.966Z",
+        "record_id": "recviLnZA2iWjF"
+      },
+      "action": "completed",
+      "durationMs": 2483
+    },
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 8985
+    }
+  },
+  {
+    "id": "log_b1c2a580eb60",
+    "timestamp": "2026-05-05T16:18:33.740Z",
+    "input": {
+      "text": "把那个体检提醒删了"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "delete_task",
+      "entityType": "task",
+      "confidence": 0.75,
+      "lowConfidence": false,
+      "reasoning": "用户明确表达了删除'体检提醒'的意图，关键词'删了'和'体检提醒'都清晰，但使用'那个'指代表明可能有多个体检提醒或需要确认具体是哪一条，建议先确认再执行删除",
+      "parameters": {
+        "title_keyword": "体检提醒"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 17746
+    }
+  },
+  {
+    "id": "log_9f7deb780806",
+    "timestamp": "2026-05-06T00:50:18.438Z",
+    "input": {
+      "text": "ÿ��һ����9�㿪�Ŷ�����"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "task",
+      "confidence": 0.65,
+      "lowConfidence": true,
+      "reasoning": "输入存在编码问题(乱码)，但可识别出包含'9点开始'的时间信息，判断为创建任务意图。但由于乱码导致任务标题不明确，需要用户确认任务详情。参数：start_time=09:00",
+      "parameters": {
+        "start_time": "09:00",
+        "title": ""
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 9855
+    }
+  },
+  {
+    "id": "log_09226632aac2",
+    "timestamp": "2026-05-06T00:52:11.034Z",
+    "input": {
+      "text": "schedule weekly meeting every monday at 9am"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "event",
+      "confidence": 0.9,
+      "lowConfidence": false,
+      "reasoning": "检测到明确的重复日程安排意图，包含重复周期(weekly)、具体时间(9am)和周期(daily monday)，但首次具体日期需要确认",
+      "parameters": {
+        "title": "Weekly Meeting",
+        "recurrence": "weekly",
+        "day_of_week": "Monday",
+        "start_time": "09:00",
+        "category": "工作"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 4381
+    }
+  },
+  {
+    "id": "log_39332d6fc56d",
+    "timestamp": "2026-05-06T00:53:34.847Z",
+    "input": {
+      "text": "schedule weekly recurring task for testing"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "task",
+      "confidence": 0.7,
+      "lowConfidence": false,
+      "reasoning": "用户明确表示要创建一个每周重复的任务用于测试，但缺少关键信息：具体是周几执行、具体时间点。已提取recurrence为weekly，任务标题为testing。需要确认具体执行时间和日期细节。",
+      "parameters": {
+        "title": "testing",
+        "recurrence": "weekly",
+        "is_recurring": true
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 9837
+    }
+  },
+  {
+    "id": "log_e676b01400b9",
+    "timestamp": "2026-05-06T00:55:21.967Z",
+    "input": {
+      "text": "create weekly recurring task on mondays at 9am"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "task",
+      "confidence": 0.8,
+      "lowConfidence": false,
+      "reasoning": "用户明确要求创建每周一早上9点的重复任务，核心参数（重复频率、时间、星期）已完整，但缺少任务的具体标题/内容，需要确认",
+      "parameters": {
+        "recurring": "weekly",
+        "day_of_week": "monday",
+        "start_time": "09:00",
+        "start_date": "2026-05-11"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 6435
+    }
+  },
+  {
+    "id": "log_80dbd2890219",
+    "timestamp": "2026-05-06T00:55:53.620Z",
+    "input": {
+      "text": "create weekly recurring task on mondays at 9am"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "task",
+      "confidence": 0.95,
+      "lowConfidence": false,
+      "reasoning": "用户明确要创建每周一早上9点的重复任务，但缺少任务标题，需要确认",
+      "parameters": {
+        "title": "Weekly Monday Task",
+        "start_time": "09:00",
+        "recurrence": "weekly",
+        "day_of_week": "monday"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 9430
+    }
+  },
+  {
+    "id": "log_86736438e6ce",
+    "timestamp": "2026-05-06T00:58:34.600Z",
+    "input": {
+      "text": "create weekly recurring task on mondays at 9am"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "task",
+      "confidence": 0.85,
+      "lowConfidence": false,
+      "reasoning": "检测到明确的创建周期性任务意图，包含周期(weekly)、时间(monday 9am)等关键信息。但缺少任务的具体标题/内容，建议确认任务名称",
+      "parameters": {
+        "title": "每周一任务",
+        "start_time": "09:00",
+        "recurrence": "weekly",
+        "days_of_week": [
+          "monday"
+        ],
+        "frequency": "weekly"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 17498
+    }
+  },
+  {
+    "id": "log_03af88ce87d2",
+    "timestamp": "2026-05-06T00:59:23.480Z",
+    "input": {
+      "text": "create weekly recurring task on mondays at 9am"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "task",
+      "confidence": 0.85,
+      "lowConfidence": false,
+      "reasoning": "用户意图明确要创建每周一9am的重复任务，包含时间重复规则，但缺少任务标题（title）这一必要信息，需要确认任务名称",
+      "parameters": {
+        "is_recurring": true,
+        "recurrence_rule": "weekly",
+        "day_of_week": "monday",
+        "start_time": "09:00"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 10001
+    }
+  },
+  {
+    "id": "log_7bf914294c5f",
+    "timestamp": "2026-05-06T01:01:02.562Z",
+    "input": {
+      "text": "create weekly recurring task on mondays at 9am"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "task",
+      "confidence": 0.75,
+      "lowConfidence": false,
+      "reasoning": "用户明确表示要创建每周一9点的周期性任务，但缺少任务标题和具体开始日期，需要确认这些信息",
+      "parameters": {
+        "title": "每周一任务",
+        "start_time": "09:00",
+        "recurrence": "weekly",
+        "day_of_week": "monday"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 9101
+    }
+  },
+  {
+    "id": "log_ad4486ca1607",
+    "timestamp": "2026-05-06T01:04:02.485Z",
+    "input": {
+      "text": "create weekly recurring task on mondays at 9am"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "task",
+      "confidence": 0.85,
+      "lowConfidence": false,
+      "reasoning": "用户明确表示创建每周一早上9点的循环任务，包含足够的频率和时间信息，但缺少具体任务标题，需要确认",
+      "parameters": {
+        "frequency": "weekly",
+        "day_of_week": "monday",
+        "start_time": "09:00"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 14066
+    }
+  },
+  {
+    "id": "log_0b2d3c6054e3",
+    "timestamp": "2026-05-06T01:05:01.054Z",
+    "input": {
+      "text": "create weekly recurring task on mondays at 9am"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "task",
+      "confidence": 0.85,
+      "lowConfidence": false,
+      "reasoning": "检测到明确的创建任务意图，包含重复周期(weekly)、具体时间(9am)和星期(monday)。任务标题未明确给出，建议确认具体任务内容",
+      "parameters": {
+        "title": "每周一9点任务",
+        "start_time": "09:00",
+        "recurring": true,
+        "frequency": "weekly",
+        "day_of_week": "monday"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 10497
+    }
+  },
+  {
+    "id": "log_d82214c67fd8",
+    "timestamp": "2026-05-06T12:29:51.000Z",
+    "input": {
+      "text": "change the investor call to tomorrow at 2pm"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "update_task",
+      "entityType": "event",
+      "confidence": 0.88,
+      "lowConfidence": false,
+      "reasoning": "用户明确使用'change'关键词，表明是修改意图。目标是'investor call'（投资者电话会议），时间需调整到明天下午2点。需要确认该事件在系统中是否存在，以及是否需要保留其他原有信息（如参与者、链接等）。",
+      "parameters": {
+        "title": "investor call",
+        "start_date": "tomorrow",
+        "start_time": "14:00"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 24760
+    }
+  },
+  {
+    "id": "log_71a9f5d6b422",
+    "timestamp": "2026-05-06T12:31:54.765Z",
+    "input": {
+      "text": "meeting with boss at 3pm today"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "task",
+      "confidence": 0.95,
+      "lowConfidence": false,
+      "reasoning": "检测到明确的创建意图，包含具体时间(today, 3pm)、事件类型(meeting)和参与对象(boss)，信息完整，无需确认",
+      "parameters": {
+        "title": "meeting with boss",
+        "start_date": "2026-01-11",
+        "start_time": "15:00",
+        "category": "工作"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": false
+    },
+    "execution": {
+      "executed": true,
+      "capabilityId": "task.create",
+      "taskId": {
+        "id": "recviQjvLYQueV",
+        "title": "meeting with boss",
+        "status": "pending",
+        "priority": "medium",
+        "category": "工作",
+        "start_date": "2026-01-11",
+        "start_time": "15:00",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "icloud_event_id": "1778070717875-cuo227qzc@caldav.icloud.com",
+        "source": "semantic",
+        "created_at": "2026-05-06T12:31:54.803Z",
+        "updated_at": "2026-05-06T12:31:54.803Z",
+        "record_id": "recviQjvLYQueV"
+      },
+      "action": "completed",
+      "durationMs": 6435
+    },
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 8869
+    }
+  },
+  {
+    "id": "log_b92c47ee1259",
+    "timestamp": "2026-05-06T12:33:15.009Z",
+    "input": {
+      "text": "meeting with colleague at 4pm today"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "task",
+      "confidence": 0.95,
+      "lowConfidence": false,
+      "reasoning": "检测到明确的创建任务意图，包含具体时间'4pm today'，自动同步到日历",
+      "parameters": {
+        "title": "与同事开会",
+        "start_date": "2026-05-05",
+        "start_time": "16:00",
+        "category": "工作"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": false
+    },
+    "execution": {
+      "executed": true,
+      "capabilityId": "task.create",
+      "taskId": {
+        "id": "recviQjQEDLqkD",
+        "title": "与同事开会",
+        "status": "pending",
+        "priority": "medium",
+        "category": "工作",
+        "start_date": "2026-05-05",
+        "start_time": "16:00",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "icloud_event_id": "1778070798049-bk9bjdaa5@caldav.icloud.com",
+        "source": "semantic",
+        "created_at": "2026-05-06T12:33:15.048Z",
+        "updated_at": "2026-05-06T12:33:15.048Z",
+        "record_id": "recviQjQEDLqkD"
+      },
+      "action": "completed",
+      "durationMs": 6612
+    },
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 6103
+    }
+  },
+  {
+    "id": "log_2d5087d04f1a",
+    "timestamp": "2026-05-06T12:34:46.025Z",
+    "input": {
+      "text": "create a quick reminder for tomorrow morning"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "task",
+      "confidence": 0.7,
+      "lowConfidence": false,
+      "reasoning": "用户明确表示要创建提醒，但缺少具体时间和提醒内容。'tomorrow morning'时间较模糊，需要确认具体时间和任务详情",
+      "parameters": {
+        "title": "reminder",
+        "start_date": "tomorrow",
+        "time_range": "morning",
+        "reminder": true
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 19084
+    }
+  },
+  {
+    "id": "log_e7a1989f2fba",
+    "timestamp": "2026-05-06T12:35:59.017Z",
+    "input": {
+      "text": "meeting tomorrow at 10am"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "task",
+      "confidence": 0.88,
+      "lowConfidence": false,
+      "reasoning": "检测到明确的时间信息(tomorrow at 10am)，属于日程创建任务。但缺少会议主题、持续时间、参与者等关键信息，需要确认补充。",
+      "parameters": {
+        "title": "会议",
+        "start_date": "2026-05-06",
+        "start_time": "10:00",
+        "category": "工作"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 9654
+    }
+  },
+  {
+    "id": "log_cac180162070",
+    "timestamp": "2026-05-06T12:36:36.878Z",
+    "input": {
+      "text": "change that investor call to friday"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "update_task",
+      "entityType": "event",
+      "confidence": 0.75,
+      "lowConfidence": false,
+      "reasoning": "用户明确使用'change...to'句式表示修改意图，提到具体事项'Investor call'，目标时间是'friday'，属于日程修改任务。但缺少具体任务ID和当前日期信息，需要确认具体修改哪个日程及具体时间。",
+      "parameters": {
+        "title": "investor call",
+        "target_date": "friday"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 22233
+    }
+  },
+  {
+    "id": "log_3ca2ba957180",
+    "timestamp": "2026-05-06T12:37:36.661Z",
+    "input": {
+      "text": "cancel the reminder about the meeting"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "delete_task",
+      "entityType": "task",
+      "confidence": 0.8,
+      "lowConfidence": false,
+      "reasoning": "用户明确使用'cancel'表示删除意图，目标是'about the meeting'相关的提醒。虽然表达了清晰的删除意图，但未指定具体是哪个会议的提醒，可能存在多个会议相关任务，需要确认",
+      "parameters": {
+        "title_contains": "meeting"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 14843
+    }
+  },
+  {
+    "id": "log_cfd3c723c3f0",
+    "timestamp": "2026-05-06T12:38:02.275Z",
+    "input": {
+      "text": "remind me to call mom tonight"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "task",
+      "confidence": 0.88,
+      "lowConfidence": false,
+      "reasoning": "检测到明确的提醒意图，用户想在今晚打电话给妈妈。时间'tonight'虽然不是精确的小时，但已足够具体。自动设置默认提醒时间为晚上7点，并标记为需要提醒的任务类型。",
+      "parameters": {
+        "title": "call mom",
+        "start_date": "2026-05-05",
+        "start_time": "19:00",
+        "category": "个人",
+        "reminder": true
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": false
+    },
+    "execution": {
+      "executed": true,
+      "capabilityId": "task.create",
+      "taskId": {
+        "id": "recviQl3nezeWU",
+        "title": "call mom",
+        "status": "pending",
+        "priority": "medium",
+        "category": "个人",
+        "start_date": "2026-05-06",
+        "start_time": "19:00",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "icloud_event_id": "1778071085205-tvqcxcky2@caldav.icloud.com",
+        "source": "semantic",
+        "created_at": "2026-05-06T12:38:02.277Z",
+        "updated_at": "2026-05-06T12:38:02.277Z",
+        "record_id": "recviQl3nezeWU"
+      },
+      "action": "completed",
+      "durationMs": 5638
+    },
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 18052
+    }
+  },
+  {
+    "id": "log_25500dc6115e",
+    "timestamp": "2026-05-06T12:40:43.483Z",
+    "input": {
+      "text": "meeting at 3pm today"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "task",
+      "confidence": 0.92,
+      "lowConfidence": false,
+      "reasoning": "检测到明确的日程安排请求，包含具体时间(今天下午3点)和事件类型(会议)，信息完整可直接创建任务",
+      "parameters": {
+        "title": "meeting",
+        "start_date": "2026-01-27",
+        "start_time": "15:00",
+        "category": "工作"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": false
+    },
+    "execution": {
+      "executed": true,
+      "capabilityId": "task.create",
+      "taskId": {
+        "id": "recviQlJlCiTDo",
+        "title": "meeting",
+        "status": "pending",
+        "priority": "medium",
+        "category": "工作",
+        "start_date": "2026-05-06",
+        "start_time": "15:00",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "icloud_event_id": "1778071246660-fvsfmygnx@caldav.icloud.com",
+        "source": "semantic",
+        "created_at": "2026-05-06T12:40:43.484Z",
+        "updated_at": "2026-05-06T12:40:43.484Z",
+        "record_id": "recviQlJlCiTDo"
+      },
+      "action": "completed",
+      "durationMs": 6050
+    },
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 20692
+    }
+  },
+  {
+    "id": "log_4356fac37d1e",
+    "timestamp": "2026-05-06T12:41:08.672Z",
+    "input": {
+      "text": "meeting tomorrow at 10am"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "task",
+      "confidence": 0.95,
+      "lowConfidence": false,
+      "reasoning": "检测到明确的时间信息'tomorrow'和'10am'，以及动作'meeting'，属于日程创建任务，系统将自动同步到日历",
+      "parameters": {
+        "title": "会议",
+        "start_date": "2026-05-06",
+        "start_time": "10:00"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": false
+    },
+    "execution": {
+      "executed": true,
+      "capabilityId": "task.create",
+      "taskId": {
+        "id": "recviQlPMtK1Ef",
+        "title": "会议",
+        "status": "pending",
+        "priority": "medium",
+        "start_date": "2026-05-06",
+        "start_time": "10:00",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "icloud_event_id": "1778071271349-q6k2zjtlr@caldav.icloud.com",
+        "source": "semantic",
+        "created_at": "2026-05-06T12:41:08.674Z",
+        "updated_at": "2026-05-06T12:41:08.674Z",
+        "record_id": "recviQlPMtK1Ef"
+      },
+      "action": "completed",
+      "durationMs": 6092
+    },
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 19126
+    }
+  },
+  {
+    "id": "log_f1a53c558cb3",
+    "timestamp": "2026-05-06T12:41:38.619Z",
+    "input": {
+      "text": "change that investor call to friday"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "update_task",
+      "entityType": "event",
+      "confidence": 0.85,
+      "lowConfidence": false,
+      "reasoning": "用户明确表示要修改现有任务'that investor call'，目标日期是friday。虽然意图明确，但需要确认是本周五还是下周五，以及具体时间是否保持不变。建议在确认时展示当前的事件信息以便用户确认是否正确。",
+      "parameters": {
+        "title": "investor call",
+        "new_date": "friday"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 23847
+    }
+  },
+  {
+    "id": "log_b6957a497863",
+    "timestamp": "2026-05-06T12:42:01.534Z",
+    "input": {
+      "text": "cancel the reminder about the meeting"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "delete_task",
+      "entityType": "task",
+      "confidence": 0.85,
+      "lowConfidence": false,
+      "reasoning": "用户明确使用'cancel'表示要取消，目标是关于'meeting'的提醒，属于删除任务操作。但未指定具体哪个会议或提醒的详细信息，需要确认具体目标",
+      "parameters": {
+        "title": "meeting"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 8220
+    }
+  },
+  {
+    "id": "log_fdc2a703f7d9",
+    "timestamp": "2026-05-06T12:42:15.779Z",
+    "input": {
+      "text": "remind me to call mom tonight"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "task",
+      "confidence": 0.88,
+      "lowConfidence": false,
+      "reasoning": "检测到明确的创建提醒意图，包含任务内容'call mom'和时间'tonight'，自动解析为今晚20:00的提醒任务",
+      "parameters": {
+        "title": "call mom",
+        "start_date": "2026-05-05",
+        "start_time": "20:00",
+        "category": "个人"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": false
+    },
+    "execution": {
+      "executed": true,
+      "capabilityId": "task.create",
+      "taskId": {
+        "id": "recviQm7yygtCm",
+        "title": "call mom",
+        "status": "pending",
+        "priority": "medium",
+        "category": "个人",
+        "start_date": "2026-05-06",
+        "start_time": "20:00",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "icloud_event_id": "1778071339683-thqa0xhu3@caldav.icloud.com",
+        "source": "semantic",
+        "created_at": "2026-05-06T12:42:15.780Z",
+        "updated_at": "2026-05-06T12:42:15.780Z",
+        "record_id": "recviQm7yygtCm"
+      },
+      "action": "completed",
+      "durationMs": 7078
+    },
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 10293
+    }
+  },
+  {
+    "id": "log_0feae792e138",
+    "timestamp": "2026-05-06T12:54:11.131Z",
+    "input": {
+      "text": "meeting at 3pm today"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "task",
+      "confidence": 0.85,
+      "lowConfidence": false,
+      "reasoning": "检测到具体时间(3pm today)和活动(meeting)，属于日程创建任务，参数完整",
+      "parameters": {
+        "title": "meeting",
+        "start_date": "2026-05-05",
+        "start_time": "15:00",
+        "category": "工作"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": false
+    },
+    "execution": {
+      "executed": true,
+      "capabilityId": "task.create",
+      "taskId": {
+        "id": "recviQp7vvCj6P",
+        "title": "meeting",
+        "status": "pending",
+        "priority": "medium",
+        "category": "工作",
+        "start_date": "2026-05-06",
+        "start_time": "15:00",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "icloud_event_id": "1778072054447-ehhhrw225@caldav.icloud.com",
+        "source": "semantic",
+        "created_at": "2026-05-06T12:54:11.134Z",
+        "updated_at": "2026-05-06T12:54:11.134Z",
+        "record_id": "recviQp7vvCj6P"
+      },
+      "action": "completed",
+      "durationMs": 6605
+    },
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 17913
+    }
+  },
+  {
+    "id": "log_001f61f994c7",
+    "timestamp": "2026-05-06T12:54:30.396Z",
+    "input": {
+      "text": "meeting tomorrow at 10am"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "task",
+      "confidence": 0.92,
+      "lowConfidence": false,
+      "reasoning": "检测到明确的创建任务意图，包含具体时间（tomorrow + 10am）。但未指定任务时长和类别，建议确认细节。",
+      "parameters": {
+        "title": "Meeting",
+        "start_date": "2026-05-06",
+        "start_time": "10:00"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 12644
+    }
+  },
+  {
+    "id": "log_a41af7e9c7d7",
+    "timestamp": "2026-05-06T12:55:39.173Z",
+    "input": {
+      "text": "change that investor call to friday"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "update_task",
+      "entityType": "event",
+      "confidence": 0.75,
+      "lowConfidence": false,
+      "reasoning": "用户意图明确是要修改一个现有的投资者电话会议，将时间改到周五。但'that'是模糊指代，需要确认具体是哪个investor call；'friday'也不明确是本周五还是下周五，建议确认具体日期和事件详情。",
+      "parameters": {
+        "title": "investor call",
+        "action": "reschedule",
+        "new_date": "friday",
+        "note": "that investor call"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 24208
+    }
+  },
+  {
+    "id": "log_12fad5dbe07a",
+    "timestamp": "2026-05-06T13:24:21.387Z",
+    "input": {
+      "text": "meeting at 3pm today"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "event",
+      "confidence": 0.92,
+      "lowConfidence": false,
+      "reasoning": "检测到具体时间'today at 3pm'和事项'meeting'，属于日程创建任务。参数完整，包含标题、时间日期，已自动归类为工作类别。置信度高，无需额外确认。",
+      "parameters": {
+        "title": "meeting",
+        "start_date": "2025-01-17",
+        "start_time": "15:00",
+        "category": "工作"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": false
+    },
+    "execution": {
+      "executed": true,
+      "capabilityId": "task.create",
+      "taskId": {
+        "id": "recviQwIls9mtO",
+        "title": "meeting",
+        "status": "pending",
+        "priority": "medium",
+        "category": "工作",
+        "start_date": "2026-05-06",
+        "start_time": "15:00",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "icloud_event_id": "1778073864468-k8pozkk77@caldav.icloud.com",
+        "source": "semantic",
+        "created_at": "2026-05-06T13:24:21.389Z",
+        "updated_at": "2026-05-06T13:24:21.389Z",
+        "record_id": "recviQwIls9mtO"
+      },
+      "action": "completed",
+      "durationMs": 6408
+    },
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 16907
+    }
+  },
+  {
+    "id": "log_632f4f85496d",
+    "timestamp": "2026-05-06T13:24:33.529Z",
+    "input": {
+      "text": "meeting tomorrow at 10am"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "task",
+      "confidence": 0.9,
+      "lowConfidence": false,
+      "reasoning": "检测到明确的时间'tomorrow at 10am'和关键词'meeting'，属于日程创建任务，包含具体时间会自动同步到日历",
+      "parameters": {
+        "title": "meeting",
+        "start_date": "2026-05-07",
+        "start_time": "10:00",
+        "category": "工作"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": false
+    },
+    "execution": {
+      "executed": true,
+      "capabilityId": "task.create",
+      "taskId": {
+        "id": "recviQwLpJ1CFd",
+        "title": "meeting",
+        "status": "pending",
+        "priority": "medium",
+        "category": "工作",
+        "start_date": "2026-05-07",
+        "start_time": "10:00",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "icloud_event_id": "1778073876269-nn1xbser8@caldav.icloud.com",
+        "source": "semantic",
+        "created_at": "2026-05-06T13:24:33.531Z",
+        "updated_at": "2026-05-06T13:24:33.531Z",
+        "record_id": "recviQwLpJ1CFd"
+      },
+      "action": "completed",
+      "durationMs": 5441
+    },
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 5722
+    }
+  },
+  {
+    "id": "log_3153accc4d33",
+    "timestamp": "2026-05-06T13:25:06.439Z",
+    "input": {
+      "text": "change that investor call to friday"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "update_task",
+      "entityType": "event",
+      "confidence": 0.75,
+      "lowConfidence": false,
+      "reasoning": "检测到'change'关键词表示修改意图，目标是'investor call'事件，目标时间是'friday'。但缺少具体周数（本周五/下周五），以及原事件的具体时间信息不明确，需要确认修改细节。",
+      "parameters": {
+        "title": "investor call",
+        "target_day": "friday"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 27456
+    }
+  },
+  {
+    "id": "log_d21ff0ea7709",
+    "timestamp": "2026-05-06T13:25:44.724Z",
+    "input": {
+      "text": "cancel the reminder about the meeting"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "delete_task",
+      "entityType": "task",
+      "confidence": 0.75,
+      "lowConfidence": false,
+      "reasoning": "用户明确表示要取消(cancel)一个关于会议的提醒(reminder)，意图是删除任务。虽然识别出是删除类操作，但未提供具体会议的时间或唯一标识，无法精确定位需要取消的具体任务，需要确认用户具体要取消哪个提醒",
+      "parameters": {
+        "title": "meeting reminder",
+        "description": "meeting"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 21760
+    }
+  },
+  {
+    "id": "log_9feea36644b5",
+    "timestamp": "2026-05-06T13:26:10.505Z",
+    "input": {
+      "text": "remind me to call mom tonight"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "task",
+      "confidence": 0.88,
+      "lowConfidence": false,
+      "reasoning": "用户明确要求创建提醒任务，内容是今晚打电话给妈妈。检测到关键词'remind me'和具体时间'tonight'，属于创建待办任务。默认设置晚间7点作为提醒时间。",
+      "parameters": {
+        "title": "打电话给妈妈",
+        "start_date": "2026-01-14",
+        "start_time": "19:00",
+        "category": "个人",
+        "reminder": true
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": false
+    },
+    "execution": {
+      "executed": true,
+      "capabilityId": "task.create",
+      "taskId": {
+        "id": "recviQxaESzPwU",
+        "title": "打电话给妈妈",
+        "status": "pending",
+        "priority": "medium",
+        "category": "个人",
+        "start_date": "2026-05-06",
+        "start_time": "19:00",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "icloud_event_id": "1778073973319-ug1djw679@caldav.icloud.com",
+        "source": "semantic",
+        "created_at": "2026-05-06T13:26:10.507Z",
+        "updated_at": "2026-05-06T13:26:10.507Z",
+        "record_id": "recviQxaESzPwU"
+      },
+      "action": "completed",
+      "durationMs": 5605
+    },
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 8789
+    }
+  },
+  {
+    "id": "log_02b0303d726c",
+    "timestamp": "2026-05-07T01:03:31.028Z",
+    "input": {
+      "text": "meeting at 3pm today"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "event",
+      "confidence": 0.95,
+      "lowConfidence": false,
+      "reasoning": "用户明确指定了具体时间(今天下午3点)和事件类型(meeting会议)，属于日程创建任务，系统会自动同步到日历",
+      "parameters": {
+        "title": "meeting",
+        "start_date": "2026-05-05",
+        "start_time": "15:00",
+        "category": "会议"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": false
+    },
+    "execution": {
+      "executed": true,
+      "capabilityId": "task.create",
+      "taskId": {
+        "id": "recviTmJS6dCty",
+        "title": "meeting",
+        "status": "pending",
+        "priority": "medium",
+        "category": "会议",
+        "start_date": "2026-05-07",
+        "start_time": "15:00",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "source": "semantic",
+        "created_at": "2026-05-07T01:03:31.031Z",
+        "updated_at": "2026-05-07T01:03:31.031Z",
+        "record_id": "recviTmJS6dCty"
+      },
+      "action": "completed",
+      "durationMs": 3984
+    },
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 19539
+    }
+  },
+  {
+    "id": "log_cf4e423a75c4",
+    "timestamp": "2026-05-07T01:03:46.424Z",
+    "input": {
+      "text": "meeting tomorrow at 10am"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "event",
+      "confidence": 0.95,
+      "lowConfidence": false,
+      "reasoning": "检测到明确的时间信息（tomorrow at 10am），属于日程创建任务。meeting明确表示会议类型，tomorrow对应2026-05-06，10am对应10:00。由于包含具体时间，系统将自动同步到日历。",
+      "parameters": {
+        "title": "meeting",
+        "start_date": "2026-05-06",
+        "start_time": "10:00",
+        "category": "工作"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": false
+    },
+    "execution": {
+      "executed": true,
+      "capabilityId": "task.create",
+      "taskId": {
+        "id": "recviTmNOlBNW7",
+        "title": "meeting",
+        "status": "pending",
+        "priority": "medium",
+        "category": "工作",
+        "start_date": "2026-05-07",
+        "start_time": "10:00",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "icloud_event_id": "1778115829833-1fx65v5ha@caldav.icloud.com",
+        "source": "semantic",
+        "created_at": "2026-05-07T01:03:46.426Z",
+        "updated_at": "2026-05-07T01:03:46.426Z",
+        "record_id": "recviTmNOlBNW7"
+      },
+      "action": "completed",
+      "durationMs": 7555
+    },
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 11394
+    }
+  },
+  {
+    "id": "log_40a6dfb9a472",
+    "timestamp": "2026-05-07T01:04:10.663Z",
+    "input": {
+      "text": "change that investor call to friday"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "update_task",
+      "entityType": "event",
+      "confidence": 0.85,
+      "lowConfidence": false,
+      "reasoning": "检测到'change that...to'结构，明确表示修改现有事件/任务。用户提到'investor call'并希望改到周五，识别到明确的修改意图。但由于用户使用'that'指代，需要确认具体是哪个事件，且未指定具体时间（几点），需要进一步确认。",
+      "parameters": {
+        "event_name": "investor call",
+        "new_date": "2026-05-08",
+        "day_of_week": "friday"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 16676
+    }
+  },
+  {
+    "id": "log_e766ec71a718",
+    "timestamp": "2026-05-07T01:04:38.945Z",
+    "input": {
+      "text": "cancel the reminder about the meeting"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "delete_task",
+      "entityType": "task",
+      "confidence": 0.65,
+      "lowConfidence": true,
+      "reasoning": "用户想取消会议的提醒，属于删除任务操作。但未指定具体哪个会议提醒，需要进一步确认具体任务ID或任务详情才能执行删除。建议先查询相关任务后再删除。",
+      "parameters": {
+        "title": "meeting",
+        "category": "reminder"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 15198
+    }
+  },
+  {
+    "id": "log_f411c404d1b4",
+    "timestamp": "2026-05-07T01:05:03.129Z",
+    "input": {
+      "text": "remind me to call mom tonight"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "task",
+      "confidence": 0.85,
+      "lowConfidence": false,
+      "reasoning": "检测到 'remind me to' 关键词，明确表示创建提醒任务，'tonight' 指今晚，系统自动推断为今天20:00，参数完整无需确认",
+      "parameters": {
+        "title": "给妈妈打电话",
+        "start_date": "2026-01-27",
+        "start_time": "20:00",
+        "category": "个人",
+        "description": "call mom"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": false
+    },
+    "execution": {
+      "executed": true,
+      "capabilityId": "task.create",
+      "taskId": {
+        "id": "recviTn7MxkIRS",
+        "title": "给妈妈打电话",
+        "description": "call mom",
+        "status": "pending",
+        "priority": "medium",
+        "category": "个人",
+        "start_date": "2026-05-07",
+        "start_time": "20:00",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "icloud_event_id": "1778115906552-r3rmwyvv3@caldav.icloud.com",
+        "source": "semantic",
+        "created_at": "2026-05-07T01:05:03.132Z",
+        "updated_at": "2026-05-07T01:05:03.132Z",
+        "record_id": "recviTn7MxkIRS"
+      },
+      "action": "completed",
+      "durationMs": 6637
+    },
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 19604
+    }
+  },
+  {
+    "id": "log_1bb6dc84fde5",
+    "timestamp": "2026-05-07T13:21:42.756Z",
+    "input": {
+      "text": "������ʲô����"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "query_tasks",
+      "entityType": "task",
+      "confidence": 0.4,
+      "lowConfidence": true,
+      "reasoning": "输入内容出现编码乱码，无法准确识别。从乱码形状推测可能是查询任务的请求（如'有什么任务'或'查看任务'），但由于信息不完整且编码异常，需要向用户确认具体意图。",
+      "parameters": {}
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 15158
+    }
+  },
+  {
+    "id": "log_3d92bc64d5d2",
+    "timestamp": "2026-05-07T13:22:21.871Z",
+    "input": {
+      "text": "提醒我今天下班去超市买牛奶和鸡蛋"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "task",
+      "confidence": 0.85,
+      "lowConfidence": false,
+      "reasoning": "用户想创建一个购物提醒任务，任务内容为'去超市买牛奶和鸡蛋'，时间为'今天下班'。'下班'是一个模糊时间概念，无法精确定义具体时间点，因此需要确认是否要设置具体的时间提醒",
+      "parameters": {
+        "title": "去超市买牛奶和鸡蛋",
+        "start_date": "2026-01-20",
+        "time_description": "今天下班",
+        "category": "购物"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 14690
+    }
+  },
+  {
+    "id": "log_50ab666a2b2e",
+    "timestamp": "2026-05-07T13:23:01.457Z",
+    "input": {
+      "text": "我现在在会议室，等王总来"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "other",
+      "entityType": "task",
+      "confidence": 0,
+      "lowConfidence": true,
+      "reasoning": "无法解析意图",
+      "parameters": {}
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 19921
+    }
+  },
+  {
+    "id": "log_5a14900773f5",
+    "timestamp": "2026-05-07T13:23:29.271Z",
+    "input": {
+      "text": "中午吃什么好？"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "other",
+      "entityType": "task",
+      "confidence": 0,
+      "lowConfidence": true,
+      "reasoning": "无法解析意图",
+      "parameters": {}
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 5976
+    }
+  },
+  {
+    "id": "log_5651810cc1ae",
+    "timestamp": "2026-05-07T13:24:01.592Z",
+    "input": {
+      "text": "帮我看看今晚和明天的安排"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "query_events",
+      "entityType": "calendar",
+      "confidence": 0.9,
+      "lowConfidence": false,
+      "reasoning": "用户明确想查看今晚和明天的日程安排，属于日历查询任务",
+      "parameters": {
+        "date_range": [
+          "tonight",
+          "tomorrow"
+        ]
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": false
+    },
+    "execution": {
+      "executed": true,
+      "capabilityId": "event.query",
+      "taskId": {
+        "items": [
+          {
+            "id": "4bf083e5-4786-4a4b-90bc-93104d270a96",
+            "record_id": "recviWmOazuHti",
+            "title": "去超市买牛奶和鸡蛋",
+            "priority": "medium",
+            "category": "购物",
+            "created_at": "2026-05-07T13:22:37.636Z",
+            "start_date": "2026-05-07",
+            "start_time": "11:00",
+            "recurrence_type": "none",
+            "description": "补充上周没谈完的合同",
+            "updated_at": "2026-05-07T13:22:37.636Z",
+            "source": "semantic",
+            "status": "pending",
+            "is_recurring": false
+          }
+        ],
+        "total": 2
+      },
+      "action": "completed",
+      "durationMs": 896
+    },
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 6545
+    }
+  },
+  {
+    "id": "log_646b09e9d3b9",
+    "timestamp": "2026-05-07T13:24:12.047Z",
+    "input": {
+      "text": "买完了，在回家路上"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "other",
+      "entityType": "task",
+      "confidence": 0,
+      "lowConfidence": true,
+      "reasoning": "无法解析意图",
+      "parameters": {}
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 9030
+    }
+  },
+  {
+    "id": "log_36342965b9e1",
+    "timestamp": "2026-05-07T13:24:59.791Z",
+    "input": {
+      "text": "帮我看看深圳那边的天气"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "other",
+      "entityType": "task",
+      "confidence": 0.95,
+      "lowConfidence": false,
+      "reasoning": "用户请求查询天气信息，这不属于任务管理、日历管理等能力范围，应归类为其他意图",
+      "parameters": {
+        "location": "深圳"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": false
+    },
+    "execution": {
+      "executed": false,
+      "error": "不支持的意图类型: other",
+      "durationMs": 0
+    },
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 10497
+    }
+  },
+  {
+    "id": "log_76d533fae874",
+    "timestamp": "2026-05-07T13:25:08.912Z",
+    "input": {
+      "text": "帮我订个今晚的位子，要安静点的"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "task",
+      "confidence": 0.75,
+      "lowConfidence": false,
+      "reasoning": "用户想创建订位任务，包含时间（今晚）和偏好要求（安静），但缺少具体时间点、餐厅名称等关键信息，需要确认",
+      "parameters": {
+        "title": "订位",
+        "notes": "要安静点的",
+        "start_date": "2026-05-06",
+        "category": "预约"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 8600
+    }
+  },
+  {
+    "id": "log_42ea7fe008b6",
+    "timestamp": "2026-05-07T13:25:53.794Z",
+    "input": {
+      "text": "帮我记一下，今天和王总聊了三个要点..."
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "task",
+      "confidence": 0.85,
+      "lowConfidence": false,
+      "reasoning": "用户明确说'帮我记一下'，是想创建一个记录型任务，包含具体日期'今天'和内容要点，意图清晰，可以直接创建任务",
+      "parameters": {
+        "title": "今天和王总聊了三个要点",
+        "start_date": "2026-01-14",
+        "category": "记录",
+        "description": "和王总会议要点记录"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": false
+    },
+    "execution": {
+      "executed": true,
+      "capabilityId": "task.create",
+      "taskId": {
+        "id": "recviWnD9kCAer",
+        "title": "今天和王总聊了三个要点",
+        "description": "和王总会议要点记录",
+        "status": "pending",
+        "priority": "medium",
+        "category": "记录",
+        "start_date": "2026-05-07",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "source": "semantic",
+        "created_at": "2026-05-07T13:25:53.797Z",
+        "updated_at": "2026-05-07T13:25:53.797Z",
+        "record_id": "recviWnD9kCAer"
+      },
+      "action": "completed",
+      "durationMs": 3055
+    },
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 11035
+    }
+  },
+  {
+    "id": "log_0a3c6250440f",
+    "timestamp": "2026-05-07T13:26:03.058Z",
+    "input": {
+      "text": "今天怎么样？"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "other",
+      "entityType": "task",
+      "confidence": 0,
+      "lowConfidence": true,
+      "reasoning": "无法解析意图",
+      "parameters": {}
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 5686
+    }
+  },
+  {
+    "id": "log_daa5b4bb6704",
+    "timestamp": "2026-05-07T13:26:41.019Z",
+    "input": {
+      "text": "谈成了！帮我记录一下"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "task",
+      "confidence": 0.6,
+      "lowConfidence": true,
+      "reasoning": "用户表达了记录成功事项的意图（谈成了），但未提供具体内容、时间或标题等关键信息，需要进一步确认任务详情才能创建有效的任务记录。",
+      "parameters": {}
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 12207
+    }
+  },
+  {
+    "id": "log_d036a8ed09fd",
+    "timestamp": "2026-05-07T13:27:15.051Z",
+    "input": {
+      "text": "家长会结束了，接下来没什么事了吧？"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "query_events",
+      "entityType": "event",
+      "confidence": 0.65,
+      "lowConfidence": true,
+      "reasoning": "用户陈述'家长会结束了'暗示该事件可能需要标记完成，同时询问'接下来没什么事了吧'是在确认后续是否还有安排，但用户未明确要求查询任务或日程表，属于模糊输入，需要确认是否要查询后续事件或标记家长会完成",
+      "parameters": {
+        "keyword": "家长会",
+        "date_range": "after_today"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 15221
+    }
+  },
+  {
+    "id": "log_af599e3d2835",
+    "timestamp": "2026-05-07T13:27:46.540Z",
+    "input": {
+      "text": "这周忙完了，帮我总结一下"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "expand_task",
+      "entityType": "calendar",
+      "confidence": 0.75,
+      "lowConfidence": false,
+      "reasoning": "用户提到'这周忙完了'并要求'总结一下'，意图是对本周已完成的任务/工作进行汇总整理。expand_task适用于对历史任务数据进行总结归纳的场景。需要确认用户是否需要生成报告、邮件发送等具体形式。",
+      "parameters": {
+        "time_range": "this_week",
+        "scope": "completed"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 16189
+    }
+  },
+  {
+    "id": "log_221a413b76b7",
+    "timestamp": "2026-05-07T13:37:48.141Z",
+    "input": {
+      "text": "早上好，今天有什么安排？"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "query_events",
+      "entityType": "event",
+      "confidence": 0.85,
+      "lowConfidence": false,
+      "reasoning": "用户询问'今天有什么安排'，明确是在查询今天的日程安排，'安排'通常指日历事件或任务，属于日程查询意图",
+      "parameters": {
+        "date": "today"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": false
+    },
+    "execution": {
+      "executed": true,
+      "capabilityId": "event.query",
+      "taskId": {
+        "items": [],
+        "total": 0
+      },
+      "action": "completed",
+      "durationMs": 917
+    },
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 7906
+    }
+  },
+  {
+    "id": "log_7d92df4e7e6e",
+    "timestamp": "2026-05-07T13:38:04.744Z",
+    "input": {
+      "text": "提醒我今天下班去超市买牛奶和鸡蛋"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "task",
+      "confidence": 0.85,
+      "lowConfidence": false,
+      "reasoning": "检测到明确的创建任务意图，用户想在下班时提醒自己购物。虽然'下班'是相对时间，但通常下班时间为18:00，可作为默认值建议给用户确认。需要确认提醒时间和具体时间点。",
+      "parameters": {
+        "title": "去超市买牛奶和鸡蛋",
+        "start_time": "18:00",
+        "remind_minutes": 30,
+        "category": "生活",
+        "description": "下班后"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 15669
+    }
+  },
+  {
+    "id": "log_fa58b6487f37",
+    "timestamp": "2026-05-07T13:38:29.428Z",
+    "input": {
+      "text": "上午11点要见一下王总，补一下上周没谈完的合同"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "task",
+      "confidence": 0.85,
+      "lowConfidence": false,
+      "reasoning": "检测到具体时间(上午11点)和明确事项(见王总谈合同)，属于日程创建任务。但缺少具体日期(今天还是明天)，需要确认",
+      "parameters": {
+        "title": "见王总 - 谈合同",
+        "start_time": "11:00",
+        "description": "补一下上周没谈完的合同",
+        "attendees": [
+          "王总"
+        ],
+        "category": "工作"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 9800
+    }
+  },
+  {
+    "id": "log_3dc3ebeff238",
+    "timestamp": "2026-05-07T13:39:03.202Z",
+    "input": {
+      "text": "合同的事先暂停，对方说要内部讨论一下"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "task",
+      "confidence": 0.75,
+      "lowConfidence": false,
+      "reasoning": "用户表达了需要暂停合同并等待对方内部讨论结果的事项，这是一个需要后续跟进的行动项，隐含创建待办任务的意图。但缺少具体跟进时间和提醒设置，需要确认详细信息。",
+      "parameters": {
+        "title": "合同暂停跟进",
+        "description": "对方说要内部讨论一下，需跟进后续结果",
+        "category": "工作",
+        "status": "pending"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 9640
+    }
+  },
+  {
+    "id": "log_ea57f80bb466",
+    "timestamp": "2026-05-07T13:39:40.056Z",
+    "input": {
+      "text": "下午的投资人电话会议改到明天上午10点行吗？"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "update_task",
+      "entityType": "task",
+      "confidence": 0.85,
+      "lowConfidence": false,
+      "reasoning": "用户请求修改某个会议的时间，从原定的今天下午改到明天上午10点，属于任务时间修改。但需要先确认原任务是否存在，且修改需用户确认。",
+      "parameters": {
+        "title": "投资人电话会议",
+        "original_time": "今天下午",
+        "new_date": "明天",
+        "new_time": "10:00"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 8618
+    }
+  },
+  {
+    "id": "log_f7e5665f2270",
+    "timestamp": "2026-05-07T13:40:13.393Z",
+    "input": {
+      "text": "帮我看看今晚和明天的安排"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "query_events",
+      "entityType": "calendar",
+      "confidence": 0.92,
+      "lowConfidence": false,
+      "reasoning": "用户明确表达了查看日程安排的意图，包含具体时间范围（今晚+明天），属于日程查询。参数已自动转换为对应日期。",
+      "parameters": {
+        "start_date": "2026-05-05",
+        "end_date": "2026-05-06"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": false
+    },
+    "execution": {
+      "executed": true,
+      "capabilityId": "event.query",
+      "taskId": {
+        "items": [],
+        "total": 0
+      },
+      "action": "completed",
+      "durationMs": 899
+    },
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 11984
+    }
+  },
+  {
+    "id": "log_e7131506b680",
+    "timestamp": "2026-05-07T13:40:25.499Z",
+    "input": {
+      "text": "买完了，在回家路上"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "other",
+      "entityType": "task",
+      "confidence": 0.45,
+      "lowConfidence": true,
+      "reasoning": "用户输入'买完了，在回家路上'是一个日常状态陈述，没有明确的指令意图（如创建、查询、完成或删除任务），无法提取任务相关参数，属于普通对话而非任务管理操作",
+      "parameters": {}
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 11198
+    }
+  },
+  {
+    "id": "log_0f38b4d7061f",
+    "timestamp": "2026-05-07T13:41:04.300Z",
+    "input": {
+      "text": "早上好，今天什么安排？"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "query_events",
+      "entityType": "event",
+      "confidence": 0.85,
+      "lowConfidence": false,
+      "reasoning": "用户问候早上好后询问今天的安排，'安排'通常指日程安排，属于日程查询意图。虽然没有明确说'日程'，但这是查询今日事件的常见表达方式。",
+      "parameters": {
+        "date": "today"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": false
+    },
+    "execution": {
+      "executed": true,
+      "capabilityId": "event.query",
+      "taskId": {
+        "items": [
+          {
+            "id": "9023f63c-5a87-4aa7-9e62-54ef863540a9",
+            "record_id": "recviWqKpBFsnr",
+            "title": "去超市买牛奶和鸡蛋",
+            "priority": "medium",
+            "category": "生活",
+            "created_at": "2026-05-07T13:38:16.796Z",
+            "start_date": "2026-05-07",
+            "start_time": "18:00",
+            "recurrence_type": "none",
+            "description": "下班后",
+            "updated_at": "2026-05-07T13:38:16.796Z",
+            "source": "semantic",
+            "status": "pending",
+            "is_recurring": false
+          },
+          {
+            "id": "d9a23726-3bd8-44b0-ad79-23a338044f06",
+            "record_id": "recviWra72n2Ts",
+            "icloud_event_id": "1778161198427-e9fcrf44v@caldav.icloud.com",
+            "title": "投资人电话会议",
+            "priority": "medium",
+            "created_at": "2026-05-07T13:39:55.606Z",
+            "start_date": "2026-05-07",
+            "start_time": "14:00",
+            "recurrence_type": "none",
+            "updated_at": "2026-05-07T13:39:55.606Z",
+            "source": "semantic",
+            "status": "pending",
+            "is_recurring": false
+          }
+        ],
+        "total": 2
+      },
+      "action": "completed",
+      "durationMs": 835
+    },
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 11204
+    }
+  },
+  {
+    "id": "log_f819332138eb",
+    "timestamp": "2026-05-07T13:41:19.674Z",
+    "input": {
+      "text": "帮我订个今晚的位子，要安静点的"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "other",
+      "entityType": "task",
+      "confidence": 0.85,
+      "lowConfidence": false,
+      "reasoning": "用户意图是餐厅订座，属于服务预约请求。当前系统能力范围内没有餐厅预约功能，需要告知用户这一限制，或确认是否将其转化为其他类型的任务（如创建'晚餐订座'的待办提醒）。",
+      "parameters": {
+        "action": "订座",
+        "time": "今晚",
+        "requirement": "安静"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 14525
+    }
+  },
+  {
+    "id": "log_9edf1b07048c",
+    "timestamp": "2026-05-07T13:41:54.936Z",
+    "input": {
+      "text": "明天的客户拜访改到周三上午"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "update_task",
+      "entityType": "task",
+      "confidence": 0.85,
+      "lowConfidence": false,
+      "reasoning": "用户明确使用'改到'关键词，表示要修改已存在的任务时间。原任务'客户拜访'安排在明天，新时间为周三上午。但'上午'时间段不够精确，需要确认具体时间（小时）才能完成修改。",
+      "parameters": {
+        "original_date": "tomorrow",
+        "task_title": "客户拜访",
+        "new_date": "this_wednesday",
+        "new_time_slot": "上午"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 18091
+    }
+  },
+  {
+    "id": "log_93b0a5bdde5f",
+    "timestamp": "2026-05-07T13:42:29.179Z",
+    "input": {
+      "text": "帮我记一下，今天和王总聊了三个要点"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "task",
+      "confidence": 0.55,
+      "lowConfidence": true,
+      "reasoning": "用户明确表示要'记一下'，有创建任务意图，但仅提供了人员（王总）和数量（三个要点），缺少具体内容详情。信息不完整，需要确认三个要点的具体内容才能创建完整任务。",
+      "parameters": {
+        "title": "与王总会面记录",
+        "description": "三个要点（待补充）",
+        "date": "today",
+        "category": "工作"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 8482
+    }
+  },
+  {
+    "id": "log_67e082719d5c",
+    "timestamp": "2026-05-07T13:43:02.002Z",
+    "input": {
+      "text": "今天怎么样？"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "other",
+      "entityType": "task",
+      "confidence": 0.2,
+      "lowConfidence": true,
+      "reasoning": "用户输入是日常问候语'今天怎么样？'，不属于任何任务管理操作，没有检测到创建、查询、修改、删除或完成任务的意图",
+      "parameters": {}
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 7266
+    }
+  },
+  {
+    "id": "log_9d9f9616ae3b",
+    "timestamp": "2026-05-07T13:43:19.434Z",
+    "input": {
+      "text": "客户快到了，准备一下会议室"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "task",
+      "confidence": 0.8,
+      "lowConfidence": false,
+      "reasoning": "用户表达了需要完成的具体事项（准备会议室），且提及客户快到了表明任务的紧迫性。虽然没有精确时间点，但可以判断为即将执行的任务，建议确认具体时间或是否需要提醒",
+      "parameters": {
+        "title": "准备会议室",
+        "category": "工作",
+        "priority": "high",
+        "description": "客户快到了"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 12611
+    }
+  },
+  {
+    "id": "log_32d35dd00f18",
+    "timestamp": "2026-05-07T13:43:51.899Z",
+    "input": {
+      "text": "谈成了！帮我记录一下"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "task",
+      "confidence": 0.7,
+      "lowConfidence": false,
+      "reasoning": "用户明确要求'记录一下'，表示要创建新任务记录'谈成了'的事件。但具体项目名称、客户、时间等关键信息缺失，需要确认细节。",
+      "parameters": {
+        "title": "项目谈成",
+        "category": "工作",
+        "note": "需要进一步确认具体项目细节"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 25866
+    }
+  },
+  {
+    "id": "log_51a9141a8958",
+    "timestamp": "2026-05-07T13:44:43.089Z",
+    "input": {
+      "text": "帮我记一下，老师说的暑假安排"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "task",
+      "confidence": 0.75,
+      "lowConfidence": false,
+      "reasoning": "用户明确表示要'记一下'，属于创建任务的动作。但缺少具体时间（暑假仅为模糊时间段）及详细分类，系统需要后续补充这些信息以完整创建任务。当前仅能提取标题，建议确认具体日期或时间范围。",
+      "parameters": {
+        "title": "老师说的暑假安排"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 11615
+    }
+  },
+  {
+    "id": "log_60f461eed5dd",
+    "timestamp": "2026-05-07T13:45:40.347Z",
+    "input": {
+      "text": "家长会结束了，接下来没什么事了吧？"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "query_events",
+      "entityType": "calendar",
+      "confidence": 0.6,
+      "lowConfidence": true,
+      "reasoning": "用户陈述家长会已结束，并询问接下来是否还有安排。这是在查询接下来的日程安排，但表述较模糊，可能指今天剩余日程，也可能是查询后续几天的安排，需要确认具体查询范围。",
+      "parameters": {
+        "date": "today",
+        "period": "after_now"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 16344
+    }
+  },
+  {
+    "id": "log_2f1df15edca2",
+    "timestamp": "2026-05-07T13:48:05.531Z",
+    "input": {
+      "text": "�����ʲô�ã�"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "query_tasks",
+      "entityType": "task",
+      "confidence": 0.35,
+      "lowConfidence": true,
+      "reasoning": "输入内容出现编码乱码，无法正常解析。乱码特征可能对应'今天有什么？'或类似查询语句，但信息不完整且不准确，需要用户确认真实意图。",
+      "parameters": {}
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 10465
+    }
+  },
+  {
+    "id": "log_116aca50102d",
+    "timestamp": "2026-05-07T13:49:30.239Z",
+    "input": {
+      "text": "中午吃什么好？"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "other",
+      "entityType": "task",
+      "confidence": 0,
+      "lowConfidence": true,
+      "reasoning": "无法解析意图",
+      "parameters": {}
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 21119
+    }
+  },
+  {
+    "id": "log_66644170ed63",
+    "timestamp": "2026-05-07T13:49:58.278Z",
+    "input": {
+      "text": "今天怎么样？"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "other",
+      "entityType": "task",
+      "confidence": 0,
+      "lowConfidence": true,
+      "reasoning": "无法解析意图",
+      "parameters": {}
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 10298
+    }
+  },
+  {
+    "id": "log_77d5363bad5e",
+    "timestamp": "2026-05-07T13:50:41.608Z",
+    "input": {
+      "text": "早上好，今天有什么安排？"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "query_events",
+      "entityType": "event",
+      "confidence": 0.88,
+      "lowConfidence": false,
+      "reasoning": "用户询问今天的安排，属于查询日程的意图。'安排'通常指日历事件，系统将查询今日的日程记录。",
+      "parameters": {
+        "date": "2026-05-05"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": false
+    },
+    "execution": {
+      "executed": true,
+      "capabilityId": "event.query",
+      "taskId": {
+        "items": [],
+        "total": 0
+      },
+      "action": "completed",
+      "durationMs": 846
+    },
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 7398
+    }
+  },
+  {
+    "id": "log_04744b41896e",
+    "timestamp": "2026-05-07T13:50:57.685Z",
+    "input": {
+      "text": "提醒我今天下班去超市买牛奶和鸡蛋"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "task",
+      "confidence": 0.85,
+      "lowConfidence": false,
+      "reasoning": "检测到明确的任务创建意图，包含时间（今天下班）和具体任务内容（买牛奶和鸡蛋）。'下班'作为相对时间点，精确时间需确认，建议设置needsConfirmation让用户确认具体提醒时间或自动采用默认下班时间（如18:00）",
+      "parameters": {
+        "title": "去超市买牛奶和鸡蛋",
+        "start_date": "2026-01-15",
+        "start_time": "18:00",
+        "category": "购物",
+        "reminder": "下班"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 15216
+    }
+  },
+  {
+    "id": "log_0cc0e32eca08",
+    "timestamp": "2026-05-07T13:51:24.445Z",
+    "input": {
+      "text": "上午11点要见一下王总，补一下上周没谈完的合同"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "task",
+      "confidence": 0.85,
+      "lowConfidence": false,
+      "reasoning": "检测到明确的时间(上午11点)和任务事项(见王总补谈合同)，属于创建日程任务。但用户未明确具体日期(今天/明天)，仅指定了时间点，建议确认具体日期",
+      "parameters": {
+        "title": "见王总 - 补谈合同",
+        "start_date": "2026-05-06",
+        "start_time": "11:00",
+        "description": "补一下上周没谈完的合同",
+        "category": "工作"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 16085
+    }
+  },
+  {
+    "id": "log_c74ea43fc99f",
+    "timestamp": "2026-05-07T13:52:03.400Z",
+    "input": {
+      "text": "合同的事先暂停，对方说要内部讨论一下"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "task",
+      "confidence": 0.75,
+      "lowConfidence": false,
+      "reasoning": "用户提到合同事项暂停且需等待对方内部讨论，语义上需要创建一个待办任务来跟踪后续跟进事项，但未明确说要创建任务，且缺少具体跟进时间，建议确认任务详情和预期跟进时间",
+      "parameters": {
+        "title": "合同暂停待跟进",
+        "description": "对方说要内部讨论一下，等待对方回复后继续推进",
+        "category": "工作"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 14371
+    }
+  },
+  {
+    "id": "log_0f55758d4033",
+    "timestamp": "2026-05-07T13:52:35.165Z",
+    "input": {
+      "text": "下午的投资人电话会议改到明天上午10点行吗？"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "update_task",
+      "entityType": "task",
+      "confidence": 0.85,
+      "lowConfidence": false,
+      "reasoning": "用户明确表达了修改现有日程的意图，使用了'改到'这个动作。需要修改'投资人电话会议'的时间从'下午'改为'明天上午10点'。但需要先确认该任务是否存在于系统中。",
+      "parameters": {
+        "title": "投资人电话会议",
+        "start_date": "明天",
+        "start_time": "10:00"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 11429
+    }
+  },
+  {
+    "id": "log_1893023a5611",
+    "timestamp": "2026-05-07T13:52:59.568Z",
+    "input": {
+      "text": "帮我看看今晚和明天的安排"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "query_events",
+      "entityType": "calendar",
+      "confidence": 0.92,
+      "lowConfidence": false,
+      "reasoning": "用户明确要查看今晚和明天的日程安排，属于日程查询任务，已提取具体时间范围",
+      "parameters": {
+        "start_date": "2026-05-03",
+        "end_date": "2026-05-04",
+        "time_range": "今晚至明天"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": false
+    },
+    "execution": {
+      "executed": true,
+      "capabilityId": "event.query",
+      "taskId": {
+        "items": [],
+        "total": 0
+      },
+      "action": "completed",
+      "durationMs": 909
+    },
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 10913
+    }
+  },
+  {
+    "id": "log_49cf243e953c",
+    "timestamp": "2026-05-07T13:53:13.501Z",
+    "input": {
+      "text": "买完了，在回家路上"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "expand_task",
+      "entityType": "task",
+      "confidence": 0.3,
+      "lowConfidence": true,
+      "reasoning": "用户描述了当前状态（买完了、在回家路上），但未包含明确的行动指令或任务信息。这是一个生活状态描述，不构成具体的任务创建、查询或修改指令。信息不足以判断用户是否需要创建相关任务（如：到家后需要做什么？是否要记录购物清单？），需要进一步确认用户意图。",
+      "parameters": {}
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 13011
+    }
+  },
+  {
+    "id": "log_866656b3719e",
+    "timestamp": "2026-05-07T13:53:50.837Z",
+    "input": {
+      "text": "早上好，今天什么安排？"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "query_events",
+      "entityType": "calendar",
+      "confidence": 0.8,
+      "lowConfidence": false,
+      "reasoning": "用户询问今天的安排，在中文语境中'安排'通常指日程安排（如会议、约会等），属于查询日历日程的请求。",
+      "parameters": {
+        "date": "today"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": false
+    },
+    "execution": {
+      "executed": true,
+      "capabilityId": "event.query",
+      "taskId": {
+        "items": [
+          {
+            "id": "9023f63c-5a87-4aa7-9e62-54ef863540a9",
+            "record_id": "recviWqKpBFsnr",
+            "title": "去超市买牛奶和鸡蛋",
+            "priority": "medium",
+            "category": "生活",
+            "created_at": "2026-05-07T13:38:16.796Z",
+            "start_date": "2026-05-07",
+            "start_time": "18:00",
+            "recurrence_type": "none",
+            "description": "下班后",
+            "updated_at": "2026-05-07T13:38:16.796Z",
+            "source": "semantic",
+            "status": "pending",
+            "is_recurring": false
+          },
+          {
+            "id": "d9a23726-3bd8-44b0-ad79-23a338044f06",
+            "record_id": "recviWra72n2Ts",
+            "icloud_event_id": "1778161198427-e9fcrf44v@caldav.icloud.com",
+            "title": "投资人电话会议",
+            "priority": "medium",
+            "created_at": "2026-05-07T13:39:55.606Z",
+            "start_date": "2026-05-07",
+            "start_time": "14:00",
+            "recurrence_type": "none",
+            "updated_at": "2026-05-07T13:39:55.606Z",
+            "source": "semantic",
+            "status": "pending",
+            "is_recurring": false
+          },
+          {
+            "id": "c25958ff-fdf2-4351-b90c-265248188e27",
+            "record_id": "recviWtYlqviHt",
+            "title": "去超市买牛奶和鸡蛋",
+            "priority": "medium",
+            "category": "购物",
+            "created_at": "2026-05-07T13:51:05.440Z",
+            "start_date": "2026-05-07",
+            "start_time": "18:00",
+            "recurrence_type": "none",
+            "updated_at": "2026-05-07T13:51:05.440Z",
+            "source": "semantic",
+            "status": "pending",
+            "is_recurring": false
+          },
+          {
+            "id": "c1db2ed2-5dad-4ca4-be42-e57b28c16422",
+            "record_id": "recviWu867hsnj",
+            "icloud_event_id": "1778161905638-rqw3guiz8@caldav.icloud.com",
+            "title": "见王总 - 补谈合同",
+            "priority": "medium",
+            "category": "工作",
+            "created_at": "2026-05-07T13:51:42.898Z",
+            "start_date": "2026-05-07",
+            "start_time": "11:00",
+            "recurrence_type": "none",
+            "description": "补一下上周没谈完的合同",
+            "updated_at": "2026-05-07T13:51:42.898Z",
+            "source": "semantic",
+            "status": "pending",
+            "is_recurring": false
+          }
+        ],
+        "total": 4
+      },
+      "action": "completed",
+      "durationMs": 865
+    },
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 9996
+    }
+  },
+  {
+    "id": "log_15d8fbc40157",
+    "timestamp": "2026-05-07T13:54:02.616Z",
+    "input": {
+      "text": "帮我订个今晚的位子，要安静点的"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "other",
+      "entityType": "task",
+      "confidence": 0.85,
+      "lowConfidence": false,
+      "reasoning": "用户意图是预订餐厅座位（订位子），属于生活服务类需求。虽然识别到具体时间（今晚）和偏好（安静），但当前系统不具备餐厅预订功能，无法直接执行。建议告知用户此功能暂不支持，可推荐使用美团、大众点评等应用。",
+      "parameters": {
+        "title": "订今晚的位子",
+        "preference": "安静",
+        "time": "今晚",
+        "note": "预订餐厅座位"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 10903
+    }
+  },
+  {
+    "id": "log_604952c3f87a",
+    "timestamp": "2026-05-07T13:54:30.734Z",
+    "input": {
+      "text": "明天的客户拜访改到周三上午"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "update_task",
+      "entityType": "task",
+      "confidence": 0.85,
+      "lowConfidence": false,
+      "reasoning": "用户明确表达了修改已有任务的意图，包含待修改任务名称（客户拜访）和新时间（周三上午）。但'上午'时间范围较大，需要确认具体时间点（如09:00或10:00）。",
+      "parameters": {
+        "task_name": "客户拜访",
+        "original_time": "明天",
+        "new_time": "周三上午"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 11215
+    }
+  },
+  {
+    "id": "log_a2d50ed83341",
+    "timestamp": "2026-05-07T13:55:06.966Z",
+    "input": {
+      "text": "帮我记一下，今天和王总聊了三个要点"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "task",
+      "confidence": 0.75,
+      "lowConfidence": false,
+      "reasoning": "检测到明确的记录意图，用户希望创建任务保存与王总的会议要点。但用户未提供具体的三个要点内容，缺少详细信息，需要确认具体要记录的内容。",
+      "parameters": {
+        "title": "记录与王总会议要点",
+        "start_date": "2025-05-19",
+        "category": "工作",
+        "description": "和王总聊了三个要点"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 10002
+    }
+  },
+  {
+    "id": "log_315e4679284b",
+    "timestamp": "2026-05-07T13:55:49.240Z",
+    "input": {
+      "text": "今天怎么样？"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "other",
+      "entityType": "task",
+      "confidence": 0,
+      "lowConfidence": true,
+      "reasoning": "无法解析意图",
+      "parameters": {}
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 6684
+    }
+  },
+  {
+    "id": "log_d6617aad09a1",
+    "timestamp": "2026-05-07T13:56:23.533Z",
+    "input": {
+      "text": "谈成了！帮我记录一下"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "task",
+      "confidence": 0.65,
+      "lowConfidence": true,
+      "reasoning": "用户明确表达了需要记录的需求，'谈成了'可作为任务标题，但缺少具体内容、时间等关键信息，需要进一步确认细节",
+      "parameters": {
+        "title": "谈成了"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 10828
+    }
+  },
+  {
+    "id": "log_c0ec36b3c8dd",
+    "timestamp": "2026-05-07T13:56:59.521Z",
+    "input": {
+      "text": "帮我记一下，老师说的暑假安排"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "task",
+      "confidence": 0.5,
+      "lowConfidence": true,
+      "reasoning": "用户意图是记录暑假安排，属于创建任务类型，但缺少具体时间、详细内容等关键信息，需要向用户确认具体安排细节",
+      "parameters": {
+        "title": "老师说的暑假安排",
+        "category": "学习"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 6567
+    }
+  },
+  {
+    "id": "log_7f3d7bc565a3",
+    "timestamp": "2026-05-07T13:58:08.344Z",
+    "input": {
+      "text": "这周忙完了，帮我总结一下"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "query_tasks",
+      "entityType": "task",
+      "confidence": 0.85,
+      "lowConfidence": false,
+      "reasoning": "用户表达想要总结本周的工作情况，'总结'意味着查看和分析已有的任务完成情况，属于任务查询类操作",
+      "parameters": {
+        "date_range": "this_week",
+        "summary": true
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": false
+    },
+    "execution": {
+      "executed": true,
+      "capabilityId": "task.query",
+      "taskId": {
+        "items": [
+          {
+            "id": "d97d008e-037a-4de0-9930-229fde80996b",
+            "record_id": "recviWqdOuNyMv",
+            "icloud_event_id": "1778160974385-dd48nnsw3@caldav.icloud.com",
+            "title": "管理层周会",
+            "priority": "medium",
+            "category": "工作",
+            "created_at": "2026-05-07T13:36:11.259Z",
+            "start_date": "2026-05-11",
+            "start_time": "09:00",
+            "recurrence_type": "none",
+            "updated_at": "2026-05-07T13:36:11.259Z",
+            "source": "api",
+            "status": "pending",
+            "end_time": "10:00",
+            "is_recurring": false
+          },
+          {
+            "id": "a890ba88-dd97-4949-b5a3-1036bc39920e",
+            "record_id": "recviWqfrWMclx",
+            "icloud_event_id": "1778160981039-inloh8qc0@caldav.icloud.com",
+            "title": "产品进度汇报",
+            "priority": "medium",
+            "category": "工作",
+            "created_at": "2026-05-07T13:36:17.850Z",
+            "start_date": "2026-05-11",
+            "start_time": "10:30",
+            "recurrence_type": "none",
+            "updated_at": "2026-05-07T13:36:17.850Z",
+            "source": "api",
+            "status": "pending",
+            "end_time": "11:30",
+            "is_recurring": false
+          },
+          {
+            "id": "18ab6658-182f-4500-9fee-50e569610660",
+            "record_id": "recviWqh01MzyX",
+            "icloud_event_id": "1778160986665-jq47o0ais@caldav.icloud.com",
+            "title": "投资人电话会议",
+            "priority": "medium",
+            "category": "工作",
+            "created_at": "2026-05-07T13:36:23.850Z",
+            "start_date": "2026-05-11",
+            "start_time": "14:00",
+            "recurrence_type": "none",
+            "updated_at": "2026-05-07T13:36:23.850Z",
+            "source": "api",
+            "status": "pending",
+            "end_time": "15:00",
+            "is_recurring": false
+          },
+          {
+            "id": "a4caa6bb-3976-4853-b54d-3868ea16c3b6",
+            "record_id": "recviWqivnnWZy",
+            "icloud_event_id": "1778160992610-btkhjemp6@caldav.icloud.com",
+            "title": "产品评审会",
+            "priority": "medium",
+            "category": "工作",
+            "created_at": "2026-05-07T13:36:29.617Z",
+            "start_date": "2026-05-11",
+            "start_time": "17:00",
+            "recurrence_type": "none",
+            "updated_at": "2026-05-07T13:36:29.617Z",
+            "source": "api",
+            "status": "pending",
+            "end_time": "18:00",
+            "is_recurring": false
+          },
+          {
+            "id": "bdd32a27-47b1-4b6b-bce3-f2121b4ad0bc",
+            "record_id": "recviWqk3Lmybc",
+            "icloud_event_id": "1778160998368-oi3foco5o@caldav.icloud.com",
+            "title": "客户拜访（深圳）",
+            "priority": "medium",
+            "category": "工作",
+            "created_at": "2026-05-07T13:36:35.357Z",
+            "start_date": "2026-05-12",
+            "start_time": "10:00",
+            "recurrence_type": "none",
+            "updated_at": "2026-05-07T13:36:35.357Z",
+            "source": "api",
+            "status": "pending",
+            "end_time": "11:00",
+            "is_recurring": false
+          },
+          {
+            "id": "4cb4a762-21ae-48b1-b1a6-25aa4be27b49",
+            "record_id": "recviWqltdPfaE",
+            "title": "孩子家长会",
+            "priority": "medium",
+            "category": "家庭",
+            "created_at": "2026-05-07T13:36:40.960Z",
+            "start_date": "2026-05-13",
+            "start_time": "14:00",
+            "recurrence_type": "none",
+            "updated_at": "2026-05-07T13:36:40.960Z",
+            "source": "api",
+            "status": "pending",
+            "end_time": "16:00",
+            "is_recurring": false
+          },
+          {
+            "id": "9023f63c-5a87-4aa7-9e62-54ef863540a9",
+            "record_id": "recviWqKpBFsnr",
+            "title": "去超市买牛奶和鸡蛋",
+            "priority": "medium",
+            "category": "生活",
+            "created_at": "2026-05-07T13:38:16.796Z",
+            "start_date": "2026-05-07",
+            "start_time": "18:00",
+            "recurrence_type": "none",
+            "description": "下班后",
+            "updated_at": "2026-05-07T13:38:16.796Z",
+            "source": "semantic",
+            "status": "pending",
+            "is_recurring": false
+          },
+          {
+            "id": "d9a23726-3bd8-44b0-ad79-23a338044f06",
+            "record_id": "recviWra72n2Ts",
+            "icloud_event_id": "1778161198427-e9fcrf44v@caldav.icloud.com",
+            "title": "投资人电话会议",
+            "priority": "medium",
+            "created_at": "2026-05-07T13:39:55.606Z",
+            "start_date": "2026-05-07",
+            "start_time": "14:00",
+            "recurrence_type": "none",
+            "updated_at": "2026-05-07T13:39:55.606Z",
+            "source": "semantic",
+            "status": "pending",
+            "is_recurring": false
+          },
+          {
+            "id": "efa3cf93-cb77-4204-978e-f8d3992ed76c",
+            "record_id": "recviWrokb2ZFV",
+            "title": "买牛奶鸡蛋",
+            "priority": "medium",
+            "created_at": "2026-05-07T13:40:50.179Z",
+            "recurrence_type": "none",
+            "updated_at": "2026-05-07T13:40:50.179Z",
+            "status": "pending",
+            "is_recurring": false
+          },
+          {
+            "id": "3a3798b1-1328-4856-b18f-d4cfcf2439ce",
+            "record_id": "recviWs270WJO9",
+            "title": "准备会议室",
+            "priority": "high",
+            "category": "工作",
+            "created_at": "2026-05-07T13:43:23.177Z",
+            "recurrence_type": "none",
+            "description": "客户快到了",
+            "updated_at": "2026-05-07T13:43:23.177Z",
+            "status": "pending",
+            "is_recurring": false
+          },
+          {
+            "id": "3c64854e-b3ad-4928-944d-0c60c3c77294",
+            "record_id": "recviWsj7za0gJ",
+            "title": "项目谈成",
+            "priority": "medium",
+            "category": "工作",
+            "created_at": "2026-05-07T13:44:28.446Z",
+            "recurrence_type": "none",
+            "updated_at": "2026-05-07T13:44:28.446Z",
+            "status": "pending",
+            "is_recurring": false
+          },
+          {
+            "id": "1b9c0387-f772-41cd-b379-4e64760a5f3d",
+            "record_id": "recviWswMu6j7I",
+            "title": "老师说的暑假安排",
+            "priority": "medium",
+            "created_at": "2026-05-07T13:45:21.047Z",
+            "recurrence_type": "none",
+            "due_date": "2025-07-15",
+            "description": "暑假7月5日至8月31日，作业需在7月15日前完成",
+            "updated_at": "2026-05-07T13:45:21.047Z",
+            "status": "pending",
+            "is_recurring": false
+          },
+          {
+            "id": "b757746d-0ae3-484e-a05a-6ee93b530b46",
+            "record_id": "recviWtoECmLMp",
+            "priority": "medium",
+            "created_at": "2026-05-07T13:48:48.052Z",
+            "recurrence_type": "none",
+            "updated_at": "2026-05-07T13:48:48.052Z",
+            "status": "pending",
+            "title": "未命名任务",
+            "is_recurring": false
+          },
+          {
+            "id": "6bdd998a-590a-4696-91d9-8745aaa6f3be",
+            "record_id": "recviWtDsYae2Y",
+            "title": "和王总聊的三个要点",
+            "priority": "medium",
+            "category": "工作",
+            "created_at": "2026-05-07T13:49:45.144Z",
+            "recurrence_type": "none",
+            "updated_at": "2026-05-07T13:49:45.144Z",
+            "status": "pending",
+            "is_recurring": false
+          },
+          {
+            "id": "eb8e348c-64b5-4792-b3d9-b368c275b6c1",
+            "record_id": "recviWtNxqGbsj",
+            "title": "和王总聊了三个要点",
+            "priority": "medium",
+            "created_at": "2026-05-07T13:50:23.814Z",
+            "recurrence_type": "none",
+            "updated_at": "2026-05-07T13:50:23.814Z",
+            "status": "pending",
+            "is_recurring": false
+          },
+          {
+            "id": "c25958ff-fdf2-4351-b90c-265248188e27",
+            "record_id": "recviWtYlqviHt",
+            "title": "去超市买牛奶和鸡蛋",
+            "priority": "medium",
+            "category": "购物",
+            "created_at": "2026-05-07T13:51:05.440Z",
+            "start_date": "2026-05-07",
+            "start_time": "18:00",
+            "recurrence_type": "none",
+            "updated_at": "2026-05-07T13:51:05.440Z",
+            "source": "semantic",
+            "status": "pending",
+            "is_recurring": false
+          },
+          {
+            "id": "c1db2ed2-5dad-4ca4-be42-e57b28c16422",
+            "record_id": "recviWu867hsnj",
+            "icloud_event_id": "1778161905638-rqw3guiz8@caldav.icloud.com",
+            "title": "见王总 - 补谈合同",
+            "priority": "medium",
+            "category": "工作",
+            "created_at": "2026-05-07T13:51:42.898Z",
+            "start_date": "2026-05-07",
+            "start_time": "11:00",
+            "recurrence_type": "none",
+            "description": "补一下上周没谈完的合同",
+            "updated_at": "2026-05-07T13:51:42.898Z",
+            "source": "semantic",
+            "status": "pending",
+            "is_recurring": false
+          },
+          {
+            "id": "164a465c-8dfe-4ac2-96ef-db2d7af11a85",
+            "record_id": "recviWuhYtSrxi",
+            "title": "合同暂停待跟进",
+            "priority": "medium",
+            "category": "工作",
+            "created_at": "2026-05-07T13:52:20.835Z",
+            "recurrence_type": "none",
+            "description": "对方说要内部讨论一下，等待对方回复后继续推进",
+            "updated_at": "2026-05-07T13:52:20.835Z",
+            "status": "pending",
+            "is_recurring": false
+          },
+          {
+            "id": "abbeb5ef-7e28-4a66-91bc-9ea8b9f6d751",
+            "record_id": "recviWuoaQD3pk",
+            "title": "投资人电话会议",
+            "priority": "medium",
+            "created_at": "2026-05-07T13:52:44.670Z",
+            "start_date": "明天",
+            "start_time": "10:00",
+            "recurrence_type": "none",
+            "updated_at": "2026-05-07T13:52:44.670Z",
+            "source": "semantic",
+            "status": "pending",
+            "is_recurring": false
+          },
+          {
+            "id": "f0b69895-8414-4d23-92ad-a39c58647be1",
+            "record_id": "recviWuBZOwIv9",
+            "title": "买牛奶鸡蛋",
+            "priority": "medium",
+            "category": "购物",
+            "created_at": "2026-05-07T13:53:37.833Z",
+            "recurrence_type": "none",
+            "updated_at": "2026-05-07T13:53:37.833Z",
+            "status": "pending",
+            "is_recurring": false
+          },
+          {
+            "id": "f3588f1f-5fe6-465b-a17f-9609d81bbc70",
+            "record_id": "recviWuM7PCVfK",
+            "title": "订今晚的位子",
+            "priority": "medium",
+            "created_at": "2026-05-07T13:54:16.790Z",
+            "recurrence_type": "none",
+            "updated_at": "2026-05-07T13:54:16.790Z",
+            "status": "pending",
+            "is_recurring": false
+          },
+          {
+            "id": "e513e1f3-2109-4cc9-8278-193e015309fd",
+            "record_id": "recviWv70Qe9tG",
+            "icloud_event_id": "1778162139864-c8zrd43n8@caldav.icloud.com",
+            "title": "记录与王总会议要点",
+            "priority": "medium",
+            "category": "工作",
+            "created_at": "2026-05-07T13:55:37.055Z",
+            "start_date": "2026-05-07",
+            "recurrence_type": "none",
+            "description": "和王总聊了三个要点",
+            "updated_at": "2026-05-07T13:55:37.055Z",
+            "source": "semantic",
+            "status": "pending",
+            "is_recurring": false
+          },
+          {
+            "id": "491e0296-1215-4f0c-9867-cf3b6562160d",
+            "record_id": "recviWvfzIXl6j",
+            "title": "准备会议室",
+            "priority": "high",
+            "category": "工作",
+            "created_at": "2026-05-07T13:56:09.944Z",
+            "recurrence_type": "none",
+            "updated_at": "2026-05-07T13:56:09.944Z",
+            "status": "pending",
+            "is_recurring": false
+          },
+          {
+            "id": "0f74e51f-75f2-4c35-9924-bf5e7fa398af",
+            "record_id": "recviWvpRc4iHB",
+            "title": "谈成了",
+            "priority": "medium",
+            "created_at": "2026-05-07T13:56:49.292Z",
+            "recurrence_type": "none",
+            "description": "合同签署成功，金额280万，交付周期6个月",
+            "updated_at": "2026-05-07T13:56:49.292Z",
+            "status": "pending",
+            "is_recurring": false
+          },
+          {
+            "id": "56b8c653-4290-43a6-b989-e9739fd7f1e2",
+            "record_id": "recviWvzJq0hT7",
+            "title": "老师说的暑假安排",
+            "priority": "medium",
+            "category": "学习",
+            "created_at": "2026-05-07T13:57:27.406Z",
+            "recurrence_type": "none",
+            "updated_at": "2026-05-07T13:57:27.406Z",
+            "status": "pending",
+            "is_recurring": false
+          }
+        ],
+        "total": 25,
+        "page": 1,
+        "page_size": 50,
+        "total_pages": 1
+      },
+      "action": "completed",
+      "durationMs": 867
+    },
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 8077
+    }
+  },
+  {
+    "id": "log_5eebd3d9f081",
+    "timestamp": "2026-05-07T14:09:20.289Z",
+    "input": {
+      "text": "今天怎么样？"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "query_events",
+      "entityType": "calendar",
+      "confidence": 0.75,
+      "lowConfidence": false,
+      "reasoning": "用户询问今天的情况，结合'今天'这一时间词，最可能是查询今日的日程安排，类似于'今天有什么安排'",
+      "parameters": {
+        "date": "today"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": false
+    },
+    "execution": {
+      "executed": true,
+      "capabilityId": "event.query",
+      "taskId": {
+        "items": [
+          {
+            "id": "9023f63c-5a87-4aa7-9e62-54ef863540a9",
+            "record_id": "recviWqKpBFsnr",
+            "title": "去超市买牛奶和鸡蛋",
+            "priority": "medium",
+            "category": "生活",
+            "created_at": "2026-05-07T13:38:16.796Z",
+            "start_date": "2026-05-07",
+            "start_time": "18:00",
+            "recurrence_type": "none",
+            "description": "下班后",
+            "updated_at": "2026-05-07T13:38:16.796Z",
+            "source": "semantic",
+            "status": "pending",
+            "is_recurring": false
+          },
+          {
+            "id": "d9a23726-3bd8-44b0-ad79-23a338044f06",
+            "record_id": "recviWra72n2Ts",
+            "icloud_event_id": "1778161198427-e9fcrf44v@caldav.icloud.com",
+            "title": "投资人电话会议",
+            "priority": "medium",
+            "created_at": "2026-05-07T13:39:55.606Z",
+            "start_date": "2026-05-07",
+            "start_time": "14:00",
+            "recurrence_type": "none",
+            "updated_at": "2026-05-07T13:39:55.606Z",
+            "source": "semantic",
+            "status": "pending",
+            "is_recurring": false
+          },
+          {
+            "id": "c25958ff-fdf2-4351-b90c-265248188e27",
+            "record_id": "recviWtYlqviHt",
+            "title": "去超市买牛奶和鸡蛋",
+            "priority": "medium",
+            "category": "购物",
+            "created_at": "2026-05-07T13:51:05.440Z",
+            "start_date": "2026-05-07",
+            "start_time": "18:00",
+            "recurrence_type": "none",
+            "updated_at": "2026-05-07T13:51:05.440Z",
+            "source": "semantic",
+            "status": "pending",
+            "is_recurring": false
+          },
+          {
+            "id": "c1db2ed2-5dad-4ca4-be42-e57b28c16422",
+            "record_id": "recviWu867hsnj",
+            "icloud_event_id": "1778161905638-rqw3guiz8@caldav.icloud.com",
+            "title": "见王总 - 补谈合同",
+            "priority": "medium",
+            "category": "工作",
+            "created_at": "2026-05-07T13:51:42.898Z",
+            "start_date": "2026-05-07",
+            "start_time": "11:00",
+            "recurrence_type": "none",
+            "description": "补一下上周没谈完的合同",
+            "updated_at": "2026-05-07T13:51:42.898Z",
+            "source": "semantic",
+            "status": "pending",
+            "is_recurring": false
+          },
+          {
+            "id": "e513e1f3-2109-4cc9-8278-193e015309fd",
+            "record_id": "recviWv70Qe9tG",
+            "icloud_event_id": "1778162139864-c8zrd43n8@caldav.icloud.com",
+            "title": "记录与王总会议要点",
+            "priority": "medium",
+            "category": "工作",
+            "created_at": "2026-05-07T13:55:37.055Z",
+            "start_date": "2026-05-07",
+            "recurrence_type": "none",
+            "description": "和王总聊了三个要点",
+            "updated_at": "2026-05-07T13:55:37.055Z",
+            "source": "semantic",
+            "status": "pending",
+            "is_recurring": false
+          }
+        ],
+        "total": 5
+      },
+      "action": "completed",
+      "durationMs": 1114
+    },
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 8623
+    }
+  },
+  {
+    "id": "log_81d2327751b9",
+    "timestamp": "2026-05-07T14:09:36.925Z",
+    "input": {
+      "text": "提醒我今天下午3点开会"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "task",
+      "confidence": 0.95,
+      "lowConfidence": false,
+      "reasoning": "用户明确提到'提醒'、'今天下午3点'和'开会'三个关键要素，包含具体时间和事件，属于日程创建任务。系统将自动同步到日历并设置提醒。",
+      "parameters": {
+        "title": "开会",
+        "start_date": "2026-05-06",
+        "start_time": "15:00",
+        "category": "工作",
+        "reminder": true
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": false
+    },
+    "execution": {
+      "executed": true,
+      "capabilityId": "task.create",
+      "taskId": {
+        "id": "recviWyDuPmopj",
+        "title": "开会",
+        "status": "pending",
+        "priority": "medium",
+        "category": "工作",
+        "start_date": "2026-05-07",
+        "start_time": "15:00",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "icloud_event_id": "1778162979670-dgyn2tx9t@caldav.icloud.com",
+        "source": "semantic",
+        "created_at": "2026-05-07T14:09:36.928Z",
+        "updated_at": "2026-05-07T14:09:36.928Z",
+        "record_id": "recviWyDuPmopj"
+      },
+      "action": "completed",
+      "durationMs": 5940
+    },
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 15500
+    }
+  },
+  {
+    "id": "log_765579eab3cd",
+    "timestamp": "2026-05-07T14:09:54.248Z",
+    "input": {
+      "text": "上午11点要见一下王总"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "task",
+      "confidence": 0.9,
+      "lowConfidence": false,
+      "reasoning": "检测到具体时间（上午11点）和参与对象（王总），属于日程创建任务。日期推断为今天（2026-01-29），但为确保准确性需要用户确认具体日期和完整信息。",
+      "parameters": {
+        "title": "见王总",
+        "start_date": "2026-05-06",
+        "start_time": "11:00",
+        "category": "商务",
+        "description": "与王总会面"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 11368
+    }
+  },
+  {
+    "id": "log_677b926a5f98",
+    "timestamp": "2026-05-07T14:14:25.189Z",
+    "input": {
+      "text": "今天怎么样？"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "other",
+      "entityType": "calendar",
+      "confidence": 0.5,
+      "lowConfidence": true,
+      "reasoning": "这句话是一个日常问候语，语义模糊，没有明确表达要创建任务或查询日程的具体意图。需要确认用户是想查询今日日程还是单纯的问候。",
+      "parameters": {}
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 9469
+    }
+  },
+  {
+    "id": "log_1fa718246dc2",
+    "timestamp": "2026-05-07T14:15:01.048Z",
+    "input": {
+      "text": "上午11点要见一下王总"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "task",
+      "confidence": 0.8,
+      "lowConfidence": false,
+      "reasoning": "检测到具体时间'上午11点'和具体人物'王总'，属于创建日程任务，但日期未明确，需要确认是今天还是其他日期",
+      "parameters": {
+        "title": "见王总",
+        "start_time": "11:00",
+        "participants": [
+          "王总"
+        ],
+        "category": "工作"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 10812
+    }
+  },
+  {
+    "id": "log_72eef7ea3126",
+    "timestamp": "2026-05-07T14:19:13.634Z",
+    "input": {
+      "text": "上午11点要见一下王总"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "task",
+      "confidence": 0.9,
+      "lowConfidence": false,
+      "reasoning": "检测到具体时间上午11点，涉及具体人员王总，属于创建日程任务",
+      "parameters": {
+        "title": "与王总会面",
+        "start_date": "2026-05-07",
+        "start_time": "11:00",
+        "participants": [
+          "王总"
+        ],
+        "category": "工作"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": false
+    },
+    "execution": {
+      "executed": true,
+      "capabilityId": "task.create",
+      "taskId": {
+        "id": "recviWB3vuwSAP",
+        "title": "与王总会面",
+        "status": "pending",
+        "priority": "medium",
+        "category": "工作",
+        "start_date": "2026-05-07",
+        "start_time": "11:00",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "icloud_event_id": "1778163556338-w9jtwajgg@caldav.icloud.com",
+        "source": "semantic",
+        "created_at": "2026-05-07T14:19:13.639Z",
+        "updated_at": "2026-05-07T14:19:13.639Z",
+        "record_id": "recviWB3vuwSAP"
+      },
+      "action": "completed",
+      "durationMs": 5369
+    },
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 8362
+    }
+  },
+  {
+    "id": "log_e04fe5e8acea",
+    "timestamp": "2026-05-07T14:19:46.526Z",
+    "input": {
+      "text": "������ô����"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "other",
+      "entityType": "task",
+      "confidence": 0,
+      "lowConfidence": true,
+      "reasoning": "输入内容显示为乱码，可能是编码问题导致无法识别。无法判断用户真实意图，需要用户重新输入或确认",
+      "parameters": {}
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 5967
+    }
+  },
+  {
+    "id": "log_ded9f74144b4",
+    "timestamp": "2026-05-07T14:21:30.737Z",
+    "input": {
+      "text": "������ô����"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "other",
+      "entityType": "task",
+      "confidence": 0,
+      "lowConfidence": true,
+      "reasoning": "无法解析意图",
+      "parameters": {}
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 4258
+    }
+  },
+  {
+    "id": "log_58615ee5ed92",
+    "timestamp": "2026-05-07T14:22:02.089Z",
+    "input": {
+      "text": "������ô����"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "other",
+      "entityType": "calendar",
+      "confidence": 0,
+      "lowConfidence": true,
+      "reasoning": "用户输入为乱码或编码错误，无法识别有效意图，建议用户重新输入或检查输入编码",
+      "parameters": {}
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 5756
+    }
+  },
+  {
+    "id": "log_45ce4bd65e0f",
+    "timestamp": "2026-05-07T14:23:02.473Z",
+    "input": {
+      "text": "提醒我今天下午3点开会"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "task",
+      "confidence": 0.95,
+      "lowConfidence": false,
+      "reasoning": "用户明确要求创建提醒任务，包含具体时间（今天下午3点）和事件内容（开会），信息完整",
+      "parameters": {
+        "title": "开会",
+        "start_date": "2026-05-07",
+        "start_time": "15:00",
+        "reminder": true,
+        "category": "工作"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": false
+    },
+    "execution": {
+      "executed": true,
+      "capabilityId": "task.create",
+      "taskId": {
+        "id": "recviWC12yOYWM",
+        "title": "开会",
+        "status": "pending",
+        "priority": "medium",
+        "category": "工作",
+        "start_date": "2026-05-07",
+        "start_time": "15:00",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "icloud_event_id": "1778163785146-9u6yjtejt@caldav.icloud.com",
+        "source": "semantic",
+        "created_at": "2026-05-07T14:23:02.475Z",
+        "updated_at": "2026-05-07T14:23:02.475Z",
+        "record_id": "recviWC12yOYWM"
+      },
+      "action": "completed",
+      "durationMs": 6802
+    },
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 16527
+    }
+  },
+  {
+    "id": "log_e55a1a209507",
+    "timestamp": "2026-05-07T14:23:30.551Z",
+    "input": {
+      "text": "上午11点要见一下王总"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "task",
+      "confidence": 0.95,
+      "lowConfidence": false,
+      "reasoning": "用户明确表达了具体时间的日程安排需求，包含时间（上午11点）、人物（王总）和事件（见面），属于日程创建任务",
+      "parameters": {
+        "title": "见王总",
+        "start_time": "11:00",
+        "category": "商务",
+        "description": "与王总见面"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": false
+    },
+    "execution": {
+      "executed": true,
+      "capabilityId": "task.create",
+      "taskId": {
+        "id": "recviWC8m5UJB6",
+        "title": "见王总",
+        "description": "与王总见面",
+        "status": "pending",
+        "priority": "medium",
+        "category": "商务",
+        "start_date": "2026-05-07",
+        "start_time": "11:00",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "source": "semantic",
+        "created_at": "2026-05-07T14:23:30.554Z",
+        "updated_at": "2026-05-07T14:23:30.554Z",
+        "record_id": "recviWC8m5UJB6"
+      },
+      "action": "completed",
+      "durationMs": 2799
+    },
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 21259
+    }
+  },
+  {
+    "id": "log_576c9dd6c54e",
+    "timestamp": "2026-05-09T02:36:16.672Z",
+    "input": {
+      "text": "你好",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "other",
+      "entityType": "task",
+      "confidence": 0,
+      "lowConfidence": true,
+      "reasoning": "无法解析意图",
+      "parameters": {}
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 2663
+    }
+  },
+  {
+    "id": "log_1742837c92c2",
+    "timestamp": "2026-05-09T02:47:33.977Z",
+    "input": {
+      "text": "好像什么日程也没有，是没有查到吗？",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "query_events",
+      "entityType": "calendar",
+      "confidence": 0.75,
+      "lowConfidence": false,
+      "reasoning": "用户对查询结果表示困惑，询问是否没有查到日程。这是典型的对查询操作的确认/疑问，属于日程查询意图。用户提到'日程'，应该使用 query_events 查询日历。",
+      "parameters": {
+        "date": "today"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": false
+    },
+    "execution": {
+      "executed": true,
+      "capabilityId": "event.query",
+      "taskId": {
+        "items": [],
+        "total": 0
+      },
+      "action": "completed",
+      "durationMs": 1091
+    },
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 14945
+    }
+  },
+  {
+    "id": "log_174891b5c250",
+    "timestamp": "2026-05-09T02:51:46.468Z",
+    "input": {
+      "text": "帮我安排周一下午产品组组会",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "task",
+      "confidence": 0.85,
+      "lowConfidence": false,
+      "reasoning": "用户明确表达'安排'意图，包含时间信息（周一+下午）和会议主题（产品组组会）。周一指2026年5月25日，下午对应14:00。但'下午'为模糊时间，需确认具体会议时长和开始时间。",
+      "parameters": {
+        "title": "产品组组会",
+        "start_date": "2026-05-25",
+        "start_time": "14:00",
+        "category": "工作",
+        "type": "meeting"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 17131
+    }
+  },
+  {
+    "id": "log_4dc806eadd4c",
+    "timestamp": "2026-05-09T02:53:35.474Z",
+    "input": {
+      "text": "帮我创建周一下午的产品组组会",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "task",
+      "confidence": 0.65,
+      "lowConfidence": true,
+      "reasoning": "用户要求创建周一下午的产品组组会，检测到具体日期（周一）和时间范围（下午），但缺少具体时间点（如14:00或15:00），且周一具体是哪天需要确认。建议确认具体时间和日期后创建任务。",
+      "parameters": {
+        "title": "产品组组会",
+        "day_of_week": "周一",
+        "time_range": "下午",
+        "category": "工作"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 14235
+    }
+  },
+  {
+    "id": "log_2fe294598f10",
+    "timestamp": "2026-05-09T03:08:10.337Z",
+    "input": {
+      "text": "帮我安排周一下午产品组组会",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "task",
+      "confidence": 0.75,
+      "lowConfidence": false,
+      "reasoning": "用户意图明确是创建日程安排，提供了主题（产品组组会）和时间范围（周一下午）。当前日期2026-05-02（周六），下周一是2026-05-04。但缺少具体时间点（只说下午），需要确认具体开始时间",
+      "parameters": {
+        "title": "产品组组会",
+        "start_date": "2026-05-09",
+        "category": "工作会议",
+        "note": "周一上午"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 17113
+    }
+  },
+  {
+    "id": "log_b60cf8949bbe",
+    "timestamp": "2026-05-09T03:10:24.198Z",
+    "input": {
+      "text": "现在重启新的进程",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "task",
+      "confidence": 0.55,
+      "lowConfidence": true,
+      "reasoning": "用户想开始一个新的进程/任务，但未提供具体内容。虽然有'现在'表示当前时间，但任务具体是什么需要进一步确认。表达较为模糊，置信度偏低，需要追问确认任务详情。",
+      "parameters": {
+        "title": "新的进程"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 15383
+    }
+  },
+  {
+    "id": "log_4c99048f15f3",
+    "timestamp": "2026-05-09T03:10:53.302Z",
+    "input": {
+      "text": "帮我安排周一下午产品组组会",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "task",
+      "confidence": 0.92,
+      "lowConfidence": false,
+      "reasoning": "检测到明确的时间'周一'和明确的安排意图，虽然'下午'时间范围宽泛，但可提取为默认下午时间，属于创建日程任务，需要确认具体时间",
+      "parameters": {
+        "title": "产品组组会",
+        "start_date": "2026-05-11",
+        "start_time": "14:00",
+        "category": "工作"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 14152
+    }
+  },
+  {
+    "id": "log_535d2ebbd394",
+    "timestamp": "2026-05-09T04:53:18.992Z",
+    "input": {
+      "text": "帮我安排周一下午产品组组会",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "task",
+      "confidence": 0.85,
+      "lowConfidence": false,
+      "reasoning": "用户意图安排会议，属于任务创建。但缺少具体时间（只有'下午'），需要确认具体几点开始。已自动推算下周一（5月11日）下午2点，需用户确认时间是否合适。",
+      "parameters": {
+        "title": "产品组组会",
+        "start_date": "2026-05-11",
+        "start_time": "14:00",
+        "category": "工作",
+        "participants": [
+          "产品组"
+        ]
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 11942
+    }
+  },
+  {
+    "id": "log_dab3a20ef2e5",
+    "timestamp": "2026-05-09T04:56:53.984Z",
+    "input": {
+      "text": "帮我安排周一下午产品组组会",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "task",
+      "confidence": 0.85,
+      "lowConfidence": false,
+      "reasoning": "用户明确表达'安排'意图，是创建日程的请求。识别到周一（2026-05-25）下午，但具体时间未明确，默认设置为14:00，需要用户确认具体时间和其他会议细节（如地点、参与人等）",
+      "parameters": {
+        "title": "产品组组会",
+        "start_date": "2026-05-25",
+        "start_time": "14:00",
+        "category": "工作",
+        "duration": 60
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 14254
+    }
+  },
+  {
+    "id": "log_5012441600d6",
+    "timestamp": "2026-05-09T05:04:32.959Z",
+    "input": {
+      "text": "帮我安排周一下午产品组组会",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "task",
+      "confidence": 0.85,
+      "lowConfidence": false,
+      "reasoning": "用户明确表达'安排'意图，属于创建任务。由于只提到'下午'而未指定具体时间，需要确认具体时间；另外确认周一是否为2026-05-11（如遇节假日可能不同）",
+      "parameters": {
+        "title": "产品组组会",
+        "start_date": "2026-05-11",
+        "start_time": "14:00",
+        "category": "工作"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 12225
+    }
+  },
+  {
+    "id": "log_4c0099c5a274",
+    "timestamp": "2026-05-09T05:11:48.660Z",
+    "input": {
+      "text": "帮我安排周一下午产品组组会",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "task",
+      "confidence": 0.85,
+      "lowConfidence": false,
+      "reasoning": "用户明确表示要'安排'会议，是创建日程的意图。提取到：会议名称(产品组组会)、时间(周一下午)、分类(工作)。但缺少具体时间点(如几点)，需要用户确认具体时间",
+      "parameters": {
+        "title": "产品组组会",
+        "weekday": "周一",
+        "time_period": "下午",
+        "category": "工作"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 11600
+    }
+  },
+  {
+    "id": "log_6f97eb7e3c75",
+    "timestamp": "2026-05-09T05:12:36.141Z",
+    "input": {
+      "text": "14:00",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "query_events",
+      "entityType": "calendar",
+      "confidence": 0.6,
+      "lowConfidence": true,
+      "reasoning": "用户输入了时间点'14:00'，可能想查询该时间的日程安排，但缺少日期信息（哪天的14:00）。信息不完整，需要确认具体日期。",
+      "parameters": {
+        "start_time": "14:00"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 13441
+    }
+  },
+  {
+    "id": "log_a0b7b3855e74",
+    "timestamp": "2026-05-09T05:33:49.388Z",
+    "input": {
+      "text": "帮我安排周一下午产品组组会",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "task",
+      "confidence": 0.75,
+      "lowConfidence": false,
+      "reasoning": "用户明确表达安排组会意图，包含周一下午的时间范围，但具体开始时间（几点）和会议时长不明确，需要确认细节",
+      "parameters": {
+        "title": "产品组组会",
+        "start_date": "2026-05-09",
+        "start_time": "14:00",
+        "category": "工作"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 13356
+    }
+  },
+  {
+    "id": "log_fafb18c8d177",
+    "timestamp": "2026-05-09T05:47:58.323Z",
+    "input": {
+      "text": "删除下周一的会议安排",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "delete_task",
+      "entityType": "calendar",
+      "confidence": 0.85,
+      "lowConfidence": false,
+      "reasoning": "用户明确表达删除意图，提到'下周一的会议安排'，需要先确认具体是哪场会议，属于日历删除操作",
+      "parameters": {
+        "title": "会议",
+        "date": "next_monday"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 10093
+    }
+  },
+  {
+    "id": "log_c5ccbdadade8",
+    "timestamp": "2026-05-09T05:48:36.739Z",
+    "input": {
+      "text": "确认删除",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "delete_task",
+      "entityType": "task",
+      "confidence": 0.5,
+      "lowConfidence": true,
+      "reasoning": "用户表示确认删除操作，但未指明具体要删除的任务或内容，信息不足需要进一步确认删除对象",
+      "parameters": {}
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 7789
+    }
+  },
+  {
+    "id": "log_38d40be28969",
+    "timestamp": "2026-05-09T06:01:25.698Z",
+    "input": {
+      "text": "删除下周一的会议安排",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "delete_task",
+      "entityType": "event",
+      "confidence": 0.85,
+      "lowConfidence": false,
+      "reasoning": "用户明确要删除下周一（2026-05-11）的会议安排，属于日程删除任务。由于可能存在多个会议，需要确认具体删除哪一个",
+      "parameters": {
+        "title": "会议安排",
+        "date": "2026-05-11",
+        "date_relative": "next_monday"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 11520
+    }
+  },
+  {
+    "id": "log_25ec26ace698",
+    "timestamp": "2026-05-09T06:24:25.480Z",
+    "input": {
+      "text": "删除下周一的会议安排",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "delete_task",
+      "entityType": "calendar",
+      "confidence": 0.7,
+      "lowConfidence": false,
+      "reasoning": "用户明确表达删除意图，指向下周一的会议安排，但没有具体指明是哪个会议，需要确认删除范围",
+      "parameters": {
+        "date": "next_monday",
+        "type": "meeting",
+        "scope": "all"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 10776
+    }
+  },
+  {
+    "id": "log_4a8fd5c76a4b",
+    "timestamp": "2026-05-09T06:25:55.264Z",
+    "input": {
+      "text": "下周一下午帮我安排一个产品组会",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "task",
+      "confidence": 0.82,
+      "lowConfidence": false,
+      "reasoning": "检测到明确的创建任务意图，用户要求安排产品组会议。时间定位为下周一（2026-04-27）下午，但具体时间点不明确（仅知道是下午），因此需要确认具体时间。根据惯例将下午默认设为14:00，建议与用户确认具体时间安排。",
+      "parameters": {
+        "title": "产品组会",
+        "start_date": "2026-05-09",
+        "start_time": "14:00",
+        "category": "工作"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 17152
+    }
+  },
+  {
+    "id": "log_715d96d0fb33",
+    "timestamp": "2026-05-09T06:53:47.666Z",
+    "input": {
+      "text": "删除所有的任务安排",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "delete_task",
+      "entityType": "task",
+      "confidence": 0.95,
+      "lowConfidence": false,
+      "reasoning": "用户明确表达删除所有任务的意图，表述清晰完整，但删除所有任务属于重大操作，需要用户确认以避免误删",
+      "parameters": {
+        "scope": "all"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 14544
+    }
+  },
+  {
+    "id": "log_f0f4a79c1a23",
+    "timestamp": "2026-05-09T06:54:20.670Z",
+    "input": {
+      "text": "是的，确认删除",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "delete_task",
+      "entityType": "task",
+      "confidence": 0.8,
+      "lowConfidence": false,
+      "reasoning": "用户明确表示确认删除操作，属于删除任务意图",
+      "parameters": {}
+    },
+    "confirmation": {
+      "needsConfirmation": false
+    },
+    "execution": {
+      "executed": false,
+      "error": "未找到要删除的任务",
+      "durationMs": 0
+    },
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 4543
+    }
+  },
+  {
+    "id": "log_bf3bc5d918b0",
+    "timestamp": "2026-05-09T07:03:47.698Z",
+    "input": {
+      "text": "删除所有的任务安排",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "delete_task",
+      "entityType": "task",
+      "confidence": 0.85,
+      "lowConfidence": false,
+      "reasoning": "用户明确表达要删除所有任务安排，属于删除任务操作，但因为是不可逆操作需要确认",
+      "parameters": {
+        "scope": "all"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 14913
+    }
+  },
+  {
+    "id": "log_dacde491cb50",
+    "timestamp": "2026-05-09T07:05:11.203Z",
+    "input": {
+      "text": "安排下周一下午产品组例会",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "task",
+      "confidence": 0.85,
+      "lowConfidence": false,
+      "reasoning": "用户明确表示'安排'例会，意图是创建日程任务。虽然确定了'下周一下午'的时间，但缺少具体的会议开始时间点（如几点），需要确认。默认使用14:00作为下午的开始时间，实际使用时需用户确认或指定具体时间。",
+      "parameters": {
+        "title": "产品组例会",
+        "start_date": "2026-05-09",
+        "start_time": "14:00",
+        "category": "工作"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 13694
+    }
+  },
+  {
+    "id": "log_98f82a5c3b66",
+    "timestamp": "2026-05-09T07:06:54.114Z",
+    "input": {
+      "text": "把刚才创建的那个会议调整到下午4点",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "update_task",
+      "entityType": "event",
+      "confidence": 0.55,
+      "lowConfidence": true,
+      "reasoning": "用户想修改一个刚才创建的会议时间到下午4点，但缺少具体日期信息，且'刚才创建的那个'指向不明确，需要确认具体日期和会议详情后才能执行修改操作",
+      "parameters": {
+        "description": "刚才创建的会议",
+        "new_time": "16:00",
+        "time_type": "下午"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 10877
+    }
+  },
+  {
+    "id": "log_45379f2847ef",
+    "timestamp": "2026-05-09T07:52:47.578Z",
+    "input": {
+      "text": "安排下周二下午3点的拓展组会议",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "event",
+      "confidence": 0.95,
+      "lowConfidence": false,
+      "reasoning": "检测到明确的创建任务意图，包含具体时间（下周二下午3点）和事件名称（拓展组会议），信息完整，无需确认",
+      "parameters": {
+        "title": "拓展组会议",
+        "start_date": "2026-05-12",
+        "start_time": "15:00",
+        "category": "工作",
+        "group": "拓展组"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": false
+    },
+    "execution": {
+      "executed": true,
+      "capabilityId": "task.create",
+      "taskId": {
+        "id": "recvj6IP0DOBrX",
+        "title": "拓展组会议",
+        "status": "pending",
+        "priority": "medium",
+        "category": "工作",
+        "start_date": "2026-05-12",
+        "start_time": "15:00",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "icloud_event_id": "1778313171422-z7yof8j2u@caldav.icloud.com",
+        "source": "semantic",
+        "created_at": "2026-05-09T07:52:47.581Z",
+        "updated_at": "2026-05-09T07:52:47.581Z",
+        "record_id": "recvj6IP0DOBrX"
+      },
+      "action": "completed",
+      "durationMs": 16529
+    },
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 29864
+    }
+  },
+  {
+    "id": "log_29a9f6224d6f",
+    "timestamp": "2026-05-09T07:54:42.236Z",
+    "input": {
+      "text": "把刚才创建的会议的时间从3点到4点改成3点到3:30",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "update_task",
+      "entityType": "event",
+      "confidence": 0.85,
+      "lowConfidence": false,
+      "reasoning": "用户明确表达了修改已有会议时间的意图，时间从3-4点改为3-3:30。虽然用户提到'刚才创建的会议'，但系统需要确认具体是哪个事件，因此需要用户确认",
+      "parameters": {
+        "title": "会议",
+        "start_time": "15:00",
+        "end_time": "15:30"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 8513
+    }
+  },
+  {
+    "id": "log_5435003939f3",
+    "timestamp": "2026-05-09T07:56:16.495Z",
+    "input": {
+      "text": "创建任务，每周六晚上6:30到8:30，妙妙的围棋课",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "task",
+      "confidence": 0.95,
+      "lowConfidence": false,
+      "reasoning": "用户明确要求创建任务，提供了完整信息：每周六重复、时间段(18:30-20:30)、课程名称(妙妙的围棋课)，信息完整无需确认",
+      "parameters": {
+        "title": "妙妙的围棋课",
+        "day_of_week": "saturday",
+        "start_time": "18:30",
+        "end_time": "20:30",
+        "recurring": true,
+        "frequency": "weekly"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": false
+    },
+    "execution": {
+      "executed": true,
+      "capabilityId": "task.create",
+      "taskId": {
+        "id": "recvj6JHdl6dzg",
+        "title": "妙妙的围棋课",
+        "status": "pending",
+        "priority": "medium",
+        "start_date": "2026-05-09",
+        "start_time": "18:30",
+        "end_time": "20:30",
+        "is_recurring": true,
+        "recurrence_type": "weekly",
+        "recurrence_rule": "RRULE:FREQ=WEEKLY;COUNT=10",
+        "icloud_event_id": "1778313379854-r49xecwny@caldav.icloud.com",
+        "source": "semantic",
+        "created_at": "2026-05-09T07:56:16.497Z",
+        "updated_at": "2026-05-09T07:56:16.497Z",
+        "record_id": "recvj6JHdl6dzg"
+      },
+      "action": "completed",
+      "durationMs": 6469
+    },
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 10405
+    }
+  },
+  {
+    "id": "log_faedadd68aaa",
+    "timestamp": "2026-05-09T08:23:53.142Z",
+    "input": {
+      "text": "把刚刚的任务改成家庭共享日历",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "update_task",
+      "entityType": "task",
+      "confidence": 0.55,
+      "lowConfidence": true,
+      "reasoning": "用户想要修改之前创建的任务，将其改为家庭共享日历模式，但具体指哪个任务以及具体如何修改需要确认",
+      "parameters": {
+        "reference": "刚创建的任务",
+        "target": "家庭共享日历"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 14015
+    }
+  },
+  {
+    "id": "log_f6999ee92efe",
+    "timestamp": "2026-05-09T08:35:42.536Z",
+    "input": {
+      "text": "不要修改标题，就把刚刚那个任务的分类改为家庭日历",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "update_task",
+      "entityType": "task",
+      "confidence": 0.88,
+      "lowConfidence": false,
+      "reasoning": "用户明确表示要修改'刚刚那个任务'的分类，保留标题不变，只将分类改为'家庭日历'。表达清晰，通过上下文可定位目标任务，属于任务修改操作。",
+      "parameters": {
+        "reference": "刚刚那个任务",
+        "update_type": "category",
+        "category": "家庭日历",
+        "preserve_title": true
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 38920
+    }
+  },
+  {
+    "id": "log_2317e54dd023",
+    "timestamp": "2026-05-09T08:47:14.605Z",
+    "input": {
+      "text": "把每周二的妙妙围棋课从工作日历改成家庭共享日历",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "update_task",
+      "entityType": "event",
+      "confidence": 0.85,
+      "lowConfidence": false,
+      "reasoning": "用户明确要求修改周期性围棋课的日历归属，从工作日历改为家庭共享日历。这是日程修改操作，需要先查询确认该任务是否存在，然后进行修改。由于是周期性事件，可能需要确认修改单个实例还是全部实例。",
+      "parameters": {
+        "title": "妙妙围棋课",
+        "recurrence": "每周二",
+        "source_calendar": "工作日历",
+        "target_calendar": "家庭共享日历"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 12360
+    }
+  },
+  {
+    "id": "log_d8a544caa3e7",
+    "timestamp": "2026-05-09T09:10:17.883Z",
+    "input": {
+      "text": "把妙妙的围棋课的分类改为家庭共享",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "update_task",
+      "entityType": "task",
+      "confidence": 0.8,
+      "lowConfidence": false,
+      "reasoning": "用户意图明确是修改任务分类，但需要先确认具体是哪个任务才能执行修改操作",
+      "parameters": {
+        "task_name": "妙妙围棋课",
+        "new_category": "家庭共享"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 10156
+    }
+  },
+  {
+    "id": "log_4d9b352f014a",
+    "timestamp": "2026-05-09T09:19:02.780Z",
+    "input": {
+      "text": "把妙妙的围棋课的分类改为家庭共享",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "update_task",
+      "entityType": "task",
+      "confidence": 0.9,
+      "lowConfidence": false,
+      "reasoning": "用户明确要求修改现有任务'妙妙的围棋课'的分类为'家庭共享'，意图清晰，参数完整",
+      "parameters": {
+        "title": "妙妙的围棋课",
+        "category": "家庭共享"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": false
+    },
+    "execution": {
+      "executed": true,
+      "capabilityId": "task.update",
+      "taskId": {
+        "id": "e57baa61-ddcc-4779-9a3e-ac88993a8fca",
+        "record_id": "recvj6JHdl6dzg",
+        "icloud_event_id": "1778313379854-r49xecwny@caldav.icloud.com",
+        "title": "妙妙的围棋课",
+        "priority": "medium",
+        "category": "家庭共享",
+        "created_at": "2026-05-09T07:56:16.497Z",
+        "start_date": "2026-05-09",
+        "start_time": "18:30",
+        "recurrence_type": "weekly",
+        "recurrence_rule": "RRULE:FREQ=WEEKLY;COUNT=10",
+        "is_recurring": true,
+        "updated_at": "2026-05-09T09:19:04.575Z",
+        "source": "semantic",
+        "status": "pending",
+        "end_time": "20:30"
+      },
+      "action": "completed",
+      "durationMs": 4920
+    },
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 8269
+    }
+  },
+  {
+    "id": "log_ea53ee58884f",
+    "timestamp": "2026-05-09T09:46:05.478Z",
+    "input": {
+      "text": "把妙妙的围棋课的分类改为家庭共享",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "update_task",
+      "entityType": "task",
+      "confidence": 0.9,
+      "lowConfidence": false,
+      "reasoning": "用户明确要求将'妙妙的围棋课'这个任务的分类修改为'家庭共享'，属于修改任务属性的操作，提供了足够的识别信息（任务标题）和修改内容（分类）",
+      "parameters": {
+        "title": "妙妙的围棋课",
+        "category": "家庭共享"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": false
+    },
+    "execution": {
+      "executed": true,
+      "capabilityId": "task.update",
+      "taskId": {
+        "id": "e57baa61-ddcc-4779-9a3e-ac88993a8fca",
+        "record_id": "recvj6JHdl6dzg",
+        "icloud_event_id": "1778313379854-r49xecwny@caldav.icloud.com",
+        "title": "妙妙的围棋课",
+        "priority": "medium",
+        "category": "家庭共享",
+        "created_at": "2026-05-09T07:56:16.497Z",
+        "start_date": "2026-05-09",
+        "start_time": "18:30",
+        "recurrence_type": "weekly",
+        "recurrence_rule": "RRULE:FREQ=WEEKLY;COUNT=10",
+        "is_recurring": true,
+        "updated_at": "2026-05-09T09:46:07.351Z",
+        "source": "semantic",
+        "status": "pending",
+        "end_time": "20:30"
+      },
+      "action": "completed",
+      "durationMs": 4899
+    },
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 13044
+    }
+  },
+  {
+    "id": "log_b523381bf84b",
+    "timestamp": "2026-05-09T11:27:45.082Z",
+    "input": {
+      "text": "把所有的任务都删除",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "delete_task",
+      "entityType": "task",
+      "confidence": 0.9,
+      "lowConfidence": false,
+      "reasoning": "用户明确表达了删除所有任务的意图。虽然范围清晰（所有任务），但删除全部任务是危险操作，可能导致不可逆的数据丢失，系统需要用户在执行前二次确认。",
+      "parameters": {
+        "scope": "all"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 10293
+    }
+  },
+  {
+    "id": "log_d0eda52c0053",
+    "timestamp": "2026-05-09T11:29:03.961Z",
+    "input": {
+      "text": "帮我安排每周六下午6:30到8:30妙妙的围棋课",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "task",
+      "confidence": 0.95,
+      "lowConfidence": false,
+      "reasoning": "用户明确要求安排每周六下午6:30到8:30的围棋课程，包含具体时间、重复周期和活动内容，信息完整明确，属于日程创建任务",
+      "parameters": {
+        "title": "妙妙的围棋课",
+        "start_time": "18:30",
+        "end_time": "20:30",
+        "recurring": "weekly",
+        "recurring_day": "Saturday",
+        "category": "课程"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": false
+    },
+    "execution": {
+      "executed": true,
+      "capabilityId": "task.create",
+      "taskId": {
+        "id": "recvj7BgtPJs0g",
+        "title": "妙妙的围棋课",
+        "status": "pending",
+        "priority": "medium",
+        "category": "课程",
+        "start_date": "2026-05-09",
+        "start_time": "18:30",
+        "end_time": "20:30",
+        "is_recurring": true,
+        "recurrence_type": "weekly",
+        "recurrence_rule": "RRULE:FREQ=WEEKLY;COUNT=10",
+        "source": "semantic",
+        "created_at": "2026-05-09T11:29:03.964Z",
+        "updated_at": "2026-05-09T11:29:03.964Z",
+        "record_id": "recvj7BgtPJs0g"
+      },
+      "action": "completed",
+      "durationMs": 3236
+    },
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 11186
+    }
+  },
+  {
+    "id": "log_5d627c00bf69",
+    "timestamp": "2026-05-09T11:35:38.565Z",
+    "input": {
+      "text": "帮我把memory的围棋课调整到家庭共享分类",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "update_task",
+      "entityType": "task",
+      "confidence": 0.85,
+      "lowConfidence": false,
+      "reasoning": "用户明确表示要调整某个任务的分类，属于任务修改操作。但需要确认：1）是否找到了'memory的围棋课'这个任务；2）调整后的分类'家庭共享'是否正确。可能需要进一步确认任务详情。",
+      "parameters": {
+        "task_name": "围棋课",
+        "related_to": "memory",
+        "new_category": "家庭共享"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 13818
+    }
+  },
+  {
+    "id": "log_1c184722c223",
+    "timestamp": "2026-05-09T12:01:35.391Z",
+    "input": {
+      "text": "帮我把妙妙的围棋课调整到家庭共享分类",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "update_task",
+      "entityType": "task",
+      "confidence": 0.9,
+      "lowConfidence": false,
+      "reasoning": "用户明确要修改任务'妙妙的围棋课'的分类，将其调整到'家庭共享分类'。动作清晰，参数完整，可以直接执行。",
+      "parameters": {
+        "title": "妙妙的围棋课",
+        "category": "家庭共享分类"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": false
+    },
+    "execution": {
+      "executed": true,
+      "capabilityId": "task.update",
+      "taskId": {
+        "id": "59e6a86a-62c8-4352-9135-2af5e63616c3",
+        "record_id": "recvj7BgtPJs0g",
+        "title": "妙妙的围棋课",
+        "priority": "medium",
+        "category": "家庭共享分类",
+        "created_at": "2026-05-09T11:29:03.964Z",
+        "start_date": "2026-05-09",
+        "start_time": "18:30",
+        "recurrence_type": "weekly",
+        "recurrence_rule": "RRULE:FREQ=WEEKLY;COUNT=10",
+        "is_recurring": true,
+        "updated_at": "2026-05-09T12:01:37.010Z",
+        "source": "semantic",
+        "status": "pending",
+        "end_time": "20:30"
+      },
+      "action": "completed",
+      "durationMs": 3967
+    },
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 11547
+    }
+  },
+  {
+    "id": "log_badb2b50436a",
+    "timestamp": "2026-05-09T12:30:45.313Z",
+    "input": {
+      "text": "帮我把妙妙的围棋课调整到家庭共享分类",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "update_task",
+      "entityType": "task",
+      "confidence": 0.85,
+      "lowConfidence": false,
+      "reasoning": "用户要求修改现有任务（妙妙的围棋课）的分类，将其调整到'家庭共享'分类，属于任务属性修改操作，意图明确",
+      "parameters": {
+        "task_name": "妙妙的围棋课",
+        "category": "家庭共享",
+        "action": "update_category"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 11279
+    }
+  },
+  {
+    "id": "log_0cd9f82e943c",
+    "timestamp": "2026-05-09T13:01:54.108Z",
+    "input": {
+      "text": "帮我安排个高优先级的任务，看下保险",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "task",
+      "confidence": 0.88,
+      "lowConfidence": false,
+      "reasoning": "用户明确要求'安排任务'，包含任务内容（看保险）和优先级（高），意图清晰，参数提取完整",
+      "parameters": {
+        "title": "看保险",
+        "priority": "high"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": false
+    },
+    "execution": {
+      "executed": true,
+      "capabilityId": "task.create",
+      "taskId": {
+        "id": "recvj7YDz6RUrS",
+        "title": "看保险",
+        "status": "pending",
+        "priority": "high",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "created_at": "2026-05-09T13:01:54.116Z",
+        "updated_at": "2026-05-09T13:01:54.116Z",
+        "record_id": "recvj7YDz6RUrS"
+      },
+      "action": "completed",
+      "durationMs": 3057
+    },
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 8066
+    }
+  },
+  {
+    "id": "log_23fbd987a818",
+    "timestamp": "2026-05-09T13:14:40.445Z",
+    "input": {
+      "text": "帮我创建任务，每个月24号还招商银行信用卡",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "task",
+      "confidence": 0.9,
+      "lowConfidence": false,
+      "reasoning": "检测到明确的任务创建意图和周期性时间信息",
+      "parameters": {
+        "title": "还招商银行信用卡",
+        "recurring": "monthly",
+        "day_of_month": 24,
+        "category": "账单"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": false
+    },
+    "execution": {
+      "executed": true,
+      "capabilityId": "task.create",
+      "taskId": {
+        "id": "recvj81QRiiT4L",
+        "title": "还招商银行信用卡",
+        "status": "pending",
+        "priority": "medium",
+        "category": "账单",
+        "is_recurring": true,
+        "recurrence_type": "monthly",
+        "recurrence_rule": "RRULE:FREQ=MONTHLY;COUNT=10",
+        "created_at": "2026-05-09T13:14:40.447Z",
+        "updated_at": "2026-05-09T13:14:40.447Z",
+        "record_id": "recvj81QRiiT4L"
+      },
+      "action": "completed",
+      "durationMs": 2881
+    },
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 17087
+    }
+  },
+  {
+    "id": "log_b0a410ed2ac6",
+    "timestamp": "2026-05-09T13:22:42.379Z",
+    "input": {
+      "text": "帮我创建任务，每个月24日，还招商银行信用卡",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "task",
+      "confidence": 0.95,
+      "lowConfidence": false,
+      "reasoning": "用户明确要求创建任务，包含具体的时间周期（每月24日），任务内容为信用卡还款，属于个人财务事务，归类为个人任务",
+      "parameters": {
+        "title": "还招商银行信用卡",
+        "recurring": true,
+        "frequency": "monthly",
+        "monthly_day": 24,
+        "category": "个人"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": false
+    },
+    "execution": {
+      "executed": true,
+      "capabilityId": "task.create",
+      "taskId": {
+        "id": "recvj83Sfpc5bU",
+        "title": "还招商银行信用卡",
+        "status": "pending",
+        "priority": "medium",
+        "category": "个人",
+        "is_recurring": true,
+        "recurrence_type": "monthly",
+        "recurrence_rule": "RRULE:FREQ=MONTHLY;COUNT=10",
+        "created_at": "2026-05-09T13:22:42.383Z",
+        "updated_at": "2026-05-09T13:22:42.383Z",
+        "record_id": "recvj83Sfpc5bU"
+      },
+      "action": "completed",
+      "durationMs": 2833
+    },
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 12669
+    }
+  },
+  {
+    "id": "log_37a3b3f727a0",
+    "timestamp": "2026-05-09T13:30:12.537Z",
+    "input": {
+      "text": "帮我创建任务，每个月24日，还招商银行信用卡",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "task",
+      "confidence": 0.95,
+      "lowConfidence": false,
+      "reasoning": "用户明确要求创建周期性任务（每月24日还款），且包含具体的时间频率和事项内容，属于个人财务类任务",
+      "parameters": {
+        "title": "还招商银行信用卡",
+        "recurring": true,
+        "frequency": "monthly",
+        "day_of_month": 24,
+        "category": "个人"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": false
+    },
+    "execution": {
+      "executed": true,
+      "capabilityId": "task.create",
+      "taskId": {
+        "id": "recvj85LkR0GRR",
+        "title": "还招商银行信用卡",
+        "status": "pending",
+        "priority": "medium",
+        "category": "个人",
+        "is_recurring": true,
+        "recurrence_type": "monthly",
+        "recurrence_rule": "RRULE:FREQ=MONTHLY;COUNT=10",
+        "created_at": "2026-05-09T13:30:12.548Z",
+        "updated_at": "2026-05-09T13:30:12.548Z",
+        "record_id": "recvj85LkR0GRR"
+      },
+      "action": "completed",
+      "durationMs": 2767
+    },
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 9169
+    }
+  },
+  {
+    "id": "log_e19f814672ba",
+    "timestamp": "2026-05-09T13:33:33.760Z",
+    "input": {
+      "text": "帮我创建任务，每个月24日，还招商银行信用卡",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "create_task",
+      "entityType": "task",
+      "confidence": 0.9,
+      "lowConfidence": false,
+      "reasoning": "用户明确要求创建任务，提到'每个月24日'为重复日期，'还招商银行信用卡'为具体任务内容。根据关键词判断为个人财务类任务，category为'个人'",
+      "parameters": {
+        "title": "还招商银行信用卡",
+        "recurring": true,
+        "frequency": "monthly",
+        "day_of_month": 24,
+        "category": "个人"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": false
+    },
+    "execution": {
+      "executed": true,
+      "capabilityId": "task.create",
+      "taskId": {
+        "id": "recvj86BI817BG",
+        "title": "还招商银行信用卡",
+        "status": "pending",
+        "priority": "medium",
+        "category": "个人",
+        "start_date": "2026-05-23",
+        "is_recurring": true,
+        "recurrence_type": "monthly",
+        "recurrence_rule": "RRULE:FREQ=MONTHLY;BYMONTHDAY=24;COUNT=10",
+        "icloud_event_id": "1778333616792-j8uyh3z4v@caldav.icloud.com",
+        "created_at": "2026-05-09T13:33:33.769Z",
+        "updated_at": "2026-05-09T13:33:33.769Z",
+        "record_id": "recvj86BI817BG"
+      },
+      "action": "completed",
+      "durationMs": 6361
+    },
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 14366
+    }
+  },
+  {
+    "id": "log_89e4d6c98054",
+    "timestamp": "2026-05-09T13:36:57.627Z",
+    "input": {
+      "text": "删除刚创建的任务",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "delete_task",
+      "entityType": "task",
+      "confidence": 0.75,
+      "lowConfidence": false,
+      "reasoning": "用户明确表达删除任务意图，但'刚创建的任务'描述模糊，没有提供具体任务ID或名称，无法精确定位需要删除的任务，需要进一步确认",
+      "parameters": {}
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 7204
+    }
+  },
+  {
+    "id": "log_1ddd171d6a02",
+    "timestamp": "2026-05-09T13:37:56.241Z",
+    "input": {
+      "text": "1",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "other",
+      "entityType": "task",
+      "confidence": 0,
+      "lowConfidence": true,
+      "reasoning": "无法解析意图",
+      "parameters": {}
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 6922
+    }
+  },
+  {
+    "id": "log_b0e53e6ff690",
+    "timestamp": "2026-05-09T13:38:42.732Z",
+    "input": {
+      "text": "删除还招商银行信用卡的任务",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "delete_task",
+      "entityType": "task",
+      "confidence": 0.9,
+      "lowConfidence": false,
+      "reasoning": "用户明确要删除关于招商银行信用卡还款的任务，意图清晰但需确认具体任务",
+      "parameters": {
+        "title": "还招商银行信用卡"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 18610
+    }
+  },
+  {
+    "id": "log_13a059af134c",
+    "timestamp": "2026-05-09T13:39:49.955Z",
+    "input": {
+      "text": "我要删除还招商银行信用卡的任务",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "intentRecognition": {
+      "intentId": "",
+      "intent": "delete_task",
+      "entityType": "task",
+      "confidence": 0.9,
+      "lowConfidence": false,
+      "reasoning": "用户明确表达了删除任务意图，关键词'删除'和'任务'均被识别。任务标题为'还招商银行信用卡'。由于可能存在多个相关任务，需要确认具体删除哪一个。",
+      "parameters": {
+        "title": "还招商银行信用卡"
+      }
+    },
+    "confirmation": {
+      "needsConfirmation": true
+    },
+    "execution": null,
+    "iCloudSync": null,
+    "llmMetadata": {
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "latencyMs": 7614
+    }
+  }
+]

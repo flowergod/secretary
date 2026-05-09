@@ -1,0 +1,8063 @@
+[
+  {
+    "spanId": "span_6d18cba125ec",
+    "traceId": "trace_59295b4aa61c",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T12:33:46.600Z",
+    "durationMs": 4028,
+    "inputs": {
+      "userInput": "���Ҵ�����������10������ܵĻ���"
+    },
+    "outputs": {
+      "intent": "other",
+      "confidence": 0
+    },
+    "metadata": {
+      "latencyMs": 4027
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_b97798e6ce55",
+    "traceId": "trace_5c5523eb861e",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T12:35:23.721Z",
+    "durationMs": 10769,
+    "inputs": {
+      "userInput": "帮我创建明天早上10点和徐总的会议"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.95
+    },
+    "metadata": {
+      "latencyMs": 10769
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_de8ca45174e8",
+    "traceId": "trace_be36b1de1f85",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T12:37:59.645Z",
+    "durationMs": 13102,
+    "inputs": {
+      "userInput": "将与徐总的会议调整到下午2点"
+    },
+    "outputs": {
+      "intent": "update_task",
+      "confidence": 0.7
+    },
+    "metadata": {
+      "latencyMs": 13102
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_9e1f0262d965",
+    "traceId": "trace_979b5867dd31",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T12:50:50.285Z",
+    "durationMs": 11984,
+    "inputs": {
+      "userInput": "将与徐总的会议调整到下午2点"
+    },
+    "outputs": {
+      "intent": "update_task",
+      "confidence": 0.65
+    },
+    "metadata": {
+      "latencyMs": 11984
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_80b537673b00",
+    "traceId": "trace_ad7952cccd9e",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T12:51:49.555Z",
+    "durationMs": 15630,
+    "inputs": {
+      "userInput": "一小时"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.4
+    },
+    "metadata": {
+      "latencyMs": 15630
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_d18901b25953",
+    "traceId": "trace_cbebb0a784e4",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T12:53:06.725Z",
+    "durationMs": 21985,
+    "inputs": {
+      "userInput": "将与徐总的会议调整到下午2点"
+    },
+    "outputs": {
+      "intent": "update_task",
+      "confidence": 0.75
+    },
+    "metadata": {
+      "latencyMs": 21984
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_57b3cb7b0fae",
+    "traceId": "trace_123569ac97c9",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-05T12:54:46.667Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_mosmqdr1b1lqqn",
+      "openText": "原本在明天上午",
+      "cancel": false
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_a9dcd42480d6",
+    "traceId": "trace_123569ac97c9",
+    "parentSpanId": "span_57b3cb7b0fae",
+    "operationName": "llm.parameter_extraction",
+    "startTime": "2026-05-05T12:54:46.667Z",
+    "durationMs": 19527,
+    "inputs": null,
+    "outputs": {
+      "refinedIntent": "update_task"
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_263294b7d726",
+    "traceId": "trace_123569ac97c9",
+    "parentSpanId": "span_57b3cb7b0fae",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-05T12:55:06.195Z",
+    "durationMs": 1,
+    "inputs": null,
+    "outputs": {
+      "success": false
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_7c46d2096eaa",
+    "traceId": "trace_2af9a791471f",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T12:55:51.414Z",
+    "durationMs": 24144,
+    "inputs": {
+      "userInput": "将明天上午10点与徐总的会议调整到下午2点"
+    },
+    "outputs": {
+      "intent": "update_task",
+      "confidence": 0.92
+    },
+    "metadata": {
+      "latencyMs": 24144
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_414126616928",
+    "traceId": "trace_16a6431cff48",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-05T12:56:44.820Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_mosmtpn7kd5dny",
+      "openText": "opt_1",
+      "cancel": false
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_560f7203e425",
+    "traceId": "trace_16a6431cff48",
+    "parentSpanId": "span_414126616928",
+    "operationName": "llm.parameter_extraction",
+    "startTime": "2026-05-05T12:56:44.820Z",
+    "durationMs": 10320,
+    "inputs": null,
+    "outputs": {
+      "refinedIntent": "other"
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_3e0ee8ad592d",
+    "traceId": "trace_16a6431cff48",
+    "parentSpanId": "span_414126616928",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-05T12:56:55.140Z",
+    "durationMs": 0,
+    "inputs": null,
+    "outputs": {
+      "success": false
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_5dade8fd6658",
+    "traceId": "trace_62c8ed8d31e5",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T13:06:50.015Z",
+    "durationMs": 9566,
+    "inputs": {
+      "userInput": "将明天上午10点与徐总的会议调整到下午2点"
+    },
+    "outputs": {
+      "intent": "update_task",
+      "confidence": 0.9
+    },
+    "metadata": {
+      "latencyMs": 9565
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_d243af281f9c",
+    "traceId": "trace_ea4a684bb347",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-05T13:07:14.986Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_mosn7iofrc9dt8",
+      "selectedOption": "opt_1",
+      "cancel": false
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_fdc1e671f215",
+    "traceId": "trace_ea4a684bb347",
+    "parentSpanId": "span_d243af281f9c",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-05T13:07:14.986Z",
+    "durationMs": 1815,
+    "inputs": null,
+    "outputs": {
+      "success": false
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_c35f18b18573",
+    "traceId": "trace_773859d0ba7d",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T13:11:13.275Z",
+    "durationMs": 8892,
+    "inputs": {
+      "userInput": "将明天上午10点与徐总的会议调整到下午2点"
+    },
+    "outputs": {
+      "intent": "update_task",
+      "confidence": 0.88
+    },
+    "metadata": {
+      "latencyMs": 8891
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_a62cd34551f3",
+    "traceId": "trace_a2424f483639",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T13:11:25.810Z",
+    "durationMs": 11345,
+    "inputs": {
+      "userInput": "opt_1"
+    },
+    "outputs": {
+      "intent": "other",
+      "confidence": 0.2
+    },
+    "metadata": {
+      "latencyMs": 11345
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_e6c6e7df4fa0",
+    "traceId": "trace_14ec41e74ed3",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-05T13:12:16.082Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_mosndq8syoope1",
+      "openText": "将明天上午10点与徐总的会议调整到下午2点",
+      "cancel": false
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_a0e7007dfd80",
+    "traceId": "trace_14ec41e74ed3",
+    "parentSpanId": "span_e6c6e7df4fa0",
+    "operationName": "llm.parameter_extraction",
+    "startTime": "2026-05-05T13:12:16.082Z",
+    "durationMs": 7346,
+    "inputs": null,
+    "outputs": {
+      "refinedIntent": "update_task"
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_aa3c46aa46c1",
+    "traceId": "trace_14ec41e74ed3",
+    "parentSpanId": "span_e6c6e7df4fa0",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-05T13:12:23.428Z",
+    "durationMs": 2659,
+    "inputs": null,
+    "outputs": {
+      "success": false
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_f327e02ebabc",
+    "traceId": "trace_64ef55300370",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T13:12:55.452Z",
+    "durationMs": 18063,
+    "inputs": {
+      "userInput": "将明天上午10点与徐总的会议调整到下午2点"
+    },
+    "outputs": {
+      "intent": "update_task",
+      "confidence": 0.85
+    },
+    "metadata": {
+      "latencyMs": 18062
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_6e53bc18eec4",
+    "traceId": "trace_c5ddd2a7454d",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-05T13:14:19.644Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_mosnfo8zyncmwi",
+      "openText": "不需要了解主题，直接帮我调整明天的会议时间",
+      "cancel": false
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_7c31068ed318",
+    "traceId": "trace_c5ddd2a7454d",
+    "parentSpanId": "span_6e53bc18eec4",
+    "operationName": "llm.parameter_extraction",
+    "startTime": "2026-05-05T13:14:19.644Z",
+    "durationMs": 13199,
+    "inputs": null,
+    "outputs": {
+      "refinedIntent": "update_task"
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_113645ce6951",
+    "traceId": "trace_c5ddd2a7454d",
+    "parentSpanId": "span_6e53bc18eec4",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-05T13:14:32.843Z",
+    "durationMs": 0,
+    "inputs": null,
+    "outputs": {
+      "success": false
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_c0cf6d953b74",
+    "traceId": "trace_6f3b3dbeec8e",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T13:15:08.131Z",
+    "durationMs": 14770,
+    "inputs": {
+      "userInput": "将明天上午10点的会议调整到下午2点"
+    },
+    "outputs": {
+      "intent": "update_task",
+      "confidence": 0.92
+    },
+    "metadata": {
+      "latencyMs": 14770
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_66664dac8b33",
+    "traceId": "trace_f1c8a24cb1c5",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-05T13:15:37.738Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_mosniaw4s3lln0",
+      "selectedOption": "opt_1",
+      "cancel": false
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_27c94f86fb83",
+    "traceId": "trace_f1c8a24cb1c5",
+    "parentSpanId": "span_66664dac8b33",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-05T13:15:37.738Z",
+    "durationMs": 2108,
+    "inputs": null,
+    "outputs": {
+      "success": false
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_2a9c9894678e",
+    "traceId": "trace_283008226413",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T13:19:16.193Z",
+    "durationMs": 18276,
+    "inputs": {
+      "userInput": "将明天上午10点的会议调整到下午2点"
+    },
+    "outputs": {
+      "intent": "update_task",
+      "confidence": 0.85
+    },
+    "metadata": {
+      "latencyMs": 18275
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_09f75d3718fb",
+    "traceId": "trace_ce3f71dbbd96",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-05T13:19:41.454Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_mosnnouuwe4vya",
+      "selectedOption": "opt_1",
+      "cancel": false
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_5b46d141769c",
+    "traceId": "trace_ce3f71dbbd96",
+    "parentSpanId": "span_09f75d3718fb",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-05T13:19:41.454Z",
+    "durationMs": 4338,
+    "inputs": null,
+    "outputs": {
+      "success": true
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_8b0dce821366",
+    "traceId": "trace_cb37794ac2b9",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T13:20:30.137Z",
+    "durationMs": 29761,
+    "inputs": {
+      "userInput": "与徐总的会议取消了"
+    },
+    "outputs": {
+      "intent": "delete_task",
+      "confidence": 0.65
+    },
+    "metadata": {
+      "latencyMs": 29760
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_4e093d20390e",
+    "traceId": "trace_7c2b5f83ae03",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-05T13:21:25.117Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_mosnpp8t0gjmcx",
+      "selectedOption": "opt_1",
+      "cancel": false
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_9f3833f94a89",
+    "traceId": "trace_7c2b5f83ae03",
+    "parentSpanId": "span_4e093d20390e",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-05T13:21:25.117Z",
+    "durationMs": 849,
+    "inputs": null,
+    "outputs": {
+      "success": false
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_24b1bfab84ae",
+    "traceId": "trace_b8b382e7d3b1",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T13:22:04.571Z",
+    "durationMs": 24879,
+    "inputs": {
+      "userInput": "与徐总的会议取消了"
+    },
+    "outputs": {
+      "intent": "delete_task",
+      "confidence": 0.65
+    },
+    "metadata": {
+      "latencyMs": 24878
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_e6430bcf854f",
+    "traceId": "trace_cc430b7d8bc0",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-05T13:22:43.111Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_mosnrhfyw8c6p7",
+      "selectedOption": "opt_1",
+      "cancel": false
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_f9aacad61409",
+    "traceId": "trace_cc430b7d8bc0",
+    "parentSpanId": "span_e6430bcf854f",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-05T13:22:43.111Z",
+    "durationMs": 858,
+    "inputs": null,
+    "outputs": {
+      "success": false
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_20eddcbec087",
+    "traceId": "trace_91e53cda6e8b",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T13:26:08.274Z",
+    "durationMs": 22937,
+    "inputs": {
+      "userInput": "与徐总的会议取消了"
+    },
+    "outputs": {
+      "intent": "query_events",
+      "confidence": 0.85
+    },
+    "metadata": {
+      "latencyMs": 22936
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_7ecf2f97befd",
+    "traceId": "trace_837ee348c44c",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-05T13:27:50.928Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_mosnwq69syzzfe",
+      "selectedOption": "opt_2",
+      "cancel": false
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_c5dfccaf1d1c",
+    "traceId": "trace_837ee348c44c",
+    "parentSpanId": "span_7ecf2f97befd",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-05T13:27:50.928Z",
+    "durationMs": 1152,
+    "inputs": null,
+    "outputs": {
+      "success": true
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_82635a07ebfa",
+    "traceId": "trace_debaef914258",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T13:29:15.577Z",
+    "durationMs": 10848,
+    "inputs": {
+      "userInput": "对，就是这个会议，取消掉"
+    },
+    "outputs": {
+      "intent": "delete_task",
+      "confidence": 0.55
+    },
+    "metadata": {
+      "latencyMs": 10846
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_7495ea037551",
+    "traceId": "trace_01b73e30d791",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-05T13:30:01.380Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_moso0dmx2o5kjl",
+      "selectedOption": "opt_1",
+      "cancel": false
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_2ef564d2204e",
+    "traceId": "trace_01b73e30d791",
+    "parentSpanId": "span_7495ea037551",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-05T13:30:01.380Z",
+    "durationMs": 956,
+    "inputs": null,
+    "outputs": {
+      "success": false
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_464c8e54813d",
+    "traceId": "trace_5f448ace3e2d",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T13:30:40.944Z",
+    "durationMs": 20370,
+    "inputs": {
+      "userInput": "与徐总的会议取消了"
+    },
+    "outputs": {
+      "intent": "delete_task",
+      "confidence": 0.55
+    },
+    "metadata": {
+      "latencyMs": 20370
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_79474e098564",
+    "traceId": "trace_1f435a4b1ef8",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-05T13:31:15.037Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_moso2eofwv07h3",
+      "selectedOption": "opt_1",
+      "cancel": false
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_f57e7b78d3a3",
+    "traceId": "trace_1f435a4b1ef8",
+    "parentSpanId": "span_79474e098564",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-05T13:31:15.037Z",
+    "durationMs": 862,
+    "inputs": null,
+    "outputs": {
+      "success": false
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_662da1d279f3",
+    "traceId": "trace_2910b94b1231",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T13:33:28.770Z",
+    "durationMs": 22730,
+    "inputs": {
+      "userInput": "与徐总的会议取消了"
+    },
+    "outputs": {
+      "intent": "delete_task",
+      "confidence": 0.75
+    },
+    "metadata": {
+      "latencyMs": 22729
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_138b32307a0f",
+    "traceId": "trace_d5733a9f1b76",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-05T13:34:02.289Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_moso62kde3o258",
+      "selectedOption": "opt_1",
+      "cancel": false
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_fd890c852692",
+    "traceId": "trace_d5733a9f1b76",
+    "parentSpanId": "span_138b32307a0f",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-05T13:34:02.289Z",
+    "durationMs": 3878,
+    "inputs": null,
+    "outputs": {
+      "success": true
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_998540c80761",
+    "traceId": "trace_d04546992093",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T13:49:33.547Z",
+    "durationMs": 23327,
+    "inputs": {
+      "userInput": "后面5天，每天9-10点都有要开例会"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.92
+    },
+    "metadata": {
+      "latencyMs": 23327
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_0c63506e6ba0",
+    "traceId": "trace_388e7251c184",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T13:54:50.029Z",
+    "durationMs": 5818,
+    "inputs": {
+      "userInput": "删除所有任务"
+    },
+    "outputs": {
+      "intent": "delete_task",
+      "confidence": 0.85
+    },
+    "metadata": {
+      "latencyMs": 5818
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_d21d091ade26",
+    "traceId": "trace_bbd195f9f3eb",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-05T13:55:28.087Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_mosoxe2nsz8nek",
+      "selectedOption": "opt_1",
+      "cancel": false
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_84395b842677",
+    "traceId": "trace_bbd195f9f3eb",
+    "parentSpanId": "span_d21d091ade26",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-05T13:55:28.087Z",
+    "durationMs": 876,
+    "inputs": null,
+    "outputs": {
+      "success": false
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_57e57f2d68bf",
+    "traceId": "trace_0b6b62a755e3",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T14:04:14.387Z",
+    "durationMs": 5421,
+    "inputs": {
+      "userInput": "删除所有任务"
+    },
+    "outputs": {
+      "intent": "delete_task",
+      "confidence": 0.92
+    },
+    "metadata": {
+      "latencyMs": 5420
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_325ab694a1c5",
+    "traceId": "trace_e453702b2fa8",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-05T14:05:08.004Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_mosp9i2jr7vx9i",
+      "selectedOption": "opt_1",
+      "cancel": false
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_bde3b0239868",
+    "traceId": "trace_e453702b2fa8",
+    "parentSpanId": "span_325ab694a1c5",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-05T14:05:08.004Z",
+    "durationMs": 2965,
+    "inputs": null,
+    "outputs": {
+      "success": true
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_7c7876ab13c5",
+    "traceId": "trace_c616ed8738d6",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T14:34:52.963Z",
+    "durationMs": 10145,
+    "inputs": {
+      "userInput": "���Ұ�����������10�㿪��"
+    },
+    "outputs": {
+      "intent": "other",
+      "confidence": 0.15
+    },
+    "metadata": {
+      "latencyMs": 10144
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_bda9f9ffbb62",
+    "traceId": "trace_da536d976396",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-05T14:35:19.562Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_mosqcyah2fvye5",
+      "openText": "schedule a meeting tomorrow at 10am",
+      "cancel": false
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_184903e4e1b3",
+    "traceId": "trace_da536d976396",
+    "parentSpanId": "span_bda9f9ffbb62",
+    "operationName": "llm.parameter_extraction",
+    "startTime": "2026-05-05T14:35:19.562Z",
+    "durationMs": 10361,
+    "inputs": null,
+    "outputs": {
+      "refinedIntent": "create_task"
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_cf8d7d1b4935",
+    "traceId": "trace_da536d976396",
+    "parentSpanId": "span_bda9f9ffbb62",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-05T14:35:29.923Z",
+    "durationMs": 6516,
+    "inputs": null,
+    "outputs": {
+      "success": true
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_140d7e90138d",
+    "traceId": "trace_b607ab2c5ffb",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T16:17:27.809Z",
+    "durationMs": 6388,
+    "inputs": {
+      "userInput": "明天上午10点我要和客户开项目评审会"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.95
+    },
+    "metadata": {
+      "latencyMs": 6388
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_e45fb987bc26",
+    "traceId": "trace_76cf8c371d6f",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T16:17:24.771Z",
+    "durationMs": 10071,
+    "inputs": {
+      "userInput": "今天有什么安排？"
+    },
+    "outputs": {
+      "intent": "query_events",
+      "confidence": 0.85
+    },
+    "metadata": {
+      "latencyMs": 10071
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_94a0791160d0",
+    "traceId": "trace_09a40982fb18",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T16:17:30.818Z",
+    "durationMs": 8428,
+    "inputs": {
+      "userInput": "把和客户的会议改到下午3点"
+    },
+    "outputs": {
+      "intent": "update_task",
+      "confidence": 0.65
+    },
+    "metadata": {
+      "latencyMs": 8428
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_47ae96821651",
+    "traceId": "trace_50a531a937a6",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T16:17:36.838Z",
+    "durationMs": null,
+    "inputs": {
+      "userInput": "今天下午4点要去学校接孩子参加活动"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_cf8d2b65ae4f",
+    "traceId": "trace_31f4b39623d4",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T16:17:33.831Z",
+    "durationMs": 11186,
+    "inputs": {
+      "userInput": "我今天下午3点有什么会议？"
+    },
+    "outputs": {
+      "intent": "query_events",
+      "confidence": 0.92
+    },
+    "metadata": {
+      "latencyMs": 11186
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_ef6927b375d7",
+    "traceId": "trace_b03a9cc6c0db",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-05T16:17:48.892Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_mosu0ur6i07uvh",
+      "selectedOption": "opt_1"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_6c7a4a75c013",
+    "traceId": "trace_b03a9cc6c0db",
+    "parentSpanId": "span_ef6927b375d7",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-05T16:17:48.892Z",
+    "durationMs": 1,
+    "inputs": null,
+    "outputs": {
+      "success": false
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_f86ef2cc5c1e",
+    "traceId": "trace_74a04d48b852",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-05T16:17:53.921Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_mosu0ur6i07uvh",
+      "selectedOption": "opt_1"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_bfa46a7e4550",
+    "traceId": "trace_74a04d48b852",
+    "parentSpanId": "span_f86ef2cc5c1e",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-05T16:17:53.922Z",
+    "durationMs": 0,
+    "inputs": null,
+    "outputs": {
+      "success": false
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_82fb54d78181",
+    "traceId": "trace_d57f7dcd10c0",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T16:17:39.850Z",
+    "durationMs": 16143,
+    "inputs": {
+      "userInput": "提醒我明天要去医院体检"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.95
+    },
+    "metadata": {
+      "latencyMs": 16143
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_44b07075a84b",
+    "traceId": "trace_37f1ce336131",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T16:17:50.908Z",
+    "durationMs": 5352,
+    "inputs": {
+      "userInput": "我有哪些待办任务？"
+    },
+    "outputs": {
+      "intent": "query_tasks",
+      "confidence": 0.95
+    },
+    "metadata": {
+      "latencyMs": 5351
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_bf0a4835f693",
+    "traceId": "trace_3cf907378d88",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-05T16:17:58.941Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_mosu0ur6i07uvh",
+      "selectedOption": "opt_1"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_aa7113540add",
+    "traceId": "trace_3cf907378d88",
+    "parentSpanId": "span_bf0a4835f693",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-05T16:17:58.941Z",
+    "durationMs": 0,
+    "inputs": null,
+    "outputs": {
+      "success": false
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_1e2f70f92d21",
+    "traceId": "trace_094832082d5e",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T16:17:42.863Z",
+    "durationMs": 18721,
+    "inputs": {
+      "userInput": "每周一早上9点开团队例会"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.9
+    },
+    "metadata": {
+      "latencyMs": 18721
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_d994e6ae0373",
+    "traceId": "trace_cd7e663b0a53",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-05T16:18:03.958Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_mosu0ur6i07uvh",
+      "selectedOption": "opt_1"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_0ab8843afccc",
+    "traceId": "trace_cd7e663b0a53",
+    "parentSpanId": "span_d994e6ae0373",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-05T16:18:03.958Z",
+    "durationMs": 1,
+    "inputs": null,
+    "outputs": {
+      "success": false
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_75b12419f63f",
+    "traceId": "trace_72ea9e06a3e4",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-05T16:18:08.972Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_mosu0ur6i07uvh",
+      "selectedOption": "opt_1"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_d2a34754eddc",
+    "traceId": "trace_72ea9e06a3e4",
+    "parentSpanId": "span_75b12419f63f",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-05T16:18:08.972Z",
+    "durationMs": 0,
+    "inputs": null,
+    "outputs": {
+      "success": false
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_fe02eee0501f",
+    "traceId": "trace_2a1fe223b7f2",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T16:17:55.932Z",
+    "durationMs": 15096,
+    "inputs": {
+      "userInput": "项目计划已经写完了"
+    },
+    "outputs": {
+      "intent": "complete_task",
+      "confidence": 0.65
+    },
+    "metadata": {
+      "latencyMs": 15096
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_1d5bc035fdfe",
+    "traceId": "trace_2d2bcbe797d8",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T16:17:45.875Z",
+    "durationMs": 26484,
+    "inputs": {
+      "userInput": "取消明天的项目评审会"
+    },
+    "outputs": {
+      "intent": "delete_task",
+      "confidence": 0.85
+    },
+    "metadata": {
+      "latencyMs": 26484
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_bad52dd51497",
+    "traceId": "trace_c134d82930f3",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T16:18:05.959Z",
+    "durationMs": 6989,
+    "inputs": {
+      "userInput": "帮我看看这周还剩哪些工作"
+    },
+    "outputs": {
+      "intent": "query_tasks",
+      "confidence": 0.95
+    },
+    "metadata": {
+      "latencyMs": 6989
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_6015b89ef77b",
+    "traceId": "trace_38bdbefff38c",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-05T16:18:13.980Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_mosu1ema4d5lv8",
+      "selectedOption": "opt_1"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_da8811857ee7",
+    "traceId": "trace_38bdbefff38c",
+    "parentSpanId": "span_6015b89ef77b",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-05T16:18:13.980Z",
+    "durationMs": 2733,
+    "inputs": null,
+    "outputs": {
+      "success": true
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_3259281c3b08",
+    "traceId": "trace_6f807226a5c3",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T16:18:00.944Z",
+    "durationMs": 16490,
+    "inputs": {
+      "userInput": "最近太忙了，好多事情都没处理"
+    },
+    "outputs": {
+      "intent": "query_tasks",
+      "confidence": 0.5
+    },
+    "metadata": {
+      "latencyMs": 16489
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_2453913f0eb6",
+    "traceId": "trace_defc4400b49e",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T16:18:10.975Z",
+    "durationMs": 8985,
+    "inputs": {
+      "userInput": "紧急：下午2点有个客户电话会议"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.85
+    },
+    "metadata": {
+      "latencyMs": 8985
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_93aa743ce2fa",
+    "traceId": "trace_8878cc6294fb",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-05T16:18:19.001Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_mosu1ema4d5lv8",
+      "selectedOption": "opt_1"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_3b06a8362376",
+    "traceId": "trace_8878cc6294fb",
+    "parentSpanId": "span_93aa743ce2fa",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-05T16:18:19.001Z",
+    "durationMs": 1188,
+    "inputs": null,
+    "outputs": {
+      "success": false
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_f8cc080e8543",
+    "traceId": "trace_91fd07870b45",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-05T16:18:24.007Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_mosu1ema4d5lv8",
+      "selectedOption": "opt_1"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_84ee19e44291",
+    "traceId": "trace_91fd07870b45",
+    "parentSpanId": "span_f8cc080e8543",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-05T16:18:24.007Z",
+    "durationMs": 1169,
+    "inputs": null,
+    "outputs": {
+      "success": false
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_1b0524f95db3",
+    "traceId": "trace_931ff23fd4cc",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T16:18:15.992Z",
+    "durationMs": 17746,
+    "inputs": {
+      "userInput": "把那个体检提醒删了"
+    },
+    "outputs": {
+      "intent": "delete_task",
+      "confidence": 0.75
+    },
+    "metadata": {
+      "latencyMs": 17746
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_2aa76c6c7166",
+    "traceId": "trace_cea9bf40be93",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-05T16:18:21.006Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_mosu1h7hnqoey8",
+      "openText": "这周我有多少个会议？",
+      "cancel": false
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_152df02b075a",
+    "traceId": "trace_cea9bf40be93",
+    "parentSpanId": "span_2aa76c6c7166",
+    "operationName": "llm.parameter_extraction",
+    "startTime": "2026-05-05T16:18:21.006Z",
+    "durationMs": 13816,
+    "inputs": null,
+    "outputs": {
+      "refinedIntent": "query_events"
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_2a53ef9d2bc6",
+    "traceId": "trace_cea9bf40be93",
+    "parentSpanId": "span_2aa76c6c7166",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-05T16:18:34.822Z",
+    "durationMs": 784,
+    "inputs": null,
+    "outputs": {
+      "success": true
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_d04cdb71ded5",
+    "traceId": "trace_7f8897e5f45d",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-06T00:50:08.580Z",
+    "durationMs": 9856,
+    "inputs": {
+      "userInput": "ÿ��һ����9�㿪�Ŷ�����"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.65
+    },
+    "metadata": {
+      "latencyMs": 9855
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_94b69ff3c1ee",
+    "traceId": "trace_f4ff5ee0c286",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-06T00:50:29.012Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_motcc1z29fdnb3",
+      "openText": "schedule weekly meeting every monday at 9am",
+      "cancel": false
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_ea2c088dd021",
+    "traceId": "trace_f4ff5ee0c286",
+    "parentSpanId": "span_94b69ff3c1ee",
+    "operationName": "llm.parameter_extraction",
+    "startTime": "2026-05-06T00:50:29.012Z",
+    "durationMs": 20524,
+    "inputs": null,
+    "outputs": {
+      "refinedIntent": "create_task"
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_bd5c52d510aa",
+    "traceId": "trace_f4ff5ee0c286",
+    "parentSpanId": "span_94b69ff3c1ee",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-06T00:50:49.536Z",
+    "durationMs": 6286,
+    "inputs": null,
+    "outputs": {
+      "success": true
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_ced3ab4de04c",
+    "traceId": "trace_51087339706d",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-06T00:52:06.650Z",
+    "durationMs": 4381,
+    "inputs": {
+      "userInput": "schedule weekly meeting every monday at 9am"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.9
+    },
+    "metadata": {
+      "latencyMs": 4381
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_b3987c353d29",
+    "traceId": "trace_8ea75017ae5c",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-06T00:52:38.287Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_motceg41lspb48",
+      "openText": "create a simple task for tomorrow",
+      "cancel": false
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_5da3609f7812",
+    "traceId": "trace_8ea75017ae5c",
+    "parentSpanId": "span_b3987c353d29",
+    "operationName": "llm.parameter_extraction",
+    "startTime": "2026-05-06T00:52:38.287Z",
+    "durationMs": 7029,
+    "inputs": null,
+    "outputs": {
+      "refinedIntent": "create_task"
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_6a60fec1baf8",
+    "traceId": "trace_8ea75017ae5c",
+    "parentSpanId": "span_b3987c353d29",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-06T00:52:45.316Z",
+    "durationMs": 5352,
+    "inputs": null,
+    "outputs": {
+      "success": true
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_411235c3b51a",
+    "traceId": "trace_ba41a087a437",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-06T00:53:25.007Z",
+    "durationMs": 9838,
+    "inputs": {
+      "userInput": "schedule weekly recurring task for testing"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.7
+    },
+    "metadata": {
+      "latencyMs": 9837
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_30029ec1e676",
+    "traceId": "trace_41f40ec44750",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-06T00:53:55.113Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_motcgcic6709ti",
+      "openText": "create weekly meeting every monday at 10am",
+      "cancel": false
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_0f3eefadd3fb",
+    "traceId": "trace_41f40ec44750",
+    "parentSpanId": "span_30029ec1e676",
+    "operationName": "llm.parameter_extraction",
+    "startTime": "2026-05-06T00:53:55.113Z",
+    "durationMs": 9208,
+    "inputs": null,
+    "outputs": {
+      "refinedIntent": "create_task"
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_4de656c520c5",
+    "traceId": "trace_41f40ec44750",
+    "parentSpanId": "span_30029ec1e676",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-06T00:54:04.321Z",
+    "durationMs": 5792,
+    "inputs": null,
+    "outputs": {
+      "success": true
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_ce0c5efb2976",
+    "traceId": "trace_ef1b87ff79d1",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-06T00:55:15.530Z",
+    "durationMs": 6435,
+    "inputs": {
+      "userInput": "create weekly recurring task on mondays at 9am"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.8
+    },
+    "metadata": {
+      "latencyMs": 6435
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_4435942d65b4",
+    "traceId": "trace_b0d0e695a485",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-06T00:55:44.187Z",
+    "durationMs": 9431,
+    "inputs": {
+      "userInput": "create weekly recurring task on mondays at 9am"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.95
+    },
+    "metadata": {
+      "latencyMs": 9430
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_62cc3a9a8f75",
+    "traceId": "trace_bc3fcfaf704f",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-06T00:56:08.970Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_motcjabigc7gdf",
+      "selectedOption": "opt_1"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_5418f40dd53f",
+    "traceId": "trace_bc3fcfaf704f",
+    "parentSpanId": "span_62cc3a9a8f75",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-06T00:56:08.971Z",
+    "durationMs": 6214,
+    "inputs": null,
+    "outputs": {
+      "success": true
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_63431ecc26bb",
+    "traceId": "trace_a5ffbb2ede57",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-06T00:56:52.328Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_motcjabigc7gdf",
+      "selectedOption": "opt_1"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_83321f11ce58",
+    "traceId": "trace_a5ffbb2ede57",
+    "parentSpanId": "span_63431ecc26bb",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-06T00:56:52.328Z",
+    "durationMs": 5521,
+    "inputs": null,
+    "outputs": {
+      "success": true
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_a278a458eb05",
+    "traceId": "trace_4a5869a3a04d",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-06T00:58:17.097Z",
+    "durationMs": 17498,
+    "inputs": {
+      "userInput": "create weekly recurring task on mondays at 9am"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.85
+    },
+    "metadata": {
+      "latencyMs": 17498
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_2e3b5e5ca6ee",
+    "traceId": "trace_e3870a740f5b",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-06T00:58:43.611Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_motcmqdpqlrw5m",
+      "openText": "create weekly recurring task on mondays at 9am",
+      "cancel": false
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_354c28f42c98",
+    "traceId": "trace_e3870a740f5b",
+    "parentSpanId": "span_2e3b5e5ca6ee",
+    "operationName": "llm.parameter_extraction",
+    "startTime": "2026-05-06T00:58:43.611Z",
+    "durationMs": 8982,
+    "inputs": null,
+    "outputs": {
+      "refinedIntent": "create_task"
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_e5f07ba5dfb5",
+    "traceId": "trace_e3870a740f5b",
+    "parentSpanId": "span_2e3b5e5ca6ee",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-06T00:58:52.593Z",
+    "durationMs": 6043,
+    "inputs": null,
+    "outputs": {
+      "success": true
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_ebe09f77f434",
+    "traceId": "trace_d20c7cac23ae",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-06T00:59:13.476Z",
+    "durationMs": 10002,
+    "inputs": {
+      "userInput": "create weekly recurring task on mondays at 9am"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.85
+    },
+    "metadata": {
+      "latencyMs": 10001
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_856cbe500348",
+    "traceId": "trace_ff7b0a91a804",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-06T00:59:31.636Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_motcnrcrrfiwh0",
+      "selectedOption": "opt_1"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_fa9908854bf7",
+    "traceId": "trace_ff7b0a91a804",
+    "parentSpanId": "span_856cbe500348",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-06T00:59:31.636Z",
+    "durationMs": 3116,
+    "inputs": null,
+    "outputs": {
+      "success": true
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_184b7efd4a6f",
+    "traceId": "trace_c28ac5d51586",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-06T01:00:53.458Z",
+    "durationMs": 9102,
+    "inputs": {
+      "userInput": "create weekly recurring task on mondays at 9am"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.75
+    },
+    "metadata": {
+      "latencyMs": 9101
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_94a3c68642b7",
+    "traceId": "trace_98a957beba64",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-06T01:01:16.920Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_motcq0mkviei3u",
+      "selectedOption": "opt_1"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_1470a4632822",
+    "traceId": "trace_98a957beba64",
+    "parentSpanId": "span_94a3c68642b7",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-06T01:01:16.920Z",
+    "durationMs": 6613,
+    "inputs": null,
+    "outputs": {
+      "success": true
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_557bd0cbaa40",
+    "traceId": "trace_de653f77a914",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-06T01:02:44.789Z",
+    "durationMs": null,
+    "inputs": {
+      "userInput": "create weekly recurring task on mondays at 9am"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_5a2fd5a17c55",
+    "traceId": "trace_c3159e6694bd",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-06T01:03:48.415Z",
+    "durationMs": 14067,
+    "inputs": {
+      "userInput": "create weekly recurring task on mondays at 9am"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.85
+    },
+    "metadata": {
+      "latencyMs": 14066
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_98531940f416",
+    "traceId": "trace_de7ddd476c89",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-06T01:04:12.426Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_motcts0a75c7pa",
+      "selectedOption": "opt_1"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_0cda8eb964d2",
+    "traceId": "trace_de7ddd476c89",
+    "parentSpanId": "span_98531940f416",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-06T01:04:12.426Z",
+    "durationMs": 3160,
+    "inputs": null,
+    "outputs": {
+      "success": true
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_790295b3e671",
+    "traceId": "trace_80ec3b62f60d",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-06T01:04:50.553Z",
+    "durationMs": 10498,
+    "inputs": {
+      "userInput": "create weekly recurring task on mondays at 9am"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.85
+    },
+    "metadata": {
+      "latencyMs": 10497
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_987b6c6783ba",
+    "traceId": "trace_cbebf2a8ea78",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-06T01:05:16.381Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_motcv5db5otw9a",
+      "selectedOption": "opt_1"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_80dba142e6e0",
+    "traceId": "trace_cbebf2a8ea78",
+    "parentSpanId": "span_987b6c6783ba",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-06T01:05:16.381Z",
+    "durationMs": 7182,
+    "inputs": null,
+    "outputs": {
+      "success": true
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_8c6114c145a8",
+    "traceId": "trace_ea74e61f2770",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-06T12:29:26.236Z",
+    "durationMs": 24761,
+    "inputs": {
+      "userInput": "change the investor call to tomorrow at 2pm"
+    },
+    "outputs": {
+      "intent": "update_task",
+      "confidence": 0.88
+    },
+    "metadata": {
+      "latencyMs": 24760
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_50199a5690e3",
+    "traceId": "trace_da06af7d8255",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-06T12:30:46.749Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_mou1clk6l7gayh",
+      "selectedOption": "opt_1"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_7241c8198842",
+    "traceId": "trace_052ebd15500a",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-06T12:31:45.892Z",
+    "durationMs": 8871,
+    "inputs": {
+      "userInput": "meeting with boss at 3pm today"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.95
+    },
+    "metadata": {
+      "latencyMs": 8869
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_f43b93322ac7",
+    "traceId": "trace_b9eb3f02a92e",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-06T12:33:08.904Z",
+    "durationMs": 6103,
+    "inputs": {
+      "userInput": "meeting with colleague at 4pm today"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.95
+    },
+    "metadata": {
+      "latencyMs": 6103
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_6204725bc426",
+    "traceId": "trace_3c1f62d8a9fa",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-06T12:34:26.908Z",
+    "durationMs": 19114,
+    "inputs": {
+      "userInput": "create a quick reminder for tomorrow morning"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.7
+    },
+    "metadata": {
+      "latencyMs": 19084
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_e52713aab589",
+    "traceId": "trace_73e5a6fdd99d",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-06T12:35:25.882Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_mou1i41o8i3281",
+      "openText": "meeting at 3pm today",
+      "cancel": false
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_6f92c5a3fbdf",
+    "traceId": "trace_73e5a6fdd99d",
+    "parentSpanId": "span_e52713aab589",
+    "operationName": "llm.parameter_extraction",
+    "startTime": "2026-05-06T12:35:25.882Z",
+    "durationMs": 17115,
+    "inputs": null,
+    "outputs": {
+      "refinedIntent": "create_task"
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_214164c6d368",
+    "traceId": "trace_73e5a6fdd99d",
+    "parentSpanId": "span_e52713aab589",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-06T12:35:42.998Z",
+    "durationMs": 6355,
+    "inputs": null,
+    "outputs": {
+      "success": true
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_a108f4ffdae2",
+    "traceId": "trace_ce906a8797a4",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-06T12:35:49.360Z",
+    "durationMs": 9654,
+    "inputs": {
+      "userInput": "meeting tomorrow at 10am"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.88
+    },
+    "metadata": {
+      "latencyMs": 9654
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_03b995314c64",
+    "traceId": "trace_7ca3a33d1164",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-06T12:36:08.805Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_mou1jo4jzkr6iw",
+      "selectedOption": "opt_1"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_1ac7896d751c",
+    "traceId": "trace_7ca3a33d1164",
+    "parentSpanId": "span_03b995314c64",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-06T12:36:08.805Z",
+    "durationMs": 5828,
+    "inputs": null,
+    "outputs": {
+      "success": true
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_ac2fca6885f0",
+    "traceId": "trace_67f95db80cad",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-06T12:36:14.639Z",
+    "durationMs": 22233,
+    "inputs": {
+      "userInput": "change that investor call to friday"
+    },
+    "outputs": {
+      "intent": "update_task",
+      "confidence": 0.75
+    },
+    "metadata": {
+      "latencyMs": 22233
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_ede99106762f",
+    "traceId": "trace_4a1ad1bb4ca2",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-06T12:37:20.744Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_mou1l7ms4xt5ls",
+      "selectedOption": "opt_1"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_3c93a030cbe2",
+    "traceId": "trace_4a1ad1bb4ca2",
+    "parentSpanId": "span_ede99106762f",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-06T12:37:20.744Z",
+    "durationMs": 1062,
+    "inputs": null,
+    "outputs": {
+      "success": false
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_a9a8499f54d4",
+    "traceId": "trace_ff514b3e6b9e",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-06T12:37:21.813Z",
+    "durationMs": 14843,
+    "inputs": {
+      "userInput": "cancel the reminder about the meeting"
+    },
+    "outputs": {
+      "intent": "delete_task",
+      "confidence": 0.8
+    },
+    "metadata": {
+      "latencyMs": 14843
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_4057b5c755ab",
+    "traceId": "trace_f8a51fcda5f9",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-06T12:37:44.214Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_mou1lpqsjj82j6",
+      "selectedOption": "opt_1"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_2ae5c2192aa1",
+    "traceId": "trace_f8a51fcda5f9",
+    "parentSpanId": "span_4057b5c755ab",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-06T12:37:44.214Z",
+    "durationMs": 1,
+    "inputs": null,
+    "outputs": {
+      "success": false
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_cad25f08a812",
+    "traceId": "trace_07a2ac473a09",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-06T12:37:44.221Z",
+    "durationMs": 18052,
+    "inputs": {
+      "userInput": "remind me to call mom tonight"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.88
+    },
+    "metadata": {
+      "latencyMs": 18052
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_775a7cf9a73d",
+    "traceId": "trace_4308e8ec0a0f",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-06T12:40:22.788Z",
+    "durationMs": 20692,
+    "inputs": {
+      "userInput": "meeting at 3pm today"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.92
+    },
+    "metadata": {
+      "latencyMs": 20692
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_1944ba58cc90",
+    "traceId": "trace_646bef32484b",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-06T12:40:49.542Z",
+    "durationMs": 19126,
+    "inputs": {
+      "userInput": "meeting tomorrow at 10am"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.95
+    },
+    "metadata": {
+      "latencyMs": 19126
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_1ed9fa1520f5",
+    "traceId": "trace_ae178b0a7e44",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-06T12:41:14.770Z",
+    "durationMs": 23847,
+    "inputs": {
+      "userInput": "change that investor call to friday"
+    },
+    "outputs": {
+      "intent": "update_task",
+      "confidence": 0.85
+    },
+    "metadata": {
+      "latencyMs": 23847
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_89fdc0d25caf",
+    "traceId": "trace_21288b4a0683",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-06T12:41:52.282Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_mou1r15l6jzobz",
+      "selectedOption": "opt_1"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_dc1c858025a0",
+    "traceId": "trace_21288b4a0683",
+    "parentSpanId": "span_89fdc0d25caf",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-06T12:41:52.282Z",
+    "durationMs": 1022,
+    "inputs": null,
+    "outputs": {
+      "success": false
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_52796b8592aa",
+    "traceId": "trace_36d7c634347f",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-06T12:41:53.308Z",
+    "durationMs": 8220,
+    "inputs": {
+      "userInput": "cancel the reminder about the meeting"
+    },
+    "outputs": {
+      "intent": "delete_task",
+      "confidence": 0.85
+    },
+    "metadata": {
+      "latencyMs": 8220
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_cd75debcdf99",
+    "traceId": "trace_6b1f803fc6e6",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-06T12:42:02.508Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_mou1r91lo7b5gn",
+      "selectedOption": "opt_1"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_7072077f7892",
+    "traceId": "trace_6b1f803fc6e6",
+    "parentSpanId": "span_cd75debcdf99",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-06T12:42:02.508Z",
+    "durationMs": 2971,
+    "inputs": null,
+    "outputs": {
+      "success": true
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_e20f6e088c33",
+    "traceId": "trace_038621d63b72",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-06T12:42:05.482Z",
+    "durationMs": 10294,
+    "inputs": {
+      "userInput": "remind me to call mom tonight"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.88
+    },
+    "metadata": {
+      "latencyMs": 10293
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_c6e92183abe8",
+    "traceId": "trace_ffc0db54c0d7",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-06T12:53:53.216Z",
+    "durationMs": 17913,
+    "inputs": {
+      "userInput": "meeting at 3pm today"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.85
+    },
+    "metadata": {
+      "latencyMs": 17913
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_1b7d97915eaf",
+    "traceId": "trace_a737b6c55683",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-06T12:54:17.746Z",
+    "durationMs": 12644,
+    "inputs": {
+      "userInput": "meeting tomorrow at 10am"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.92
+    },
+    "metadata": {
+      "latencyMs": 12644
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_0f64b0f6ed5f",
+    "traceId": "trace_bd04cd68f6be",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-06T12:55:08.729Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_mou283p2trw27e",
+      "selectedOption": "opt_1"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_2890e6317572",
+    "traceId": "trace_bd04cd68f6be",
+    "parentSpanId": "span_0f64b0f6ed5f",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-06T12:55:08.729Z",
+    "durationMs": 6222,
+    "inputs": null,
+    "outputs": {
+      "success": true
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_e087a476074a",
+    "traceId": "trace_ffde5e33a83f",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-06T12:55:14.959Z",
+    "durationMs": 24208,
+    "inputs": {
+      "userInput": "change that investor call to friday"
+    },
+    "outputs": {
+      "intent": "update_task",
+      "confidence": 0.75
+    },
+    "metadata": {
+      "latencyMs": 24208
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_f6d55c92f8cf",
+    "traceId": "trace_5b457231698c",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-06T13:24:04.477Z",
+    "durationMs": 16907,
+    "inputs": {
+      "userInput": "meeting at 3pm today"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.92
+    },
+    "metadata": {
+      "latencyMs": 16907
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_11c4732f7ffd",
+    "traceId": "trace_1daa83440d83",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-06T13:24:27.803Z",
+    "durationMs": 5722,
+    "inputs": {
+      "userInput": "meeting tomorrow at 10am"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.9
+    },
+    "metadata": {
+      "latencyMs": 5722
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_83674ce37f19",
+    "traceId": "trace_d696297a5963",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-06T13:24:38.978Z",
+    "durationMs": 27456,
+    "inputs": {
+      "userInput": "change that investor call to friday"
+    },
+    "outputs": {
+      "intent": "update_task",
+      "confidence": 0.75
+    },
+    "metadata": {
+      "latencyMs": 27456
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_b72679e7db82",
+    "traceId": "trace_2433b8a49456",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-06T13:25:22.000Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_mou3aytp4lio5d",
+      "selectedOption": "opt_1"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_a084987cc0b3",
+    "traceId": "trace_2433b8a49456",
+    "parentSpanId": "span_b72679e7db82",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-06T13:25:22.000Z",
+    "durationMs": 951,
+    "inputs": null,
+    "outputs": {
+      "success": false
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_acb682c70648",
+    "traceId": "trace_76c068869a85",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-06T13:25:22.959Z",
+    "durationMs": 21760,
+    "inputs": {
+      "userInput": "cancel the reminder about the meeting"
+    },
+    "outputs": {
+      "intent": "delete_task",
+      "confidence": 0.75
+    },
+    "metadata": {
+      "latencyMs": 21760
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_b9f3ee6c2249",
+    "traceId": "trace_d3194dee3f7a",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-06T13:26:00.688Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_mou3bsodt15isa",
+      "selectedOption": "opt_1"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_af7fe3196628",
+    "traceId": "trace_d3194dee3f7a",
+    "parentSpanId": "span_b9f3ee6c2249",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-06T13:26:00.688Z",
+    "durationMs": 1020,
+    "inputs": null,
+    "outputs": {
+      "success": false
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_150d2930b389",
+    "traceId": "trace_e250a332edb4",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-06T13:26:01.712Z",
+    "durationMs": 8789,
+    "inputs": {
+      "userInput": "remind me to call mom tonight"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.88
+    },
+    "metadata": {
+      "latencyMs": 8789
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_f47918984359",
+    "traceId": "trace_68bc5306fb89",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T01:03:11.486Z",
+    "durationMs": 19539,
+    "inputs": {
+      "userInput": "meeting at 3pm today"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.95
+    },
+    "metadata": {
+      "latencyMs": 19539
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_ffddb21f99ba",
+    "traceId": "trace_45b959ef3607",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T01:03:35.023Z",
+    "durationMs": 11395,
+    "inputs": {
+      "userInput": "meeting tomorrow at 10am"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.95
+    },
+    "metadata": {
+      "latencyMs": 11394
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_250bc79830ec",
+    "traceId": "trace_3e81964b5b45",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T01:03:53.985Z",
+    "durationMs": 16676,
+    "inputs": {
+      "userInput": "change that investor call to friday"
+    },
+    "outputs": {
+      "intent": "update_task",
+      "confidence": 0.85
+    },
+    "metadata": {
+      "latencyMs": 16676
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_e95da7a741bb",
+    "traceId": "trace_67c8b6313249",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T01:04:22.696Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_mous9wh2ssslvg",
+      "selectedOption": "opt_1"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_28fb06e652ea",
+    "traceId": "trace_67c8b6313249",
+    "parentSpanId": "span_e95da7a741bb",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-07T01:04:22.696Z",
+    "durationMs": 1037,
+    "inputs": null,
+    "outputs": {
+      "success": false
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_b13b45a2d3f8",
+    "traceId": "trace_0d0d8e3f0874",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T01:04:23.740Z",
+    "durationMs": 15198,
+    "inputs": {
+      "userInput": "cancel the reminder about the meeting"
+    },
+    "outputs": {
+      "intent": "delete_task",
+      "confidence": 0.65
+    },
+    "metadata": {
+      "latencyMs": 15198
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_89142549d6fd",
+    "traceId": "trace_01e3021f9f84",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T01:04:40.294Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_mousaa1v0xp80e",
+      "selectedOption": "opt_1"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_c429ff1f88d2",
+    "traceId": "trace_01e3021f9f84",
+    "parentSpanId": "span_89142549d6fd",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-07T01:04:40.294Z",
+    "durationMs": 3219,
+    "inputs": null,
+    "outputs": {
+      "success": true
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_ab41ba816939",
+    "traceId": "trace_8c965fe9be66",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T01:04:43.520Z",
+    "durationMs": 19604,
+    "inputs": {
+      "userInput": "remind me to call mom tonight"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.85
+    },
+    "metadata": {
+      "latencyMs": 19604
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_1240b51b7045",
+    "traceId": "trace_a24e1af19500",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:11:56.902Z",
+    "durationMs": null,
+    "inputs": {
+      "userInput": "早上好，今天有什么安排？"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_24d04bd07230",
+    "traceId": "trace_229051818346",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:11:57.523Z",
+    "durationMs": null,
+    "inputs": {
+      "userInput": "提醒我今天下班去超市买牛奶和鸡蛋"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_6088c7d3ea94",
+    "traceId": "trace_96f3132a5251",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:11:58.077Z",
+    "durationMs": null,
+    "inputs": {
+      "userInput": "上午11点要见一下王总，补一下上周没谈完的合同"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_b8e107bfdc1f",
+    "traceId": "trace_9a6f64e945d4",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:11:58.640Z",
+    "durationMs": null,
+    "inputs": {
+      "userInput": "我现在在会议室，等王总来"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_4fe2513bbe67",
+    "traceId": "trace_e51ed18c4fb2",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:11:59.194Z",
+    "durationMs": null,
+    "inputs": {
+      "userInput": "合同的事先暂停，对方说要内部讨论一下"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_a4dac4b0114a",
+    "traceId": "trace_c770c580ae36",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:11:59.774Z",
+    "durationMs": null,
+    "inputs": {
+      "userInput": "中午吃什么好？"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_332ec402d1df",
+    "traceId": "trace_7cc268bfef52",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:12:00.328Z",
+    "durationMs": null,
+    "inputs": {
+      "userInput": "下午的投资人电话会议改到明天上午10点行吗？"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_49f5220595d3",
+    "traceId": "trace_a069c3ff7975",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:12:00.901Z",
+    "durationMs": null,
+    "inputs": {
+      "userInput": "帮我看看今晚和明天的安排"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_3ca7275b65bd",
+    "traceId": "trace_db4d37ddf290",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:12:01.463Z",
+    "durationMs": null,
+    "inputs": {
+      "userInput": "买完了，在回家路上"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_46796c97a598",
+    "traceId": "trace_2e8154906c76",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:12:02.017Z",
+    "durationMs": null,
+    "inputs": {
+      "userInput": "早上好，今天什么安排？"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_7dc076be6862",
+    "traceId": "trace_2342ee7b20b9",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:12:02.568Z",
+    "durationMs": null,
+    "inputs": {
+      "userInput": "帮我看看深圳那边的天气"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_632eea247cfa",
+    "traceId": "trace_615660fd1d4b",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:12:03.113Z",
+    "durationMs": null,
+    "inputs": {
+      "userInput": "帮我订个今晚的位子，要安静点的"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_f323b2932560",
+    "traceId": "trace_9ae730594bb4",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:12:03.681Z",
+    "durationMs": null,
+    "inputs": {
+      "userInput": "明天的客户拜访改到周三上午"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_50466f3776a8",
+    "traceId": "trace_5851dd46eb2e",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:12:04.246Z",
+    "durationMs": null,
+    "inputs": {
+      "userInput": "帮我记一下，今天和王总聊了三个要点..."
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_f25da0069a9a",
+    "traceId": "trace_b289af37a379",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:12:04.798Z",
+    "durationMs": null,
+    "inputs": {
+      "userInput": "今天怎么样？"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_379b0035f1dc",
+    "traceId": "trace_c69ef6fc5791",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:12:05.376Z",
+    "durationMs": null,
+    "inputs": {
+      "userInput": "客户快到了，准备一下会议室"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_178b5c396953",
+    "traceId": "trace_778c70f7d8b9",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:12:05.990Z",
+    "durationMs": null,
+    "inputs": {
+      "userInput": "谈成了！帮我记录一下"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_135f4ad1c984",
+    "traceId": "trace_8c8571dd6aba",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:12:06.544Z",
+    "durationMs": null,
+    "inputs": {
+      "userInput": "帮我记一下，老师说的暑假安排"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_b2ea319365aa",
+    "traceId": "trace_a232c5bf8271",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:12:07.099Z",
+    "durationMs": null,
+    "inputs": {
+      "userInput": "家长会结束了，接下来没什么事了吧？"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_54d42e3836a0",
+    "traceId": "trace_b3daa4d9f641",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:12:07.651Z",
+    "durationMs": null,
+    "inputs": {
+      "userInput": "这周忙完了，帮我总结一下"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_f7eabd32323d",
+    "traceId": "trace_6cea38045c24",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:12:20.715Z",
+    "durationMs": null,
+    "inputs": {
+      "userInput": "hello"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_6c597f7a8eec",
+    "traceId": "trace_6f5969796859",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:18:41.314Z",
+    "durationMs": null,
+    "inputs": {
+      "userInput": "hello"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_3aba689225b7",
+    "traceId": "trace_974ff98c075b",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:18:54.805Z",
+    "durationMs": null,
+    "inputs": {
+      "userInput": "hello"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_48dc5a32ff08",
+    "traceId": "trace_6e7b208f528c",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:19:29.150Z",
+    "durationMs": null,
+    "inputs": {
+      "userInput": "������ʲô����"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_40c22407f8a7",
+    "traceId": "trace_160a2842067c",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:19:48.703Z",
+    "durationMs": null,
+    "inputs": {
+      "userInput": "������ʲô����"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_c7719437384c",
+    "traceId": "trace_55a381c85b04",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:20:11.787Z",
+    "durationMs": null,
+    "inputs": {
+      "userInput": "������ʲô����"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_e97e4bad9641",
+    "traceId": "trace_8ccc2ebf721c",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:20:38.618Z",
+    "durationMs": null,
+    "inputs": {
+      "userInput": "������ʲô����"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_d6557a641eaf",
+    "traceId": "trace_814f771caebb",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:21:27.595Z",
+    "durationMs": 15158,
+    "inputs": {
+      "userInput": "������ʲô����"
+    },
+    "outputs": {
+      "intent": "query_tasks",
+      "confidence": 0.4
+    },
+    "metadata": {
+      "latencyMs": 15158
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_49a18a4c5454",
+    "traceId": "trace_9bd70fa9b657",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T13:21:58.388Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_movim8u3ex9v2j",
+      "openText": "早上好，今天有什么安排？",
+      "cancel": false
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_101978b960c3",
+    "traceId": "trace_9bd70fa9b657",
+    "parentSpanId": "span_49a18a4c5454",
+    "operationName": "llm.parameter_extraction",
+    "startTime": "2026-05-07T13:21:58.388Z",
+    "durationMs": 7073,
+    "inputs": null,
+    "outputs": {
+      "refinedIntent": "query_events"
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_e00ef5ac41f9",
+    "traceId": "trace_9bd70fa9b657",
+    "parentSpanId": "span_49a18a4c5454",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-07T13:22:05.461Z",
+    "durationMs": 1201,
+    "inputs": null,
+    "outputs": {
+      "success": true
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_3f37d457eb86",
+    "traceId": "trace_e852a78f27ce",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:22:07.177Z",
+    "durationMs": 14690,
+    "inputs": {
+      "userInput": "提醒我今天下班去超市买牛奶和鸡蛋"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.85
+    },
+    "metadata": {
+      "latencyMs": 14690
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_957c26734b00",
+    "traceId": "trace_03e0435a8746",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T13:22:30.945Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_movin53twtuzut",
+      "openText": "上午11点要见一下王总，补一下上周没谈完的合同",
+      "cancel": false
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_18f8aadc923f",
+    "traceId": "trace_03e0435a8746",
+    "parentSpanId": "span_957c26734b00",
+    "operationName": "llm.parameter_extraction",
+    "startTime": "2026-05-07T13:22:30.945Z",
+    "durationMs": 6690,
+    "inputs": null,
+    "outputs": {
+      "refinedIntent": "create_task"
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_0955a6e19725",
+    "traceId": "trace_03e0435a8746",
+    "parentSpanId": "span_957c26734b00",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-07T13:22:37.635Z",
+    "durationMs": 3371,
+    "inputs": null,
+    "outputs": {
+      "success": true
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_f7b941b52e26",
+    "traceId": "trace_5490e2709194",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:22:41.530Z",
+    "durationMs": 19922,
+    "inputs": {
+      "userInput": "我现在在会议室，等王总来"
+    },
+    "outputs": {
+      "intent": "other",
+      "confidence": 0
+    },
+    "metadata": {
+      "latencyMs": 19921
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_0c6e85a38603",
+    "traceId": "trace_9b4fa5681980",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T13:23:10.308Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_movinzhfvfluko",
+      "openText": "合同的事先暂停，对方说要内部讨论一下",
+      "cancel": false
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_b588575d6293",
+    "traceId": "trace_9b4fa5681980",
+    "parentSpanId": "span_0c6e85a38603",
+    "operationName": "llm.parameter_extraction",
+    "startTime": "2026-05-07T13:23:10.308Z",
+    "durationMs": 9535,
+    "inputs": null,
+    "outputs": {
+      "refinedIntent": "create_task"
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_c00e9c71d28a",
+    "traceId": "trace_9b4fa5681980",
+    "parentSpanId": "span_0c6e85a38603",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-07T13:23:19.843Z",
+    "durationMs": 2934,
+    "inputs": null,
+    "outputs": {
+      "success": true
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_a62b0623a05c",
+    "traceId": "trace_35dc306dcd2d",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:23:23.290Z",
+    "durationMs": 5976,
+    "inputs": {
+      "userInput": "中午吃什么好？"
+    },
+    "outputs": {
+      "intent": "other",
+      "confidence": 0
+    },
+    "metadata": {
+      "latencyMs": 5976
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_8c2845ab40dd",
+    "traceId": "trace_2bbf2753f518",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T13:23:41.914Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_movionvd6uefkq",
+      "openText": "下午的投资人电话会议改到明天上午10点行吗？",
+      "cancel": false
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_0a713768a89f",
+    "traceId": "trace_2bbf2753f518",
+    "parentSpanId": "span_8c2845ab40dd",
+    "operationName": "llm.parameter_extraction",
+    "startTime": "2026-05-07T13:23:41.914Z",
+    "durationMs": 11724,
+    "inputs": null,
+    "outputs": {
+      "refinedIntent": "update_task"
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_e89bfc5266df",
+    "traceId": "trace_2bbf2753f518",
+    "parentSpanId": "span_8c2845ab40dd",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-07T13:23:53.639Z",
+    "durationMs": 886,
+    "inputs": null,
+    "outputs": {
+      "success": false
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_c3f8e6dda5e1",
+    "traceId": "trace_8f3771d3ca4c",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:23:55.042Z",
+    "durationMs": 6545,
+    "inputs": {
+      "userInput": "帮我看看今晚和明天的安排"
+    },
+    "outputs": {
+      "intent": "query_events",
+      "confidence": 0.9
+    },
+    "metadata": {
+      "latencyMs": 6545
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_a01e9cab91cf",
+    "traceId": "trace_fd0520b483cd",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:24:03.012Z",
+    "durationMs": 9030,
+    "inputs": {
+      "userInput": "买完了，在回家路上"
+    },
+    "outputs": {
+      "intent": "other",
+      "confidence": 0
+    },
+    "metadata": {
+      "latencyMs": 9030
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_ef8d29caa2e2",
+    "traceId": "trace_be7502a75632",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T13:24:29.001Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_movipo7ev5kvvv",
+      "openText": "早上好，今天什么安排？",
+      "cancel": false
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_2ab60ad99d66",
+    "traceId": "trace_be7502a75632",
+    "parentSpanId": "span_ef8d29caa2e2",
+    "operationName": "llm.parameter_extraction",
+    "startTime": "2026-05-07T13:24:29.001Z",
+    "durationMs": 18839,
+    "inputs": null,
+    "outputs": {
+      "refinedIntent": "query_events"
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_ded6f07c3830",
+    "traceId": "trace_be7502a75632",
+    "parentSpanId": "span_ef8d29caa2e2",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-07T13:24:47.840Z",
+    "durationMs": 924,
+    "inputs": null,
+    "outputs": {
+      "success": true
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_59a3bc7d3ae6",
+    "traceId": "trace_e28e6bc20a36",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:24:49.287Z",
+    "durationMs": 10497,
+    "inputs": {
+      "userInput": "帮我看看深圳那边的天气"
+    },
+    "outputs": {
+      "intent": "other",
+      "confidence": 0.95
+    },
+    "metadata": {
+      "latencyMs": 10497
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_fcaad1135e5d",
+    "traceId": "trace_64e09cc6f329",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:25:00.305Z",
+    "durationMs": 8600,
+    "inputs": {
+      "userInput": "帮我订个今晚的位子，要安静点的"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.75
+    },
+    "metadata": {
+      "latencyMs": 8600
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_4d5bbd3bd789",
+    "traceId": "trace_b940c89cb4e7",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T13:25:19.990Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_moviqrjz8b0qnj",
+      "openText": "明天的客户拜访改到周三上午",
+      "cancel": false
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_71d38f241430",
+    "traceId": "trace_b940c89cb4e7",
+    "parentSpanId": "span_4d5bbd3bd789",
+    "operationName": "llm.parameter_extraction",
+    "startTime": "2026-05-07T13:25:19.990Z",
+    "durationMs": 21353,
+    "inputs": null,
+    "outputs": {
+      "refinedIntent": "update_task"
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_a1d4427e735e",
+    "traceId": "trace_b940c89cb4e7",
+    "parentSpanId": "span_4d5bbd3bd789",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-07T13:25:41.343Z",
+    "durationMs": 904,
+    "inputs": null,
+    "outputs": {
+      "success": false
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_97215ca6bc62",
+    "traceId": "trace_4a7c5af18820",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:25:42.754Z",
+    "durationMs": 11035,
+    "inputs": {
+      "userInput": "帮我记一下，今天和王总聊了三个要点..."
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.85
+    },
+    "metadata": {
+      "latencyMs": 11035
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_600783d19f25",
+    "traceId": "trace_e4570167520f",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:25:57.367Z",
+    "durationMs": 5686,
+    "inputs": {
+      "userInput": "今天怎么样？"
+    },
+    "outputs": {
+      "intent": "other",
+      "confidence": 0
+    },
+    "metadata": {
+      "latencyMs": 5686
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_6426084e9abb",
+    "traceId": "trace_a212d50f9d0b",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T13:26:15.853Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_movirynhirsfar",
+      "openText": "客户快到了，准备一下会议室",
+      "cancel": false
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_c231c085613c",
+    "traceId": "trace_a212d50f9d0b",
+    "parentSpanId": "span_6426084e9abb",
+    "operationName": "llm.parameter_extraction",
+    "startTime": "2026-05-07T13:26:15.853Z",
+    "durationMs": 9605,
+    "inputs": null,
+    "outputs": {
+      "refinedIntent": "create_task"
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_c8cc27440fb0",
+    "traceId": "trace_a212d50f9d0b",
+    "parentSpanId": "span_6426084e9abb",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-07T13:26:25.458Z",
+    "durationMs": 2836,
+    "inputs": null,
+    "outputs": {
+      "success": true
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_ea9e7a0b746d",
+    "traceId": "trace_c992f89ff538",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:26:28.808Z",
+    "durationMs": 12207,
+    "inputs": {
+      "userInput": "谈成了！帮我记录一下"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.6
+    },
+    "metadata": {
+      "latencyMs": 12207
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_f73b2326b0a2",
+    "traceId": "trace_3aa0dc68beaf",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T13:26:46.417Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_movism8qq2fcj2",
+      "openText": "帮我记一下，老师说的暑假安排",
+      "cancel": false
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_6839c5b941bb",
+    "traceId": "trace_3aa0dc68beaf",
+    "parentSpanId": "span_f73b2326b0a2",
+    "operationName": "llm.parameter_extraction",
+    "startTime": "2026-05-07T13:26:46.417Z",
+    "durationMs": 9999,
+    "inputs": null,
+    "outputs": {
+      "refinedIntent": "create_task"
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_50cc58da4b02",
+    "traceId": "trace_3aa0dc68beaf",
+    "parentSpanId": "span_f73b2326b0a2",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-07T13:26:56.416Z",
+    "durationMs": 2896,
+    "inputs": null,
+    "outputs": {
+      "success": true
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_938642a825f6",
+    "traceId": "trace_22db18fdd99b",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:26:59.823Z",
+    "durationMs": 15221,
+    "inputs": {
+      "userInput": "家长会结束了，接下来没什么事了吧？"
+    },
+    "outputs": {
+      "intent": "query_events",
+      "confidence": 0.65
+    },
+    "metadata": {
+      "latencyMs": 15221
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_585d32d87e00",
+    "traceId": "trace_0d319f3c26b9",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:27:30.345Z",
+    "durationMs": 16189,
+    "inputs": {
+      "userInput": "这周忙完了，帮我总结一下"
+    },
+    "outputs": {
+      "intent": "expand_task",
+      "confidence": 0.75
+    },
+    "metadata": {
+      "latencyMs": 16189
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_d0d3601fd882",
+    "traceId": "trace_06cda3062a93",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:37:40.229Z",
+    "durationMs": 7906,
+    "inputs": {
+      "userInput": "早上好，今天有什么安排？"
+    },
+    "outputs": {
+      "intent": "query_events",
+      "confidence": 0.85
+    },
+    "metadata": {
+      "latencyMs": 7906
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_c2fff6fe2363",
+    "traceId": "trace_1308dd4a504c",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:37:49.069Z",
+    "durationMs": 15669,
+    "inputs": {
+      "userInput": "提醒我今天下班去超市买牛奶和鸡蛋"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.85
+    },
+    "metadata": {
+      "latencyMs": 15669
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_20a46583b204",
+    "traceId": "trace_2e8d01d2c219",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T13:38:16.796Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_movj7fbtjs8d6l",
+      "selectedOption": "opt_1"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_83c421c54bbd",
+    "traceId": "trace_2e8d01d2c219",
+    "parentSpanId": "span_20a46583b204",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-07T13:38:16.796Z",
+    "durationMs": 2821,
+    "inputs": null,
+    "outputs": {
+      "success": true
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_17e5b1809163",
+    "traceId": "trace_a5fbed1729a3",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:38:19.623Z",
+    "durationMs": 9800,
+    "inputs": {
+      "userInput": "上午11点要见一下王总，补一下上周没谈完的合同"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.85
+    },
+    "metadata": {
+      "latencyMs": 9800
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_1396bf9557a0",
+    "traceId": "trace_99053ecdf183",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T13:38:42.768Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_movj7zdb8n2mbu",
+      "openText": "我现在在会议室，等王总来",
+      "cancel": false
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_9d860b9c2418",
+    "traceId": "trace_99053ecdf183",
+    "parentSpanId": "span_1396bf9557a0",
+    "operationName": "llm.parameter_extraction",
+    "startTime": "2026-05-07T13:38:42.768Z",
+    "durationMs": 10782,
+    "inputs": null,
+    "outputs": {
+      "refinedIntent": "other"
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_ba6da0316050",
+    "traceId": "trace_99053ecdf183",
+    "parentSpanId": "span_1396bf9557a0",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-07T13:38:53.550Z",
+    "durationMs": 0,
+    "inputs": null,
+    "outputs": {
+      "success": false
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_7b3da61fab00",
+    "traceId": "trace_47d3662f4af1",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:38:53.556Z",
+    "durationMs": 9640,
+    "inputs": {
+      "userInput": "合同的事先暂停，对方说要内部讨论一下"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.75
+    },
+    "metadata": {
+      "latencyMs": 9640
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_5756291e4ef4",
+    "traceId": "trace_b2e40bf9b4d8",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T13:39:17.765Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_movj8qdekdivft",
+      "openText": "中午吃什么好？",
+      "cancel": false
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_e5e5b6d3d5a2",
+    "traceId": "trace_b2e40bf9b4d8",
+    "parentSpanId": "span_5756291e4ef4",
+    "operationName": "llm.parameter_extraction",
+    "startTime": "2026-05-07T13:39:17.765Z",
+    "durationMs": 13661,
+    "inputs": null,
+    "outputs": {
+      "refinedIntent": "other"
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_423d062ac83f",
+    "traceId": "trace_b2e40bf9b4d8",
+    "parentSpanId": "span_5756291e4ef4",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-07T13:39:31.426Z",
+    "durationMs": 0,
+    "inputs": null,
+    "outputs": {
+      "success": false
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_8ff6f2f24526",
+    "traceId": "trace_a4e9509b3e13",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:39:31.431Z",
+    "durationMs": 8618,
+    "inputs": {
+      "userInput": "下午的投资人电话会议改到明天上午10点行吗？"
+    },
+    "outputs": {
+      "intent": "update_task",
+      "confidence": 0.85
+    },
+    "metadata": {
+      "latencyMs": 8618
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_d311f0894603",
+    "traceId": "trace_54d7f2be107c",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T13:39:40.960Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_movj989pohesdw",
+      "selectedOption": "opt_2",
+      "openText": "明天下午2点"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_0e114c7e9f3f",
+    "traceId": "trace_54d7f2be107c",
+    "parentSpanId": "span_d311f0894603",
+    "operationName": "llm.parameter_extraction",
+    "startTime": "2026-05-07T13:39:40.960Z",
+    "durationMs": 14646,
+    "inputs": null,
+    "outputs": {
+      "refinedIntent": "create_task"
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_3c95f9974e36",
+    "traceId": "trace_54d7f2be107c",
+    "parentSpanId": "span_d311f0894603",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-07T13:39:55.606Z",
+    "durationMs": 5790,
+    "inputs": null,
+    "outputs": {
+      "success": true
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_d5a261d0e203",
+    "traceId": "trace_a0ec81fa12f0",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:40:01.404Z",
+    "durationMs": 11984,
+    "inputs": {
+      "userInput": "帮我看看今晚和明天的安排"
+    },
+    "outputs": {
+      "intent": "query_events",
+      "confidence": 0.92
+    },
+    "metadata": {
+      "latencyMs": 11984
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_730a9b9a5e0d",
+    "traceId": "trace_009e30fe643a",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:40:14.299Z",
+    "durationMs": 11198,
+    "inputs": {
+      "userInput": "买完了，在回家路上"
+    },
+    "outputs": {
+      "intent": "other",
+      "confidence": 0.45
+    },
+    "metadata": {
+      "latencyMs": 11198
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_2a80ea3e3e8e",
+    "traceId": "trace_b880015c19ab",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T13:40:39.321Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_movjahaviub9yy",
+      "selectedOption": "open",
+      "openText": "下班买牛奶鸡蛋"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_38e9073f14be",
+    "traceId": "trace_b880015c19ab",
+    "parentSpanId": "span_2a80ea3e3e8e",
+    "operationName": "llm.parameter_extraction",
+    "startTime": "2026-05-07T13:40:39.321Z",
+    "durationMs": 10858,
+    "inputs": null,
+    "outputs": {
+      "refinedIntent": "create_task"
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_405d221ac739",
+    "traceId": "trace_b880015c19ab",
+    "parentSpanId": "span_2a80ea3e3e8e",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-07T13:40:50.179Z",
+    "durationMs": 2908,
+    "inputs": null,
+    "outputs": {
+      "success": true
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_09669c855e84",
+    "traceId": "trace_5bafca358b0b",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:40:53.093Z",
+    "durationMs": 11204,
+    "inputs": {
+      "userInput": "早上好，今天什么安排？"
+    },
+    "outputs": {
+      "intent": "query_events",
+      "confidence": 0.85
+    },
+    "metadata": {
+      "latencyMs": 11204
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_34031d3b179d",
+    "traceId": "trace_b94f86b152f2",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:41:05.143Z",
+    "durationMs": 14525,
+    "inputs": {
+      "userInput": "帮我订个今晚的位子，要安静点的"
+    },
+    "outputs": {
+      "intent": "other",
+      "confidence": 0.85
+    },
+    "metadata": {
+      "latencyMs": 14525
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_53a644272c4d",
+    "traceId": "trace_0cbbd006881f",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T13:41:27.162Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_movjbi7ttmtdu1",
+      "selectedOption": "opt_2",
+      "openText": "帮我推荐一个安静的"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_f5c77ec7f71b",
+    "traceId": "trace_0cbbd006881f",
+    "parentSpanId": "span_53a644272c4d",
+    "operationName": "llm.parameter_extraction",
+    "startTime": "2026-05-07T13:41:27.162Z",
+    "durationMs": 9671,
+    "inputs": null,
+    "outputs": {
+      "refinedIntent": "other"
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_ce5d88f37b7b",
+    "traceId": "trace_0cbbd006881f",
+    "parentSpanId": "span_53a644272c4d",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-07T13:41:36.833Z",
+    "durationMs": 1,
+    "inputs": null,
+    "outputs": {
+      "success": false
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_b71dac2a029c",
+    "traceId": "trace_c6f5b7bb4d96",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:41:36.838Z",
+    "durationMs": 18091,
+    "inputs": {
+      "userInput": "明天的客户拜访改到周三上午"
+    },
+    "outputs": {
+      "intent": "update_task",
+      "confidence": 0.85
+    },
+    "metadata": {
+      "latencyMs": 18091
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_a726ce0d2089",
+    "traceId": "trace_d4c5b0deb62a",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T13:42:08.919Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_movjcefpev17q1",
+      "selectedOption": "open",
+      "openText": "改到周三上午9点"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_a490e52f4fce",
+    "traceId": "trace_d4c5b0deb62a",
+    "parentSpanId": "span_a726ce0d2089",
+    "operationName": "llm.parameter_extraction",
+    "startTime": "2026-05-07T13:42:08.919Z",
+    "durationMs": 10795,
+    "inputs": null,
+    "outputs": {
+      "refinedIntent": "update_task"
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_4fb3fda0871f",
+    "traceId": "trace_d4c5b0deb62a",
+    "parentSpanId": "span_a726ce0d2089",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-07T13:42:19.714Z",
+    "durationMs": 969,
+    "inputs": null,
+    "outputs": {
+      "success": false
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_d8a52ce5f7ca",
+    "traceId": "trace_815cec92b0be",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:42:20.691Z",
+    "durationMs": 8482,
+    "inputs": {
+      "userInput": "帮我记一下，今天和王总聊了三个要点"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.55
+    },
+    "metadata": {
+      "latencyMs": 8482
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_307151f6584c",
+    "traceId": "trace_1eb97aceb20e",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T13:42:37.664Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_movjd0m6a545ae",
+      "selectedOption": "open",
+      "openText": "客户对价格还是有顾虑，交期可以接受，想独家合作三个月试运行"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_d2b6b3cd5930",
+    "traceId": "trace_1eb97aceb20e",
+    "parentSpanId": "span_307151f6584c",
+    "operationName": "llm.parameter_extraction",
+    "startTime": "2026-05-07T13:42:37.664Z",
+    "durationMs": 17060,
+    "inputs": null,
+    "outputs": {
+      "refinedIntent": "expand_task"
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_7e0a046f2cfb",
+    "traceId": "trace_1eb97aceb20e",
+    "parentSpanId": "span_307151f6584c",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-07T13:42:54.724Z",
+    "durationMs": 0,
+    "inputs": null,
+    "outputs": {
+      "success": false
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_decd27fb33be",
+    "traceId": "trace_45e74295d63d",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:42:54.730Z",
+    "durationMs": 7266,
+    "inputs": {
+      "userInput": "今天怎么样？"
+    },
+    "outputs": {
+      "intent": "other",
+      "confidence": 0.2
+    },
+    "metadata": {
+      "latencyMs": 7266
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_4178403e3916",
+    "traceId": "trace_61c98741f9f2",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:43:06.817Z",
+    "durationMs": 12611,
+    "inputs": {
+      "userInput": "客户快到了，准备一下会议室"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.8
+    },
+    "metadata": {
+      "latencyMs": 12611
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_e8148e23af3b",
+    "traceId": "trace_3db7ef6ab2f8",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T13:43:23.177Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_movjdzqgbgbp15",
+      "selectedOption": "opt_1"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_059625aab368",
+    "traceId": "trace_3db7ef6ab2f8",
+    "parentSpanId": "span_e8148e23af3b",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-07T13:43:23.177Z",
+    "durationMs": 2845,
+    "inputs": null,
+    "outputs": {
+      "success": true
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_a06a0cec5867",
+    "traceId": "trace_eb774898cdf3",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:43:26.026Z",
+    "durationMs": 25866,
+    "inputs": {
+      "userInput": "谈成了！帮我记录一下"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.7
+    },
+    "metadata": {
+      "latencyMs": 25866
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_f5a1439cb23f",
+    "traceId": "trace_59dd2c0d76ef",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T13:44:02.094Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_movjetrhcsp2r4",
+      "selectedOption": "open",
+      "openText": "深圳客户合同签署成功，金额280万，交付周期6个月"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_61ede080021d",
+    "traceId": "trace_59dd2c0d76ef",
+    "parentSpanId": "span_f5a1439cb23f",
+    "operationName": "llm.parameter_extraction",
+    "startTime": "2026-05-07T13:44:02.095Z",
+    "durationMs": 26351,
+    "inputs": null,
+    "outputs": {
+      "refinedIntent": "create_task"
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_38a0701a5c0a",
+    "traceId": "trace_59dd2c0d76ef",
+    "parentSpanId": "span_f5a1439cb23f",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-07T13:44:28.446Z",
+    "durationMs": 3016,
+    "inputs": null,
+    "outputs": {
+      "success": true
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_fbffd81d8fef",
+    "traceId": "trace_e46f52a83b03",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:44:31.467Z",
+    "durationMs": 11615,
+    "inputs": {
+      "userInput": "帮我记一下，老师说的暑假安排"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.75
+    },
+    "metadata": {
+      "latencyMs": 11615
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_f99b2e3b42f8",
+    "traceId": "trace_9a5683dcafc9",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T13:45:01.948Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_movjg3y3vkfjqj",
+      "selectedOption": "open",
+      "openText": "暑假7月5日到8月31日，作业7月15日前交，返校日8月30日"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_4c0498e3fbf8",
+    "traceId": "trace_9a5683dcafc9",
+    "parentSpanId": "span_f99b2e3b42f8",
+    "operationName": "llm.parameter_extraction",
+    "startTime": "2026-05-07T13:45:01.948Z",
+    "durationMs": 19099,
+    "inputs": null,
+    "outputs": {
+      "refinedIntent": "create_task"
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_775cbab2bac3",
+    "traceId": "trace_9a5683dcafc9",
+    "parentSpanId": "span_f99b2e3b42f8",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-07T13:45:21.047Z",
+    "durationMs": 2941,
+    "inputs": null,
+    "outputs": {
+      "success": true
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_4842ae77b0cf",
+    "traceId": "trace_270b8ca2d68e",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:45:23.995Z",
+    "durationMs": 16344,
+    "inputs": {
+      "userInput": "家长会结束了，接下来没什么事了吧？"
+    },
+    "outputs": {
+      "intent": "query_events",
+      "confidence": 0.6
+    },
+    "metadata": {
+      "latencyMs": 16344
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_b033e4361513",
+    "traceId": "trace_e3ff422ae095",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T13:45:50.910Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_movjh5q4qs0civ",
+      "openText": "这周忙完了，帮我总结一下",
+      "cancel": false
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_6d019ed63d58",
+    "traceId": "trace_e3ff422ae095",
+    "parentSpanId": "span_b033e4361513",
+    "operationName": "llm.parameter_extraction",
+    "startTime": "2026-05-07T13:45:50.910Z",
+    "durationMs": 11168,
+    "inputs": null,
+    "outputs": {
+      "refinedIntent": "query_tasks"
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_ba29e45a44e1",
+    "traceId": "trace_e3ff422ae095",
+    "parentSpanId": "span_b033e4361513",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-07T13:46:02.079Z",
+    "durationMs": 968,
+    "inputs": null,
+    "outputs": {
+      "success": true
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_c5ee8eaa2eb3",
+    "traceId": "trace_2db64b3ab8d6",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:47:55.062Z",
+    "durationMs": 10465,
+    "inputs": {
+      "userInput": "�����ʲô�ã�"
+    },
+    "outputs": {
+      "intent": "query_tasks",
+      "confidence": 0.35
+    },
+    "metadata": {
+      "latencyMs": 10465
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_299fff60cee9",
+    "traceId": "trace_91ef8176335a",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T13:48:36.599Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_movjkfn1e23e8q",
+      "openText": "中午吃什么好？",
+      "cancel": false
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_31786b79ff42",
+    "traceId": "trace_91ef8176335a",
+    "parentSpanId": "span_299fff60cee9",
+    "operationName": "llm.parameter_extraction",
+    "startTime": "2026-05-07T13:48:36.599Z",
+    "durationMs": 11452,
+    "inputs": null,
+    "outputs": {
+      "refinedIntent": "other"
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_559be2312c1f",
+    "traceId": "trace_91ef8176335a",
+    "parentSpanId": "span_299fff60cee9",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-07T13:48:48.051Z",
+    "durationMs": 2930,
+    "inputs": null,
+    "outputs": {
+      "success": true
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_e66f6fc7bb65",
+    "traceId": "trace_3918426cc91c",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:49:09.114Z",
+    "durationMs": 21119,
+    "inputs": {
+      "userInput": "中午吃什么好？"
+    },
+    "outputs": {
+      "intent": "other",
+      "confidence": 0
+    },
+    "metadata": {
+      "latencyMs": 21119
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_8a5987c40d87",
+    "traceId": "trace_1f270c48633d",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T13:49:36.749Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_movjlzzcnzl3dj",
+      "openText": "帮我记一下，今天和王总聊了三个要点",
+      "cancel": false
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_74a49da40d2a",
+    "traceId": "trace_1f270c48633d",
+    "parentSpanId": "span_8a5987c40d87",
+    "operationName": "llm.parameter_extraction",
+    "startTime": "2026-05-07T13:49:36.749Z",
+    "durationMs": 8394,
+    "inputs": null,
+    "outputs": {
+      "refinedIntent": "create_task"
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_906ac8602c91",
+    "traceId": "trace_1f270c48633d",
+    "parentSpanId": "span_8a5987c40d87",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-07T13:49:45.144Z",
+    "durationMs": 2821,
+    "inputs": null,
+    "outputs": {
+      "success": true
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_5813b3f274de",
+    "traceId": "trace_73e1fd615f31",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:49:47.974Z",
+    "durationMs": 10298,
+    "inputs": {
+      "userInput": "今天怎么样？"
+    },
+    "outputs": {
+      "intent": "other",
+      "confidence": 0
+    },
+    "metadata": {
+      "latencyMs": 10298
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_a9e0f187d82b",
+    "traceId": "trace_2bd06515dc9b",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T13:50:16.546Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_movjmkqelxg3me",
+      "openText": "帮我记一下，今天和王总聊了三个要点",
+      "cancel": false
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_d207af6e1f3e",
+    "traceId": "trace_2bd06515dc9b",
+    "parentSpanId": "span_a9e0f187d82b",
+    "operationName": "llm.parameter_extraction",
+    "startTime": "2026-05-07T13:50:16.546Z",
+    "durationMs": 7268,
+    "inputs": null,
+    "outputs": {
+      "refinedIntent": "create_task"
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_59b74447726b",
+    "traceId": "trace_2bd06515dc9b",
+    "parentSpanId": "span_a9e0f187d82b",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-07T13:50:23.814Z",
+    "durationMs": 2809,
+    "inputs": null,
+    "outputs": {
+      "success": true
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_043a246f6425",
+    "traceId": "trace_9b41a97f01e4",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:50:34.204Z",
+    "durationMs": 7398,
+    "inputs": {
+      "userInput": "早上好，今天有什么安排？"
+    },
+    "outputs": {
+      "intent": "query_events",
+      "confidence": 0.88
+    },
+    "metadata": {
+      "latencyMs": 7398
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_93cc858b5ddc",
+    "traceId": "trace_c4971c211c68",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:50:42.465Z",
+    "durationMs": 15216,
+    "inputs": {
+      "userInput": "提醒我今天下班去超市买牛奶和鸡蛋"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.85
+    },
+    "metadata": {
+      "latencyMs": 15216
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_8367f3cb4fa3",
+    "traceId": "trace_fb9509c76d7c",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T13:51:05.439Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_movjnwf0niwvoa",
+      "selectedOption": "opt_1"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_1e5b2fb9887a",
+    "traceId": "trace_fb9509c76d7c",
+    "parentSpanId": "span_8367f3cb4fa3",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-07T13:51:05.439Z",
+    "durationMs": 2908,
+    "inputs": null,
+    "outputs": {
+      "success": true
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_6ab3e0b2cd24",
+    "traceId": "trace_b83d0fe954d2",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:51:08.356Z",
+    "durationMs": 16085,
+    "inputs": {
+      "userInput": "上午11点要见一下王总，补一下上周没谈完的合同"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.85
+    },
+    "metadata": {
+      "latencyMs": 16085
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_b865ba293428",
+    "traceId": "trace_6486d8589c71",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T13:51:30.142Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_movjofh8ojsks3",
+      "openText": "我现在在会议室，等王总来",
+      "cancel": false
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_d30b0af7e9d8",
+    "traceId": "trace_6486d8589c71",
+    "parentSpanId": "span_b865ba293428",
+    "operationName": "llm.parameter_extraction",
+    "startTime": "2026-05-07T13:51:30.142Z",
+    "durationMs": 12756,
+    "inputs": null,
+    "outputs": {
+      "refinedIntent": "other"
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_e041ee95c03e",
+    "traceId": "trace_6486d8589c71",
+    "parentSpanId": "span_b865ba293428",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-07T13:51:42.898Z",
+    "durationMs": 6119,
+    "inputs": null,
+    "outputs": {
+      "success": true
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_31d819e8c772",
+    "traceId": "trace_409ab9aeed18",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:51:49.024Z",
+    "durationMs": 14371,
+    "inputs": {
+      "userInput": "合同的事先暂停，对方说要内部讨论一下"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.75
+    },
+    "metadata": {
+      "latencyMs": 14371
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_145baadf5e85",
+    "traceId": "trace_edfccc6943cd",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T13:52:09.785Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_movjpa2frvwf5y",
+      "openText": "中午吃什么好？",
+      "cancel": false
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_6e4c8b7324e1",
+    "traceId": "trace_edfccc6943cd",
+    "parentSpanId": "span_145baadf5e85",
+    "operationName": "llm.parameter_extraction",
+    "startTime": "2026-05-07T13:52:09.785Z",
+    "durationMs": 11050,
+    "inputs": null,
+    "outputs": {
+      "refinedIntent": "other"
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_4b627e2d0b8f",
+    "traceId": "trace_edfccc6943cd",
+    "parentSpanId": "span_145baadf5e85",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-07T13:52:20.835Z",
+    "durationMs": 2886,
+    "inputs": null,
+    "outputs": {
+      "success": true
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_5645e77c3b2d",
+    "traceId": "trace_1e69359cc0b7",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:52:23.731Z",
+    "durationMs": 11429,
+    "inputs": {
+      "userInput": "下午的投资人电话会议改到明天上午10点行吗？"
+    },
+    "outputs": {
+      "intent": "update_task",
+      "confidence": 0.85
+    },
+    "metadata": {
+      "latencyMs": 11429
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_b84578b80e4c",
+    "traceId": "trace_ef3d21fb122d",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T13:52:36.012Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_movjpuaw0kd86d",
+      "selectedOption": "opt_2",
+      "openText": "明天下午2点"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_6f929fe125fd",
+    "traceId": "trace_ef3d21fb122d",
+    "parentSpanId": "span_b84578b80e4c",
+    "operationName": "llm.parameter_extraction",
+    "startTime": "2026-05-07T13:52:36.012Z",
+    "durationMs": 8658,
+    "inputs": null,
+    "outputs": {
+      "refinedIntent": "create_task"
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_935c5d6dc674",
+    "traceId": "trace_ef3d21fb122d",
+    "parentSpanId": "span_b84578b80e4c",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-07T13:52:44.670Z",
+    "durationMs": 3968,
+    "inputs": null,
+    "outputs": {
+      "success": true
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_a36b8b44069f",
+    "traceId": "trace_f185693e09bf",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:52:48.647Z",
+    "durationMs": 10914,
+    "inputs": {
+      "userInput": "帮我看看今晚和明天的安排"
+    },
+    "outputs": {
+      "intent": "query_events",
+      "confidence": 0.92
+    },
+    "metadata": {
+      "latencyMs": 10913
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_8ef700619fc0",
+    "traceId": "trace_88215d7324e4",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:53:00.486Z",
+    "durationMs": 13011,
+    "inputs": {
+      "userInput": "买完了，在回家路上"
+    },
+    "outputs": {
+      "intent": "expand_task",
+      "confidence": 0.3
+    },
+    "metadata": {
+      "latencyMs": 13011
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_869a75743c24",
+    "traceId": "trace_18081e57fb77",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T13:53:30.272Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_movjr066uepwov",
+      "selectedOption": "open",
+      "openText": "下班买牛奶鸡蛋"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_b46dd900aa83",
+    "traceId": "trace_18081e57fb77",
+    "parentSpanId": "span_869a75743c24",
+    "operationName": "llm.parameter_extraction",
+    "startTime": "2026-05-07T13:53:30.272Z",
+    "durationMs": 7561,
+    "inputs": null,
+    "outputs": {
+      "refinedIntent": "create_task"
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_6557fc3d0c84",
+    "traceId": "trace_18081e57fb77",
+    "parentSpanId": "span_869a75743c24",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-07T13:53:37.833Z",
+    "durationMs": 2992,
+    "inputs": null,
+    "outputs": {
+      "success": true
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_87a84f7f443b",
+    "traceId": "trace_74236c8df6a7",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:53:40.832Z",
+    "durationMs": 9996,
+    "inputs": {
+      "userInput": "早上好，今天什么安排？"
+    },
+    "outputs": {
+      "intent": "query_events",
+      "confidence": 0.8
+    },
+    "metadata": {
+      "latencyMs": 9996
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_8ab20fdff027",
+    "traceId": "trace_10631f0fd1fb",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:53:51.708Z",
+    "durationMs": 10903,
+    "inputs": {
+      "userInput": "帮我订个今晚的位子，要安静点的"
+    },
+    "outputs": {
+      "intent": "other",
+      "confidence": 0.85
+    },
+    "metadata": {
+      "latencyMs": 10903
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_af6af0911e26",
+    "traceId": "trace_994998f57996",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T13:54:07.569Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_movjrsy6di9sl1",
+      "selectedOption": "opt_2",
+      "openText": "帮我推荐一个安静的"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_4d45b16ac8d3",
+    "traceId": "trace_994998f57996",
+    "parentSpanId": "span_af6af0911e26",
+    "operationName": "llm.parameter_extraction",
+    "startTime": "2026-05-07T13:54:07.569Z",
+    "durationMs": 9221,
+    "inputs": null,
+    "outputs": {
+      "refinedIntent": "other"
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_67bf8706a9ac",
+    "traceId": "trace_994998f57996",
+    "parentSpanId": "span_af6af0911e26",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-07T13:54:16.790Z",
+    "durationMs": 2713,
+    "inputs": null,
+    "outputs": {
+      "success": true
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_59021a963863",
+    "traceId": "trace_7b02db2939a4",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:54:19.512Z",
+    "durationMs": 11215,
+    "inputs": {
+      "userInput": "明天的客户拜访改到周三上午"
+    },
+    "outputs": {
+      "intent": "update_task",
+      "confidence": 0.85
+    },
+    "metadata": {
+      "latencyMs": 11215
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_6230f9ed34b1",
+    "traceId": "trace_5b9bd5e783a7",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T13:54:47.360Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_movjsnnk7qbrck",
+      "selectedOption": "open",
+      "openText": "改到周三上午9点"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_4aea25e68ec6",
+    "traceId": "trace_5b9bd5e783a7",
+    "parentSpanId": "span_6230f9ed34b1",
+    "operationName": "llm.parameter_extraction",
+    "startTime": "2026-05-07T13:54:47.360Z",
+    "durationMs": 8684,
+    "inputs": null,
+    "outputs": {
+      "refinedIntent": "update_task"
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_a22cbd9c4e62",
+    "traceId": "trace_5b9bd5e783a7",
+    "parentSpanId": "span_6230f9ed34b1",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-07T13:54:56.044Z",
+    "durationMs": 909,
+    "inputs": null,
+    "outputs": {
+      "success": false
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_6b9876182e9d",
+    "traceId": "trace_211276b31269",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:54:56.958Z",
+    "durationMs": 10002,
+    "inputs": {
+      "userInput": "帮我记一下，今天和王总聊了三个要点"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.75
+    },
+    "metadata": {
+      "latencyMs": 10002
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_7d36751aee40",
+    "traceId": "trace_4e6d1946047f",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T13:55:22.083Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_movjteg2n0mcer",
+      "selectedOption": "open",
+      "openText": "客户对价格还是有顾虑，交期可以接受，想独家合作三个月试运行"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_419117bd4e4a",
+    "traceId": "trace_4e6d1946047f",
+    "parentSpanId": "span_7d36751aee40",
+    "operationName": "llm.parameter_extraction",
+    "startTime": "2026-05-07T13:55:22.083Z",
+    "durationMs": 14971,
+    "inputs": null,
+    "outputs": {
+      "refinedIntent": "other"
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_a2c95f1a9128",
+    "traceId": "trace_4e6d1946047f",
+    "parentSpanId": "span_7d36751aee40",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-07T13:55:37.054Z",
+    "durationMs": 5487,
+    "inputs": null,
+    "outputs": {
+      "success": true
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_ab6385ac6ce6",
+    "traceId": "trace_1aa9e16c6095",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:55:42.551Z",
+    "durationMs": 6685,
+    "inputs": {
+      "userInput": "今天怎么样？"
+    },
+    "outputs": {
+      "intent": "other",
+      "confidence": 0
+    },
+    "metadata": {
+      "latencyMs": 6684
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_ab44e9b49314",
+    "traceId": "trace_61d100d4c026",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T13:55:58.754Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_movju6qowmn0fc",
+      "openText": "客户快到了，准备一下会议室",
+      "cancel": false
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_d44667849965",
+    "traceId": "trace_61d100d4c026",
+    "parentSpanId": "span_ab44e9b49314",
+    "operationName": "llm.parameter_extraction",
+    "startTime": "2026-05-07T13:55:58.754Z",
+    "durationMs": 11190,
+    "inputs": null,
+    "outputs": {
+      "refinedIntent": "create_task"
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_e56cdbaeb0f0",
+    "traceId": "trace_61d100d4c026",
+    "parentSpanId": "span_ab44e9b49314",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-07T13:56:09.944Z",
+    "durationMs": 2752,
+    "inputs": null,
+    "outputs": {
+      "success": true
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_742701f376fc",
+    "traceId": "trace_8dfe72afb9f1",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:56:12.703Z",
+    "durationMs": 10828,
+    "inputs": {
+      "userInput": "谈成了！帮我记录一下"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.65
+    },
+    "metadata": {
+      "latencyMs": 10828
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_89d6c6cddc04",
+    "traceId": "trace_b9eebd9b3f4f",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T13:56:28.654Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_movjutt8nj4ran",
+      "selectedOption": "open",
+      "openText": "深圳客户合同签署成功，金额280万，交付周期6个月"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_091f88a41fcf",
+    "traceId": "trace_b9eebd9b3f4f",
+    "parentSpanId": "span_89d6c6cddc04",
+    "operationName": "llm.parameter_extraction",
+    "startTime": "2026-05-07T13:56:28.654Z",
+    "durationMs": 20638,
+    "inputs": null,
+    "outputs": {
+      "refinedIntent": "create_task"
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_b510db278cf3",
+    "traceId": "trace_b9eebd9b3f4f",
+    "parentSpanId": "span_89d6c6cddc04",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-07T13:56:49.292Z",
+    "durationMs": 3648,
+    "inputs": null,
+    "outputs": {
+      "success": true
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_e98dd7839cc5",
+    "traceId": "trace_8c8864a284ba",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:56:52.947Z",
+    "durationMs": 6567,
+    "inputs": {
+      "userInput": "帮我记一下，老师说的暑假安排"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.5
+    },
+    "metadata": {
+      "latencyMs": 6567
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_1b9cbf277843",
+    "traceId": "trace_9b2977311a0d",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T13:57:08.493Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_movjvojvl2sipv",
+      "selectedOption": "open",
+      "openText": "暑假7月5日到8月31日，作业7月15日前交，返校日8月30日"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_f2d1efc92db1",
+    "traceId": "trace_9b2977311a0d",
+    "parentSpanId": "span_1b9cbf277843",
+    "operationName": "llm.parameter_extraction",
+    "startTime": "2026-05-07T13:57:08.493Z",
+    "durationMs": 18913,
+    "inputs": null,
+    "outputs": {
+      "refinedIntent": "create_task"
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_dd806c1da1c4",
+    "traceId": "trace_9b2977311a0d",
+    "parentSpanId": "span_1b9cbf277843",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-07T13:57:27.406Z",
+    "durationMs": 2801,
+    "inputs": null,
+    "outputs": {
+      "success": true
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_eb8c2d36f409",
+    "traceId": "trace_f1e52b184113",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:57:30.212Z",
+    "durationMs": null,
+    "inputs": {
+      "userInput": "家长会结束了，接下来没什么事了吧？"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_46a71b61223c",
+    "traceId": "trace_36f48424f819",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:58:00.260Z",
+    "durationMs": 8077,
+    "inputs": {
+      "userInput": "这周忙完了，帮我总结一下"
+    },
+    "outputs": {
+      "intent": "query_tasks",
+      "confidence": 0.85
+    },
+    "metadata": {
+      "latencyMs": 8077
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_2a369ad0da1c",
+    "traceId": "trace_a6c8bdb8a4a5",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T14:09:11.660Z",
+    "durationMs": 8624,
+    "inputs": {
+      "userInput": "今天怎么样？"
+    },
+    "outputs": {
+      "intent": "query_events",
+      "confidence": 0.75
+    },
+    "metadata": {
+      "latencyMs": 8623
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_cd0002f09bf2",
+    "traceId": "trace_a665e1e41db9",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T14:09:21.420Z",
+    "durationMs": 15500,
+    "inputs": {
+      "userInput": "提醒我今天下午3点开会"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.95
+    },
+    "metadata": {
+      "latencyMs": 15500
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_3a244685601b",
+    "traceId": "trace_66fbdd086c11",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T14:09:42.873Z",
+    "durationMs": 11368,
+    "inputs": {
+      "userInput": "上午11点要见一下王总"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.9
+    },
+    "metadata": {
+      "latencyMs": 11368
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_fc709630a433",
+    "traceId": "trace_b26dc2de6918",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T14:14:15.715Z",
+    "durationMs": 9470,
+    "inputs": {
+      "userInput": "今天怎么样？"
+    },
+    "outputs": {
+      "intent": "other",
+      "confidence": 0.5
+    },
+    "metadata": {
+      "latencyMs": 9469
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_afd62845c125",
+    "traceId": "trace_c4b00cebdfab",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T14:14:34.079Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_movki3bsjikqia",
+      "openText": "提醒我今天下午3点开会",
+      "cancel": false
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_970d95973adb",
+    "traceId": "trace_c4b00cebdfab",
+    "parentSpanId": "span_afd62845c125",
+    "operationName": "llm.parameter_extraction",
+    "startTime": "2026-05-07T14:14:34.079Z",
+    "durationMs": 9888,
+    "inputs": null,
+    "outputs": {
+      "refinedIntent": "create_task"
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_a3321145d96a",
+    "traceId": "trace_c4b00cebdfab",
+    "parentSpanId": "span_afd62845c125",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-07T14:14:43.967Z",
+    "durationMs": 6257,
+    "inputs": null,
+    "outputs": {
+      "success": true
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_3fb5fc39f567",
+    "traceId": "trace_34c2694599a4",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T14:14:50.231Z",
+    "durationMs": 10812,
+    "inputs": {
+      "userInput": "上午11点要见一下王总"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.8
+    },
+    "metadata": {
+      "latencyMs": 10812
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_a3aed30b9968",
+    "traceId": "trace_07edbe9eb18b",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T14:18:43.988Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_movkivprzm6km9",
+      "openText": "今天怎么样？",
+      "cancel": false
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_1604fb85e14b",
+    "traceId": "trace_07edbe9eb18b",
+    "parentSpanId": "span_a3aed30b9968",
+    "operationName": "llm.parameter_extraction",
+    "startTime": "2026-05-07T14:18:43.988Z",
+    "durationMs": null,
+    "inputs": null,
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_76ffa1899111",
+    "traceId": "trace_a68c2ddb2ebf",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T14:18:52.671Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_movkivprzm6km9",
+      "openText": "提醒我今天下午3点开会",
+      "cancel": false
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_ba11fbfbfd66",
+    "traceId": "trace_a68c2ddb2ebf",
+    "parentSpanId": "span_76ffa1899111",
+    "operationName": "llm.parameter_extraction",
+    "startTime": "2026-05-07T14:18:52.671Z",
+    "durationMs": 6635,
+    "inputs": null,
+    "outputs": {
+      "refinedIntent": "create_task"
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_b2369f95707b",
+    "traceId": "trace_a68c2ddb2ebf",
+    "parentSpanId": "span_76ffa1899111",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-07T14:18:59.306Z",
+    "durationMs": 5949,
+    "inputs": null,
+    "outputs": {
+      "success": true
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_115e233a7711",
+    "traceId": "trace_02e58a8e3a88",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T14:19:05.264Z",
+    "durationMs": 8362,
+    "inputs": {
+      "userInput": "上午11点要见一下王总"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.9
+    },
+    "metadata": {
+      "latencyMs": 8362
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_f2740968615e",
+    "traceId": "trace_e44052b9dda9",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T14:19:40.551Z",
+    "durationMs": 5967,
+    "inputs": {
+      "userInput": "������ô����"
+    },
+    "outputs": {
+      "intent": "other",
+      "confidence": 0
+    },
+    "metadata": {
+      "latencyMs": 5967
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_443397034127",
+    "traceId": "trace_8562d630630a",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T14:20:17.012Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_movkp0r78xchhx",
+      "openText": "������ô����",
+      "cancel": false
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_d2979ac86c6d",
+    "traceId": "trace_8562d630630a",
+    "parentSpanId": "span_443397034127",
+    "operationName": "llm.parameter_extraction",
+    "startTime": "2026-05-07T14:20:17.012Z",
+    "durationMs": 22558,
+    "inputs": null,
+    "outputs": {
+      "refinedIntent": "other"
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_45e8699c6e83",
+    "traceId": "trace_8562d630630a",
+    "parentSpanId": "span_443397034127",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-07T14:20:39.570Z",
+    "durationMs": 2781,
+    "inputs": null,
+    "outputs": {
+      "success": true
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_fbf526e5a385",
+    "traceId": "trace_147daa067001",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T14:21:26.470Z",
+    "durationMs": 4258,
+    "inputs": {
+      "userInput": "������ô����"
+    },
+    "outputs": {
+      "intent": "other",
+      "confidence": 0
+    },
+    "metadata": {
+      "latencyMs": 4258
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_c6a1bd5be299",
+    "traceId": "trace_c5b81e1e203d",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T14:21:56.329Z",
+    "durationMs": 5756,
+    "inputs": {
+      "userInput": "������ô����"
+    },
+    "outputs": {
+      "intent": "other",
+      "confidence": 0
+    },
+    "metadata": {
+      "latencyMs": 5756
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_bf05114ea36a",
+    "traceId": "trace_33ba41c0fed7",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T14:22:33.386Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_movkrv8l3x0wr3",
+      "openText": "今天怎么样？",
+      "cancel": false
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_f2949f9beb5b",
+    "traceId": "trace_33ba41c0fed7",
+    "parentSpanId": "span_bf05114ea36a",
+    "operationName": "llm.parameter_extraction",
+    "startTime": "2026-05-07T14:22:33.386Z",
+    "durationMs": 11515,
+    "inputs": null,
+    "outputs": {
+      "refinedIntent": "query_events"
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_7bc3c0b4eed8",
+    "traceId": "trace_33ba41c0fed7",
+    "parentSpanId": "span_bf05114ea36a",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-07T14:22:44.901Z",
+    "durationMs": 1032,
+    "inputs": null,
+    "outputs": {
+      "success": true
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_d932c11fe6e7",
+    "traceId": "trace_0557f444f98a",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T14:22:45.941Z",
+    "durationMs": 16527,
+    "inputs": {
+      "userInput": "提醒我今天下午3点开会"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.95
+    },
+    "metadata": {
+      "latencyMs": 16527
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_9c39c6ba6e21",
+    "traceId": "trace_20addaad2795",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T14:23:09.283Z",
+    "durationMs": 21259,
+    "inputs": {
+      "userInput": "上午11点要见一下王总"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.95
+    },
+    "metadata": {
+      "latencyMs": 21259
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_f252b75f5ccc",
+    "traceId": "trace_0623ef72234a",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T02:36:14.004Z",
+    "durationMs": 2664,
+    "inputs": {
+      "userInput": "你好",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": {
+      "intent": "other",
+      "confidence": 0
+    },
+    "metadata": {
+      "latencyMs": 2663
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_b0a8e8f279b6",
+    "traceId": "trace_9a16792a3bbf",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-09T02:39:56.932Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_moxqg3l43h6c05",
+      "openText": "我下个礼拜还有些什么安排？",
+      "cancel": false
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_b21de914d3b0",
+    "traceId": "trace_9a16792a3bbf",
+    "parentSpanId": "span_b0a8e8f279b6",
+    "operationName": "llm.parameter_extraction",
+    "startTime": "2026-05-09T02:39:56.932Z",
+    "durationMs": 11440,
+    "inputs": null,
+    "outputs": {
+      "refinedIntent": "query_events"
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_f70759ff7630",
+    "traceId": "trace_9a16792a3bbf",
+    "parentSpanId": "span_b0a8e8f279b6",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-09T02:40:08.372Z",
+    "durationMs": 1445,
+    "inputs": null,
+    "outputs": {
+      "success": true
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_08b816afe9c4",
+    "traceId": "trace_128e82a12d06",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T02:47:19.024Z",
+    "durationMs": 14945,
+    "inputs": {
+      "userInput": "好像什么日程也没有，是没有查到吗？",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": {
+      "intent": "query_events",
+      "confidence": 0.75
+    },
+    "metadata": {
+      "latencyMs": 14945
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_35d963db7d99",
+    "traceId": "trace_7f0aa25f9ed1",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T02:51:29.324Z",
+    "durationMs": 17131,
+    "inputs": {
+      "userInput": "帮我安排周一下午产品组组会",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.85
+    },
+    "metadata": {
+      "latencyMs": 17131
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_b568253815c4",
+    "traceId": "trace_f37aade9936f",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T02:53:21.228Z",
+    "durationMs": 14236,
+    "inputs": {
+      "userInput": "帮我创建周一下午的产品组组会",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.65
+    },
+    "metadata": {
+      "latencyMs": 14235
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_9605b693d2de",
+    "traceId": "trace_77d5c16984b3",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T03:07:53.218Z",
+    "durationMs": 17114,
+    "inputs": {
+      "userInput": "帮我安排周一下午产品组组会",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.75
+    },
+    "metadata": {
+      "latencyMs": 17113
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_f541aec9fe92",
+    "traceId": "trace_f29839da6c33",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-09T03:08:38.833Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_moxrl0zy0p4hd8",
+      "openText": "抱歉，我没能理解您的意思。请试试说\"帮我创建任务\"或\"今天有什么安排\"。",
+      "cancel": false
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_20799d8701ef",
+    "traceId": "trace_f29839da6c33",
+    "parentSpanId": "span_f541aec9fe92",
+    "operationName": "llm.parameter_extraction",
+    "startTime": "2026-05-09T03:08:38.833Z",
+    "durationMs": 12859,
+    "inputs": null,
+    "outputs": {
+      "refinedIntent": "other"
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_d9bf800e2e38",
+    "traceId": "trace_f29839da6c33",
+    "parentSpanId": "span_f541aec9fe92",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-09T03:08:51.692Z",
+    "durationMs": 3476,
+    "inputs": null,
+    "outputs": {
+      "success": true
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_43727a08316e",
+    "traceId": "trace_cf880dbb7df0",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T03:10:08.803Z",
+    "durationMs": 15383,
+    "inputs": {
+      "userInput": "现在重启新的进程",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.55
+    },
+    "metadata": {
+      "latencyMs": 15383
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_859011cee082",
+    "traceId": "trace_1e2be220efbb",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T03:10:39.140Z",
+    "durationMs": 14152,
+    "inputs": {
+      "userInput": "帮我安排周一下午产品组组会",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.92
+    },
+    "metadata": {
+      "latencyMs": 14152
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_5f5776c04002",
+    "traceId": "trace_e7eae763d585",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-09T03:12:24.907Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_moxrojnohjxcbr",
+      "openText": "下午6点",
+      "cancel": false
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_6c5210f811d3",
+    "traceId": "trace_e7eae763d585",
+    "parentSpanId": "span_5f5776c04002",
+    "operationName": "llm.parameter_extraction",
+    "startTime": "2026-05-09T03:12:24.907Z",
+    "durationMs": 3230,
+    "inputs": null,
+    "outputs": {
+      "refinedIntent": "other"
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_36e48b935042",
+    "traceId": "trace_e7eae763d585",
+    "parentSpanId": "span_5f5776c04002",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-09T03:12:28.137Z",
+    "durationMs": 6683,
+    "inputs": null,
+    "outputs": {
+      "success": true
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_afbbb0fbba51",
+    "traceId": "trace_04f568ed6c9a",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T04:53:07.036Z",
+    "durationMs": 11943,
+    "inputs": {
+      "userInput": "帮我安排周一下午产品组组会",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.85
+    },
+    "metadata": {
+      "latencyMs": 11942
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_da7015c7e688",
+    "traceId": "trace_da7feb85f801",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T04:56:39.724Z",
+    "durationMs": 14255,
+    "inputs": {
+      "userInput": "帮我安排周一下午产品组组会",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.85
+    },
+    "metadata": {
+      "latencyMs": 14254
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_816196126f75",
+    "traceId": "trace_f02cbc9c7fd2",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T05:04:20.715Z",
+    "durationMs": 12226,
+    "inputs": {
+      "userInput": "帮我安排周一下午产品组组会",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.85
+    },
+    "metadata": {
+      "latencyMs": 12225
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_be45451aecb5",
+    "traceId": "trace_41572ed487e8",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T05:11:37.055Z",
+    "durationMs": 11600,
+    "inputs": {
+      "userInput": "帮我安排周一下午产品组组会",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.85
+    },
+    "metadata": {
+      "latencyMs": 11600
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_b86f8a883fcc",
+    "traceId": "trace_885b4989df3d",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T05:12:22.692Z",
+    "durationMs": 13443,
+    "inputs": {
+      "userInput": "14:00",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": {
+      "intent": "query_events",
+      "confidence": 0.6
+    },
+    "metadata": {
+      "latencyMs": 13441
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_9b1d4bc1b1a9",
+    "traceId": "trace_e1a0aa5e2eb9",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T05:33:36.026Z",
+    "durationMs": 13357,
+    "inputs": {
+      "userInput": "帮我安排周一下午产品组组会",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.75
+    },
+    "metadata": {
+      "latencyMs": 13356
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_32dd684fe751",
+    "traceId": "trace_1c6b585fbb0f",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-09T05:34:16.417Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_moxwsg9xjv0lwz",
+      "openText": "b",
+      "cancel": false
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_ce23c2914488",
+    "traceId": "trace_1c6b585fbb0f",
+    "parentSpanId": "span_32dd684fe751",
+    "operationName": "llm.parameter_extraction",
+    "startTime": "2026-05-09T05:34:16.417Z",
+    "durationMs": 10087,
+    "inputs": null,
+    "outputs": {
+      "refinedIntent": "other"
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_ca3906aa38e9",
+    "traceId": "trace_1c6b585fbb0f",
+    "parentSpanId": "span_32dd684fe751",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-09T05:34:26.504Z",
+    "durationMs": 6278,
+    "inputs": null,
+    "outputs": {
+      "success": true
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_0f244f7104c3",
+    "traceId": "trace_3121a2acdc05",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T05:47:48.226Z",
+    "durationMs": 10093,
+    "inputs": {
+      "userInput": "删除下周一的会议安排",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": {
+      "intent": "delete_task",
+      "confidence": 0.85
+    },
+    "metadata": {
+      "latencyMs": 10093
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_3d6205d8d341",
+    "traceId": "trace_4ee96dc123cc",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T05:48:28.942Z",
+    "durationMs": 7789,
+    "inputs": {
+      "userInput": "确认删除",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": {
+      "intent": "delete_task",
+      "confidence": 0.5
+    },
+    "metadata": {
+      "latencyMs": 7789
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_d2304d6cb24e",
+    "traceId": "trace_ff261a238d51",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T06:01:14.172Z",
+    "durationMs": 11521,
+    "inputs": {
+      "userInput": "删除下周一的会议安排",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": {
+      "intent": "delete_task",
+      "confidence": 0.85
+    },
+    "metadata": {
+      "latencyMs": 11520
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_5c8b8d9c76c5",
+    "traceId": "trace_8671785ad9de",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-09T06:02:01.269Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_moxxrshxsj6egr",
+      "selectedOption": "opt_1",
+      "cancel": false
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_74e24910333d",
+    "traceId": "trace_8671785ad9de",
+    "parentSpanId": "span_5c8b8d9c76c5",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-09T06:02:01.269Z",
+    "durationMs": 1496,
+    "inputs": null,
+    "outputs": {
+      "success": false
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_2dc8404ac8fd",
+    "traceId": "trace_585637fcaa91",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T06:24:14.695Z",
+    "durationMs": 10778,
+    "inputs": {
+      "userInput": "删除下周一的会议安排",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": {
+      "intent": "delete_task",
+      "confidence": 0.7
+    },
+    "metadata": {
+      "latencyMs": 10776
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_26dc4e6523d9",
+    "traceId": "trace_9364fc66f441",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-09T06:24:48.713Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_moxyli3rcrat3a",
+      "selectedOption": "opt_1",
+      "cancel": false
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_ae75f712f2cf",
+    "traceId": "trace_9364fc66f441",
+    "parentSpanId": "span_26dc4e6523d9",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-09T06:24:48.713Z",
+    "durationMs": 3500,
+    "inputs": null,
+    "outputs": {
+      "success": true
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_111b1999107a",
+    "traceId": "trace_d5d5038843e9",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T06:25:38.096Z",
+    "durationMs": 17153,
+    "inputs": {
+      "userInput": "下周一下午帮我安排一个产品组会",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.82
+    },
+    "metadata": {
+      "latencyMs": 17152
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_911c45c28507",
+    "traceId": "trace_a2fee3efff82",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-09T06:26:28.162Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_moxynf27aoqhcm",
+      "openText": "选第一个",
+      "cancel": false
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_746f63a1e65c",
+    "traceId": "trace_a2fee3efff82",
+    "parentSpanId": "span_911c45c28507",
+    "operationName": "llm.parameter_extraction",
+    "startTime": "2026-05-09T06:26:28.162Z",
+    "durationMs": 10788,
+    "inputs": null,
+    "outputs": {
+      "refinedIntent": "other"
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_9ef2daa7368b",
+    "traceId": "trace_a2fee3efff82",
+    "parentSpanId": "span_911c45c28507",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-09T06:26:38.951Z",
+    "durationMs": 7024,
+    "inputs": null,
+    "outputs": {
+      "success": true
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_2c484c20da1a",
+    "traceId": "trace_385f18a9e2ee",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T06:53:33.115Z",
+    "durationMs": 14545,
+    "inputs": {
+      "userInput": "删除所有的任务安排",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": {
+      "intent": "delete_task",
+      "confidence": 0.95
+    },
+    "metadata": {
+      "latencyMs": 14544
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_ff176b187fec",
+    "traceId": "trace_017e6750c939",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T06:54:16.116Z",
+    "durationMs": 4544,
+    "inputs": {
+      "userInput": "是的，确认删除",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": {
+      "intent": "delete_task",
+      "confidence": 0.8
+    },
+    "metadata": {
+      "latencyMs": 4543
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_8308a5376b66",
+    "traceId": "trace_474daa5a5bc5",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T07:03:32.777Z",
+    "durationMs": 14914,
+    "inputs": {
+      "userInput": "删除所有的任务安排",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": {
+      "intent": "delete_task",
+      "confidence": 0.85
+    },
+    "metadata": {
+      "latencyMs": 14913
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_9424daa2fecd",
+    "traceId": "trace_69cfc18e60ee",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-09T07:04:02.352Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_moxzzyxx13zl11",
+      "selectedOption": "opt_1",
+      "cancel": false
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_b68299b852ac",
+    "traceId": "trace_69cfc18e60ee",
+    "parentSpanId": "span_9424daa2fecd",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-09T07:04:02.352Z",
+    "durationMs": 5213,
+    "inputs": null,
+    "outputs": {
+      "success": true
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_d4c7349748e1",
+    "traceId": "trace_e910a07e24e5",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T07:04:57.502Z",
+    "durationMs": 13695,
+    "inputs": {
+      "userInput": "安排下周一下午产品组例会",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.85
+    },
+    "metadata": {
+      "latencyMs": 13694
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_6627c9c83b9a",
+    "traceId": "trace_c742f99fe39f",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-09T07:05:59.452Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_moy01ztgkg8ydy",
+      "openText": "没问题，确认",
+      "cancel": false
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_3ab14e7c0727",
+    "traceId": "trace_c742f99fe39f",
+    "parentSpanId": "span_6627c9c83b9a",
+    "operationName": "llm.parameter_extraction",
+    "startTime": "2026-05-09T07:05:59.452Z",
+    "durationMs": 7441,
+    "inputs": null,
+    "outputs": {
+      "refinedIntent": "other"
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_929c424fedd7",
+    "traceId": "trace_c742f99fe39f",
+    "parentSpanId": "span_6627c9c83b9a",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-09T07:06:06.893Z",
+    "durationMs": 11115,
+    "inputs": null,
+    "outputs": {
+      "success": true
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_7d0e07b0022a",
+    "traceId": "trace_0716b978b1da",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T07:06:43.228Z",
+    "durationMs": 10877,
+    "inputs": {
+      "userInput": "把刚才创建的那个会议调整到下午4点",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": {
+      "intent": "update_task",
+      "confidence": 0.55
+    },
+    "metadata": {
+      "latencyMs": 10877
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_3e253d762cb9",
+    "traceId": "trace_dee319761ecf",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T07:52:17.706Z",
+    "durationMs": 29864,
+    "inputs": {
+      "userInput": "安排下周二下午3点的拓展组会议",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.95
+    },
+    "metadata": {
+      "latencyMs": 29864
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_3a3280671d93",
+    "traceId": "trace_4a0889caace5",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T07:54:33.714Z",
+    "durationMs": 8513,
+    "inputs": {
+      "userInput": "把刚才创建的会议的时间从3点到4点改成3点到3:30",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": {
+      "intent": "update_task",
+      "confidence": 0.85
+    },
+    "metadata": {
+      "latencyMs": 8513
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_c14b37010901",
+    "traceId": "trace_79b192039233",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-09T07:54:57.689Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_moy1tb6yil6zrt",
+      "selectedOption": "opt_1",
+      "cancel": false
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_9be5350566c2",
+    "traceId": "trace_79b192039233",
+    "parentSpanId": "span_c14b37010901",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-09T07:54:57.689Z",
+    "durationMs": 3799,
+    "inputs": null,
+    "outputs": {
+      "success": true
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_599c110da8d1",
+    "traceId": "trace_8200bf00cae6",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T07:56:06.082Z",
+    "durationMs": 10405,
+    "inputs": {
+      "userInput": "创建任务，每周六晚上6:30到8:30，妙妙的围棋课",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.95
+    },
+    "metadata": {
+      "latencyMs": 10405
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_d767c942d1ad",
+    "traceId": "trace_2c5a1e439ed4",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T08:23:39.120Z",
+    "durationMs": 14016,
+    "inputs": {
+      "userInput": "把刚刚的任务改成家庭共享日历",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": {
+      "intent": "update_task",
+      "confidence": 0.55
+    },
+    "metadata": {
+      "latencyMs": 14015
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_a500129e2301",
+    "traceId": "trace_86e5c5d56dcb",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T08:35:03.606Z",
+    "durationMs": 38921,
+    "inputs": {
+      "userInput": "不要修改标题，就把刚刚那个任务的分类改为家庭日历",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": {
+      "intent": "update_task",
+      "confidence": 0.88
+    },
+    "metadata": {
+      "latencyMs": 38920
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_69c45bfe68b9",
+    "traceId": "trace_29f0b0335759",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-09T08:36:22.002Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_moy3abqhqfc4c8",
+      "openText": "修改成家庭共享日历",
+      "cancel": false
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_32c71893ba99",
+    "traceId": "trace_29f0b0335759",
+    "parentSpanId": "span_69c45bfe68b9",
+    "operationName": "llm.parameter_extraction",
+    "startTime": "2026-05-09T08:36:22.002Z",
+    "durationMs": 15980,
+    "inputs": null,
+    "outputs": {
+      "refinedIntent": "update_task"
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_a4bc60caa7a9",
+    "traceId": "trace_29f0b0335759",
+    "parentSpanId": "span_69c45bfe68b9",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-09T08:36:37.983Z",
+    "durationMs": 1171,
+    "inputs": null,
+    "outputs": {
+      "success": false
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_defb07a1048e",
+    "traceId": "trace_eb67d2f24124",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T08:47:02.241Z",
+    "durationMs": 12360,
+    "inputs": {
+      "userInput": "把每周二的妙妙围棋课从工作日历改成家庭共享日历",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": {
+      "intent": "update_task",
+      "confidence": 0.85
+    },
+    "metadata": {
+      "latencyMs": 12360
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_1de03786ed8c",
+    "traceId": "trace_81026f274953",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-09T08:47:55.889Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_moy3p2gdcgfs4c",
+      "openText": "好的",
+      "cancel": false
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_416ca70ae53b",
+    "traceId": "trace_81026f274953",
+    "parentSpanId": "span_1de03786ed8c",
+    "operationName": "llm.parameter_extraction",
+    "startTime": "2026-05-09T08:47:55.889Z",
+    "durationMs": 7027,
+    "inputs": null,
+    "outputs": {
+      "refinedIntent": "other"
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_6fb013a68bdd",
+    "traceId": "trace_81026f274953",
+    "parentSpanId": "span_1de03786ed8c",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-09T08:48:02.916Z",
+    "durationMs": 3469,
+    "inputs": null,
+    "outputs": {
+      "success": true
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_8bacb04106a3",
+    "traceId": "trace_1068e6bf5d09",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T09:10:07.719Z",
+    "durationMs": 10156,
+    "inputs": {
+      "userInput": "把妙妙的围棋课的分类改为家庭共享",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": {
+      "intent": "update_task",
+      "confidence": 0.8
+    },
+    "metadata": {
+      "latencyMs": 10156
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_ce61bc871ff8",
+    "traceId": "trace_8bce3b8eaf62",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T09:18:54.505Z",
+    "durationMs": 8269,
+    "inputs": {
+      "userInput": "把妙妙的围棋课的分类改为家庭共享",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": {
+      "intent": "update_task",
+      "confidence": 0.9
+    },
+    "metadata": {
+      "latencyMs": 8269
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_b6dae06ac9ff",
+    "traceId": "trace_508e020bb95d",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T09:45:52.413Z",
+    "durationMs": 13044,
+    "inputs": {
+      "userInput": "把妙妙的围棋课的分类改为家庭共享",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": {
+      "intent": "update_task",
+      "confidence": 0.9
+    },
+    "metadata": {
+      "latencyMs": 13044
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_5b47838e9b35",
+    "traceId": "trace_ed42ac513e59",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T11:27:34.774Z",
+    "durationMs": 10293,
+    "inputs": {
+      "userInput": "把所有的任务都删除",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": {
+      "intent": "delete_task",
+      "confidence": 0.9
+    },
+    "metadata": {
+      "latencyMs": 10293
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_df033aa460e1",
+    "traceId": "trace_d129e673e8c5",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-09T11:28:04.381Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_moy9fdymvp18vz",
+      "selectedOption": "opt_1",
+      "cancel": false
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_34c1e2070e5c",
+    "traceId": "trace_d129e673e8c5",
+    "parentSpanId": "span_df033aa460e1",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-09T11:28:04.381Z",
+    "durationMs": 9522,
+    "inputs": null,
+    "outputs": {
+      "success": true
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_5d113457865f",
+    "traceId": "trace_f305013b7917",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T11:28:52.766Z",
+    "durationMs": 11187,
+    "inputs": {
+      "userInput": "帮我安排每周六下午6:30到8:30妙妙的围棋课",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.95
+    },
+    "metadata": {
+      "latencyMs": 11186
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_fe97539db44d",
+    "traceId": "trace_d6a09d6f39f1",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T11:35:24.737Z",
+    "durationMs": 13819,
+    "inputs": {
+      "userInput": "帮我把memory的围棋课调整到家庭共享分类",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": {
+      "intent": "update_task",
+      "confidence": 0.85
+    },
+    "metadata": {
+      "latencyMs": 13818
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_6b808ff83440",
+    "traceId": "trace_bad3b7f3fbe2",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-09T11:35:45.193Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_moy9pftfc33rta",
+      "selectedOption": "opt_1",
+      "cancel": false
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_1a8c314e2530",
+    "traceId": "trace_bad3b7f3fbe2",
+    "parentSpanId": "span_6b808ff83440",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-09T11:35:45.193Z",
+    "durationMs": 2736,
+    "inputs": null,
+    "outputs": {
+      "success": true
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_1bcc386917e3",
+    "traceId": "trace_5c3e75174e46",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T12:01:23.836Z",
+    "durationMs": 11548,
+    "inputs": {
+      "userInput": "帮我把妙妙的围棋课调整到家庭共享分类",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": {
+      "intent": "update_task",
+      "confidence": 0.9
+    },
+    "metadata": {
+      "latencyMs": 11547
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_c7bd56d0e47e",
+    "traceId": "trace_485c0d246a88",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T12:30:34.023Z",
+    "durationMs": 11280,
+    "inputs": {
+      "userInput": "帮我把妙妙的围棋课调整到家庭共享分类",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": {
+      "intent": "update_task",
+      "confidence": 0.85
+    },
+    "metadata": {
+      "latencyMs": 11279
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_015c1e3fa86b",
+    "traceId": "trace_d83509bbe9dd",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-09T12:31:32.668Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_moybobbba1fsik",
+      "selectedOption": "opt_1",
+      "cancel": false
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_d00f06aa47ec",
+    "traceId": "trace_d83509bbe9dd",
+    "parentSpanId": "span_015c1e3fa86b",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-09T12:31:32.668Z",
+    "durationMs": 5914,
+    "inputs": null,
+    "outputs": {
+      "success": true
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_16fa67051a78",
+    "traceId": "trace_1736b001f8eb",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T13:01:46.031Z",
+    "durationMs": 8067,
+    "inputs": {
+      "userInput": "帮我安排个高优先级的任务，看下保险",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.88
+    },
+    "metadata": {
+      "latencyMs": 8066
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_4fc39fbbdf2b",
+    "traceId": "trace_d1ce829f2729",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T13:13:04.787Z",
+    "durationMs": null,
+    "inputs": {
+      "userInput": "每个月24号还招商银行信用卡",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_76d2853b80fe",
+    "traceId": "trace_57970091b7b2",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T13:14:23.347Z",
+    "durationMs": 17088,
+    "inputs": {
+      "userInput": "帮我创建任务，每个月24号还招商银行信用卡",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.9
+    },
+    "metadata": {
+      "latencyMs": 17087
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_edb7e3a8ca8d",
+    "traceId": "trace_f17e6f4d3062",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T13:22:29.703Z",
+    "durationMs": 12670,
+    "inputs": {
+      "userInput": "帮我创建任务，每个月24日，还招商银行信用卡",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.95
+    },
+    "metadata": {
+      "latencyMs": 12669
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_d8fd07526784",
+    "traceId": "trace_c60503532ae7",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T13:29:55.673Z",
+    "durationMs": 16849,
+    "inputs": {
+      "userInput": "帮我创建任务，每个月24日，还招商银行信用卡",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.95
+    },
+    "metadata": {
+      "latencyMs": 9169
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_0f0ca389f8d2",
+    "traceId": "trace_db5e3fdaaa6c",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T13:33:19.380Z",
+    "durationMs": 14368,
+    "inputs": {
+      "userInput": "帮我创建任务，每个月24日，还招商银行信用卡",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": {
+      "intent": "create_task",
+      "confidence": 0.9
+    },
+    "metadata": {
+      "latencyMs": 14366
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_3ebf918a4ad5",
+    "traceId": "trace_316b00a3b5f8",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T13:36:50.400Z",
+    "durationMs": 7205,
+    "inputs": {
+      "userInput": "删除刚创建的任务",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": {
+      "intent": "delete_task",
+      "confidence": 0.75
+    },
+    "metadata": {
+      "latencyMs": 7204
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_e79d500b0137",
+    "traceId": "trace_7376c6c8446f",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T13:37:40.676Z",
+    "durationMs": 15548,
+    "inputs": {
+      "userInput": "1",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": {
+      "intent": "other",
+      "confidence": 0
+    },
+    "metadata": {
+      "latencyMs": 6922
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_90c1da90cf42",
+    "traceId": "trace_a0112d61021f",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T13:38:24.102Z",
+    "durationMs": 18612,
+    "inputs": {
+      "userInput": "删除还招商银行信用卡的任务",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": {
+      "intent": "delete_task",
+      "confidence": 0.9
+    },
+    "metadata": {
+      "latencyMs": 18610
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_71296b71dbd9",
+    "traceId": "trace_993442e9aff2",
+    "parentSpanId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T13:39:27.137Z",
+    "durationMs": 22813,
+    "inputs": {
+      "userInput": "我要删除还招商银行信用卡的任务",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": {
+      "intent": "delete_task",
+      "confidence": 0.9
+    },
+    "metadata": {
+      "latencyMs": 7614
+    },
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_f61b613758db",
+    "traceId": "trace_538b6a695ace",
+    "parentSpanId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-09T13:42:38.836Z",
+    "durationMs": null,
+    "inputs": {
+      "contextId": "ctx_moye3pj8qnql4e",
+      "selectedOption": "opt_1",
+      "cancel": false
+    },
+    "outputs": null,
+    "metadata": null,
+    "error": null,
+    "links": {}
+  },
+  {
+    "spanId": "span_2b3e66887eb0",
+    "traceId": "trace_538b6a695ace",
+    "parentSpanId": "span_f61b613758db",
+    "operationName": "capability_dispatcher.dispatch",
+    "startTime": "2026-05-09T13:42:38.836Z",
+    "durationMs": 4284,
+    "inputs": null,
+    "outputs": {
+      "success": true
+    },
+    "metadata": null,
+    "error": null,
+    "links": {}
+  }
+]

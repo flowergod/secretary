@@ -1,106 +1,116 @@
-export type EntityType = 'task' | 'event' | 'project';
-export type TaskStatus = 'pending' | 'in_progress' | 'completed' | 'cancelled' | '待规划' | '待执行' | '进行中' | '已完成' | '暂停';
-export type Priority = '高' | '中' | '低';
-export type RecurrenceType = 'none' | 'weekly_monday' | 'weekly_tuesday' | 'weekly_wednesday' | 'weekly_thursday' | 'weekly_friday' | 'weekly_saturday' | 'weekly_sunday' | 'monthly' | 'after_complete' | 'custom' | 'weekly' | 'irregular' | '不循环' | '每周一' | '每周二' | '每周三' | '每周四' | '每周五' | '每周六' | '每周日' | '每月' | '完成后N天' | '自定义' | '每周' | '不定期';
-export type GroupType = '日程表' | '其他' | '工作' | '生活' | '个人';
-export interface RecurrenceRule {
-    type: RecurrenceType;
-    interval?: string;
-    start_from?: string;
-    end_date?: string | null;
-    days_after?: number;
-    reminder?: boolean;
-}
-export interface TaskEntity {
+export type TaskStatus = 'pending' | 'in_progress' | 'completed' | 'cancelled';
+export type TaskPriority = 'high' | 'medium' | 'low';
+export type RecurrenceType = 'none' | 'daily' | 'weekly' | 'weekly_n' | 'monthly' | 'monthly_n' | 'yearly' | 'yearly_n';
+export interface Task {
     id: string;
-    type: EntityType;
+    record_id?: string;
     title: string;
     description?: string;
     status: TaskStatus;
-    priority: Priority;
+    priority: TaskPriority;
+    category?: string;
     due_date?: string;
     start_date?: string;
     start_time?: string;
     end_time?: string;
     is_recurring: boolean;
-    recurrence_type?: RecurrenceType;
-    recurrence_rule?: RecurrenceRule;
-    parent_id?: string;
-    project_id?: string;
-    project_name?: string;
-    subproject?: string;
-    completion_date?: string;
-    completion_count?: number;
-    needs_expansion?: boolean;
-    expansion_type?: string;
-    group?: GroupType;
-    calendar_category?: string;
-    tags?: string[];
-    url?: string;
-    source_text?: string;
-    feishu_event_id?: string;
+    recurrence_type: RecurrenceType;
+    recurrence_rule?: string;
     icloud_event_id?: string;
+    parent_id?: string;
+    source?: string;
     created_at: string;
     updated_at: string;
 }
-export type ActionType = 'create' | 'update' | 'delete' | 'complete' | 'query' | 'search';
-export interface ParsedIntent {
-    action: ActionType;
-    entityType: EntityType;
-    entity: Partial<TaskEntity>;
-    targetId?: string;
-    needsExpansion?: boolean;
-    expansionType?: string;
-    queryType?: string;
-    searchQuery?: string;
+export interface CreateTaskRequest {
+    title: string;
+    description?: string;
+    priority?: TaskPriority;
+    category?: string;
+    due_date?: string;
+    start_date?: string;
+    start_time?: string;
+    end_time?: string;
+    is_recurring?: boolean;
+    recurrence_type?: RecurrenceType;
+    recurrence_rule?: string;
+    icloud_event_id?: string;
+    parent_id?: string;
+    source?: string;
 }
-export interface ReminderConfig {
-    morning: {
-        enabled: boolean;
-        time: string;
-    };
-    evening: {
-        enabled: boolean;
-        time: string;
-    };
-    weekendSummary: {
-        enabled: boolean;
-        time: string;
-        dayOfWeek: number;
-    };
-    preEvent: {
-        enabled: boolean;
-        minutesBefore: number;
-    };
-    idleTime: {
-        enabled: boolean;
-        minFreeMinutes: number;
-    };
+export interface UpdateTaskRequest {
+    title?: string;
+    description?: string;
+    status?: TaskStatus;
+    priority?: TaskPriority;
+    category?: string;
+    due_date?: string;
+    start_date?: string;
+    start_time?: string;
+    end_time?: string;
+    is_recurring?: boolean;
+    recurrence_type?: RecurrenceType;
+    recurrence_rule?: string;
+    parent_id?: string;
+    source?: string;
 }
-export interface AiConfig {
-    primary: {
-        provider: 'volcano' | 'minimax';
-        apiKey: string;
-        baseUrl?: string;
-        model?: string;
-    };
-    fallback: {
-        provider: 'volcano' | 'minimax';
-        apiKey: string;
-        baseUrl?: string;
-        model?: string;
-    };
+export interface TransitionTaskRequest {
+    to_status: TaskStatus;
+    reason?: string;
 }
-export interface NLParseConfig {
-    enabled: boolean;
-    fallbackThreshold: number;
-    learnFromSuccess: boolean;
-    maxRetries: number;
+export interface BatchDeleteTasksRequest {
+    ids: string[];
+}
+export interface ListTasksQuery {
+    status?: TaskStatus;
+    priority?: TaskPriority;
+    category?: string;
+    due_date?: string;
+    due_date_from?: string;
+    due_date_to?: string;
+    start_date?: string;
+    start_date_from?: string;
+    start_date_to?: string;
+    is_recurring?: boolean;
+    parent_id?: string;
+    page?: number;
+    page_size?: number;
+    sort_by?: string;
+    sort_order?: 'asc' | 'desc';
+}
+export interface ListTasksResponse {
+    items: Task[];
+    total: number;
+    page: number;
+    page_size: number;
+    total_pages: number;
+}
+export interface TransitionTaskResponse {
+    task: Task;
+    from_status: TaskStatus;
+    to_status: TaskStatus;
+    transitioned_at: string;
+}
+export interface BatchDeleteTasksResponse {
+    deleted: number;
+    failed: number;
+    errors?: string[];
+}
+export interface ApiResponse<T> {
+    success: true;
+    data: T;
+}
+export interface ApiError {
+    success: false;
+    error: {
+        code: number;
+        message: string;
+        details?: string;
+    };
 }
 export interface FeishuConfig {
     appId: string;
     appSecret: string;
-    webhookUrl?: string;
     tableToken: string;
     tableId: string;
 }
@@ -109,11 +119,25 @@ export interface ICloudConfig {
     appPassword: string;
     calendarMapping?: Record<string, string>;
 }
+export interface AIProviderConfig {
+    provider: string;
+    apiKey: string;
+    model: string;
+    baseUrl: string;
+    timeout?: number;
+    maxRetries?: number;
+}
+export interface AIConfig {
+    primary?: AIProviderConfig;
+    fallback?: AIProviderConfig;
+}
 export interface AppConfig {
     feishu: FeishuConfig;
     icloud: ICloudConfig;
-    ai: AiConfig;
-    reminders: ReminderConfig;
-    nlParse?: NLParseConfig;
+    ai?: AIConfig;
+    server?: {
+        port?: number;
+        host?: string;
+    };
 }
 //# sourceMappingURL=types.d.ts.map

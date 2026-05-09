@@ -1,172 +1,458 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.icloudConnector = exports.ICloudConnector = void 0;
-const retry_1 = require("../shared/retry");
-const config_1 = require("../shared/config");
+exports.icloudConnector = exports.ICloudConnector = exports.ICloudError = void 0;
+const shared_1 = require("../shared");
+// iCloud CalDAV API 错误
+class ICloudError extends Error {
+    constructor(message, code, statusCode) {
+        super(message);
+        this.code = code;
+        this.statusCode = statusCode;
+        this.name = 'ICloudError';
+    }
+}
+exports.ICloudError = ICloudError;
 class ICloudConnector {
     constructor() {
         this.baseUrl = 'https://caldav.icloud.com';
-        this.calendarMapping = {};
-        const config = config_1.configManager.get();
+        const config = shared_1.configManager.get();
+        if (!config.icloud) {
+            throw new Error('iCloud configuration is missing');
+        }
         this.appleId = config.icloud.appleId;
         this.appPassword = config.icloud.appPassword;
         this.calendarMapping = config.icloud.calendarMapping || {};
     }
     /**
-     * 获取 iCloud 用户 ID (数字)
+     * 获取用户日历根路径
+     * iCloud CalDAV 路径格式: /<user-id>/calendars/
      */
-    async getUserId() {
-        if (this.userId)
-            return this.userId;
-        const response = await this.executeCalDAV('PROPFIND', '/principals/', `<?xml version="1.0"?>
-<D:propfind xmlns:D="DAV:">
-  <D:prop>
-    <D:current-user-principal />
-  </D:prop>
-</D:propfind>`);
-        // Match the href inside current-user-principal
-        const match = response.match(/<D:current-user-principal[^>]*>[\s\S]*?<D:href[^>]*>([^<]+)<\/D:href>/);
-        if (match && match[1]) {
-            // Extract user ID from path like /8183897202/principal/
-            const parts = match[1].split('/');
-            this.userId = parts[1] || this.appleId;
+    async getPrincipalPath() {
+        if (this.principalPath) {
+            return this.principalPath;
         }
-        else {
-            // Fallback: try to find any /number/ pattern
-            const numMatch = response.match(/\/(\d{10,})\//);
-            this.userId = numMatch ? numMatch[1] : this.appleId;
+        // 发现日历根路径
+        const response = await this.executeRequest('PROPFIND', '/calendars/');
+        if (response.status === 207) {
+            // 从响应中解析日历根路径
+            // 响应格式: <href>/8183897202/calendars/</href>
+            // 尝试多种匹配方式
+            let path;
+            // 方式1: 匹配 /数字/calendars/ 格式
+            const pathMatch = response.body.match(/\/(\d{8,})\/calendars\//);
+            if (pathMatch) {
+                path = `/${pathMatch[0].replace(/^\//, '')}`;
+                shared_1.logger.debug(`[ICloudConnector] Discovered path via number match: ${path}`);
+            }
+            // 方式2: 标准正则匹配
+            if (!path) {
+                const match = response.body.match(/<href>([^<]+)<\/href>/);
+                if (match && match[1]) {
+                    path = match[1].trim();
+                    if (!path.startsWith('/'))
+                        path = '/' + path;
+                    if (!path.endsWith('/'))
+                        path = path + '/';
+                }
+            }
+            if (path) {
+                this.principalPath = path;
+                shared_1.logger.debug(`[ICloudConnector] Discovered principal path: ${this.principalPath}`);
+                return this.principalPath;
+            }
         }
-        return this.userId;
+        // 如果解析失败，使用默认值（基于已知用户ID）
+        shared_1.logger.warn('[ICloudConnector] Failed to discover principal path, using fallback');
+        this.principalPath = '/8183897202/calendars/';
+        return this.principalPath;
     }
     /**
-     * 根据日历分类获取 iCloud 日历 ID
+     * 构建日历事件路径
      */
-    getCalendarIdByCategory(category) {
-        if (category && this.calendarMapping[category]) {
-            console.log('[ICloudConnector] Using calendar mapping:', category, '->', this.calendarMapping[category]);
-            return this.calendarMapping[category];
+    async getEventPath(calendarId, uid) {
+        const principalPath = await this.getPrincipalPath();
+        return `${principalPath}${calendarId}/${uid}.ics`;
+    }
+    /**
+     * 构建日历查询路径
+     */
+    async getCalendarPath(calendarId) {
+        const principalPath = await this.getPrincipalPath();
+        return `${principalPath}${calendarId}/`;
+    }
+    /**
+     * 获取认证头
+     */
+    getAuthHeader() {
+        return 'Basic ' + Buffer.from(`${this.appleId}:${this.appPassword}`).toString('base64');
+    }
+    /**
+     * 执行 CalDAV 请求
+     */
+    async executeRequest(method, path, body, contentType, extraHeaders) {
+        const url = `${this.baseUrl}${path}`;
+        const headers = {
+            'Authorization': this.getAuthHeader(),
+            ...extraHeaders,
+        };
+        if (body) {
+            headers['Content-Type'] = contentType || 'text/plain; charset=utf-8';
         }
-        // 默认返回 personal 日历
-        console.log('[ICloudConnector] No mapping found for category:', category, 'Available:', this.calendarMapping);
-        return this.calendarMapping['个人'] || 'F7D25790-4368-447C-96FF-4F7FE022AE1C';
+        shared_1.logger.debug(`[ICloudConnector] ${method} ${url}`);
+        const response = await fetch(url, {
+            method,
+            headers,
+            body,
+        });
+        const responseBody = await response.text();
+        shared_1.logger.debug(`[ICloudConnector] Response status: ${response.status}`);
+        return {
+            status: response.status,
+            headers: response.headers,
+            body: responseBody,
+        };
+    }
+    /**
+     * 将日期时间转换为 iCalendar 格式
+     */
+    formatDateTime(date, time) {
+        // 格式: 20260505T084500
+        const datePart = date.replace(/-/g, '');
+        if (time) {
+            // 移除所有冒号，并确保是6位数字格式 (HHMMSS)
+            // "09:00" -> "0900" -> "090000"
+            // "09:00:00" -> "090000" -> "090000"
+            const timePart = time.replace(/:/g, '').padEnd(6, '0');
+            return `${datePart}T${timePart}`;
+        }
+        return `${datePart}T000000`;
+    }
+    /**
+     * 生成 vCalendar 格式的事件
+     */
+    generateVEvent(event, isUpdate = false) {
+        const uid = event.uid || this.generateUID();
+        const dtstart = this.formatDateTime(event.startDate, event.startTime);
+        const dtend = event.endDate
+            ? this.formatDateTime(event.endDate, event.endTime)
+            : this.formatDateTime(event.startDate, event.endTime || this.addHours(event.startTime || '09:00', 1));
+        let vevent = [
+            'BEGIN:VCALENDAR',
+            'VERSION:2.0',
+            'PRODID:-//Project Secretary//iCloud CalDAV//CN',
+            'BEGIN:VEVENT',
+            `UID:${uid}`,
+            `DTSTART:${dtstart}`,
+            `DTEND:${dtend}`,
+            `SUMMARY:${this.escapeICalendar(event.title)}`,
+        ];
+        if (event.description) {
+            vevent.push(`DESCRIPTION:${this.escapeICalendar(event.description)}`);
+        }
+        if (event.location) {
+            vevent.push(`LOCATION:${this.escapeICalendar(event.location)}`);
+        }
+        if (event.recurrenceRule) {
+            vevent.push(event.recurrenceRule);
+        }
+        if (isUpdate) {
+            vevent.push('SEQUENCE:1');
+        }
+        vevent.push('END:VEVENT');
+        vevent.push('END:VCALENDAR');
+        return vevent.join('\r\n');
+    }
+    /**
+     * 生成唯一 UID
+     */
+    generateUID() {
+        return `${Date.now()}-${Math.random().toString(36).substring(2, 11)}@caldav.icloud.com`;
+    }
+    /**
+     * 添加小时
+     */
+    addHours(time, hours) {
+        const [h, m] = time.split(':').map(Number);
+        const newH = (h + hours) % 24;
+        return `${String(newH).padStart(2, '0')}:${String(m).padStart(2, '0')}`;
+    }
+    /**
+     * 转义 iCalendar 特殊字符
+     */
+    escapeICalendar(text) {
+        return text
+            .replace(/\\/g, '\\\\')
+            .replace(/;/g, '\\;')
+            .replace(/,/g, '\\,')
+            .replace(/\n/g, '\\n');
+    }
+    /**
+     * 解析 vEvent 从响应中
+     */
+    parseVEventFromResponse(body) {
+        const events = [];
+        const veventMatches = body.match(/BEGIN:VEVENT[\s\S]*?END:VEVENT/g);
+        if (!veventMatches)
+            return events;
+        for (const vevent of veventMatches) {
+            const event = {};
+            const uidMatch = vevent.match(/UID:([^\r\n]+)/);
+            if (uidMatch)
+                event.uid = uidMatch[1];
+            const summaryMatch = vevent.match(/SUMMARY:([^\r\n]+)/);
+            if (summaryMatch) {
+                event.title = this.unescapeICalendar(summaryMatch[1]);
+            }
+            const descMatch = vevent.match(/DESCRIPTION:([^\r\n]+)/);
+            if (descMatch) {
+                event.description = this.unescapeICalendar(descMatch[1]);
+            }
+            const locMatch = vevent.match(/LOCATION:([^\r\n]+)/);
+            if (locMatch) {
+                event.location = this.unescapeICalendar(locMatch[1]);
+            }
+            // 解析 DTSTART
+            const dtstartMatch = vevent.match(/DTSTART(?::([^;\r\n]+))?(?:;[^:\r\n]+)?:([^\r\n]+)/);
+            if (dtstartMatch) {
+                const dtstart = dtstartMatch[2] || dtstartMatch[1];
+                event.startDate = this.parseIDateTime(dtstart).date;
+                event.startTime = this.parseIDateTime(dtstart).time;
+            }
+            // 解析 DTEND
+            const dtendMatch = vevent.match(/DTEND(?::([^;\r\n]+))?(?:;[^:\r\n]+)?:([^\r\n]+)/);
+            if (dtendMatch) {
+                const dtend = dtendMatch[2] || dtendMatch[1];
+                event.endDate = this.parseIDateTime(dtend).date;
+                event.endTime = this.parseIDateTime(dtend).time;
+            }
+            // 解析 RRULE
+            const rruleMatch = vevent.match(/RRULE:([^\r\n]+)/);
+            if (rruleMatch) {
+                event.recurrenceRule = `RRULE:${rruleMatch[1]}`;
+            }
+            events.push(event);
+        }
+        return events;
+    }
+    /**
+     * 解析 iCalendar 日期时间格式
+     */
+    parseIDateTime(dt) {
+        if (dt.includes('T')) {
+            // 格式: 20260505T084500
+            const date = dt.substring(0, 8);
+            const time = dt.substring(9, 14);
+            return {
+                date: `${date.substring(0, 4)}-${date.substring(4, 6)}-${date.substring(6, 8)}`,
+                time: `${time.substring(0, 2)}:${time.substring(2, 4)}`,
+            };
+        }
+        // 只有日期
+        return {
+            date: `${dt.substring(0, 4)}-${dt.substring(4, 6)}-${dt.substring(6, 8)}`,
+            time: undefined,
+        };
+    }
+    /**
+     * 反转义 iCalendar 特殊字符
+     */
+    unescapeICalendar(text) {
+        return text
+            .replace(/\\n/g, '\n')
+            .replace(/\\,/g, ',')
+            .replace(/\\;/g, ';')
+            .replace(/\\\\/g, '\\');
+    }
+    /**
+     * 创建日历事件
+     */
+    async createEvent(event) {
+        const calendarId = event.calendarId;
+        const uid = event.uid || this.generateUID();
+        const vevent = this.generateVEvent({ ...event, uid });
+        const path = await this.getEventPath(calendarId, uid);
+        try {
+            const response = await this.executeRequest('PUT', path, vevent, 'text/calendar; charset=utf-8');
+            if (response.status === 201 || response.status === 204) {
+                shared_1.logger.info(`[ICloudConnector] Created event: ${uid}`);
+                return uid;
+            }
+            // 处理已存在的情况
+            if (response.status === 409) {
+                throw new ICloudError('Event already exists', 'ICLOUD_EVENT_EXISTS', 409);
+            }
+            throw new ICloudError(`Failed to create event: ${response.body}`, 'ICLOUD_CREATE_FAILED', response.status);
+        }
+        catch (error) {
+            if (error instanceof ICloudError)
+                throw error;
+            throw new ICloudError(error instanceof Error ? error.message : 'Unknown error', 'ICLOUD_NETWORK_ERROR');
+        }
+    }
+    /**
+     * 更新日历事件
+     */
+    async updateEvent(uid, event) {
+        const calendarId = event.calendarId;
+        if (!calendarId) {
+            throw new ICloudError('Calendar ID is required for update', 'VALIDATION_ERROR');
+        }
+        // CalDAV PUT 是幂等的，可以直接更新
+        // 确保必填字段存在
+        if (!event.title || !event.startDate) {
+            throw new ICloudError('Title and startDate are required for update', 'VALIDATION_ERROR');
+        }
+        const fullEvent = {
+            uid,
+            title: event.title,
+            startDate: event.startDate,
+            calendarId,
+            description: event.description,
+            startTime: event.startTime,
+            endDate: event.endDate,
+            endTime: event.endTime,
+            location: event.location,
+            recurrenceRule: event.recurrenceRule,
+        };
+        const vevent = this.generateVEvent(fullEvent, true);
+        const path = await this.getEventPath(calendarId, uid);
+        try {
+            const response = await this.executeRequest('PUT', path, vevent, 'text/calendar; charset=utf-8');
+            if (response.status !== 201 && response.status !== 204 && response.status !== 200) {
+                throw new ICloudError(`Failed to update event: ${response.body}`, 'ICLOUD_UPDATE_FAILED', response.status);
+            }
+            shared_1.logger.info(`[ICloudConnector] Updated event: ${uid}`);
+        }
+        catch (error) {
+            if (error instanceof ICloudError)
+                throw error;
+            throw new ICloudError(error instanceof Error ? error.message : 'Unknown error', 'ICLOUD_NETWORK_ERROR');
+        }
+    }
+    /**
+     * 删除日历事件
+     */
+    async deleteEvent(uid, calendarId) {
+        const path = await this.getEventPath(calendarId, uid);
+        try {
+            const response = await this.executeRequest('DELETE', path);
+            if (response.status !== 200 && response.status !== 204 && response.status !== 404) {
+                throw new ICloudError(`Failed to delete event: ${response.body}`, 'ICLOUD_DELETE_FAILED', response.status);
+            }
+            shared_1.logger.info(`[ICloudConnector] Deleted event: ${uid}`);
+        }
+        catch (error) {
+            if (error instanceof ICloudError)
+                throw error;
+            throw new ICloudError(error instanceof Error ? error.message : 'Unknown error', 'ICLOUD_NETWORK_ERROR');
+        }
+    }
+    /**
+     * 查询指定日历的事件
+     */
+    async queryEvents(calendarId, startDate, endDate) {
+        // 构建 XML 查询请求
+        const start = startDate ? `${startDate.replace(/-/g, '')}T000000Z` : '20200101T000000Z';
+        const end = endDate ? `${endDate.replace(/-/g, '')}T235959Z` : '20300101T235959Z';
+        const xmlBody = `<?xml version="1.0" encoding="UTF-8"?>
+<C:calendar-query xmlns:D="DAV:" xmlns:C="urn:ietf:params:xml:ns:caldav">
+  <D:prop>
+    <D:getetag/>
+    <C:calendar-data/>
+  </D:prop>
+  <C:filter>
+    <C:comp-filter name="VCALENDAR">
+      <C:comp-filter name="VEVENT">
+        <C:time-range start="${start}" end="${end}"/>
+      </C:comp-filter>
+    </C:comp-filter>
+  </C:filter>
+</C:calendar-query>`;
+        const path = await this.getCalendarPath(calendarId);
+        try {
+            const response = await this.executeRequest('REPORT', path, xmlBody, 'application/xml; charset=utf-8', { 'Depth': '1' });
+            if (response.status !== 207 && response.status !== 200) {
+                throw new ICloudError(`Failed to query events: ${response.body}`, 'ICLOUD_QUERY_FAILED', response.status);
+            }
+            return this.parseVEventFromResponse(response.body);
+        }
+        catch (error) {
+            if (error instanceof ICloudError)
+                throw error;
+            throw new ICloudError(error instanceof Error ? error.message : 'Unknown error', 'ICLOUD_NETWORK_ERROR');
+        }
     }
     /**
      * 获取日历列表
      */
-    async getCalendars() {
-        const response = await this.executeCalDAV('GET', '/principals/users/');
+    async listCalendars() {
+        const principalPath = await this.getPrincipalPath();
+        const path = principalPath; // e.g., /8183897202/calendars/
+        try {
+            const response = await this.executeRequest('PROPFIND', path);
+            if (response.status !== 207 && response.status !== 200) {
+                throw new ICloudError(`Failed to list calendars: ${response.body}`, 'ICLOUD_LIST_FAILED', response.status);
+            }
+            return this.parseCalendarList(response.body);
+        }
+        catch (error) {
+            if (error instanceof ICloudError)
+                throw error;
+            throw new ICloudError(error instanceof Error ? error.message : 'Unknown error', 'ICLOUD_NETWORK_ERROR');
+        }
+    }
+    /**
+     * 解析日历列表响应
+     */
+    parseCalendarList(body) {
         const calendars = [];
-        const match = response.match(/<d:href>([^<]+)<\/d:href>/g);
-        if (match) {
-            for (const href of match) {
-                const path = href.replace(/<d:href>/, '').replace(/<\/d:href>/, '');
-                if (path.includes('/calendars/') && !path.endsWith('/')) {
-                    calendars.push({
-                        id: path.split('/').pop() || '',
-                        name: decodeURIComponent(path.split('/').pop() || ''),
-                    });
-                }
+        // 使用正则匹配 calendar-home-set 内的 href
+        const hrefMatches = body.match(/<D:href>([^<]+)<\/D:href>/g) || [];
+        for (const href of hrefMatches) {
+            const path = href.replace(/<D:href>/, '').replace('</D:href>', '');
+            // 只匹配 calendars 子路径
+            if (path.includes('/calendars/') && !path.endsWith('/')) {
+                const parts = path.split('/');
+                const calendarId = parts[parts.length - 1].replace('.ics', '');
+                calendars.push({
+                    id: calendarId,
+                    name: calendarId,
+                });
             }
         }
         return calendars;
     }
     /**
-     * 创建日历事件（从飞书 event 同步）
+     * 获取日历 ID（通过分类名称）
      */
-    async createEvent(entity) {
-        if (entity.type !== 'event' || !entity.start_date) {
-            throw new Error('Invalid event entity');
+    getCalendarIdByCategory(category) {
+        if (!category) {
+            return this.calendarMapping['个人'] || this.calendarMapping['personal'];
         }
-        const uid = `${entity.id}@ICloudCalendar`;
-        const dtstart = this.formatICalDate(entity.start_date, entity.start_time);
-        const dtend = this.formatICalDate(entity.due_date || entity.start_date, entity.start_time);
-        const iCalContent = [
-            'BEGIN:VCALENDAR',
-            'VERSION:2.0',
-            'PRODID:-//Project Secretary//EN',
-            'BEGIN:VEVENT',
-            `UID:${uid}`,
-            `DTSTAMP:${this.formatICalDateTime(new Date())}`,
-            `DTSTART:${dtstart}`,
-            `DTEND:${dtend}`,
-            `SUMMARY:${entity.title}`,
-            entity.description ? `DESCRIPTION:${entity.description}` : '',
-            `CREATED:${this.formatICalDateTime(new Date())}`,
-            `LAST-MODIFIED:${this.formatICalDateTime(new Date())}`,
-            'END:VEVENT',
-            'END:VCALENDAR',
-        ].filter(line => line).join('\r\n');
-        return (0, retry_1.withRetry)(async () => {
-            const userId = await this.getUserId();
-            const calendarId = this.getCalendarIdByCategory(entity.calendar_category);
-            const path = `/${userId}/calendars/${calendarId}/${uid}.ics`;
-            await this.executeCalDAV('PUT', path, iCalContent);
-            return uid;
-        });
+        // 优先精确匹配
+        if (this.calendarMapping[category]) {
+            return this.calendarMapping[category];
+        }
+        // 然后不区分大小写匹配
+        const lowerCategory = category.toLowerCase();
+        for (const [key, value] of Object.entries(this.calendarMapping)) {
+            if (key.toLowerCase() === lowerCategory) {
+                return value;
+            }
+        }
+        return undefined;
     }
     /**
-     * 更新日历事件
+     * 验证认证信息
      */
-    async updateEvent(uid, entity) {
-        const dtstart = entity.start_date ? this.formatICalDate(entity.start_date, entity.start_time) : undefined;
-        const dtend = entity.due_date ? this.formatICalDate(entity.due_date, entity.start_time) : dtstart;
-        const updates = [
-            entity.title ? `SUMMARY:${entity.title}` : null,
-            entity.description ? `DESCRIPTION:${entity.description}` : null,
-            dtstart ? `DTSTART:${dtstart}` : null,
-            dtend ? `DTEND:${dtend}` : null,
-            `LAST-MODIFIED:${this.formatICalDateTime(new Date())}`,
-        ].filter(Boolean).join('\r\n');
-        return (0, retry_1.withRetry)(async () => {
-            const userId = await this.getUserId();
-            const calendarId = this.getCalendarIdByCategory(entity.calendar_category);
-            const path = `/${userId}/calendars/${calendarId}/${uid}.ics`;
-            await this.executeCalDAV('PUT', path, updates);
-        });
-    }
-    /**
-     * 删除日历事件
-     */
-    async deleteEvent(uid, calendarCategory) {
-        return (0, retry_1.withRetry)(async () => {
-            const userId = await this.getUserId();
-            const calendarId = calendarCategory ? this.getCalendarIdByCategory(calendarCategory) : (this.calendarMapping['个人'] || 'personal');
-            const path = `/${userId}/calendars/${calendarId}/${uid}.ics`;
-            await this.executeCalDAV('DELETE', path);
-        });
-    }
-    /**
-     * 查询指定日期的事件
-     */
-    async getEventsByDate(date) {
-        const events = [];
-        return events;
-    }
-    async executeCalDAV(method, path, body, contentType) {
-        const headers = {
-            'Authorization': 'Basic ' + Buffer.from(`${this.appleId}:${this.appPassword}`).toString('base64'),
-        };
-        if (body) {
-            headers['Content-Type'] = contentType || 'text/calendar; charset=utf-8';
-            headers['Content-Length'] = Buffer.byteLength(body).toString();
+    async validateCredentials() {
+        try {
+            const response = await this.executeRequest('PROPFIND', '/principals/');
+            return response.status === 207;
         }
-        const response = await fetch(`https://caldav.icloud.com${path}`, {
-            method,
-            headers,
-            body,
-        });
-        if (!response.ok && response.status !== 201 && response.status !== 204) {
-            throw new Error(`iCloud CalDAV error: ${response.status} ${response.statusText}`);
+        catch {
+            return false;
         }
-        return response.text();
-    }
-    formatICalDate(date, time) {
-        const d = date.replace(/-/g, '');
-        const t = time ? time.replace(':', '') + '00' : '000000';
-        return `${d}T${t}`;
-    }
-    formatICalDateTime(date) {
-        return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
     }
 }
 exports.ICloudConnector = ICloudConnector;

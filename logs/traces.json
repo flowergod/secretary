@@ -1,0 +1,5684 @@
+[
+  {
+    "traceId": "trace_59295b4aa61c",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T12:33:46.600Z",
+    "durationMs": 4028,
+    "inputs": {
+      "userInput": "���Ҵ�����������10������ܵĻ���"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_5c5523eb861e",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T12:35:23.721Z",
+    "durationMs": 10769,
+    "inputs": {
+      "userInput": "帮我创建明天早上10点和徐总的会议"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_be36b1de1f85",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T12:37:59.645Z",
+    "durationMs": 13102,
+    "inputs": {
+      "userInput": "将与徐总的会议调整到下午2点"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_979b5867dd31",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T12:50:50.285Z",
+    "durationMs": 11984,
+    "inputs": {
+      "userInput": "将与徐总的会议调整到下午2点"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_ad7952cccd9e",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T12:51:49.555Z",
+    "durationMs": 15630,
+    "inputs": {
+      "userInput": "一小时"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_cbebb0a784e4",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T12:53:06.725Z",
+    "durationMs": 21985,
+    "inputs": {
+      "userInput": "将与徐总的会议调整到下午2点"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_123569ac97c9",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-05T12:54:46.667Z",
+    "durationMs": 19529,
+    "inputs": {
+      "contextId": "ctx_mosmqdr1b1lqqn",
+      "openText": "原本在明天上午",
+      "cancel": false
+    },
+    "outputs": {
+      "success": false,
+      "error": "需要提供任务ID或标题"
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_2af9a791471f",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T12:55:51.414Z",
+    "durationMs": 24144,
+    "inputs": {
+      "userInput": "将明天上午10点与徐总的会议调整到下午2点"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_16a6431cff48",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-05T12:56:44.820Z",
+    "durationMs": 10320,
+    "inputs": {
+      "contextId": "ctx_mosmtpn7kd5dny",
+      "openText": "opt_1",
+      "cancel": false
+    },
+    "outputs": {
+      "success": false,
+      "error": "不支持的意图类型: other"
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_62c8ed8d31e5",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T13:06:50.015Z",
+    "durationMs": 9566,
+    "inputs": {
+      "userInput": "将明天上午10点与徐总的会议调整到下午2点"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_ea4a684bb347",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-05T13:07:14.986Z",
+    "durationMs": 1815,
+    "inputs": {
+      "contextId": "ctx_mosn7iofrc9dt8",
+      "selectedOption": "opt_1",
+      "cancel": false
+    },
+    "outputs": {
+      "success": false,
+      "error": "任务更新失败"
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_773859d0ba7d",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T13:11:13.275Z",
+    "durationMs": 8892,
+    "inputs": {
+      "userInput": "将明天上午10点与徐总的会议调整到下午2点"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_a2424f483639",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T13:11:25.810Z",
+    "durationMs": 11345,
+    "inputs": {
+      "userInput": "opt_1"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_14ec41e74ed3",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-05T13:12:16.082Z",
+    "durationMs": 10005,
+    "inputs": {
+      "contextId": "ctx_mosndq8syoope1",
+      "openText": "将明天上午10点与徐总的会议调整到下午2点",
+      "cancel": false
+    },
+    "outputs": {
+      "success": false,
+      "error": "任务更新失败"
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_64ef55300370",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T13:12:55.452Z",
+    "durationMs": 18063,
+    "inputs": {
+      "userInput": "将明天上午10点与徐总的会议调整到下午2点"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_c5ddd2a7454d",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-05T13:14:19.644Z",
+    "durationMs": 13199,
+    "inputs": {
+      "contextId": "ctx_mosnfo8zyncmwi",
+      "openText": "不需要了解主题，直接帮我调整明天的会议时间",
+      "cancel": false
+    },
+    "outputs": {
+      "success": false,
+      "error": "需要提供任务ID或标题"
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_6f3b3dbeec8e",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T13:15:08.131Z",
+    "durationMs": 14770,
+    "inputs": {
+      "userInput": "将明天上午10点的会议调整到下午2点"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_f1c8a24cb1c5",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-05T13:15:37.738Z",
+    "durationMs": 2108,
+    "inputs": {
+      "contextId": "ctx_mosniaw4s3lln0",
+      "selectedOption": "opt_1",
+      "cancel": false
+    },
+    "outputs": {
+      "success": false,
+      "error": "任务更新失败"
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_283008226413",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T13:19:16.193Z",
+    "durationMs": 18276,
+    "inputs": {
+      "userInput": "将明天上午10点的会议调整到下午2点"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_ce3f71dbbd96",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-05T13:19:41.454Z",
+    "durationMs": 4338,
+    "inputs": {
+      "contextId": "ctx_mosnnouuwe4vya",
+      "selectedOption": "opt_1",
+      "cancel": false
+    },
+    "outputs": {
+      "success": true,
+      "taskId": {
+        "id": "215a8f5f-cc75-4038-890a-ef118de848f0",
+        "record_id": "recviKtV09B71W",
+        "icloud_event_id": "1777984538584-b7bar6b19@caldav.icloud.com",
+        "title": "与徐总的会议 (2026-05-06)",
+        "priority": "medium",
+        "category": "工作",
+        "created_at": "2026-05-05T12:35:34.495Z",
+        "start_date": "2026-05-06",
+        "start_time": "14:00",
+        "recurrence_type": "none",
+        "updated_at": "2026-05-05T13:19:42.092Z",
+        "source": "semantic",
+        "status": "pending",
+        "is_recurring": false
+      }
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_cb37794ac2b9",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T13:20:30.137Z",
+    "durationMs": 29761,
+    "inputs": {
+      "userInput": "与徐总的会议取消了"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_7c2b5f83ae03",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-05T13:21:25.117Z",
+    "durationMs": 849,
+    "inputs": {
+      "contextId": "ctx_mosnpp8t0gjmcx",
+      "selectedOption": "opt_1",
+      "cancel": false
+    },
+    "outputs": {
+      "success": false,
+      "error": "未找到要删除的任务"
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_b8b382e7d3b1",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T13:22:04.571Z",
+    "durationMs": 24879,
+    "inputs": {
+      "userInput": "与徐总的会议取消了"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_cc430b7d8bc0",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-05T13:22:43.111Z",
+    "durationMs": 858,
+    "inputs": {
+      "contextId": "ctx_mosnrhfyw8c6p7",
+      "selectedOption": "opt_1",
+      "cancel": false
+    },
+    "outputs": {
+      "success": false,
+      "error": "未找到要删除的任务"
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_91e53cda6e8b",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T13:26:08.274Z",
+    "durationMs": 22937,
+    "inputs": {
+      "userInput": "与徐总的会议取消了"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_837ee348c44c",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-05T13:27:50.928Z",
+    "durationMs": 1152,
+    "inputs": {
+      "contextId": "ctx_mosnwq69syzzfe",
+      "selectedOption": "opt_2",
+      "cancel": false
+    },
+    "outputs": {
+      "success": true,
+      "taskId": {
+        "items": [
+          {
+            "id": "215a8f5f-cc75-4038-890a-ef118de848f0",
+            "record_id": "recviKtV09B71W",
+            "icloud_event_id": "1777984538584-b7bar6b19@caldav.icloud.com",
+            "title": "与徐总的会议 (2026-05-06)",
+            "priority": "medium",
+            "category": "工作",
+            "created_at": "2026-05-05T12:35:34.495Z",
+            "start_date": "2026-05-06",
+            "start_time": "14:00",
+            "recurrence_type": "none",
+            "updated_at": "2026-05-05T13:19:42.092Z",
+            "source": "semantic",
+            "status": "pending",
+            "is_recurring": false
+          }
+        ],
+        "total": 1
+      }
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_debaef914258",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T13:29:15.577Z",
+    "durationMs": 10848,
+    "inputs": {
+      "userInput": "对，就是这个会议，取消掉"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_01b73e30d791",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-05T13:30:01.380Z",
+    "durationMs": 956,
+    "inputs": {
+      "contextId": "ctx_moso0dmx2o5kjl",
+      "selectedOption": "opt_1",
+      "cancel": false
+    },
+    "outputs": {
+      "success": false,
+      "error": "未找到要删除的任务"
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_5f448ace3e2d",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T13:30:40.944Z",
+    "durationMs": 20370,
+    "inputs": {
+      "userInput": "与徐总的会议取消了"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_1f435a4b1ef8",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-05T13:31:15.037Z",
+    "durationMs": 862,
+    "inputs": {
+      "contextId": "ctx_moso2eofwv07h3",
+      "selectedOption": "opt_1",
+      "cancel": false
+    },
+    "outputs": {
+      "success": false,
+      "error": "未找到要删除的任务"
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_2910b94b1231",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T13:33:28.770Z",
+    "durationMs": 22730,
+    "inputs": {
+      "userInput": "与徐总的会议取消了"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_d5733a9f1b76",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-05T13:34:02.289Z",
+    "durationMs": 3878,
+    "inputs": {
+      "contextId": "ctx_moso62kde3o258",
+      "selectedOption": "opt_1",
+      "cancel": false
+    },
+    "outputs": {
+      "success": true,
+      "taskId": {
+        "deleted": 1
+      }
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_d04546992093",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T13:49:33.547Z",
+    "durationMs": 23327,
+    "inputs": {
+      "userInput": "后面5天，每天9-10点都有要开例会"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_388e7251c184",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T13:54:50.029Z",
+    "durationMs": 5818,
+    "inputs": {
+      "userInput": "删除所有任务"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_bbd195f9f3eb",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-05T13:55:28.087Z",
+    "durationMs": 876,
+    "inputs": {
+      "contextId": "ctx_mosoxe2nsz8nek",
+      "selectedOption": "opt_1",
+      "cancel": false
+    },
+    "outputs": {
+      "success": false,
+      "error": "未找到要删除的任务"
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_0b6b62a755e3",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T14:04:14.387Z",
+    "durationMs": 5421,
+    "inputs": {
+      "userInput": "删除所有任务"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_e453702b2fa8",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-05T14:05:08.004Z",
+    "durationMs": 2965,
+    "inputs": {
+      "contextId": "ctx_mosp9i2jr7vx9i",
+      "selectedOption": "opt_1",
+      "cancel": false
+    },
+    "outputs": {
+      "success": true,
+      "taskId": {
+        "deleted": 1
+      }
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_c616ed8738d6",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T14:34:52.963Z",
+    "durationMs": 10145,
+    "inputs": {
+      "userInput": "���Ұ�����������10�㿪��"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_da536d976396",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-05T14:35:19.562Z",
+    "durationMs": 16877,
+    "inputs": {
+      "contextId": "ctx_mosqcyah2fvye5",
+      "openText": "schedule a meeting tomorrow at 10am",
+      "cancel": false
+    },
+    "outputs": {
+      "success": true,
+      "taskId": {
+        "id": "recviKY6DLv8fF",
+        "title": "meeting",
+        "status": "pending",
+        "priority": "medium",
+        "category": "工作",
+        "start_date": "2026-05-06",
+        "start_time": "10:00",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "icloud_event_id": "1777991732935-z08vab29f@caldav.icloud.com",
+        "source": "semantic",
+        "created_at": "2026-05-05T14:35:29.923Z",
+        "updated_at": "2026-05-05T14:35:29.923Z",
+        "record_id": "recviKY6DLv8fF"
+      }
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_b607ab2c5ffb",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T16:17:27.809Z",
+    "durationMs": 6388,
+    "inputs": {
+      "userInput": "明天上午10点我要和客户开项目评审会"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_76cf8c371d6f",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T16:17:24.771Z",
+    "durationMs": 10071,
+    "inputs": {
+      "userInput": "今天有什么安排？"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_09a40982fb18",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T16:17:30.818Z",
+    "durationMs": 8428,
+    "inputs": {
+      "userInput": "把和客户的会议改到下午3点"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_50a531a937a6",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T16:17:36.838Z",
+    "durationMs": 7661,
+    "inputs": {
+      "userInput": "今天下午4点要去学校接孩子参加活动"
+    },
+    "outputs": {
+      "success": false,
+      "error": "Bad control character in string literal in JSON at position 273 (line 12 column 38)"
+    },
+    "error": "Bad control character in string literal in JSON at position 273 (line 12 column 38)"
+  },
+  {
+    "traceId": "trace_31f4b39623d4",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T16:17:33.831Z",
+    "durationMs": 11186,
+    "inputs": {
+      "userInput": "我今天下午3点有什么会议？"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_b03a9cc6c0db",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-05T16:17:48.892Z",
+    "durationMs": 1,
+    "inputs": {
+      "contextId": "ctx_mosu0ur6i07uvh",
+      "selectedOption": "opt_1"
+    },
+    "outputs": {
+      "success": false,
+      "error": "需要提供任务ID或标题"
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_74a04d48b852",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-05T16:17:53.921Z",
+    "durationMs": 1,
+    "inputs": {
+      "contextId": "ctx_mosu0ur6i07uvh",
+      "selectedOption": "opt_1"
+    },
+    "outputs": {
+      "success": false,
+      "error": "需要提供任务ID或标题"
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_d57f7dcd10c0",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T16:17:39.850Z",
+    "durationMs": 16143,
+    "inputs": {
+      "userInput": "提醒我明天要去医院体检"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_37f1ce336131",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T16:17:50.908Z",
+    "durationMs": 5352,
+    "inputs": {
+      "userInput": "我有哪些待办任务？"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_3cf907378d88",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-05T16:17:58.941Z",
+    "durationMs": 0,
+    "inputs": {
+      "contextId": "ctx_mosu0ur6i07uvh",
+      "selectedOption": "opt_1"
+    },
+    "outputs": {
+      "success": false,
+      "error": "需要提供任务ID或标题"
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_094832082d5e",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T16:17:42.863Z",
+    "durationMs": 18722,
+    "inputs": {
+      "userInput": "每周一早上9点开团队例会"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_cd7e663b0a53",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-05T16:18:03.958Z",
+    "durationMs": 1,
+    "inputs": {
+      "contextId": "ctx_mosu0ur6i07uvh",
+      "selectedOption": "opt_1"
+    },
+    "outputs": {
+      "success": false,
+      "error": "需要提供任务ID或标题"
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_72ea9e06a3e4",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-05T16:18:08.972Z",
+    "durationMs": 0,
+    "inputs": {
+      "contextId": "ctx_mosu0ur6i07uvh",
+      "selectedOption": "opt_1"
+    },
+    "outputs": {
+      "success": false,
+      "error": "需要提供任务ID或标题"
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_2a1fe223b7f2",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T16:17:55.932Z",
+    "durationMs": 15096,
+    "inputs": {
+      "userInput": "项目计划已经写完了"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_2d2bcbe797d8",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T16:17:45.875Z",
+    "durationMs": 26484,
+    "inputs": {
+      "userInput": "取消明天的项目评审会"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_c134d82930f3",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T16:18:05.959Z",
+    "durationMs": 6989,
+    "inputs": {
+      "userInput": "帮我看看这周还剩哪些工作"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_38bdbefff38c",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-05T16:18:13.980Z",
+    "durationMs": 2733,
+    "inputs": {
+      "contextId": "ctx_mosu1ema4d5lv8",
+      "selectedOption": "opt_1"
+    },
+    "outputs": {
+      "success": true,
+      "taskId": {
+        "deleted": 1
+      }
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_6f807226a5c3",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T16:18:00.944Z",
+    "durationMs": 16490,
+    "inputs": {
+      "userInput": "最近太忙了，好多事情都没处理"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_defc4400b49e",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T16:18:10.975Z",
+    "durationMs": 8985,
+    "inputs": {
+      "userInput": "紧急：下午2点有个客户电话会议"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_8878cc6294fb",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-05T16:18:19.001Z",
+    "durationMs": 1188,
+    "inputs": {
+      "contextId": "ctx_mosu1ema4d5lv8",
+      "selectedOption": "opt_1"
+    },
+    "outputs": {
+      "success": false,
+      "error": "任务不存在"
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_91fd07870b45",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-05T16:18:24.007Z",
+    "durationMs": 1169,
+    "inputs": {
+      "contextId": "ctx_mosu1ema4d5lv8",
+      "selectedOption": "opt_1"
+    },
+    "outputs": {
+      "success": false,
+      "error": "任务不存在"
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_931ff23fd4cc",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-05T16:18:15.992Z",
+    "durationMs": 17746,
+    "inputs": {
+      "userInput": "把那个体检提醒删了"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_cea9bf40be93",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-05T16:18:21.006Z",
+    "durationMs": 14600,
+    "inputs": {
+      "contextId": "ctx_mosu1h7hnqoey8",
+      "openText": "这周我有多少个会议？",
+      "cancel": false
+    },
+    "outputs": {
+      "success": true,
+      "taskId": {
+        "items": [
+          {
+            "id": "4c92d1d2-50af-4d85-8e06-fd9d7b32b53b",
+            "record_id": "recviKY6DLv8fF",
+            "icloud_event_id": "1777991732935-z08vab29f@caldav.icloud.com",
+            "title": "meeting",
+            "priority": "medium",
+            "category": "工作",
+            "created_at": "2026-05-05T14:35:29.923Z",
+            "start_date": "2026-05-06",
+            "start_time": "10:00",
+            "recurrence_type": "none",
+            "updated_at": "2026-05-05T14:35:29.923Z",
+            "source": "semantic",
+            "status": "pending",
+            "is_recurring": false
+          },
+          {
+            "id": "1d6baf9f-da70-4ad1-8790-4d799d85ad41",
+            "record_id": "recviLnTlUo5F4",
+            "title": "去医院体检",
+            "priority": "medium",
+            "category": "健康",
+            "created_at": "2026-05-05T16:17:55.996Z",
+            "start_date": "2026-05-07",
+            "recurrence_type": "none",
+            "updated_at": "2026-05-05T16:17:55.996Z",
+            "source": "semantic",
+            "status": "pending",
+            "is_recurring": false
+          }
+        ],
+        "total": 2
+      }
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_7f8897e5f45d",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-06T00:50:08.580Z",
+    "durationMs": 9856,
+    "inputs": {
+      "userInput": "ÿ��һ����9�㿪�Ŷ�����"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_f4ff5ee0c286",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-06T00:50:29.012Z",
+    "durationMs": 26810,
+    "inputs": {
+      "contextId": "ctx_motcc1z29fdnb3",
+      "openText": "schedule weekly meeting every monday at 9am",
+      "cancel": false
+    },
+    "outputs": {
+      "success": true,
+      "taskId": {
+        "id": "recviNt0TcFUgL",
+        "title": "weekly meeting",
+        "status": "pending",
+        "priority": "medium",
+        "category": "工作",
+        "start_date": "2026-05-06",
+        "start_time": "09:00",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "icloud_event_id": "1778028652609-msfi93aqk@caldav.icloud.com",
+        "source": "semantic",
+        "created_at": "2026-05-06T00:50:49.537Z",
+        "updated_at": "2026-05-06T00:50:49.537Z",
+        "record_id": "recviNt0TcFUgL"
+      }
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_51087339706d",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-06T00:52:06.650Z",
+    "durationMs": 4381,
+    "inputs": {
+      "userInput": "schedule weekly meeting every monday at 9am"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_8ea75017ae5c",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-06T00:52:38.287Z",
+    "durationMs": 12381,
+    "inputs": {
+      "contextId": "ctx_motceg41lspb48",
+      "openText": "create a simple task for tomorrow",
+      "cancel": false
+    },
+    "outputs": {
+      "success": true,
+      "taskId": {
+        "id": "recviNtuWAL9j6",
+        "title": "simple task",
+        "status": "pending",
+        "priority": "medium",
+        "start_date": "2026-05-07",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "icloud_event_id": "1778028768060-ktxxy4p16@caldav.icloud.com",
+        "source": "semantic",
+        "created_at": "2026-05-06T00:52:45.316Z",
+        "updated_at": "2026-05-06T00:52:45.316Z",
+        "record_id": "recviNtuWAL9j6"
+      }
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_ba41a087a437",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-06T00:53:25.007Z",
+    "durationMs": 9838,
+    "inputs": {
+      "userInput": "schedule weekly recurring task for testing"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_41f40ec44750",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-06T00:53:55.113Z",
+    "durationMs": 15000,
+    "inputs": {
+      "contextId": "ctx_motcgcic6709ti",
+      "openText": "create weekly meeting every monday at 10am",
+      "cancel": false
+    },
+    "outputs": {
+      "success": true,
+      "taskId": {
+        "id": "recviNtPxvAsmc",
+        "title": "weekly meeting",
+        "status": "pending",
+        "priority": "medium",
+        "start_date": "2026-05-06",
+        "start_time": "10:00",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "icloud_event_id": "1778028847175-xot1q2z4s@caldav.icloud.com",
+        "source": "semantic",
+        "created_at": "2026-05-06T00:54:04.322Z",
+        "updated_at": "2026-05-06T00:54:04.322Z",
+        "record_id": "recviNtPxvAsmc"
+      }
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_ef1b87ff79d1",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-06T00:55:15.530Z",
+    "durationMs": 6435,
+    "inputs": {
+      "userInput": "create weekly recurring task on mondays at 9am"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_b0d0e695a485",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-06T00:55:44.187Z",
+    "durationMs": 9431,
+    "inputs": {
+      "userInput": "create weekly recurring task on mondays at 9am"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_bc3fcfaf704f",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-06T00:56:08.970Z",
+    "durationMs": 6215,
+    "inputs": {
+      "contextId": "ctx_motcjabigc7gdf",
+      "selectedOption": "opt_1"
+    },
+    "outputs": {
+      "success": true,
+      "taskId": {
+        "id": "recviNum0SA4e8",
+        "title": "Weekly Monday Task",
+        "status": "pending",
+        "priority": "medium",
+        "start_date": "2026-05-06",
+        "start_time": "09:00",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "icloud_event_id": "1778028972131-4it14vniu@caldav.icloud.com",
+        "source": "semantic",
+        "created_at": "2026-05-06T00:56:08.972Z",
+        "updated_at": "2026-05-06T00:56:08.972Z",
+        "record_id": "recviNum0SA4e8"
+      }
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_a5ffbb2ede57",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-06T00:56:52.328Z",
+    "durationMs": 5521,
+    "inputs": {
+      "contextId": "ctx_motcjabigc7gdf",
+      "selectedOption": "opt_1"
+    },
+    "outputs": {
+      "success": true,
+      "taskId": {
+        "id": "recviNuxe9atHk",
+        "title": "Weekly Monday Task",
+        "status": "pending",
+        "priority": "medium",
+        "start_date": "2026-05-06",
+        "start_time": "09:00",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "icloud_event_id": "1778029015231-4wwsosnd2@caldav.icloud.com",
+        "source": "semantic",
+        "created_at": "2026-05-06T00:56:52.328Z",
+        "updated_at": "2026-05-06T00:56:52.328Z",
+        "record_id": "recviNuxe9atHk"
+      }
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_4a5869a3a04d",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-06T00:58:17.097Z",
+    "durationMs": 17498,
+    "inputs": {
+      "userInput": "create weekly recurring task on mondays at 9am"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_e3870a740f5b",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-06T00:58:43.611Z",
+    "durationMs": 15025,
+    "inputs": {
+      "contextId": "ctx_motcmqdpqlrw5m",
+      "openText": "create weekly recurring task on mondays at 9am",
+      "cancel": false
+    },
+    "outputs": {
+      "success": true,
+      "taskId": {
+        "id": "recviNv2vtiNLz",
+        "title": "",
+        "status": "pending",
+        "priority": "medium",
+        "start_date": "2026-05-06",
+        "start_time": "09:00",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "icloud_event_id": "1778029135837-fyzt9t30n@caldav.icloud.com",
+        "source": "semantic",
+        "created_at": "2026-05-06T00:58:52.593Z",
+        "updated_at": "2026-05-06T00:58:52.593Z",
+        "record_id": "recviNv2vtiNLz"
+      }
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_d20c7cac23ae",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-06T00:59:13.476Z",
+    "durationMs": 10002,
+    "inputs": {
+      "userInput": "create weekly recurring task on mondays at 9am"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_ff7b0a91a804",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-06T00:59:31.636Z",
+    "durationMs": 3116,
+    "inputs": {
+      "contextId": "ctx_motcnrcrrfiwh0",
+      "selectedOption": "opt_1"
+    },
+    "outputs": {
+      "success": true,
+      "taskId": {
+        "id": "recviNvcHYZiiN",
+        "status": "pending",
+        "priority": "medium",
+        "start_date": "2026-05-06",
+        "start_time": "09:00",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "source": "semantic",
+        "created_at": "2026-05-06T00:59:31.637Z",
+        "updated_at": "2026-05-06T00:59:31.637Z",
+        "record_id": "recviNvcHYZiiN"
+      }
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_c28ac5d51586",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-06T01:00:53.458Z",
+    "durationMs": 9102,
+    "inputs": {
+      "userInput": "create weekly recurring task on mondays at 9am"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_98a957beba64",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-06T01:01:16.920Z",
+    "durationMs": 6613,
+    "inputs": {
+      "contextId": "ctx_motcq0mkviei3u",
+      "selectedOption": "opt_1"
+    },
+    "outputs": {
+      "success": true,
+      "taskId": {
+        "id": "recviNvE9rEKyC",
+        "title": "每周一任务",
+        "status": "pending",
+        "priority": "medium",
+        "start_date": "2026-05-06",
+        "start_time": "09:00",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "icloud_event_id": "1778029280264-oujihnpxz@caldav.icloud.com",
+        "source": "semantic",
+        "created_at": "2026-05-06T01:01:16.921Z",
+        "updated_at": "2026-05-06T01:01:16.921Z",
+        "record_id": "recviNvE9rEKyC"
+      }
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_de653f77a914",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-06T01:02:44.789Z",
+    "durationMs": 15210,
+    "inputs": {
+      "userInput": "create weekly recurring task on mondays at 9am"
+    },
+    "outputs": {
+      "success": false,
+      "error": "Expected ',' or '}' after property value in JSON at position 172 (line 8 column 18)"
+    },
+    "error": "Expected ',' or '}' after property value in JSON at position 172 (line 8 column 18)"
+  },
+  {
+    "traceId": "trace_c3159e6694bd",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-06T01:03:48.415Z",
+    "durationMs": 14067,
+    "inputs": {
+      "userInput": "create weekly recurring task on mondays at 9am"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_de7ddd476c89",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-06T01:04:12.426Z",
+    "durationMs": 3160,
+    "inputs": {
+      "contextId": "ctx_motcts0a75c7pa",
+      "selectedOption": "opt_1"
+    },
+    "outputs": {
+      "success": true,
+      "taskId": {
+        "id": "recviNwnKZsf8u",
+        "status": "pending",
+        "priority": "medium",
+        "start_date": "2026-05-06",
+        "start_time": "09:00",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "source": "semantic",
+        "created_at": "2026-05-06T01:04:12.426Z",
+        "updated_at": "2026-05-06T01:04:12.426Z",
+        "record_id": "recviNwnKZsf8u"
+      }
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_80ec3b62f60d",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-06T01:04:50.553Z",
+    "durationMs": 10498,
+    "inputs": {
+      "userInput": "create weekly recurring task on mondays at 9am"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_cbebf2a8ea78",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-06T01:05:16.381Z",
+    "durationMs": 7182,
+    "inputs": {
+      "contextId": "ctx_motcv5db5otw9a",
+      "selectedOption": "opt_1"
+    },
+    "outputs": {
+      "success": true,
+      "taskId": {
+        "id": "recviNwEsgIebv",
+        "title": "每周一9点任务",
+        "status": "pending",
+        "priority": "medium",
+        "start_date": "2026-05-06",
+        "start_time": "09:00",
+        "is_recurring": true,
+        "recurrence_type": "weekly",
+        "recurrence_rule": "RRULE:FREQ=WEEKLY;COUNT=10",
+        "icloud_event_id": "1778029519699-oobigt344@caldav.icloud.com",
+        "source": "semantic",
+        "created_at": "2026-05-06T01:05:16.416Z",
+        "updated_at": "2026-05-06T01:05:16.416Z",
+        "record_id": "recviNwEsgIebv"
+      }
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_ea74e61f2770",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-06T12:29:26.236Z",
+    "durationMs": 24762,
+    "inputs": {
+      "userInput": "change the investor call to tomorrow at 2pm"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_da06af7d8255",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-06T12:30:46.749Z",
+    "durationMs": 0,
+    "inputs": {
+      "contextId": "ctx_mou1clk6l7gayh",
+      "selectedOption": "opt_1"
+    },
+    "outputs": {
+      "error": "INVALID_OPTION"
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_052ebd15500a",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-06T12:31:45.892Z",
+    "durationMs": 8871,
+    "inputs": {
+      "userInput": "meeting with boss at 3pm today"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_b9eb3f02a92e",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-06T12:33:08.904Z",
+    "durationMs": 6103,
+    "inputs": {
+      "userInput": "meeting with colleague at 4pm today"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_3c1f62d8a9fa",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-06T12:34:26.908Z",
+    "durationMs": 19114,
+    "inputs": {
+      "userInput": "create a quick reminder for tomorrow morning"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_73e5a6fdd99d",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-06T12:35:25.882Z",
+    "durationMs": 23471,
+    "inputs": {
+      "contextId": "ctx_mou1i41o8i3281",
+      "openText": "meeting at 3pm today",
+      "cancel": false
+    },
+    "outputs": {
+      "success": true,
+      "taskId": {
+        "id": "recviQkt8Yfip1",
+        "title": "meeting",
+        "status": "pending",
+        "priority": "medium",
+        "start_date": "2026-05-06",
+        "start_time": "15:00",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "icloud_event_id": "1778070946034-sk2t4uugc@caldav.icloud.com",
+        "source": "semantic",
+        "created_at": "2026-05-06T12:35:42.999Z",
+        "updated_at": "2026-05-06T12:35:42.999Z",
+        "record_id": "recviQkt8Yfip1"
+      }
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_ce906a8797a4",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-06T12:35:49.360Z",
+    "durationMs": 9654,
+    "inputs": {
+      "userInput": "meeting tomorrow at 10am"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_7ca3a33d1164",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-06T12:36:08.805Z",
+    "durationMs": 5828,
+    "inputs": {
+      "contextId": "ctx_mou1jo4jzkr6iw",
+      "selectedOption": "opt_1"
+    },
+    "outputs": {
+      "success": true,
+      "taskId": {
+        "id": "recviQkzM7ZpMP",
+        "title": "会议",
+        "status": "pending",
+        "priority": "medium",
+        "category": "工作",
+        "start_date": "2026-05-06",
+        "start_time": "10:00",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "icloud_event_id": "1778070971588-n8mg1413w@caldav.icloud.com",
+        "source": "semantic",
+        "created_at": "2026-05-06T12:36:08.806Z",
+        "updated_at": "2026-05-06T12:36:08.806Z",
+        "record_id": "recviQkzM7ZpMP"
+      }
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_67f95db80cad",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-06T12:36:14.639Z",
+    "durationMs": 22234,
+    "inputs": {
+      "userInput": "change that investor call to friday"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_4a1ad1bb4ca2",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-06T12:37:20.744Z",
+    "durationMs": 1062,
+    "inputs": {
+      "contextId": "ctx_mou1l7ms4xt5ls",
+      "selectedOption": "opt_1"
+    },
+    "outputs": {
+      "success": false,
+      "error": "未找到指定的任务"
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_ff514b3e6b9e",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-06T12:37:21.813Z",
+    "durationMs": 14843,
+    "inputs": {
+      "userInput": "cancel the reminder about the meeting"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_f8a51fcda5f9",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-06T12:37:44.214Z",
+    "durationMs": 1,
+    "inputs": {
+      "contextId": "ctx_mou1lpqsjj82j6",
+      "selectedOption": "opt_1"
+    },
+    "outputs": {
+      "success": false,
+      "error": "未找到要删除的任务"
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_07a2ac473a09",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-06T12:37:44.221Z",
+    "durationMs": 18052,
+    "inputs": {
+      "userInput": "remind me to call mom tonight"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_4308e8ec0a0f",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-06T12:40:22.788Z",
+    "durationMs": 20692,
+    "inputs": {
+      "userInput": "meeting at 3pm today"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_646bef32484b",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-06T12:40:49.542Z",
+    "durationMs": 19126,
+    "inputs": {
+      "userInput": "meeting tomorrow at 10am"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_ae178b0a7e44",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-06T12:41:14.770Z",
+    "durationMs": 23847,
+    "inputs": {
+      "userInput": "change that investor call to friday"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_21288b4a0683",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-06T12:41:52.282Z",
+    "durationMs": 1022,
+    "inputs": {
+      "contextId": "ctx_mou1r15l6jzobz",
+      "selectedOption": "opt_1"
+    },
+    "outputs": {
+      "success": false,
+      "error": "未找到指定的任务"
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_36d7c634347f",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-06T12:41:53.308Z",
+    "durationMs": 8220,
+    "inputs": {
+      "userInput": "cancel the reminder about the meeting"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_6b1f803fc6e6",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-06T12:42:02.508Z",
+    "durationMs": 2971,
+    "inputs": {
+      "contextId": "ctx_mou1r91lo7b5gn",
+      "selectedOption": "opt_1"
+    },
+    "outputs": {
+      "success": true,
+      "taskId": {
+        "deleted": 1
+      }
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_038621d63b72",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-06T12:42:05.482Z",
+    "durationMs": 10294,
+    "inputs": {
+      "userInput": "remind me to call mom tonight"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_ffc0db54c0d7",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-06T12:53:53.216Z",
+    "durationMs": 17913,
+    "inputs": {
+      "userInput": "meeting at 3pm today"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_a737b6c55683",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-06T12:54:17.746Z",
+    "durationMs": 12644,
+    "inputs": {
+      "userInput": "meeting tomorrow at 10am"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_bd04cd68f6be",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-06T12:55:08.729Z",
+    "durationMs": 6222,
+    "inputs": {
+      "contextId": "ctx_mou283p2trw27e",
+      "selectedOption": "opt_1"
+    },
+    "outputs": {
+      "success": true,
+      "taskId": {
+        "id": "recviQpmkeFMYe",
+        "title": "Meeting",
+        "status": "pending",
+        "priority": "medium",
+        "start_date": "2026-05-06",
+        "start_time": "10:00",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "icloud_event_id": "1778072111494-japcbe8bb@caldav.icloud.com",
+        "source": "semantic",
+        "created_at": "2026-05-06T12:55:08.729Z",
+        "updated_at": "2026-05-06T12:55:08.729Z",
+        "record_id": "recviQpmkeFMYe"
+      }
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_ffde5e33a83f",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-06T12:55:14.959Z",
+    "durationMs": 24208,
+    "inputs": {
+      "userInput": "change that investor call to friday"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_5b457231698c",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-06T13:24:04.477Z",
+    "durationMs": 16907,
+    "inputs": {
+      "userInput": "meeting at 3pm today"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_1daa83440d83",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-06T13:24:27.803Z",
+    "durationMs": 5722,
+    "inputs": {
+      "userInput": "meeting tomorrow at 10am"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_d696297a5963",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-06T13:24:38.978Z",
+    "durationMs": 27456,
+    "inputs": {
+      "userInput": "change that investor call to friday"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_2433b8a49456",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-06T13:25:22.000Z",
+    "durationMs": 951,
+    "inputs": {
+      "contextId": "ctx_mou3aytp4lio5d",
+      "selectedOption": "opt_1"
+    },
+    "outputs": {
+      "success": false,
+      "error": "未找到指定的任务"
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_76c068869a85",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-06T13:25:22.959Z",
+    "durationMs": 21760,
+    "inputs": {
+      "userInput": "cancel the reminder about the meeting"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_d3194dee3f7a",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-06T13:26:00.688Z",
+    "durationMs": 1020,
+    "inputs": {
+      "contextId": "ctx_mou3bsodt15isa",
+      "selectedOption": "opt_1"
+    },
+    "outputs": {
+      "success": false,
+      "error": "未找到要删除的任务"
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_e250a332edb4",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-06T13:26:01.712Z",
+    "durationMs": 8789,
+    "inputs": {
+      "userInput": "remind me to call mom tonight"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_68bc5306fb89",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T01:03:11.486Z",
+    "durationMs": 19539,
+    "inputs": {
+      "userInput": "meeting at 3pm today"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_45b959ef3607",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T01:03:35.023Z",
+    "durationMs": 11395,
+    "inputs": {
+      "userInput": "meeting tomorrow at 10am"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_3e81964b5b45",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T01:03:53.985Z",
+    "durationMs": 16676,
+    "inputs": {
+      "userInput": "change that investor call to friday"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_67c8b6313249",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T01:04:22.696Z",
+    "durationMs": 1037,
+    "inputs": {
+      "contextId": "ctx_mous9wh2ssslvg",
+      "selectedOption": "opt_1"
+    },
+    "outputs": {
+      "success": false,
+      "error": "未找到指定的任务"
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_0d0d8e3f0874",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T01:04:23.740Z",
+    "durationMs": 15198,
+    "inputs": {
+      "userInput": "cancel the reminder about the meeting"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_01e3021f9f84",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T01:04:40.294Z",
+    "durationMs": 3219,
+    "inputs": {
+      "contextId": "ctx_mousaa1v0xp80e",
+      "selectedOption": "opt_1"
+    },
+    "outputs": {
+      "success": true,
+      "taskId": {
+        "deleted": 1
+      }
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_8c965fe9be66",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T01:04:43.520Z",
+    "durationMs": 19604,
+    "inputs": {
+      "userInput": "remind me to call mom tonight"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_a24e1af19500",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:11:56.902Z",
+    "durationMs": 102,
+    "inputs": {
+      "userInput": "早上好，今天有什么安排？"
+    },
+    "outputs": {
+      "success": false,
+      "error": "All LLM providers failed"
+    },
+    "error": "All LLM providers failed"
+  },
+  {
+    "traceId": "trace_229051818346",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:11:57.523Z",
+    "durationMs": 44,
+    "inputs": {
+      "userInput": "提醒我今天下班去超市买牛奶和鸡蛋"
+    },
+    "outputs": {
+      "success": false,
+      "error": "All LLM providers failed"
+    },
+    "error": "All LLM providers failed"
+  },
+  {
+    "traceId": "trace_96f3132a5251",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:11:58.077Z",
+    "durationMs": 45,
+    "inputs": {
+      "userInput": "上午11点要见一下王总，补一下上周没谈完的合同"
+    },
+    "outputs": {
+      "success": false,
+      "error": "All LLM providers failed"
+    },
+    "error": "All LLM providers failed"
+  },
+  {
+    "traceId": "trace_9a6f64e945d4",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:11:58.640Z",
+    "durationMs": 42,
+    "inputs": {
+      "userInput": "我现在在会议室，等王总来"
+    },
+    "outputs": {
+      "success": false,
+      "error": "All LLM providers failed"
+    },
+    "error": "All LLM providers failed"
+  },
+  {
+    "traceId": "trace_e51ed18c4fb2",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:11:59.194Z",
+    "durationMs": 62,
+    "inputs": {
+      "userInput": "合同的事先暂停，对方说要内部讨论一下"
+    },
+    "outputs": {
+      "success": false,
+      "error": "All LLM providers failed"
+    },
+    "error": "All LLM providers failed"
+  },
+  {
+    "traceId": "trace_c770c580ae36",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:11:59.774Z",
+    "durationMs": 45,
+    "inputs": {
+      "userInput": "中午吃什么好？"
+    },
+    "outputs": {
+      "success": false,
+      "error": "All LLM providers failed"
+    },
+    "error": "All LLM providers failed"
+  },
+  {
+    "traceId": "trace_7cc268bfef52",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:12:00.328Z",
+    "durationMs": 49,
+    "inputs": {
+      "userInput": "下午的投资人电话会议改到明天上午10点行吗？"
+    },
+    "outputs": {
+      "success": false,
+      "error": "All LLM providers failed"
+    },
+    "error": "All LLM providers failed"
+  },
+  {
+    "traceId": "trace_a069c3ff7975",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:12:00.901Z",
+    "durationMs": 52,
+    "inputs": {
+      "userInput": "帮我看看今晚和明天的安排"
+    },
+    "outputs": {
+      "success": false,
+      "error": "All LLM providers failed"
+    },
+    "error": "All LLM providers failed"
+  },
+  {
+    "traceId": "trace_db4d37ddf290",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:12:01.463Z",
+    "durationMs": 37,
+    "inputs": {
+      "userInput": "买完了，在回家路上"
+    },
+    "outputs": {
+      "success": false,
+      "error": "All LLM providers failed"
+    },
+    "error": "All LLM providers failed"
+  },
+  {
+    "traceId": "trace_2e8154906c76",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:12:02.017Z",
+    "durationMs": 38,
+    "inputs": {
+      "userInput": "早上好，今天什么安排？"
+    },
+    "outputs": {
+      "success": false,
+      "error": "All LLM providers failed"
+    },
+    "error": "All LLM providers failed"
+  },
+  {
+    "traceId": "trace_2342ee7b20b9",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:12:02.568Z",
+    "durationMs": 36,
+    "inputs": {
+      "userInput": "帮我看看深圳那边的天气"
+    },
+    "outputs": {
+      "success": false,
+      "error": "All LLM providers failed"
+    },
+    "error": "All LLM providers failed"
+  },
+  {
+    "traceId": "trace_615660fd1d4b",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:12:03.113Z",
+    "durationMs": 52,
+    "inputs": {
+      "userInput": "帮我订个今晚的位子，要安静点的"
+    },
+    "outputs": {
+      "success": false,
+      "error": "All LLM providers failed"
+    },
+    "error": "All LLM providers failed"
+  },
+  {
+    "traceId": "trace_9ae730594bb4",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:12:03.681Z",
+    "durationMs": 41,
+    "inputs": {
+      "userInput": "明天的客户拜访改到周三上午"
+    },
+    "outputs": {
+      "success": false,
+      "error": "All LLM providers failed"
+    },
+    "error": "All LLM providers failed"
+  },
+  {
+    "traceId": "trace_5851dd46eb2e",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:12:04.246Z",
+    "durationMs": 41,
+    "inputs": {
+      "userInput": "帮我记一下，今天和王总聊了三个要点..."
+    },
+    "outputs": {
+      "success": false,
+      "error": "All LLM providers failed"
+    },
+    "error": "All LLM providers failed"
+  },
+  {
+    "traceId": "trace_b289af37a379",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:12:04.798Z",
+    "durationMs": 63,
+    "inputs": {
+      "userInput": "今天怎么样？"
+    },
+    "outputs": {
+      "success": false,
+      "error": "All LLM providers failed"
+    },
+    "error": "All LLM providers failed"
+  },
+  {
+    "traceId": "trace_c69ef6fc5791",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:12:05.376Z",
+    "durationMs": 102,
+    "inputs": {
+      "userInput": "客户快到了，准备一下会议室"
+    },
+    "outputs": {
+      "success": false,
+      "error": "All LLM providers failed"
+    },
+    "error": "All LLM providers failed"
+  },
+  {
+    "traceId": "trace_778c70f7d8b9",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:12:05.990Z",
+    "durationMs": 41,
+    "inputs": {
+      "userInput": "谈成了！帮我记录一下"
+    },
+    "outputs": {
+      "success": false,
+      "error": "All LLM providers failed"
+    },
+    "error": "All LLM providers failed"
+  },
+  {
+    "traceId": "trace_8c8571dd6aba",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:12:06.544Z",
+    "durationMs": 35,
+    "inputs": {
+      "userInput": "帮我记一下，老师说的暑假安排"
+    },
+    "outputs": {
+      "success": false,
+      "error": "All LLM providers failed"
+    },
+    "error": "All LLM providers failed"
+  },
+  {
+    "traceId": "trace_a232c5bf8271",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:12:07.099Z",
+    "durationMs": 35,
+    "inputs": {
+      "userInput": "家长会结束了，接下来没什么事了吧？"
+    },
+    "outputs": {
+      "success": false,
+      "error": "All LLM providers failed"
+    },
+    "error": "All LLM providers failed"
+  },
+  {
+    "traceId": "trace_b3daa4d9f641",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:12:07.651Z",
+    "durationMs": 42,
+    "inputs": {
+      "userInput": "这周忙完了，帮我总结一下"
+    },
+    "outputs": {
+      "success": false,
+      "error": "All LLM providers failed"
+    },
+    "error": "All LLM providers failed"
+  },
+  {
+    "traceId": "trace_6cea38045c24",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:12:20.715Z",
+    "durationMs": 510,
+    "inputs": {
+      "userInput": "hello"
+    },
+    "outputs": {
+      "success": false,
+      "error": "All LLM providers failed"
+    },
+    "error": "All LLM providers failed"
+  },
+  {
+    "traceId": "trace_6f5969796859",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:18:41.314Z",
+    "durationMs": 123,
+    "inputs": {
+      "userInput": "hello"
+    },
+    "outputs": {
+      "success": false,
+      "error": "All LLM providers failed"
+    },
+    "error": "All LLM providers failed"
+  },
+  {
+    "traceId": "trace_974ff98c075b",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:18:54.805Z",
+    "durationMs": 223,
+    "inputs": {
+      "userInput": "hello"
+    },
+    "outputs": {
+      "success": false,
+      "error": "All LLM providers failed"
+    },
+    "error": "All LLM providers failed"
+  },
+  {
+    "traceId": "trace_6e7b208f528c",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:19:29.150Z",
+    "durationMs": 330,
+    "inputs": {
+      "userInput": "������ʲô����"
+    },
+    "outputs": {
+      "success": false,
+      "error": "All LLM providers failed"
+    },
+    "error": "All LLM providers failed"
+  },
+  {
+    "traceId": "trace_160a2842067c",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:19:48.703Z",
+    "durationMs": 192,
+    "inputs": {
+      "userInput": "������ʲô����"
+    },
+    "outputs": {
+      "success": false,
+      "error": "All LLM providers failed"
+    },
+    "error": "All LLM providers failed"
+  },
+  {
+    "traceId": "trace_55a381c85b04",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:20:11.787Z",
+    "durationMs": 212,
+    "inputs": {
+      "userInput": "������ʲô����"
+    },
+    "outputs": {
+      "success": false,
+      "error": "All LLM providers failed"
+    },
+    "error": "All LLM providers failed"
+  },
+  {
+    "traceId": "trace_8ccc2ebf721c",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:20:38.618Z",
+    "durationMs": 227,
+    "inputs": {
+      "userInput": "������ʲô����"
+    },
+    "outputs": {
+      "success": false,
+      "error": "All LLM providers failed"
+    },
+    "error": "All LLM providers failed"
+  },
+  {
+    "traceId": "trace_814f771caebb",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:21:27.595Z",
+    "durationMs": 15158,
+    "inputs": {
+      "userInput": "������ʲô����"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_9bd70fa9b657",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T13:21:58.388Z",
+    "durationMs": 8274,
+    "inputs": {
+      "contextId": "ctx_movim8u3ex9v2j",
+      "openText": "早上好，今天有什么安排？",
+      "cancel": false
+    },
+    "outputs": {
+      "success": true,
+      "taskId": {
+        "items": [],
+        "total": 0
+      }
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_e852a78f27ce",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:22:07.177Z",
+    "durationMs": 14690,
+    "inputs": {
+      "userInput": "提醒我今天下班去超市买牛奶和鸡蛋"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_03e0435a8746",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T13:22:30.945Z",
+    "durationMs": 10061,
+    "inputs": {
+      "contextId": "ctx_movin53twtuzut",
+      "openText": "上午11点要见一下王总，补一下上周没谈完的合同",
+      "cancel": false
+    },
+    "outputs": {
+      "success": true,
+      "taskId": {
+        "id": "recviWmOazuHti",
+        "title": "去超市买牛奶和鸡蛋",
+        "description": "补充上周没谈完的合同",
+        "status": "pending",
+        "priority": "medium",
+        "category": "购物",
+        "start_date": "2026-05-07",
+        "start_time": "11:00",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "source": "semantic",
+        "created_at": "2026-05-07T13:22:37.636Z",
+        "updated_at": "2026-05-07T13:22:37.636Z",
+        "record_id": "recviWmOazuHti"
+      }
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_5490e2709194",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:22:41.530Z",
+    "durationMs": 19922,
+    "inputs": {
+      "userInput": "我现在在会议室，等王总来"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_9b4fa5681980",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T13:23:10.308Z",
+    "durationMs": 12469,
+    "inputs": {
+      "contextId": "ctx_movinzhfvfluko",
+      "openText": "合同的事先暂停，对方说要内部讨论一下",
+      "cancel": false
+    },
+    "outputs": {
+      "success": true,
+      "taskId": {
+        "id": "recviWmZ5hB0WD",
+        "title": "合同跟进",
+        "description": "合同的事先暂停，对方说要内部讨论一下",
+        "status": "pending",
+        "priority": "medium",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "created_at": "2026-05-07T13:23:19.844Z",
+        "updated_at": "2026-05-07T13:23:19.844Z",
+        "record_id": "recviWmZ5hB0WD"
+      }
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_35dc306dcd2d",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:23:23.290Z",
+    "durationMs": 5976,
+    "inputs": {
+      "userInput": "中午吃什么好？"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_2bbf2753f518",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T13:23:41.914Z",
+    "durationMs": 12611,
+    "inputs": {
+      "contextId": "ctx_movionvd6uefkq",
+      "openText": "下午的投资人电话会议改到明天上午10点行吗？",
+      "cancel": false
+    },
+    "outputs": {
+      "success": false,
+      "error": "未找到指定的任务"
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_8f3771d3ca4c",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:23:55.042Z",
+    "durationMs": 6545,
+    "inputs": {
+      "userInput": "帮我看看今晚和明天的安排"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_fd0520b483cd",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:24:03.012Z",
+    "durationMs": 9030,
+    "inputs": {
+      "userInput": "买完了，在回家路上"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_be7502a75632",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T13:24:29.001Z",
+    "durationMs": 19763,
+    "inputs": {
+      "contextId": "ctx_movipo7ev5kvvv",
+      "openText": "早上好，今天什么安排？",
+      "cancel": false
+    },
+    "outputs": {
+      "success": true,
+      "taskId": {
+        "items": [
+          {
+            "id": "4bf083e5-4786-4a4b-90bc-93104d270a96",
+            "record_id": "recviWmOazuHti",
+            "title": "去超市买牛奶和鸡蛋",
+            "priority": "medium",
+            "category": "购物",
+            "created_at": "2026-05-07T13:22:37.636Z",
+            "start_date": "2026-05-07",
+            "start_time": "11:00",
+            "recurrence_type": "none",
+            "description": "补充上周没谈完的合同",
+            "updated_at": "2026-05-07T13:22:37.636Z",
+            "source": "semantic",
+            "status": "pending",
+            "is_recurring": false
+          }
+        ],
+        "total": 1
+      }
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_e28e6bc20a36",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:24:49.287Z",
+    "durationMs": 10497,
+    "inputs": {
+      "userInput": "帮我看看深圳那边的天气"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_64e09cc6f329",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:25:00.305Z",
+    "durationMs": 8600,
+    "inputs": {
+      "userInput": "帮我订个今晚的位子，要安静点的"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_b940c89cb4e7",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T13:25:19.990Z",
+    "durationMs": 22257,
+    "inputs": {
+      "contextId": "ctx_moviqrjz8b0qnj",
+      "openText": "明天的客户拜访改到周三上午",
+      "cancel": false
+    },
+    "outputs": {
+      "success": false,
+      "error": "未找到指定的任务"
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_4a7c5af18820",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:25:42.754Z",
+    "durationMs": 11035,
+    "inputs": {
+      "userInput": "帮我记一下，今天和王总聊了三个要点..."
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_e4570167520f",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:25:57.367Z",
+    "durationMs": 5686,
+    "inputs": {
+      "userInput": "今天怎么样？"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_a212d50f9d0b",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T13:26:15.853Z",
+    "durationMs": 12441,
+    "inputs": {
+      "contextId": "ctx_movirynhirsfar",
+      "openText": "客户快到了，准备一下会议室",
+      "cancel": false
+    },
+    "outputs": {
+      "success": true,
+      "taskId": {
+        "id": "recviWnLmaYgxV",
+        "title": "准备会议室",
+        "description": "客户快到了",
+        "status": "pending",
+        "priority": "medium",
+        "category": "工作",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "created_at": "2026-05-07T13:26:25.458Z",
+        "updated_at": "2026-05-07T13:26:25.458Z",
+        "record_id": "recviWnLmaYgxV"
+      }
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_c992f89ff538",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:26:28.808Z",
+    "durationMs": 12207,
+    "inputs": {
+      "userInput": "谈成了！帮我记录一下"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_3aa0dc68beaf",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T13:26:46.417Z",
+    "durationMs": 12895,
+    "inputs": {
+      "contextId": "ctx_movism8qq2fcj2",
+      "openText": "帮我记一下，老师说的暑假安排",
+      "cancel": false
+    },
+    "outputs": {
+      "success": true,
+      "taskId": {
+        "id": "recviWnTq8QZHP",
+        "title": "老师说的暑假安排",
+        "status": "pending",
+        "priority": "medium",
+        "category": "学习",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "created_at": "2026-05-07T13:26:56.416Z",
+        "updated_at": "2026-05-07T13:26:56.416Z",
+        "record_id": "recviWnTq8QZHP"
+      }
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_22db18fdd99b",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:26:59.823Z",
+    "durationMs": 15221,
+    "inputs": {
+      "userInput": "家长会结束了，接下来没什么事了吧？"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_0d319f3c26b9",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:27:30.345Z",
+    "durationMs": 16189,
+    "inputs": {
+      "userInput": "这周忙完了，帮我总结一下"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_06cda3062a93",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:37:40.229Z",
+    "durationMs": 7906,
+    "inputs": {
+      "userInput": "早上好，今天有什么安排？"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_1308dd4a504c",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:37:49.069Z",
+    "durationMs": 15669,
+    "inputs": {
+      "userInput": "提醒我今天下班去超市买牛奶和鸡蛋"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_2e8d01d2c219",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T13:38:16.796Z",
+    "durationMs": 2821,
+    "inputs": {
+      "contextId": "ctx_movj7fbtjs8d6l",
+      "selectedOption": "opt_1"
+    },
+    "outputs": {
+      "success": true,
+      "taskId": {
+        "id": "recviWqKpBFsnr",
+        "title": "去超市买牛奶和鸡蛋",
+        "description": "下班后",
+        "status": "pending",
+        "priority": "medium",
+        "category": "生活",
+        "start_date": "2026-05-07",
+        "start_time": "18:00",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "source": "semantic",
+        "created_at": "2026-05-07T13:38:16.796Z",
+        "updated_at": "2026-05-07T13:38:16.796Z",
+        "record_id": "recviWqKpBFsnr"
+      }
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_a5fbed1729a3",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:38:19.623Z",
+    "durationMs": 9800,
+    "inputs": {
+      "userInput": "上午11点要见一下王总，补一下上周没谈完的合同"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_99053ecdf183",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T13:38:42.768Z",
+    "durationMs": 10782,
+    "inputs": {
+      "contextId": "ctx_movj7zdb8n2mbu",
+      "openText": "我现在在会议室，等王总来",
+      "cancel": false
+    },
+    "outputs": {
+      "success": false,
+      "error": "不支持的意图类型: other"
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_47d3662f4af1",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:38:53.556Z",
+    "durationMs": 9640,
+    "inputs": {
+      "userInput": "合同的事先暂停，对方说要内部讨论一下"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_b2e40bf9b4d8",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T13:39:17.765Z",
+    "durationMs": 13661,
+    "inputs": {
+      "contextId": "ctx_movj8qdekdivft",
+      "openText": "中午吃什么好？",
+      "cancel": false
+    },
+    "outputs": {
+      "success": false,
+      "error": "不支持的意图类型: other"
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_a4e9509b3e13",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:39:31.431Z",
+    "durationMs": 8618,
+    "inputs": {
+      "userInput": "下午的投资人电话会议改到明天上午10点行吗？"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_54d7f2be107c",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T13:39:40.960Z",
+    "durationMs": 20436,
+    "inputs": {
+      "contextId": "ctx_movj989pohesdw",
+      "selectedOption": "opt_2",
+      "openText": "明天下午2点"
+    },
+    "outputs": {
+      "success": true,
+      "taskId": {
+        "id": "recviWra72n2Ts",
+        "title": "投资人电话会议",
+        "status": "pending",
+        "priority": "medium",
+        "start_date": "2026-05-07",
+        "start_time": "14:00",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "icloud_event_id": "1778161198427-e9fcrf44v@caldav.icloud.com",
+        "source": "semantic",
+        "created_at": "2026-05-07T13:39:55.606Z",
+        "updated_at": "2026-05-07T13:39:55.606Z",
+        "record_id": "recviWra72n2Ts"
+      }
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_a0ec81fa12f0",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:40:01.404Z",
+    "durationMs": 11984,
+    "inputs": {
+      "userInput": "帮我看看今晚和明天的安排"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_009e30fe643a",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:40:14.299Z",
+    "durationMs": 11198,
+    "inputs": {
+      "userInput": "买完了，在回家路上"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_b880015c19ab",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T13:40:39.321Z",
+    "durationMs": 13766,
+    "inputs": {
+      "contextId": "ctx_movjahaviub9yy",
+      "selectedOption": "open",
+      "openText": "下班买牛奶鸡蛋"
+    },
+    "outputs": {
+      "success": true,
+      "taskId": {
+        "id": "recviWrokb2ZFV",
+        "title": "买牛奶鸡蛋",
+        "status": "pending",
+        "priority": "medium",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "created_at": "2026-05-07T13:40:50.179Z",
+        "updated_at": "2026-05-07T13:40:50.179Z",
+        "record_id": "recviWrokb2ZFV"
+      }
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_5bafca358b0b",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:40:53.093Z",
+    "durationMs": 11204,
+    "inputs": {
+      "userInput": "早上好，今天什么安排？"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_b94f86b152f2",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:41:05.143Z",
+    "durationMs": 14525,
+    "inputs": {
+      "userInput": "帮我订个今晚的位子，要安静点的"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_0cbbd006881f",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T13:41:27.162Z",
+    "durationMs": 9672,
+    "inputs": {
+      "contextId": "ctx_movjbi7ttmtdu1",
+      "selectedOption": "opt_2",
+      "openText": "帮我推荐一个安静的"
+    },
+    "outputs": {
+      "success": false,
+      "error": "不支持的意图类型: other"
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_c6f5b7bb4d96",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:41:36.838Z",
+    "durationMs": 18091,
+    "inputs": {
+      "userInput": "明天的客户拜访改到周三上午"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_d4c5b0deb62a",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T13:42:08.919Z",
+    "durationMs": 11764,
+    "inputs": {
+      "contextId": "ctx_movjcefpev17q1",
+      "selectedOption": "open",
+      "openText": "改到周三上午9点"
+    },
+    "outputs": {
+      "success": false,
+      "error": "未找到指定的任务"
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_815cec92b0be",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:42:20.691Z",
+    "durationMs": 8482,
+    "inputs": {
+      "userInput": "帮我记一下，今天和王总聊了三个要点"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_1eb97aceb20e",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T13:42:37.664Z",
+    "durationMs": 17060,
+    "inputs": {
+      "contextId": "ctx_movjd0m6a545ae",
+      "selectedOption": "open",
+      "openText": "客户对价格还是有顾虑，交期可以接受，想独家合作三个月试运行"
+    },
+    "outputs": {
+      "success": false,
+      "error": "不支持的意图类型: expand_task"
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_45e74295d63d",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:42:54.730Z",
+    "durationMs": 7266,
+    "inputs": {
+      "userInput": "今天怎么样？"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_61c98741f9f2",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:43:06.817Z",
+    "durationMs": 12611,
+    "inputs": {
+      "userInput": "客户快到了，准备一下会议室"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_3db7ef6ab2f8",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T13:43:23.177Z",
+    "durationMs": 2845,
+    "inputs": {
+      "contextId": "ctx_movjdzqgbgbp15",
+      "selectedOption": "opt_1"
+    },
+    "outputs": {
+      "success": true,
+      "taskId": {
+        "id": "recviWs270WJO9",
+        "title": "准备会议室",
+        "description": "客户快到了",
+        "status": "pending",
+        "priority": "high",
+        "category": "工作",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "created_at": "2026-05-07T13:43:23.177Z",
+        "updated_at": "2026-05-07T13:43:23.177Z",
+        "record_id": "recviWs270WJO9"
+      }
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_eb774898cdf3",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:43:26.026Z",
+    "durationMs": 25866,
+    "inputs": {
+      "userInput": "谈成了！帮我记录一下"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_59dd2c0d76ef",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T13:44:02.094Z",
+    "durationMs": 29368,
+    "inputs": {
+      "contextId": "ctx_movjetrhcsp2r4",
+      "selectedOption": "open",
+      "openText": "深圳客户合同签署成功，金额280万，交付周期6个月"
+    },
+    "outputs": {
+      "success": true,
+      "taskId": {
+        "id": "recviWsj7za0gJ",
+        "title": "项目谈成",
+        "status": "pending",
+        "priority": "medium",
+        "category": "工作",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "created_at": "2026-05-07T13:44:28.446Z",
+        "updated_at": "2026-05-07T13:44:28.446Z",
+        "record_id": "recviWsj7za0gJ"
+      }
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_e46f52a83b03",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:44:31.467Z",
+    "durationMs": 11615,
+    "inputs": {
+      "userInput": "帮我记一下，老师说的暑假安排"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_9a5683dcafc9",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T13:45:01.948Z",
+    "durationMs": 22040,
+    "inputs": {
+      "contextId": "ctx_movjg3y3vkfjqj",
+      "selectedOption": "open",
+      "openText": "暑假7月5日到8月31日，作业7月15日前交，返校日8月30日"
+    },
+    "outputs": {
+      "success": true,
+      "taskId": {
+        "id": "recviWswMu6j7I",
+        "title": "老师说的暑假安排",
+        "description": "暑假7月5日至8月31日，作业需在7月15日前完成",
+        "status": "pending",
+        "priority": "medium",
+        "due_date": "2025-07-15",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "created_at": "2026-05-07T13:45:21.047Z",
+        "updated_at": "2026-05-07T13:45:21.047Z",
+        "record_id": "recviWswMu6j7I"
+      }
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_270b8ca2d68e",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:45:23.995Z",
+    "durationMs": 16344,
+    "inputs": {
+      "userInput": "家长会结束了，接下来没什么事了吧？"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_e3ff422ae095",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T13:45:50.910Z",
+    "durationMs": 12137,
+    "inputs": {
+      "contextId": "ctx_movjh5q4qs0civ",
+      "openText": "这周忙完了，帮我总结一下",
+      "cancel": false
+    },
+    "outputs": {
+      "success": true,
+      "taskId": {
+        "items": [
+          {
+            "id": "d97d008e-037a-4de0-9930-229fde80996b",
+            "record_id": "recviWqdOuNyMv",
+            "icloud_event_id": "1778160974385-dd48nnsw3@caldav.icloud.com",
+            "title": "管理层周会",
+            "priority": "medium",
+            "category": "工作",
+            "created_at": "2026-05-07T13:36:11.259Z",
+            "start_date": "2026-05-11",
+            "start_time": "09:00",
+            "recurrence_type": "none",
+            "updated_at": "2026-05-07T13:36:11.259Z",
+            "source": "api",
+            "status": "pending",
+            "end_time": "10:00",
+            "is_recurring": false
+          },
+          {
+            "id": "a890ba88-dd97-4949-b5a3-1036bc39920e",
+            "record_id": "recviWqfrWMclx",
+            "icloud_event_id": "1778160981039-inloh8qc0@caldav.icloud.com",
+            "title": "产品进度汇报",
+            "priority": "medium",
+            "category": "工作",
+            "created_at": "2026-05-07T13:36:17.850Z",
+            "start_date": "2026-05-11",
+            "start_time": "10:30",
+            "recurrence_type": "none",
+            "updated_at": "2026-05-07T13:36:17.850Z",
+            "source": "api",
+            "status": "pending",
+            "end_time": "11:30",
+            "is_recurring": false
+          },
+          {
+            "id": "18ab6658-182f-4500-9fee-50e569610660",
+            "record_id": "recviWqh01MzyX",
+            "icloud_event_id": "1778160986665-jq47o0ais@caldav.icloud.com",
+            "title": "投资人电话会议",
+            "priority": "medium",
+            "category": "工作",
+            "created_at": "2026-05-07T13:36:23.850Z",
+            "start_date": "2026-05-11",
+            "start_time": "14:00",
+            "recurrence_type": "none",
+            "updated_at": "2026-05-07T13:36:23.850Z",
+            "source": "api",
+            "status": "pending",
+            "end_time": "15:00",
+            "is_recurring": false
+          },
+          {
+            "id": "a4caa6bb-3976-4853-b54d-3868ea16c3b6",
+            "record_id": "recviWqivnnWZy",
+            "icloud_event_id": "1778160992610-btkhjemp6@caldav.icloud.com",
+            "title": "产品评审会",
+            "priority": "medium",
+            "category": "工作",
+            "created_at": "2026-05-07T13:36:29.617Z",
+            "start_date": "2026-05-11",
+            "start_time": "17:00",
+            "recurrence_type": "none",
+            "updated_at": "2026-05-07T13:36:29.617Z",
+            "source": "api",
+            "status": "pending",
+            "end_time": "18:00",
+            "is_recurring": false
+          },
+          {
+            "id": "bdd32a27-47b1-4b6b-bce3-f2121b4ad0bc",
+            "record_id": "recviWqk3Lmybc",
+            "icloud_event_id": "1778160998368-oi3foco5o@caldav.icloud.com",
+            "title": "客户拜访（深圳）",
+            "priority": "medium",
+            "category": "工作",
+            "created_at": "2026-05-07T13:36:35.357Z",
+            "start_date": "2026-05-12",
+            "start_time": "10:00",
+            "recurrence_type": "none",
+            "updated_at": "2026-05-07T13:36:35.357Z",
+            "source": "api",
+            "status": "pending",
+            "end_time": "11:00",
+            "is_recurring": false
+          },
+          {
+            "id": "4cb4a762-21ae-48b1-b1a6-25aa4be27b49",
+            "record_id": "recviWqltdPfaE",
+            "title": "孩子家长会",
+            "priority": "medium",
+            "category": "家庭",
+            "created_at": "2026-05-07T13:36:40.960Z",
+            "start_date": "2026-05-13",
+            "start_time": "14:00",
+            "recurrence_type": "none",
+            "updated_at": "2026-05-07T13:36:40.960Z",
+            "source": "api",
+            "status": "pending",
+            "end_time": "16:00",
+            "is_recurring": false
+          },
+          {
+            "id": "9023f63c-5a87-4aa7-9e62-54ef863540a9",
+            "record_id": "recviWqKpBFsnr",
+            "title": "去超市买牛奶和鸡蛋",
+            "priority": "medium",
+            "category": "生活",
+            "created_at": "2026-05-07T13:38:16.796Z",
+            "start_date": "2026-05-07",
+            "start_time": "18:00",
+            "recurrence_type": "none",
+            "description": "下班后",
+            "updated_at": "2026-05-07T13:38:16.796Z",
+            "source": "semantic",
+            "status": "pending",
+            "is_recurring": false
+          },
+          {
+            "id": "d9a23726-3bd8-44b0-ad79-23a338044f06",
+            "record_id": "recviWra72n2Ts",
+            "icloud_event_id": "1778161198427-e9fcrf44v@caldav.icloud.com",
+            "title": "投资人电话会议",
+            "priority": "medium",
+            "created_at": "2026-05-07T13:39:55.606Z",
+            "start_date": "2026-05-07",
+            "start_time": "14:00",
+            "recurrence_type": "none",
+            "updated_at": "2026-05-07T13:39:55.606Z",
+            "source": "semantic",
+            "status": "pending",
+            "is_recurring": false
+          },
+          {
+            "id": "efa3cf93-cb77-4204-978e-f8d3992ed76c",
+            "record_id": "recviWrokb2ZFV",
+            "title": "买牛奶鸡蛋",
+            "priority": "medium",
+            "created_at": "2026-05-07T13:40:50.179Z",
+            "recurrence_type": "none",
+            "updated_at": "2026-05-07T13:40:50.179Z",
+            "status": "pending",
+            "is_recurring": false
+          },
+          {
+            "id": "3a3798b1-1328-4856-b18f-d4cfcf2439ce",
+            "record_id": "recviWs270WJO9",
+            "title": "准备会议室",
+            "priority": "high",
+            "category": "工作",
+            "created_at": "2026-05-07T13:43:23.177Z",
+            "recurrence_type": "none",
+            "description": "客户快到了",
+            "updated_at": "2026-05-07T13:43:23.177Z",
+            "status": "pending",
+            "is_recurring": false
+          },
+          {
+            "id": "3c64854e-b3ad-4928-944d-0c60c3c77294",
+            "record_id": "recviWsj7za0gJ",
+            "title": "项目谈成",
+            "priority": "medium",
+            "category": "工作",
+            "created_at": "2026-05-07T13:44:28.446Z",
+            "recurrence_type": "none",
+            "updated_at": "2026-05-07T13:44:28.446Z",
+            "status": "pending",
+            "is_recurring": false
+          },
+          {
+            "id": "1b9c0387-f772-41cd-b379-4e64760a5f3d",
+            "record_id": "recviWswMu6j7I",
+            "title": "老师说的暑假安排",
+            "priority": "medium",
+            "created_at": "2026-05-07T13:45:21.047Z",
+            "recurrence_type": "none",
+            "due_date": "2025-07-15",
+            "description": "暑假7月5日至8月31日，作业需在7月15日前完成",
+            "updated_at": "2026-05-07T13:45:21.047Z",
+            "status": "pending",
+            "is_recurring": false
+          }
+        ],
+        "total": 12,
+        "page": 1,
+        "page_size": 50,
+        "total_pages": 1
+      }
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_2db64b3ab8d6",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:47:55.062Z",
+    "durationMs": 10465,
+    "inputs": {
+      "userInput": "�����ʲô�ã�"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_91ef8176335a",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T13:48:36.599Z",
+    "durationMs": 14382,
+    "inputs": {
+      "contextId": "ctx_movjkfn1e23e8q",
+      "openText": "中午吃什么好？",
+      "cancel": false
+    },
+    "outputs": {
+      "success": true,
+      "taskId": {
+        "id": "recviWtoECmLMp",
+        "status": "pending",
+        "priority": "medium",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "created_at": "2026-05-07T13:48:48.052Z",
+        "updated_at": "2026-05-07T13:48:48.052Z",
+        "record_id": "recviWtoECmLMp"
+      }
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_3918426cc91c",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:49:09.114Z",
+    "durationMs": 21119,
+    "inputs": {
+      "userInput": "中午吃什么好？"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_1f270c48633d",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T13:49:36.749Z",
+    "durationMs": 11216,
+    "inputs": {
+      "contextId": "ctx_movjlzzcnzl3dj",
+      "openText": "帮我记一下，今天和王总聊了三个要点",
+      "cancel": false
+    },
+    "outputs": {
+      "success": true,
+      "taskId": {
+        "id": "recviWtDsYae2Y",
+        "title": "和王总聊的三个要点",
+        "status": "pending",
+        "priority": "medium",
+        "category": "工作",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "created_at": "2026-05-07T13:49:45.144Z",
+        "updated_at": "2026-05-07T13:49:45.144Z",
+        "record_id": "recviWtDsYae2Y"
+      }
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_73e1fd615f31",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:49:47.974Z",
+    "durationMs": 10298,
+    "inputs": {
+      "userInput": "今天怎么样？"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_2bd06515dc9b",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T13:50:16.546Z",
+    "durationMs": 10077,
+    "inputs": {
+      "contextId": "ctx_movjmkqelxg3me",
+      "openText": "帮我记一下，今天和王总聊了三个要点",
+      "cancel": false
+    },
+    "outputs": {
+      "success": true,
+      "taskId": {
+        "id": "recviWtNxqGbsj",
+        "title": "和王总聊了三个要点",
+        "status": "pending",
+        "priority": "medium",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "created_at": "2026-05-07T13:50:23.814Z",
+        "updated_at": "2026-05-07T13:50:23.814Z",
+        "record_id": "recviWtNxqGbsj"
+      }
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_9b41a97f01e4",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:50:34.204Z",
+    "durationMs": 7398,
+    "inputs": {
+      "userInput": "早上好，今天有什么安排？"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_c4971c211c68",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:50:42.465Z",
+    "durationMs": 15216,
+    "inputs": {
+      "userInput": "提醒我今天下班去超市买牛奶和鸡蛋"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_fb9509c76d7c",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T13:51:05.439Z",
+    "durationMs": 2908,
+    "inputs": {
+      "contextId": "ctx_movjnwf0niwvoa",
+      "selectedOption": "opt_1"
+    },
+    "outputs": {
+      "success": true,
+      "taskId": {
+        "id": "recviWtYlqviHt",
+        "title": "去超市买牛奶和鸡蛋",
+        "status": "pending",
+        "priority": "medium",
+        "category": "购物",
+        "start_date": "2026-05-07",
+        "start_time": "18:00",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "source": "semantic",
+        "created_at": "2026-05-07T13:51:05.440Z",
+        "updated_at": "2026-05-07T13:51:05.440Z",
+        "record_id": "recviWtYlqviHt"
+      }
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_b83d0fe954d2",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:51:08.356Z",
+    "durationMs": 16085,
+    "inputs": {
+      "userInput": "上午11点要见一下王总，补一下上周没谈完的合同"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_6486d8589c71",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T13:51:30.142Z",
+    "durationMs": 18875,
+    "inputs": {
+      "contextId": "ctx_movjofh8ojsks3",
+      "openText": "我现在在会议室，等王总来",
+      "cancel": false
+    },
+    "outputs": {
+      "success": true,
+      "taskId": {
+        "id": "recviWu867hsnj",
+        "title": "见王总 - 补谈合同",
+        "description": "补一下上周没谈完的合同",
+        "status": "pending",
+        "priority": "medium",
+        "category": "工作",
+        "start_date": "2026-05-07",
+        "start_time": "11:00",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "icloud_event_id": "1778161905638-rqw3guiz8@caldav.icloud.com",
+        "source": "semantic",
+        "created_at": "2026-05-07T13:51:42.898Z",
+        "updated_at": "2026-05-07T13:51:42.898Z",
+        "record_id": "recviWu867hsnj"
+      }
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_409ab9aeed18",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:51:49.024Z",
+    "durationMs": 14371,
+    "inputs": {
+      "userInput": "合同的事先暂停，对方说要内部讨论一下"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_edfccc6943cd",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T13:52:09.785Z",
+    "durationMs": 13936,
+    "inputs": {
+      "contextId": "ctx_movjpa2frvwf5y",
+      "openText": "中午吃什么好？",
+      "cancel": false
+    },
+    "outputs": {
+      "success": true,
+      "taskId": {
+        "id": "recviWuhYtSrxi",
+        "title": "合同暂停待跟进",
+        "description": "对方说要内部讨论一下，等待对方回复后继续推进",
+        "status": "pending",
+        "priority": "medium",
+        "category": "工作",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "created_at": "2026-05-07T13:52:20.835Z",
+        "updated_at": "2026-05-07T13:52:20.835Z",
+        "record_id": "recviWuhYtSrxi"
+      }
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_1e69359cc0b7",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:52:23.731Z",
+    "durationMs": 11429,
+    "inputs": {
+      "userInput": "下午的投资人电话会议改到明天上午10点行吗？"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_ef3d21fb122d",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T13:52:36.012Z",
+    "durationMs": 12626,
+    "inputs": {
+      "contextId": "ctx_movjpuaw0kd86d",
+      "selectedOption": "opt_2",
+      "openText": "明天下午2点"
+    },
+    "outputs": {
+      "success": true,
+      "taskId": {
+        "id": "recviWuoaQD3pk",
+        "title": "投资人电话会议",
+        "status": "pending",
+        "priority": "medium",
+        "start_date": "明天",
+        "start_time": "10:00",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "source": "semantic",
+        "created_at": "2026-05-07T13:52:44.670Z",
+        "updated_at": "2026-05-07T13:52:44.670Z",
+        "record_id": "recviWuoaQD3pk"
+      }
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_f185693e09bf",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:52:48.647Z",
+    "durationMs": 10914,
+    "inputs": {
+      "userInput": "帮我看看今晚和明天的安排"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_88215d7324e4",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:53:00.486Z",
+    "durationMs": 13011,
+    "inputs": {
+      "userInput": "买完了，在回家路上"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_18081e57fb77",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T13:53:30.272Z",
+    "durationMs": 10553,
+    "inputs": {
+      "contextId": "ctx_movjr066uepwov",
+      "selectedOption": "open",
+      "openText": "下班买牛奶鸡蛋"
+    },
+    "outputs": {
+      "success": true,
+      "taskId": {
+        "id": "recviWuBZOwIv9",
+        "title": "买牛奶鸡蛋",
+        "status": "pending",
+        "priority": "medium",
+        "category": "购物",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "created_at": "2026-05-07T13:53:37.833Z",
+        "updated_at": "2026-05-07T13:53:37.833Z",
+        "record_id": "recviWuBZOwIv9"
+      }
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_74236c8df6a7",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:53:40.832Z",
+    "durationMs": 9996,
+    "inputs": {
+      "userInput": "早上好，今天什么安排？"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_10631f0fd1fb",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:53:51.708Z",
+    "durationMs": 10903,
+    "inputs": {
+      "userInput": "帮我订个今晚的位子，要安静点的"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_994998f57996",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T13:54:07.569Z",
+    "durationMs": 11934,
+    "inputs": {
+      "contextId": "ctx_movjrsy6di9sl1",
+      "selectedOption": "opt_2",
+      "openText": "帮我推荐一个安静的"
+    },
+    "outputs": {
+      "success": true,
+      "taskId": {
+        "id": "recviWuM7PCVfK",
+        "title": "订今晚的位子",
+        "status": "pending",
+        "priority": "medium",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "created_at": "2026-05-07T13:54:16.790Z",
+        "updated_at": "2026-05-07T13:54:16.790Z",
+        "record_id": "recviWuM7PCVfK"
+      }
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_7b02db2939a4",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:54:19.512Z",
+    "durationMs": 11215,
+    "inputs": {
+      "userInput": "明天的客户拜访改到周三上午"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_5b9bd5e783a7",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T13:54:47.360Z",
+    "durationMs": 9593,
+    "inputs": {
+      "contextId": "ctx_movjsnnk7qbrck",
+      "selectedOption": "open",
+      "openText": "改到周三上午9点"
+    },
+    "outputs": {
+      "success": false,
+      "error": "未找到指定的任务"
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_211276b31269",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:54:56.958Z",
+    "durationMs": 10002,
+    "inputs": {
+      "userInput": "帮我记一下，今天和王总聊了三个要点"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_4e6d1946047f",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T13:55:22.083Z",
+    "durationMs": 20458,
+    "inputs": {
+      "contextId": "ctx_movjteg2n0mcer",
+      "selectedOption": "open",
+      "openText": "客户对价格还是有顾虑，交期可以接受，想独家合作三个月试运行"
+    },
+    "outputs": {
+      "success": true,
+      "taskId": {
+        "id": "recviWv70Qe9tG",
+        "title": "记录与王总会议要点",
+        "description": "和王总聊了三个要点",
+        "status": "pending",
+        "priority": "medium",
+        "category": "工作",
+        "start_date": "2026-05-07",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "icloud_event_id": "1778162139864-c8zrd43n8@caldav.icloud.com",
+        "source": "semantic",
+        "created_at": "2026-05-07T13:55:37.055Z",
+        "updated_at": "2026-05-07T13:55:37.055Z",
+        "record_id": "recviWv70Qe9tG"
+      }
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_1aa9e16c6095",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:55:42.551Z",
+    "durationMs": 6685,
+    "inputs": {
+      "userInput": "今天怎么样？"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_61d100d4c026",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T13:55:58.754Z",
+    "durationMs": 13942,
+    "inputs": {
+      "contextId": "ctx_movju6qowmn0fc",
+      "openText": "客户快到了，准备一下会议室",
+      "cancel": false
+    },
+    "outputs": {
+      "success": true,
+      "taskId": {
+        "id": "recviWvfzIXl6j",
+        "title": "准备会议室",
+        "status": "pending",
+        "priority": "high",
+        "category": "工作",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "created_at": "2026-05-07T13:56:09.944Z",
+        "updated_at": "2026-05-07T13:56:09.944Z",
+        "record_id": "recviWvfzIXl6j"
+      }
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_8dfe72afb9f1",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:56:12.703Z",
+    "durationMs": 10828,
+    "inputs": {
+      "userInput": "谈成了！帮我记录一下"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_b9eebd9b3f4f",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T13:56:28.654Z",
+    "durationMs": 24286,
+    "inputs": {
+      "contextId": "ctx_movjutt8nj4ran",
+      "selectedOption": "open",
+      "openText": "深圳客户合同签署成功，金额280万，交付周期6个月"
+    },
+    "outputs": {
+      "success": true,
+      "taskId": {
+        "id": "recviWvpRc4iHB",
+        "title": "谈成了",
+        "description": "合同签署成功，金额280万，交付周期6个月",
+        "status": "pending",
+        "priority": "medium",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "created_at": "2026-05-07T13:56:49.292Z",
+        "updated_at": "2026-05-07T13:56:49.292Z",
+        "record_id": "recviWvpRc4iHB"
+      }
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_8c8864a284ba",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:56:52.947Z",
+    "durationMs": 6567,
+    "inputs": {
+      "userInput": "帮我记一下，老师说的暑假安排"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_9b2977311a0d",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T13:57:08.493Z",
+    "durationMs": 21714,
+    "inputs": {
+      "contextId": "ctx_movjvojvl2sipv",
+      "selectedOption": "open",
+      "openText": "暑假7月5日到8月31日，作业7月15日前交，返校日8月30日"
+    },
+    "outputs": {
+      "success": true,
+      "taskId": {
+        "id": "recviWvzJq0hT7",
+        "title": "老师说的暑假安排",
+        "status": "pending",
+        "priority": "medium",
+        "category": "学习",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "created_at": "2026-05-07T13:57:27.406Z",
+        "updated_at": "2026-05-07T13:57:27.406Z",
+        "record_id": "recviWvzJq0hT7"
+      }
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_f1e52b184113",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:57:30.212Z",
+    "durationMs": 30044,
+    "inputs": {
+      "userInput": "家长会结束了，接下来没什么事了吧？"
+    },
+    "outputs": {
+      "success": false,
+      "error": "All LLM providers failed"
+    },
+    "error": "All LLM providers failed"
+  },
+  {
+    "traceId": "trace_36f48424f819",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T13:58:00.260Z",
+    "durationMs": 8077,
+    "inputs": {
+      "userInput": "这周忙完了，帮我总结一下"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_a6c8bdb8a4a5",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T14:09:11.660Z",
+    "durationMs": 8624,
+    "inputs": {
+      "userInput": "今天怎么样？"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_a665e1e41db9",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T14:09:21.420Z",
+    "durationMs": 15500,
+    "inputs": {
+      "userInput": "提醒我今天下午3点开会"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_66fbdd086c11",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T14:09:42.873Z",
+    "durationMs": 11369,
+    "inputs": {
+      "userInput": "上午11点要见一下王总"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_b26dc2de6918",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T14:14:15.715Z",
+    "durationMs": 9470,
+    "inputs": {
+      "userInput": "今天怎么样？"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_c4b00cebdfab",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T14:14:34.079Z",
+    "durationMs": 16145,
+    "inputs": {
+      "contextId": "ctx_movki3bsjikqia",
+      "openText": "提醒我今天下午3点开会",
+      "cancel": false
+    },
+    "outputs": {
+      "success": true,
+      "taskId": {
+        "id": "recviWzVp671R9",
+        "title": "开会",
+        "status": "pending",
+        "priority": "medium",
+        "category": "工作",
+        "start_date": "2026-05-07",
+        "start_time": "15:00",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "icloud_event_id": "1778163287009-dy1l4aqqv@caldav.icloud.com",
+        "source": "semantic",
+        "created_at": "2026-05-07T14:14:43.967Z",
+        "updated_at": "2026-05-07T14:14:43.967Z",
+        "record_id": "recviWzVp671R9"
+      }
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_34c2694599a4",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T14:14:50.231Z",
+    "durationMs": 10812,
+    "inputs": {
+      "userInput": "上午11点要见一下王总"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_07edbe9eb18b",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T14:18:43.988Z",
+    "durationMs": 8671,
+    "inputs": {
+      "contextId": "ctx_movkivprzm6km9",
+      "openText": "今天怎么样？",
+      "cancel": false
+    },
+    "outputs": {
+      "error": "Unexpected token '<', \"<think>\n用户\"... is not valid JSON"
+    },
+    "error": "Unexpected token '<', \"<think>\n用户\"... is not valid JSON"
+  },
+  {
+    "traceId": "trace_a68c2ddb2ebf",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T14:18:52.671Z",
+    "durationMs": 12584,
+    "inputs": {
+      "contextId": "ctx_movkivprzm6km9",
+      "openText": "提醒我今天下午3点开会",
+      "cancel": false
+    },
+    "outputs": {
+      "success": true,
+      "taskId": {
+        "id": "recviWAZNYUjrJ",
+        "title": "见王总",
+        "status": "pending",
+        "priority": "medium",
+        "category": "工作",
+        "start_date": "2026-05-07",
+        "start_time": "11:00",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "icloud_event_id": "1778163542585-7vjyt5lxl@caldav.icloud.com",
+        "source": "semantic",
+        "created_at": "2026-05-07T14:18:59.306Z",
+        "updated_at": "2026-05-07T14:18:59.306Z",
+        "record_id": "recviWAZNYUjrJ"
+      }
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_02e58a8e3a88",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T14:19:05.264Z",
+    "durationMs": 8362,
+    "inputs": {
+      "userInput": "上午11点要见一下王总"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_e44052b9dda9",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T14:19:40.551Z",
+    "durationMs": 5967,
+    "inputs": {
+      "userInput": "������ô����"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_8562d630630a",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T14:20:17.012Z",
+    "durationMs": 25339,
+    "inputs": {
+      "contextId": "ctx_movkp0r78xchhx",
+      "openText": "������ô����",
+      "cancel": false
+    },
+    "outputs": {
+      "success": true,
+      "taskId": {
+        "id": "recviWBpSKVcAH",
+        "status": "pending",
+        "priority": "medium",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "created_at": "2026-05-07T14:20:39.571Z",
+        "updated_at": "2026-05-07T14:20:39.571Z",
+        "record_id": "recviWBpSKVcAH"
+      }
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_147daa067001",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T14:21:26.470Z",
+    "durationMs": 4258,
+    "inputs": {
+      "userInput": "������ô����"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_c5b81e1e203d",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T14:21:56.329Z",
+    "durationMs": 5756,
+    "inputs": {
+      "userInput": "������ô����"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_33ba41c0fed7",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-07T14:22:33.386Z",
+    "durationMs": 12547,
+    "inputs": {
+      "contextId": "ctx_movkrv8l3x0wr3",
+      "openText": "今天怎么样？",
+      "cancel": false
+    },
+    "outputs": {
+      "success": true,
+      "taskId": {
+        "items": [
+          {
+            "id": "9023f63c-5a87-4aa7-9e62-54ef863540a9",
+            "record_id": "recviWqKpBFsnr",
+            "title": "去超市买牛奶和鸡蛋",
+            "priority": "medium",
+            "category": "生活",
+            "created_at": "2026-05-07T13:38:16.796Z",
+            "start_date": "2026-05-07",
+            "start_time": "18:00",
+            "recurrence_type": "none",
+            "description": "下班后",
+            "updated_at": "2026-05-07T13:38:16.796Z",
+            "source": "semantic",
+            "status": "pending",
+            "is_recurring": false
+          },
+          {
+            "id": "d9a23726-3bd8-44b0-ad79-23a338044f06",
+            "record_id": "recviWra72n2Ts",
+            "icloud_event_id": "1778161198427-e9fcrf44v@caldav.icloud.com",
+            "title": "投资人电话会议",
+            "priority": "medium",
+            "created_at": "2026-05-07T13:39:55.606Z",
+            "start_date": "2026-05-07",
+            "start_time": "14:00",
+            "recurrence_type": "none",
+            "updated_at": "2026-05-07T13:39:55.606Z",
+            "source": "semantic",
+            "status": "pending",
+            "is_recurring": false
+          },
+          {
+            "id": "c25958ff-fdf2-4351-b90c-265248188e27",
+            "record_id": "recviWtYlqviHt",
+            "title": "去超市买牛奶和鸡蛋",
+            "priority": "medium",
+            "category": "购物",
+            "created_at": "2026-05-07T13:51:05.440Z",
+            "start_date": "2026-05-07",
+            "start_time": "18:00",
+            "recurrence_type": "none",
+            "updated_at": "2026-05-07T13:51:05.440Z",
+            "source": "semantic",
+            "status": "pending",
+            "is_recurring": false
+          },
+          {
+            "id": "c1db2ed2-5dad-4ca4-be42-e57b28c16422",
+            "record_id": "recviWu867hsnj",
+            "icloud_event_id": "1778161905638-rqw3guiz8@caldav.icloud.com",
+            "title": "见王总 - 补谈合同",
+            "priority": "medium",
+            "category": "工作",
+            "created_at": "2026-05-07T13:51:42.898Z",
+            "start_date": "2026-05-07",
+            "start_time": "11:00",
+            "recurrence_type": "none",
+            "description": "补一下上周没谈完的合同",
+            "updated_at": "2026-05-07T13:51:42.898Z",
+            "source": "semantic",
+            "status": "pending",
+            "is_recurring": false
+          },
+          {
+            "id": "e513e1f3-2109-4cc9-8278-193e015309fd",
+            "record_id": "recviWv70Qe9tG",
+            "icloud_event_id": "1778162139864-c8zrd43n8@caldav.icloud.com",
+            "title": "记录与王总会议要点",
+            "priority": "medium",
+            "category": "工作",
+            "created_at": "2026-05-07T13:55:37.055Z",
+            "start_date": "2026-05-07",
+            "recurrence_type": "none",
+            "description": "和王总聊了三个要点",
+            "updated_at": "2026-05-07T13:55:37.055Z",
+            "source": "semantic",
+            "status": "pending",
+            "is_recurring": false
+          },
+          {
+            "id": "8319fcf8-9b66-4899-8e28-f965c505ffed",
+            "record_id": "recviWyDuPmopj",
+            "icloud_event_id": "1778162979670-dgyn2tx9t@caldav.icloud.com",
+            "title": "开会",
+            "priority": "medium",
+            "category": "工作",
+            "created_at": "2026-05-07T14:09:36.928Z",
+            "start_date": "2026-05-07",
+            "start_time": "15:00",
+            "recurrence_type": "none",
+            "updated_at": "2026-05-07T14:09:36.928Z",
+            "source": "semantic",
+            "status": "pending",
+            "is_recurring": false
+          },
+          {
+            "id": "e17270af-ad97-4f51-84db-6c04d8f92689",
+            "record_id": "recviWzVp671R9",
+            "icloud_event_id": "1778163287009-dy1l4aqqv@caldav.icloud.com",
+            "title": "开会",
+            "priority": "medium",
+            "category": "工作",
+            "created_at": "2026-05-07T14:14:43.967Z",
+            "start_date": "2026-05-07",
+            "start_time": "15:00",
+            "recurrence_type": "none",
+            "updated_at": "2026-05-07T14:14:43.967Z",
+            "source": "semantic",
+            "status": "pending",
+            "is_recurring": false
+          },
+          {
+            "id": "d4452072-3fa7-43bb-a0cd-05aad463a80f",
+            "record_id": "recviWAZNYUjrJ",
+            "icloud_event_id": "1778163542585-7vjyt5lxl@caldav.icloud.com",
+            "title": "见王总",
+            "priority": "medium",
+            "category": "工作",
+            "created_at": "2026-05-07T14:18:59.306Z",
+            "start_date": "2026-05-07",
+            "start_time": "11:00",
+            "recurrence_type": "none",
+            "updated_at": "2026-05-07T14:18:59.306Z",
+            "source": "semantic",
+            "status": "pending",
+            "is_recurring": false
+          },
+          {
+            "id": "08e79e3d-5c05-448b-9bb7-880ae7704ef4",
+            "record_id": "recviWB3vuwSAP",
+            "icloud_event_id": "1778163556338-w9jtwajgg@caldav.icloud.com",
+            "title": "与王总会面",
+            "priority": "medium",
+            "category": "工作",
+            "created_at": "2026-05-07T14:19:13.639Z",
+            "start_date": "2026-05-07",
+            "start_time": "11:00",
+            "recurrence_type": "none",
+            "updated_at": "2026-05-07T14:19:13.639Z",
+            "source": "semantic",
+            "status": "pending",
+            "is_recurring": false
+          }
+        ],
+        "total": 9
+      }
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_0557f444f98a",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T14:22:45.941Z",
+    "durationMs": 16527,
+    "inputs": {
+      "userInput": "提醒我今天下午3点开会"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_20addaad2795",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-07T14:23:09.283Z",
+    "durationMs": 21259,
+    "inputs": {
+      "userInput": "上午11点要见一下王总"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_0623ef72234a",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T02:36:14.004Z",
+    "durationMs": 2664,
+    "inputs": {
+      "userInput": "你好",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_9a16792a3bbf",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-09T02:39:56.932Z",
+    "durationMs": 12885,
+    "inputs": {
+      "contextId": "ctx_moxqg3l43h6c05",
+      "openText": "我下个礼拜还有些什么安排？",
+      "cancel": false
+    },
+    "outputs": {
+      "success": true,
+      "taskId": {
+        "items": [
+          {
+            "id": "d97d008e-037a-4de0-9930-229fde80996b",
+            "record_id": "recviWqdOuNyMv",
+            "icloud_event_id": "1778160974385-dd48nnsw3@caldav.icloud.com",
+            "title": "管理层周会",
+            "priority": "medium",
+            "category": "工作",
+            "created_at": "2026-05-07T13:36:11.259Z",
+            "start_date": "2026-05-11",
+            "start_time": "09:00",
+            "recurrence_type": "none",
+            "updated_at": "2026-05-07T13:36:11.259Z",
+            "source": "api",
+            "status": "pending",
+            "end_time": "10:00",
+            "is_recurring": false
+          },
+          {
+            "id": "a890ba88-dd97-4949-b5a3-1036bc39920e",
+            "record_id": "recviWqfrWMclx",
+            "icloud_event_id": "1778160981039-inloh8qc0@caldav.icloud.com",
+            "title": "产品进度汇报",
+            "priority": "medium",
+            "category": "工作",
+            "created_at": "2026-05-07T13:36:17.850Z",
+            "start_date": "2026-05-11",
+            "start_time": "10:30",
+            "recurrence_type": "none",
+            "updated_at": "2026-05-07T13:36:17.850Z",
+            "source": "api",
+            "status": "pending",
+            "end_time": "11:30",
+            "is_recurring": false
+          },
+          {
+            "id": "18ab6658-182f-4500-9fee-50e569610660",
+            "record_id": "recviWqh01MzyX",
+            "icloud_event_id": "1778160986665-jq47o0ais@caldav.icloud.com",
+            "title": "投资人电话会议",
+            "priority": "medium",
+            "category": "工作",
+            "created_at": "2026-05-07T13:36:23.850Z",
+            "start_date": "2026-05-11",
+            "start_time": "14:00",
+            "recurrence_type": "none",
+            "updated_at": "2026-05-07T13:36:23.850Z",
+            "source": "api",
+            "status": "pending",
+            "end_time": "15:00",
+            "is_recurring": false
+          },
+          {
+            "id": "a4caa6bb-3976-4853-b54d-3868ea16c3b6",
+            "record_id": "recviWqivnnWZy",
+            "icloud_event_id": "1778160992610-btkhjemp6@caldav.icloud.com",
+            "title": "产品评审会",
+            "priority": "medium",
+            "category": "工作",
+            "created_at": "2026-05-07T13:36:29.617Z",
+            "start_date": "2026-05-11",
+            "start_time": "17:00",
+            "recurrence_type": "none",
+            "updated_at": "2026-05-07T13:36:29.617Z",
+            "source": "api",
+            "status": "pending",
+            "end_time": "18:00",
+            "is_recurring": false
+          },
+          {
+            "id": "bdd32a27-47b1-4b6b-bce3-f2121b4ad0bc",
+            "record_id": "recviWqk3Lmybc",
+            "icloud_event_id": "1778160998368-oi3foco5o@caldav.icloud.com",
+            "title": "客户拜访（深圳）",
+            "priority": "medium",
+            "category": "工作",
+            "created_at": "2026-05-07T13:36:35.357Z",
+            "start_date": "2026-05-12",
+            "start_time": "10:00",
+            "recurrence_type": "none",
+            "updated_at": "2026-05-07T13:36:35.357Z",
+            "source": "api",
+            "status": "pending",
+            "end_time": "11:00",
+            "is_recurring": false
+          },
+          {
+            "id": "4cb4a762-21ae-48b1-b1a6-25aa4be27b49",
+            "record_id": "recviWqltdPfaE",
+            "title": "孩子家长会",
+            "priority": "medium",
+            "category": "家庭",
+            "created_at": "2026-05-07T13:36:40.960Z",
+            "start_date": "2026-05-13",
+            "start_time": "14:00",
+            "recurrence_type": "none",
+            "updated_at": "2026-05-07T13:36:40.960Z",
+            "source": "api",
+            "status": "pending",
+            "end_time": "16:00",
+            "is_recurring": false
+          },
+          {
+            "id": "7dbc51de-051c-4af8-9908-650b8eae552a",
+            "record_id": "recviWMzgVxyfj",
+            "icloud_event_id": "1778166302638-938u1dbxw@caldav.icloud.com",
+            "title": "新标题",
+            "priority": "low",
+            "category": "个人",
+            "created_at": "2026-05-07T15:04:57.447Z",
+            "start_date": "2026-05-15",
+            "start_time": "14:00",
+            "recurrence_type": "none",
+            "due_date": "2026-06-01",
+            "description": "新描述",
+            "updated_at": "2026-05-07T15:05:00.574Z",
+            "status": "pending",
+            "end_time": "15:00",
+            "is_recurring": false
+          },
+          {
+            "id": "f71cc730-26be-46c1-aaba-4949c76fff0e",
+            "record_id": "recviWMMXLKgra",
+            "title": "每周循环任务",
+            "priority": "medium",
+            "created_at": "2026-05-07T15:05:50.107Z",
+            "start_date": "2026-05-11",
+            "recurrence_type": "weekly",
+            "due_date": "2026-05-11",
+            "is_recurring": true,
+            "updated_at": "2026-05-07T15:05:50.107Z",
+            "parent_id": "501b11ee-200d-4849-b7ab-54559251fa71",
+            "status": "pending"
+          },
+          {
+            "id": "a58f4832-afc7-45a0-9631-42d36588631d",
+            "record_id": "recviWO5F2qRBZ",
+            "icloud_event_id": "1778166665475-2wfs32t20@caldav.icloud.com",
+            "title": "新标题",
+            "priority": "low",
+            "category": "个人",
+            "created_at": "2026-05-07T15:11:00.370Z",
+            "start_date": "2026-05-15",
+            "start_time": "14:00",
+            "recurrence_type": "none",
+            "due_date": "2026-06-01",
+            "description": "新描述",
+            "updated_at": "2026-05-07T15:11:03.444Z",
+            "status": "pending",
+            "end_time": "15:00",
+            "is_recurring": false
+          },
+          {
+            "id": "0c9c591a-f033-4df1-b5d3-25432d6ae1b4",
+            "record_id": "recviWOiLQZtyk",
+            "title": "每周循环任务",
+            "priority": "medium",
+            "created_at": "2026-05-07T15:11:50.696Z",
+            "start_date": "2026-05-11",
+            "recurrence_type": "weekly",
+            "due_date": "2026-05-11",
+            "is_recurring": true,
+            "updated_at": "2026-05-07T15:11:50.696Z",
+            "parent_id": "2c30e1d1-9650-4e83-8b76-c4dc86644241",
+            "status": "pending"
+          },
+          {
+            "id": "b441f5f1-c8a3-424e-b912-5cb092016b28",
+            "record_id": "recviWPD1QzroH",
+            "icloud_event_id": "1778167031768-t6udyt0g9@caldav.icloud.com",
+            "title": "新标题",
+            "priority": "low",
+            "category": "个人",
+            "created_at": "2026-05-07T15:17:06.930Z",
+            "start_date": "2026-05-15",
+            "start_time": "14:00",
+            "recurrence_type": "none",
+            "due_date": "2026-06-01",
+            "description": "新描述",
+            "updated_at": "2026-05-07T15:17:10.046Z",
+            "status": "pending",
+            "end_time": "15:00",
+            "is_recurring": false
+          },
+          {
+            "id": "ec898a35-9c4e-4f1a-944b-cbefda50c63b",
+            "record_id": "recviWPRvz6AsA",
+            "title": "每周循环任务",
+            "priority": "medium",
+            "created_at": "2026-05-07T15:18:02.566Z",
+            "start_date": "2026-05-11",
+            "recurrence_type": "weekly",
+            "due_date": "2026-05-11",
+            "is_recurring": true,
+            "updated_at": "2026-05-07T15:18:02.566Z",
+            "parent_id": "fcda1858-523d-4374-9c0c-13f8459a8da1",
+            "status": "pending"
+          },
+          {
+            "id": "7ce766b5-154a-435f-9331-f38ed02761a5",
+            "record_id": "recvj2bpulS7GB",
+            "icloud_event_id": "1778246104095-h314a6p9e@caldav.icloud.com",
+            "title": "新标题",
+            "priority": "low",
+            "category": "个人",
+            "created_at": "2026-05-08T13:14:58.903Z",
+            "start_date": "2026-05-15",
+            "start_time": "14:00",
+            "recurrence_type": "none",
+            "due_date": "2026-06-01",
+            "description": "新描述",
+            "updated_at": "2026-05-08T13:15:02.210Z",
+            "status": "pending",
+            "end_time": "15:00",
+            "is_recurring": false
+          },
+          {
+            "id": "6cbf1ce3-af43-4983-8753-f45f06d4524e",
+            "record_id": "recvj2bDGNcN6C",
+            "title": "每周循环任务",
+            "priority": "medium",
+            "created_at": "2026-05-08T13:15:53.467Z",
+            "start_date": "2026-05-11",
+            "recurrence_type": "weekly",
+            "due_date": "2026-05-11",
+            "is_recurring": true,
+            "updated_at": "2026-05-08T13:15:53.467Z",
+            "parent_id": "7bbbe6fd-1892-42cf-971e-0acf5d3195ca",
+            "status": "pending"
+          },
+          {
+            "id": "53505be2-1161-4569-b33e-864af1a1e02d",
+            "record_id": "recvj2nbIFns4E",
+            "icloud_event_id": "1778248911083-ugsjj285l@caldav.icloud.com",
+            "title": "新标题",
+            "priority": "low",
+            "category": "个人",
+            "created_at": "2026-05-08T14:01:45.988Z",
+            "start_date": "2026-05-15",
+            "start_time": "14:00",
+            "recurrence_type": "none",
+            "due_date": "2026-06-01",
+            "description": "新描述",
+            "updated_at": "2026-05-08T14:01:49.204Z",
+            "status": "pending",
+            "end_time": "15:00",
+            "is_recurring": false
+          },
+          {
+            "id": "19c56427-a50f-495a-b81c-085c116daaa4",
+            "record_id": "recvj2npUti3LD",
+            "title": "每周循环任务",
+            "priority": "medium",
+            "created_at": "2026-05-08T14:02:40.546Z",
+            "start_date": "2026-05-11",
+            "recurrence_type": "weekly",
+            "due_date": "2026-05-11",
+            "is_recurring": true,
+            "updated_at": "2026-05-08T14:02:40.546Z",
+            "parent_id": "d309c997-5ce4-4ae3-90f8-0721aab85420",
+            "status": "pending"
+          }
+        ],
+        "total": 16
+      }
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_128e82a12d06",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T02:47:19.024Z",
+    "durationMs": 14945,
+    "inputs": {
+      "userInput": "好像什么日程也没有，是没有查到吗？",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_7f0aa25f9ed1",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T02:51:29.324Z",
+    "durationMs": 17131,
+    "inputs": {
+      "userInput": "帮我安排周一下午产品组组会",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_f37aade9936f",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T02:53:21.228Z",
+    "durationMs": 14236,
+    "inputs": {
+      "userInput": "帮我创建周一下午的产品组组会",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_77d5c16984b3",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T03:07:53.218Z",
+    "durationMs": 17114,
+    "inputs": {
+      "userInput": "帮我安排周一下午产品组组会",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_f29839da6c33",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-09T03:08:38.833Z",
+    "durationMs": 16335,
+    "inputs": {
+      "contextId": "ctx_moxrl0zy0p4hd8",
+      "openText": "抱歉，我没能理解您的意思。请试试说\"帮我创建任务\"或\"今天有什么安排\"。",
+      "cancel": false
+    },
+    "outputs": {
+      "success": true,
+      "taskId": {
+        "id": "recvj5zlaqzvuF",
+        "title": "产品组组会",
+        "status": "pending",
+        "priority": "medium",
+        "category": "工作会议",
+        "start_date": "2026-05-09",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "source": "semantic",
+        "created_at": "2026-05-09T03:08:51.693Z",
+        "updated_at": "2026-05-09T03:08:51.693Z",
+        "record_id": "recvj5zlaqzvuF"
+      }
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_cf880dbb7df0",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T03:10:08.803Z",
+    "durationMs": 15383,
+    "inputs": {
+      "userInput": "现在重启新的进程",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_1e2be220efbb",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T03:10:39.140Z",
+    "durationMs": 14152,
+    "inputs": {
+      "userInput": "帮我安排周一下午产品组组会",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_e7eae763d585",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-09T03:12:24.907Z",
+    "durationMs": 9913,
+    "inputs": {
+      "contextId": "ctx_moxrojnohjxcbr",
+      "openText": "下午6点",
+      "cancel": false
+    },
+    "outputs": {
+      "success": true,
+      "taskId": {
+        "id": "recvj5AfqRU95k",
+        "title": "产品组组会",
+        "status": "pending",
+        "priority": "medium",
+        "category": "工作",
+        "start_date": "2026-05-11",
+        "start_time": "14:00",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "icloud_event_id": "1778296351330-vhnkuo0tb@caldav.icloud.com",
+        "source": "semantic",
+        "created_at": "2026-05-09T03:12:28.138Z",
+        "updated_at": "2026-05-09T03:12:28.138Z",
+        "record_id": "recvj5AfqRU95k"
+      }
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_04f568ed6c9a",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T04:53:07.036Z",
+    "durationMs": 11943,
+    "inputs": {
+      "userInput": "帮我安排周一下午产品组组会",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_da7feb85f801",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T04:56:39.724Z",
+    "durationMs": 14255,
+    "inputs": {
+      "userInput": "帮我安排周一下午产品组组会",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_f02cbc9c7fd2",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T05:04:20.715Z",
+    "durationMs": 12227,
+    "inputs": {
+      "userInput": "帮我安排周一下午产品组组会",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_41572ed487e8",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T05:11:37.055Z",
+    "durationMs": 11600,
+    "inputs": {
+      "userInput": "帮我安排周一下午产品组组会",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_885b4989df3d",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T05:12:22.692Z",
+    "durationMs": 13443,
+    "inputs": {
+      "userInput": "14:00",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_e1a0aa5e2eb9",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T05:33:36.026Z",
+    "durationMs": 13357,
+    "inputs": {
+      "userInput": "帮我安排周一下午产品组组会",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_1c6b585fbb0f",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-09T05:34:16.417Z",
+    "durationMs": 16365,
+    "inputs": {
+      "contextId": "ctx_moxwsg9xjv0lwz",
+      "openText": "b",
+      "cancel": false
+    },
+    "outputs": {
+      "success": true,
+      "taskId": {
+        "id": "recvj69ZrdB638",
+        "title": "产品组组会",
+        "status": "pending",
+        "priority": "medium",
+        "category": "工作",
+        "start_date": "2026-05-09",
+        "start_time": "14:00",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "icloud_event_id": "1778304869711-zrb1qoblk@caldav.icloud.com",
+        "source": "semantic",
+        "created_at": "2026-05-09T05:34:26.506Z",
+        "updated_at": "2026-05-09T05:34:26.506Z",
+        "record_id": "recvj69ZrdB638"
+      }
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_3121a2acdc05",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T05:47:48.226Z",
+    "durationMs": 10093,
+    "inputs": {
+      "userInput": "删除下周一的会议安排",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_4ee96dc123cc",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T05:48:28.942Z",
+    "durationMs": 7789,
+    "inputs": {
+      "userInput": "确认删除",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_ff261a238d51",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T06:01:14.172Z",
+    "durationMs": 11521,
+    "inputs": {
+      "userInput": "删除下周一的会议安排",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_8671785ad9de",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-09T06:02:01.269Z",
+    "durationMs": 1496,
+    "inputs": {
+      "contextId": "ctx_moxxrshxsj6egr",
+      "selectedOption": "opt_1",
+      "cancel": false
+    },
+    "outputs": {
+      "success": false,
+      "error": "未找到要删除的任务"
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_585637fcaa91",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T06:24:14.695Z",
+    "durationMs": 10778,
+    "inputs": {
+      "userInput": "删除下周一的会议安排",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_9364fc66f441",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-09T06:24:48.713Z",
+    "durationMs": 3500,
+    "inputs": {
+      "contextId": "ctx_moxyli3rcrat3a",
+      "selectedOption": "opt_1",
+      "cancel": false
+    },
+    "outputs": {
+      "success": true,
+      "taskId": {
+        "deleted": 1
+      }
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_d5d5038843e9",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T06:25:38.096Z",
+    "durationMs": 17153,
+    "inputs": {
+      "userInput": "下周一下午帮我安排一个产品组会",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_a2fee3efff82",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-09T06:26:28.162Z",
+    "durationMs": 17813,
+    "inputs": {
+      "contextId": "ctx_moxynf27aoqhcm",
+      "openText": "选第一个",
+      "cancel": false
+    },
+    "outputs": {
+      "success": true,
+      "taskId": {
+        "id": "recvj6n8gTcTw0",
+        "title": "产品组会",
+        "status": "pending",
+        "priority": "medium",
+        "category": "工作",
+        "start_date": "2026-05-09",
+        "start_time": "14:00",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "icloud_event_id": "1778308002347-1m3h53wcq@caldav.icloud.com",
+        "source": "semantic",
+        "created_at": "2026-05-09T06:26:38.953Z",
+        "updated_at": "2026-05-09T06:26:38.953Z",
+        "record_id": "recvj6n8gTcTw0"
+      }
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_385f18a9e2ee",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T06:53:33.115Z",
+    "durationMs": 14545,
+    "inputs": {
+      "userInput": "删除所有的任务安排",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_017e6750c939",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T06:54:16.116Z",
+    "durationMs": 4544,
+    "inputs": {
+      "userInput": "是的，确认删除",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_474daa5a5bc5",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T07:03:32.777Z",
+    "durationMs": 14914,
+    "inputs": {
+      "userInput": "删除所有的任务安排",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_69cfc18e60ee",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-09T07:04:02.352Z",
+    "durationMs": 5213,
+    "inputs": {
+      "contextId": "ctx_moxzzyxx13zl11",
+      "selectedOption": "opt_1",
+      "cancel": false
+    },
+    "outputs": {
+      "success": true,
+      "taskId": {
+        "deleted": 1
+      }
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_e910a07e24e5",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T07:04:57.502Z",
+    "durationMs": 13695,
+    "inputs": {
+      "userInput": "安排下周一下午产品组例会",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_c742f99fe39f",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-09T07:05:59.452Z",
+    "durationMs": 18556,
+    "inputs": {
+      "contextId": "ctx_moy01ztgkg8ydy",
+      "openText": "没问题，确认",
+      "cancel": false
+    },
+    "outputs": {
+      "success": true,
+      "taskId": {
+        "id": "recvj6x5mtrtnK",
+        "title": "产品组例会",
+        "status": "pending",
+        "priority": "medium",
+        "category": "工作",
+        "start_date": "2026-05-09",
+        "start_time": "14:00",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "icloud_event_id": "1778310374811-gd55qt6nw@caldav.icloud.com",
+        "source": "semantic",
+        "created_at": "2026-05-09T07:06:06.893Z",
+        "updated_at": "2026-05-09T07:06:06.893Z",
+        "record_id": "recvj6x5mtrtnK"
+      }
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_0716b978b1da",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T07:06:43.228Z",
+    "durationMs": 10878,
+    "inputs": {
+      "userInput": "把刚才创建的那个会议调整到下午4点",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_dee319761ecf",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T07:52:17.706Z",
+    "durationMs": 29864,
+    "inputs": {
+      "userInput": "安排下周二下午3点的拓展组会议",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_4a0889caace5",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T07:54:33.714Z",
+    "durationMs": 8513,
+    "inputs": {
+      "userInput": "把刚才创建的会议的时间从3点到4点改成3点到3:30",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_79b192039233",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-09T07:54:57.689Z",
+    "durationMs": 3799,
+    "inputs": {
+      "contextId": "ctx_moy1tb6yil6zrt",
+      "selectedOption": "opt_1",
+      "cancel": false
+    },
+    "outputs": {
+      "success": true,
+      "taskId": {
+        "id": "afce7d4a-825b-406c-8d8c-6bf2499ca51d",
+        "record_id": "recvj6IP0DOBrX",
+        "icloud_event_id": "1778313171422-z7yof8j2u@caldav.icloud.com",
+        "title": "拓展组会议",
+        "priority": "medium",
+        "category": "工作",
+        "created_at": "2026-05-09T07:52:47.581Z",
+        "start_date": "2026-05-12",
+        "start_time": "15:00",
+        "recurrence_type": "none",
+        "updated_at": "2026-05-09T07:54:58.411Z",
+        "source": "semantic",
+        "status": "pending",
+        "end_time": "15:30",
+        "is_recurring": false
+      }
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_8200bf00cae6",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T07:56:06.082Z",
+    "durationMs": 10405,
+    "inputs": {
+      "userInput": "创建任务，每周六晚上6:30到8:30，妙妙的围棋课",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_2c5a1e439ed4",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T08:23:39.120Z",
+    "durationMs": 14016,
+    "inputs": {
+      "userInput": "把刚刚的任务改成家庭共享日历",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_86e5c5d56dcb",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T08:35:03.606Z",
+    "durationMs": 38921,
+    "inputs": {
+      "userInput": "不要修改标题，就把刚刚那个任务的分类改为家庭日历",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_29f0b0335759",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-09T08:36:22.002Z",
+    "durationMs": 17152,
+    "inputs": {
+      "contextId": "ctx_moy3abqhqfc4c8",
+      "openText": "修改成家庭共享日历",
+      "cancel": false
+    },
+    "outputs": {
+      "success": false,
+      "error": "未找到指定的任务"
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_eb67d2f24124",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T08:47:02.241Z",
+    "durationMs": 12360,
+    "inputs": {
+      "userInput": "把每周二的妙妙围棋课从工作日历改成家庭共享日历",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_81026f274953",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-09T08:47:55.889Z",
+    "durationMs": 10496,
+    "inputs": {
+      "contextId": "ctx_moy3p2gdcgfs4c",
+      "openText": "好的",
+      "cancel": false
+    },
+    "outputs": {
+      "success": true,
+      "taskId": {
+        "id": "recvj6WJjkRuju",
+        "title": "妙妙围棋课",
+        "status": "pending",
+        "priority": "medium",
+        "is_recurring": false,
+        "recurrence_type": "none",
+        "created_at": "2026-05-09T08:48:02.917Z",
+        "updated_at": "2026-05-09T08:48:02.917Z",
+        "record_id": "recvj6WJjkRuju"
+      }
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_1068e6bf5d09",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T09:10:07.719Z",
+    "durationMs": 10156,
+    "inputs": {
+      "userInput": "把妙妙的围棋课的分类改为家庭共享",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_8bce3b8eaf62",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T09:18:54.505Z",
+    "durationMs": 8269,
+    "inputs": {
+      "userInput": "把妙妙的围棋课的分类改为家庭共享",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_508e020bb95d",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T09:45:52.413Z",
+    "durationMs": 13044,
+    "inputs": {
+      "userInput": "把妙妙的围棋课的分类改为家庭共享",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_ed42ac513e59",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T11:27:34.774Z",
+    "durationMs": 10293,
+    "inputs": {
+      "userInput": "把所有的任务都删除",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_d129e673e8c5",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-09T11:28:04.381Z",
+    "durationMs": 9522,
+    "inputs": {
+      "contextId": "ctx_moy9fdymvp18vz",
+      "selectedOption": "opt_1",
+      "cancel": false
+    },
+    "outputs": {
+      "success": true,
+      "taskId": {
+        "deleted": 4
+      }
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_f305013b7917",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T11:28:52.766Z",
+    "durationMs": 11187,
+    "inputs": {
+      "userInput": "帮我安排每周六下午6:30到8:30妙妙的围棋课",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_d6a09d6f39f1",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T11:35:24.737Z",
+    "durationMs": 13819,
+    "inputs": {
+      "userInput": "帮我把memory的围棋课调整到家庭共享分类",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_bad3b7f3fbe2",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-09T11:35:45.193Z",
+    "durationMs": 2736,
+    "inputs": {
+      "contextId": "ctx_moy9pftfc33rta",
+      "selectedOption": "opt_1",
+      "cancel": false
+    },
+    "outputs": {
+      "success": true,
+      "taskId": {
+        "id": "59e6a86a-62c8-4352-9135-2af5e63616c3",
+        "record_id": "recvj7BgtPJs0g",
+        "title": "妙妙的围棋课",
+        "priority": "medium",
+        "category": "课程",
+        "created_at": "2026-05-09T11:29:03.964Z",
+        "start_date": "2026-05-09",
+        "start_time": "18:30",
+        "recurrence_type": "weekly",
+        "recurrence_rule": "RRULE:FREQ=WEEKLY;COUNT=10",
+        "is_recurring": true,
+        "updated_at": "2026-05-09T11:35:45.919Z",
+        "source": "semantic",
+        "status": "pending",
+        "end_time": "20:30"
+      }
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_5c3e75174e46",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T12:01:23.836Z",
+    "durationMs": 11548,
+    "inputs": {
+      "userInput": "帮我把妙妙的围棋课调整到家庭共享分类",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_485c0d246a88",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T12:30:34.023Z",
+    "durationMs": 11280,
+    "inputs": {
+      "userInput": "帮我把妙妙的围棋课调整到家庭共享分类",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_d83509bbe9dd",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-09T12:31:32.668Z",
+    "durationMs": 5914,
+    "inputs": {
+      "contextId": "ctx_moybobbba1fsik",
+      "selectedOption": "opt_1",
+      "cancel": false
+    },
+    "outputs": {
+      "success": true,
+      "taskId": {
+        "id": "59e6a86a-62c8-4352-9135-2af5e63616c3",
+        "record_id": "recvj7BgtPJs0g",
+        "title": "妙妙的围棋课",
+        "priority": "medium",
+        "category": "家庭共享",
+        "created_at": "2026-05-09T11:29:03.964Z",
+        "start_date": "2026-05-09",
+        "start_time": "18:30",
+        "recurrence_type": "weekly",
+        "recurrence_rule": "RRULE:FREQ=WEEKLY;COUNT=10",
+        "is_recurring": true,
+        "updated_at": "2026-05-09T12:31:33.496Z",
+        "source": "semantic",
+        "status": "pending",
+        "end_time": "20:30",
+        "icloud_event_id": "1778329895519-1854jlv6z@caldav.icloud.com"
+      }
+    },
+    "error": null
+  },
+  {
+    "traceId": "trace_1736b001f8eb",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T13:01:46.031Z",
+    "durationMs": 8067,
+    "inputs": {
+      "userInput": "帮我安排个高优先级的任务，看下保险",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_d1ce829f2729",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T13:13:04.787Z",
+    "durationMs": 20317,
+    "inputs": {
+      "userInput": "每个月24号还招商银行信用卡",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": {
+      "success": false,
+      "error": "Unexpected token '这', \"这里有几个关键点需要\"... is not valid JSON"
+    },
+    "error": "Unexpected token '这', \"这里有几个关键点需要\"... is not valid JSON"
+  },
+  {
+    "traceId": "trace_57970091b7b2",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T13:14:23.347Z",
+    "durationMs": 17089,
+    "inputs": {
+      "userInput": "帮我创建任务，每个月24号还招商银行信用卡",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_f17e6f4d3062",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T13:22:29.703Z",
+    "durationMs": 12670,
+    "inputs": {
+      "userInput": "帮我创建任务，每个月24日，还招商银行信用卡",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_c60503532ae7",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T13:29:55.673Z",
+    "durationMs": 16849,
+    "inputs": {
+      "userInput": "帮我创建任务，每个月24日，还招商银行信用卡",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_db5e3fdaaa6c",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T13:33:19.380Z",
+    "durationMs": 14368,
+    "inputs": {
+      "userInput": "帮我创建任务，每个月24日，还招商银行信用卡",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_316b00a3b5f8",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T13:36:50.400Z",
+    "durationMs": 7205,
+    "inputs": {
+      "userInput": "删除刚创建的任务",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_7376c6c8446f",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T13:37:40.676Z",
+    "durationMs": 15548,
+    "inputs": {
+      "userInput": "1",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_a0112d61021f",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T13:38:24.102Z",
+    "durationMs": 18612,
+    "inputs": {
+      "userInput": "删除还招商银行信用卡的任务",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_993442e9aff2",
+    "parentTraceId": null,
+    "operationName": "semantic.understand",
+    "startTime": "2026-05-09T13:39:27.137Z",
+    "durationMs": 22813,
+    "inputs": {
+      "userInput": "我要删除还招商银行信用卡的任务",
+      "userId": "ou_c64cae9864ddc0435ce780fca83addda"
+    },
+    "outputs": null,
+    "error": null
+  },
+  {
+    "traceId": "trace_538b6a695ace",
+    "parentTraceId": null,
+    "operationName": "semantic.confirm",
+    "startTime": "2026-05-09T13:42:38.836Z",
+    "durationMs": 4285,
+    "inputs": {
+      "contextId": "ctx_moye3pj8qnql4e",
+      "selectedOption": "opt_1",
+      "cancel": false
+    },
+    "outputs": {
+      "success": true,
+      "taskId": {
+        "deleted": 1,
+        "seriesDeleted": 1
+      }
+    },
+    "error": null
+  }
+]

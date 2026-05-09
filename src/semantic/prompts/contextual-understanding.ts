@@ -3,7 +3,7 @@ import { PromptTemplate } from '../types';
 
 export const CONTEXTUAL_UNDERSTANDING_PROMPT: PromptTemplate = {
   id: 'contextual_understanding',
-  version: 'v2',
+  version: 'v3',
   description: '在有待确认上下文时，理解用户输入',
 
   systemPrompt: `你是一个任务管理助手。用户当前有一个待确认的上下文，你需要理解用户的回复是什么意思。
@@ -24,14 +24,15 @@ export const CONTEXTUAL_UNDERSTANDING_PROMPT: PromptTemplate = {
    - 如果用户说"创建"、"新建"、"帮我安排"等明确的创建指令
    → 判定为 "new_task"
 
-4. 最后才判断为补充信息：
-   - 只有当用户提供了新的具体信息（如具体时间、具体描述等）
-   → 才判定为 "supplement"
+4. 最后判断为补充信息或无效：
+   - 如果用户提到的内容与选项完全不匹配（如选项是"任务A"，用户却说"删除任务B"）
+   - 这种情况应该判定为 "supplement" 或 "new_task"，而不是 "select_option"
 
-【重要】
-- "是的"、"好的"、"ok"、"确认"等 → 选择第一个选项（默认确认）
-- 不要把用户的确认意图误判为"补充信息"
-- 如果不确定用户选择哪个选项，但用户在回应确认问题，应该选择第一个选项`,
+【重要规则】
+- "是的"、"好的"、"ok"、"确认"等只有在选项与用户意图相关时才选择
+- 如果用户明确提到不同的任务名（如选项是"围棋课"，用户却说"删除信用卡"），绝对不能选择任何选项
+- 选择选项时，必须检查用户提到的内容是否与选项标题相关
+- 如果用户提到的是完全不同的事物，应该判定为 "supplement" 或 "new_task"`,
 
   userPromptTemplate: `当前上下文：
 - 确认问题：{confirmation_question}

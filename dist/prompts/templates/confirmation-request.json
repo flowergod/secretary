@@ -1,0 +1,16 @@
+{
+    "id": "confirmation_request",
+    "type": "confirmation_request",
+    "version": "v1",
+    "description": "当AI置信度较低时，向用户确认理解是否正确",
+    "variables": ["intent", "parameters", "clarifying_question"],
+    "content": "我需要向用户确认以下理解是否正确：\n\n我理解您想要：{intent}\n相关的详细信息：{parameters}\n\n{clarifying_question}\n\n请回复\"是\"确认，或提供更正信息。",
+    "examples": [
+        {
+            "input": "intent=创建日程, parameters={title: '会议', start_time: '15:00'}",
+            "output": "我理解您想要创建一个日程，会议，在下午3点开始。请问这个理解正确吗？"
+        }
+    ],
+    "createdAt": "2026-05-04T00:00:00Z",
+    "updatedAt": "2026-05-04T00:00:00Z"
+}

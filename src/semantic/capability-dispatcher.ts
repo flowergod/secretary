@@ -210,6 +210,9 @@ export class CapabilityDispatcher {
       isRecurring = true;
     }
 
+    // 检查 monthly_day / day_of_month 参数 (如 "每个月24号")
+    const monthlyDayParam = (params.monthly_day || params.day_of_month) as number | undefined;
+
     // 检查 recurrence_rule 参数 (如 "weekly", "FREQ=WEEKLY;COUNT=5")
     const recurrenceRuleParam = params.recurrence_rule as string | undefined;
     if (recurrenceRuleParam && !pattern) {
@@ -255,19 +258,28 @@ export class CapabilityDispatcher {
       }
 
       // 生成 RRULE
+      let rruleParts: string[] = [`FREQ=${pattern.toUpperCase()}`];
+
+      // 对于月历，如果指定了 monthly_day，添加 BYMONTHDAY
+      if (pattern === 'monthly' && monthlyDayParam) {
+        rruleParts.push(`BYMONTHDAY=${monthlyDayParam}`);
+      }
+
       if (recurrenceRuleParam && recurrenceRuleParam.toUpperCase().includes('COUNT=')) {
-        recurrenceRule = recurrenceRuleParam;
         const countMatch = recurrenceRuleParam.match(/COUNT=(\d+)/);
         if (countMatch) {
           count = parseInt(countMatch[1], 10);
         }
-      } else if (count) {
-        recurrenceRule = `RRULE:FREQ=${pattern.toUpperCase()};COUNT=${count}`;
-      } else if (until) {
-        recurrenceRule = `RRULE:FREQ=${pattern.toUpperCase()};UNTIL=${until}`;
-      } else {
-        recurrenceRule = `RRULE:FREQ=${pattern.toUpperCase()};COUNT=10`; // 默认10次
       }
+      if (count) {
+        rruleParts.push(`COUNT=${count}`);
+      } else if (until) {
+        rruleParts.push(`UNTIL=${until}`);
+      } else {
+        rruleParts.push('COUNT=10'); // 默认10次
+      }
+
+      recurrenceRule = `RRULE:${rruleParts.join(';')}`;
 
       isRecurring = true;
     }
@@ -342,6 +354,36 @@ export class CapabilityDispatcher {
 
     // 校验 category
     const category = normalizeCategory(params.category);
+
+    // 处理 monthly_day 参数 (如 "每个月24号")
+    if (monthlyDayParam && !startDate) {
+      // 计算下一个月的该日期
+      const now = new Date();
+      const currentDay = now.getDate();
+      let targetMonth = now.getMonth();
+      let targetYear = now.getFullYear();
+
+      if (currentDay >= monthlyDayParam) {
+        // 下个月
+        targetMonth++;
+        if (targetMonth > 11) {
+          targetMonth = 0;
+          targetYear++;
+        }
+      }
+
+      // 检查该月是否有这一天
+      const daysInMonth = new Date(targetYear, targetMonth + 1, 0).getDate();
+      const actualDay = Math.min(monthlyDayParam, daysInMonth);
+
+      // 使用本地日期格式，避免 UTC 时区问题
+      const targetDate = new Date(targetYear, targetMonth, actualDay);
+      const yyyy = targetDate.getFullYear();
+      const mm = String(targetDate.getMonth() + 1).padStart(2, '0');
+      const dd = String(targetDate.getDate()).padStart(2, '0');
+      startDate = `${yyyy}-${mm}-${dd}`;
+      logger.info(`[CapabilityDispatcher] monthly_day ${monthlyDayParam} -> start_date ${startDate}`);
+    }
 
     const result = await taskService.create({
       title: params.title as string,
@@ -792,7 +834,9 @@ export class CapabilityDispatcher {
         return;
       }
 
-      const oldCalendarId = mapping[task.category || DEFAULT_CATEGORY];
+      // 先规范化旧分类，再查找 calendarId
+      const oldCategoryNormalized = normalizeCategory(task.category);
+      const oldCalendarId = mapping[oldCategoryNormalized];
       const newCalendarId = mapping[newCategory];
 
       if (!oldCalendarId || !newCalendarId) {
