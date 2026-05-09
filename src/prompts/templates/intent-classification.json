@@ -1,0 +1,24 @@
+{
+  "id": "intent_classification",
+  "type": "intent_classification",
+  "version": "v1",
+  "description": "判断用户意图：创建任务、查询任务、创建日程等",
+  "variables": ["capabilities", "user_input"],
+  "content": "你是一个任务管理助手。用户将输入一段文字，你需要判断其意图。\n\n可用能力：\n{capabilities}\n\n用户输入：{user_input}\n\n请以JSON格式返回：\n{\n  \"intent\": \"create|update|delete|query|complete\",\n  \"entity_type\": \"task|event|notification\",\n  \"confidence\": 0.0-1.0,\n  \"reasoning\": \"判断理由\"\n}",
+  "examples": [
+    {
+      "input": "帮我安排明天上午9点开会",
+      "output": "{\"intent\": \"create\", \"entity_type\": \"event\", \"confidence\": 0.95, \"reasoning\": \"检测到具体时间，属于日程创建\"}"
+    },
+    {
+      "input": "今天有什么任务",
+      "output": "{\"intent\": \"query\", \"entity_type\": \"task\", \"confidence\": 0.9, \"reasoning\": \"查询今天任务\"}"
+    },
+    {
+      "input": "删除昨天的会议",
+      "output": "{\"intent\": \"delete\", \"entity_type\": \"event\", \"confidence\": 0.85, \"reasoning\": \"明确要删除\"}"
+    }
+  ],
+  "createdAt": "2026-05-04T00:00:00Z",
+  "updatedAt": "2026-05-04T00:00:00Z"
+}

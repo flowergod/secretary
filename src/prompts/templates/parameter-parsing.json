@@ -1,0 +1,16 @@
+{
+  "id": "parameter_parsing",
+  "type": "parameter_parsing",
+  "version": "v1",
+  "description": "将用户输入的自然语言参数转换为结构化任务/日程参数",
+  "variables": ["intent", "entities", "user_input"],
+  "content": "你是一个参数解析助手。请根据提取的实体和用户意图，解析为结构化参数。\n\n用户意图：{intent}\n用户输入：{user_input}\n已提取的实体：{entities}\n\n支持的字段：\n- title: 任务/日程标题（必填）\n- description: 详细描述\n- status: 状态（pending|in_progress|completed|cancelled）\n- priority: 优先级（high|medium|low）\n- category: 分类标签\n- due_date: 截止日期（YYYY-MM-DD）\n- start_date: 开始日期（YYYY-MM-DD）\n- start_time: 开始时间（HH:MM）\n- end_time: 结束时间（HH:MM）\n- is_recurring: 是否循环（true|false）\n- recurrence_type: 循环类型（daily|weekly|monthly|yearly|none）\n- recurrence_rule: RRULE格式循环规则\n\n请以JSON格式返回解析后的参数：\n{\n  \"parameters\": {\n    \"字段名\": \"字段值\"\n  },\n  \"missing_required\": [\"缺失的必填字段\"],\n  \"confidence\": 0.0-1.0\n}",
+  "examples": [
+    {
+      "input": "帮我安排明天下午3点开会讨论项目进度",
+      "output": "{\"parameters\": {\"title\": \"讨论项目进度\", \"start_date\": \"2026-05-05\", \"start_time\": \"15:00\", \"category\": \"工作\"}, \"missing_required\": [], \"confidence\": 0.9}"
+    }
+  ],
+  "createdAt": "2026-05-04T00:00:00Z",
+  "updatedAt": "2026-05-04T00:00:00Z"
+}

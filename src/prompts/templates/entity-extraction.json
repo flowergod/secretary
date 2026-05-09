@@ -1,0 +1,16 @@
+{
+  "id": "entity_extraction",
+  "type": "entity_extraction",
+  "version": "v1",
+  "description": "从用户输入中提取时间、人物、地点等实体信息",
+  "variables": ["user_input", "entity_types"],
+  "content": "你是一个实体提取助手。请从用户输入中提取指定类型的实体。\n\n用户输入：{user_input}\n\n需要提取的实体类型：{entity_types}\n\n支持的实体类型：\n- time: 具体时间，如\"明天上午9点\"、\"周三下午3点\"\n- date: 日期，如\"2026-05-10\"、\"下周一\"\n- person: 人名，如\"张三\"\n- location: 地点，如\"会议室A\"\n- duration: 时长，如\"半小时\"、\"2小时\"\n\n\n请以JSON格式返回提取的实体：\n{\n  \"entities\": [\n    {\n      \"type\": \"time|date|person|location|duration\",\n      \"value\": \"实体值\",\n      \"normalized\": \"标准化后的值\"\n    }\n  ]\n}",
+  "examples": [
+    {
+      "input": "明天下午3点在北京会议室召开项目会议",
+      "output": "{\"entities\": [{\"type\": \"time\", \"value\": \"下午3点\", \"normalized\": \"15:00\"}, {\"type\": \"date\", \"value\": \"明天\", \"normalized\": \"2026-05-05\"}, {\"type\": \"location\", \"value\": \"北京会议室\", \"normalized\": \"北京会议室\"}]}"
+    }
+  ],
+  "createdAt": "2026-05-04T00:00:00Z",
+  "updatedAt": "2026-05-04T00:00:00Z"
+}
