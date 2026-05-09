@@ -553,8 +553,13 @@ export class CapabilityDispatcher {
     const currentTaskResult = await taskService.get(targetId);
     const currentTask = currentTaskResult.success ? currentTaskResult.data : null;
     const oldCategory = currentTask?.category || DEFAULT_CATEGORY;
-    const newCategory = parameters.category ? normalizeCategory(parameters.category) : oldCategory;
+    // 支持 parameters.category 和 parameters.new_category 两种参数名
+    const categoryParam = parameters.category || parameters.new_category;
+    logger.info(`[CapabilityDispatcher] updateTask: categoryParam=${categoryParam}, oldCategory=${oldCategory}`);
+    const newCategory = categoryParam ? normalizeCategory(categoryParam) : oldCategory;
+    logger.info(`[CapabilityDispatcher] updateTask: newCategory=${newCategory}`);
     const categoryChanged = newCategory !== oldCategory;
+    logger.info(`[CapabilityDispatcher] updateTask: categoryChanged=${categoryChanged}`);
 
     // 构建更新参数
     const updates: Record<string, unknown> = {};
@@ -564,7 +569,7 @@ export class CapabilityDispatcher {
     }
     if (parameters.description) updates.description = parameters.description;
     if (parameters.priority) updates.priority = parameters.priority;
-    if (parameters.category) updates.category = newCategory;
+    if (categoryParam) updates.category = newCategory;
 
     // 处理日期变更（支持 today/tomorrow 等）
     const normalizeDate = (dateStr: string | undefined): string | undefined => {
