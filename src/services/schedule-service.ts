@@ -4,6 +4,9 @@ import { icloudConnector, ICloudEvent } from '../connectors/icloud';
 import { feishuConnector } from '../connectors/feishu';
 import { logger } from '../shared';
 
+// 默认分类
+const DEFAULT_CATEGORY = '工作';
+
 export interface SyncResult {
   success: boolean;
   icloud_event_id?: string;
@@ -312,11 +315,22 @@ export class ScheduleService {
    * 获取日历 ID（通过分类名称）
    */
   private getCalendarId(category?: string): string | undefined {
-    if (!category) {
-      // 默认使用个人日历
-      return icloudConnector.getCalendarIdByCategory('工作');
+    // 规范化 category
+    let normalized = category || DEFAULT_CATEGORY;
+    const mapping: Record<string, string> = {
+      '工作': '工作', 'work': '工作',
+      '个人': '个人', 'personal': '个人',
+      '家庭共享': '家庭共享', '家庭': '家庭共享', 'family': '家庭共享',
+    };
+    const mapped = mapping[category || ''];
+    if (mapped) normalized = mapped;
+    else if (category) {
+      // 尝试部分匹配
+      if (category.includes('家庭')) normalized = '家庭共享';
+      else if (category.includes('个人')) normalized = '个人';
+      else if (category.includes('工作')) normalized = '工作';
     }
-    return icloudConnector.getCalendarIdByCategory(category);
+    return icloudConnector.getCalendarIdByCategory(normalized);
   }
 
   /**
